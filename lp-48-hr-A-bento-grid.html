@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LP-48 | ベントーボックス・グリッド | ②人事×A</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;background:#0f0f0f;color:#1a1a1a;overflow-x:hidden;}
+
+/* NAV */
+nav{background:#0f0f0f;padding:1.2rem 2rem;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(255,255,255,.05);}
+.nav-logo{font-family:'Noto Serif JP',serif;font-size:.85rem;color:rgba(255,255,255,.6);letter-spacing:.05em;}
+.nav-cta{background:white;color:#0f0f0f;padding:.45rem 1.3rem;border-radius:50px;font-size:.75rem;font-weight:700;text-decoration:none;letter-spacing:.08em;}
+
+/* HERO BENTO */
+.hero-bento{padding:1.5rem;display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:auto;gap:1rem;background:#0f0f0f;min-height:100vh;}
+
+/* セル */
+.cell{border-radius:16px;overflow:hidden;position:relative;}
+
+/* A: メインタイトル 8×2 */
+.cell-A{grid-column:1/9;grid-row:1/3;background:linear-gradient(145deg,#1b4332,#2d6a4f);padding:3.5rem;display:flex;flex-direction:column;justify-content:space-between;min-height:360px;}
+.cA-eyebrow{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:1.5rem;}
+.cA-target{display:inline-block;border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.8);font-size:.75rem;padding:.3rem .9rem;border-radius:50px;margin-bottom:1.5rem;letter-spacing:.08em;}
+.cA-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.8rem,3.5vw,3.2rem);font-weight:700;color:white;line-height:1.25;margin-bottom:1rem;}
+.cA-sub{font-size:.85rem;color:rgba(255,255,255,.55);font-weight:300;}
+.cA-badge{display:inline-block;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#95d5b2;font-size:.72rem;padding:.4rem 1rem;border-radius:8px;letter-spacing:.08em;}
+
+/* B: 問い 4×1 */
+.cell-B{grid-column:9/13;grid-row:1/2;background:#f5f0e8;padding:2rem;display:flex;flex-direction:column;justify-content:center;}
+.cB-label{font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:#8d6e63;margin-bottom:.8rem;}
+.cB-q{font-family:'Noto Serif JP',serif;font-size:1rem;font-weight:700;line-height:1.6;color:#3d2b1f;}
+
+/* C: 数字 4×1 */
+.cell-C{grid-column:9/13;grid-row:2/3;background:#2d6a4f;padding:2rem;display:flex;align-items:center;gap:1.5rem;}
+.cC-num{font-family:'Noto Serif JP',serif;font-size:3.5rem;font-weight:700;color:rgba(255,255,255,.15);line-height:1;}
+.cC-text{font-size:.82rem;color:rgba(255,255,255,.7);line-height:1.6;}
+
+/* PROBLEM ROW */
+.cell-D{grid-column:1/4;grid-row:3/4;background:#1a1a1a;padding:2rem;display:flex;flex-direction:column;justify-content:space-between;}
+.cell-E{grid-column:4/7;grid-row:3/4;background:#222;padding:2rem;}
+.cell-F{grid-column:7/10;grid-row:3/4;background:#1a1a1a;padding:2rem;}
+.cell-G{grid-column:10/13;grid-row:3/4;background:#222;padding:2rem;}
+
+.pc-ico{font-size:1.5rem;margin-bottom:.8rem;}
+.pc-title{font-size:.9rem;font-weight:700;color:white;margin-bottom:.5rem;}
+.pc-body{font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.7;}
+
+/* ROOT CAUSE - wide */
+.cell-H{grid-column:1/7;grid-row:4/5;background:#52b788;padding:3rem;display:flex;flex-direction:column;justify-content:center;}
+.cH-label{font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(0,0,0,.45);margin-bottom:1rem;}
+.cH-statement{font-family:'Noto Serif JP',serif;font-size:clamp(1.1rem,2vw,1.8rem);font-weight:700;color:#0d3320;line-height:1.5;}
+
+/* HOLES */
+.cell-I{grid-column:7/10;grid-row:4/5;background:#f5f0e8;padding:2rem;}
+.cell-J{grid-column:10/13;grid-row:4/6;background:#1b4332;padding:2rem;display:flex;flex-direction:column;justify-content:space-between;}
+.cell-K{grid-column:7/10;grid-row:5/6;background:#f0f8f0;padding:2rem;}
+
+.hole-num{font-family:'Noto Serif JP',serif;font-size:2.5rem;font-weight:700;line-height:1;margin-bottom:.5rem;}
+.hole-name{font-size:.9rem;font-weight:700;margin-bottom:.5rem;line-height:1.4;}
+.hole-desc{font-size:.78rem;color:#666;line-height:1.75;}
+.hole-desc-light{font-size:.78rem;color:rgba(255,255,255,.55);line-height:1.75;}
+
+/* VOICES */
+.cell-L{grid-column:1/4;grid-row:5/6;background:#fafafa;padding:2rem;}
+.cell-M{grid-column:4/7;grid-row:5/6;background:white;padding:2rem;}
+
+.voice-q{font-size:.85rem;font-style:italic;line-height:1.85;margin-bottom:.8rem;color:#333;}
+.voice-who{font-size:.72rem;color:#2d6a4f;font-weight:500;}
+
+/* CTA */
+.cell-N{grid-column:1/13;grid-row:6/7;background:#0f0f0f;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:4rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.cn-heading{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,3vw,2.8rem);font-weight:700;color:white;line-height:1.4;}
+.cn-right{display:flex;flex-direction:column;gap:1.5rem;}
+.cn-body{font-size:.92rem;color:rgba(255,255,255,.5);line-height:1.9;}
+.cn-btn{display:inline-block;background:#52b788;color:#0d3320;padding:1rem 2.5rem;border-radius:50px;font-size:.9rem;font-weight:700;text-decoration:none;letter-spacing:.08em;align-self:flex-start;transition:all .25s;}
+.cn-btn:hover{background:white;transform:translateY(-2px);}
+
+footer{background:#080808;color:rgba(255,255,255,.15);text-align:center;padding:1.5rem;font-size:.68rem;letter-spacing:.1em;}
+
+@media(max-width:900px){
+  .hero-bento{grid-template-columns:1fr;padding:1rem;}
+  .cell-A,.cell-B,.cell-C,.cell-D,.cell-E,.cell-F,.cell-G,.cell-H,.cell-I,.cell-J,.cell-K,.cell-L,.cell-M,.cell-N{grid-column:1/-1;grid-row:auto;}
+  .cell-N{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">熱量あふれる組織のつくり方</div>
+  <a href="#cta" class="nav-cta">書籍を見る</a>
+</nav>
+
+<div class="hero-bento">
+  <!-- A: タイトル -->
+  <div class="cell cell-A">
+    <div>
+      <p class="cA-eyebrow">LP-48 · ②人事担当者 · Concept A · Bento Grid</p>
+      <div class="cA-target">②人事担当者 へ</div>
+      <h1 class="cA-title">数字の呪縛が、<br>組織を凍らせる</h1>
+      <p class="cA-sub">熱量あふれる組織のつくり方<br>──数字の呪縛（お金の思い込み）からの解放</p>
+    </div>
+    <div class="cA-badge">案A：構造的共感</div>
+  </div>
+
+  <!-- B: 問い -->
+  <div class="cell cell-B">
+    <p class="cB-label">The Question</p>
+    <p class="cB-q">施策を打ち続けても、なぜ「静かな退職」は止まらないのか？</p>
+  </div>
+
+  <!-- C: 数字 -->
+  <div class="cell cell-C">
+    <div class="cC-num">68%</div>
+    <p class="cC-text">施策を打っても<br>エンゲージメントが<br>改善しない企業の割合</p>
+  </div>
+
+  <!-- D-G: 症状 -->
+  <div class="cell cell-D">
+    <div class="pc-ico">📉</div>
+    <div>
+      <div class="pc-title">「静かな退職」の蔓延</div>
+      <p class="pc-body">離職はしないが最低限しか働かない。本音は話さない。</p>
+    </div>
+  </div>
+  <div class="cell cell-E">
+    <div class="pc-ico">🔁</div>
+    <div class="pc-title">施策の無効化</div>
+    <p class="pc-body">あらゆる手を尽くしても熱量は戻らない。</p>
+  </div>
+  <div class="cell cell-F">
+    <div class="pc-ico">🚪</div>
+    <div class="pc-title">優秀人材の流出</div>
+    <p class="pc-body">変化を起こせる人材が先に組織を去っていく。</p>
+  </div>
+  <div class="cell cell-G">
+    <div class="pc-ico">🤝</div>
+    <div class="pc-title">経営層との断絶</div>
+    <p class="pc-body">「感覚論」と一蹴される。数値で伝えられない。</p>
+  </div>
+
+  <!-- H: 根本原因 -->
+  <div class="cell cell-H">
+    <p class="cH-label">Root Cause · 根本原因</p>
+    <p class="cH-statement">「施策が悪い」のではなく、<br>「前提」が間違っている。<br>その前提を「マネーバイアス」と呼びます。</p>
+  </div>
+
+  <!-- I: 突破口01 -->
+  <div class="cell cell-I">
+    <div class="hole-num" style="color:#d4e8da;">01</div>
+    <div class="hole-name">「数字の呪縛」を<br>見える化する</div>
+    <p class="hole-desc">「数値＝真実」という思い込みを、構造として可視化します。</p>
+  </div>
+
+  <!-- J: 突破口03（縦長） -->
+  <div class="cell cell-J">
+    <div>
+      <div class="hole-num" style="color:rgba(255,255,255,.1);">03</div>
+      <div class="hole-name" style="color:white;">「生成」という<br>成長観へ</div>
+      <p class="hole-desc-light">スキル強化という強化型成長から、人が本来持つ可能性が花開く生成型成長へ。</p>
+    </div>
+    <div style="font-size:.7rem;color:rgba(255,255,255,.2);letter-spacing:.1em;font-style:italic;">Becoming →</div>
+  </div>
+
+  <!-- K: 突破口02 -->
+  <div class="cell cell-K">
+    <div class="hole-num" style="color:#c8e6c3;">02</div>
+    <div class="hole-name">「共感」を<br>組織の言語にする</div>
+    <p class="hole-desc">感情や熱量を排除してきた組織に、共感の回路を取り戻します。</p>
+  </div>
+
+  <!-- L,M: 声 -->
+  <div class="cell cell-L">
+    <div class="voice-q">「施策が悪い」のではなく「前提が間違っている」とわかった瞬間、長年の違和感が消えた。</div>
+    <div class="voice-who">Eさん · 人事部長 メーカー勤務</div>
+  </div>
+  <div class="cell cell-M">
+    <div class="voice-q">なぜ心理的安全性研修が機能しなかったのかが腑に落ちた。マネーバイアスという言葉が全てを説明してくれた。</div>
+    <div class="voice-who">Fさん · HRBP IT企業</div>
+  </div>
+
+  <!-- N: CTA -->
+  <div class="cell cell-N" id="cta">
+    <h2 class="cn-heading">「静かな退職」の<br>根本原因を突き止め、<br>組織に熱量を取り戻そう。</h2>
+    <div class="cn-right">
+      <p class="cn-body">施策を変えるのではなく、前提を変える。人事担当者が知るべき、組織変革の新しい視点がここにあります。</p>
+      <a href="#" class="cn-btn">書籍の詳細を見る →</a>
+    </div>
+  </div>
+</div>
+
+<footer>LP-48 · ②人事担当者 · Concept A 構造的共感 · ベントーボックス・グリッドレイアウト</footer>
+</body>
+</html>

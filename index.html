@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LP一覧 | 熱量あふれる組織のつくり方 – 50パターン</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Sans JP',sans-serif;background:#0f1014;color:#e0e0e0;min-height:100vh;}
+
+header{padding:3rem 2rem 2rem;border-bottom:1px solid rgba(255,255,255,.08);max-width:1400px;margin:0 auto;}
+header h1{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,3vw,2.2rem);font-weight:700;color:#fff;line-height:1.5;margin-bottom:.5rem;}
+header p{font-size:.9rem;color:rgba(255,255,255,.5);margin-top:.8rem;}
+
+.filter-bar{max-width:1400px;margin:2rem auto 0;padding:0 2rem;display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;}
+.filter-label{font-size:.75rem;color:rgba(255,255,255,.4);letter-spacing:.15em;text-transform:uppercase;margin-right:.4rem;}
+.filter-btn{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.7);font-size:.78rem;padding:.35rem .9rem;border-radius:50px;cursor:pointer;transition:all .2s;font-family:'Noto Sans JP',sans-serif;}
+.filter-btn:hover,.filter-btn.active{background:rgba(76,175,80,.2);border-color:rgba(76,175,80,.5);color:#a5d6a7;}
+.filter-sep{width:1px;height:20px;background:rgba(255,255,255,.1);margin:0 .4rem;}
+
+.grid{max-width:1400px;margin:2.5rem auto 4rem;padding:0 2rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem;}
+
+.card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden;transition:transform .25s ease,border-color .25s ease;cursor:pointer;text-decoration:none;display:block;}
+.card:hover{transform:translateY(-5px);border-color:rgba(76,175,80,.4);}
+.card.hidden{display:none;}
+
+.card-preview{width:100%;height:160px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:3rem;letter-spacing:.05em;font-family:'Noto Serif JP',serif;font-weight:700;}
+.card-preview span{position:relative;z-index:2;opacity:.7;}
+
+/* デザイン別カラー */
+.d1 .card-preview{background:linear-gradient(135deg,#e8f5e2,#c8e6c3);color:#388e3c;}
+.d2 .card-preview{background:linear-gradient(135deg,#0d1117,#1a3a20);color:#4caf50;}
+.d3 .card-preview{background:linear-gradient(135deg,#fdf6ec,#d4bc8a);color:#8d6e63;}
+.d4 .card-preview{background:linear-gradient(135deg,#f5f5f5,#e0e0e0);color:#111;}
+.d5 .card-preview{background:linear-gradient(135deg,#e8f5e9,#f3e5f5);color:#7b1fa2;}
+
+.card-body{padding:1.2rem 1.4rem 1.4rem;}
+.card-num{font-size:.7rem;color:rgba(255,255,255,.3);letter-spacing:.2em;margin-bottom:.5rem;font-weight:500;}
+.card-title{font-size:.95rem;font-weight:700;color:#fff;line-height:1.5;margin-bottom:.7rem;}
+.card-tags{display:flex;flex-wrap:wrap;gap:.4rem;}
+.tag{font-size:.7rem;padding:.2rem .65rem;border-radius:50px;font-weight:500;}
+.tag-target{background:rgba(76,175,80,.15);color:#81c784;border:1px solid rgba(76,175,80,.25);}
+.tag-concept{background:rgba(255,193,7,.1);color:#ffd54f;border:1px solid rgba(255,193,7,.2);}
+.tag-design{background:rgba(100,181,246,.1);color:#90caf9;border:1px solid rgba(100,181,246,.2);}
+.tag-tone{background:rgba(206,147,216,.15);color:#ce93d8;border:1px solid rgba(206,147,216,.25);}
+
+.section-heading{max-width:1400px;margin:2rem auto 0;padding:0 2rem;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.3);border-bottom:1px solid rgba(255,255,255,.06);padding-bottom:1rem;}
+
+/* 構造バリアント カラー */
+.s-split .card-preview{background:linear-gradient(135deg,#1b4332,#40916c);color:#95d5b2;}
+.s-giant .card-preview{background:#0c0c0c;color:#52b788;}
+.s-magazine .card-preview{background:linear-gradient(135deg,#fdf8f0,#f5e6d0);color:#b5451b;}
+.s-swiss .card-preview{background:#ffffff;color:#111;border:1px solid #eee;}
+.s-diagonal .card-preview{background:linear-gradient(135deg,#e63946,#c1121f);color:white;}
+.s-timeline .card-preview{background:linear-gradient(135deg,#081c15,#2d6a4f);color:#95d5b2;}
+.s-cinema .card-preview{background:#050505;color:rgba(82,183,136,.8);}
+.s-bento .card-preview{background:#0f0f0f;color:#52b788;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;padding:2px;}
+.s-bento .card-preview::before,.s-bento .card-preview::after{content:'';background:rgba(255,255,255,.04);border-radius:4px;}
+.s-newspaper .card-preview{background:#f9f6ef;color:#1a1a1a;border-top:4px solid #1a1a1a;}
+.s-onemsg .card-preview{background:#fafaf8;color:#111;display:flex;flex-direction:column;gap:4px;justify-content:center;padding:1rem;}
+
+.tag-layout{background:rgba(255,138,101,.15);color:#ffab91;border:1px solid rgba(255,138,101,.25);}
+
+.stat-bar{max-width:1400px;margin:0 auto;padding:1.5rem 2rem;display:flex;gap:2.5rem;border-bottom:1px solid rgba(255,255,255,.06);flex-wrap:wrap;}
+.stat{text-align:center;}
+.stat-num{font-size:2rem;font-weight:700;color:#81c784;font-family:'Noto Serif JP',serif;}
+.stat-label{font-size:.72rem;color:rgba(255,255,255,.4);margin-top:.2rem;letter-spacing:.08em;}
+
+/* ── RATING UI ── */
+/* カード評価別ボーダー */
+.card[data-rating="x"]{border-color:rgba(239,83,80,.45);}
+.card[data-rating="x"]:hover{border-color:rgba(239,83,80,.8);}
+.card[data-rating="1"]{border-color:rgba(255,213,79,.35);}
+.card[data-rating="1"]:hover{border-color:rgba(255,213,79,.7);}
+.card[data-rating="2"]{border-color:rgba(255,213,79,.55);}
+.card[data-rating="2"]:hover{border-color:rgba(255,213,79,.9);}
+.card[data-rating="3"]{border-color:rgba(255,193,7,.9);box-shadow:0 0 20px rgba(255,193,7,.15);}
+.card[data-rating="3"]:hover{border-color:#ffc107;}
+
+/* プレビュー右上の評価バッジ */
+.rating-badge{
+  position:absolute;top:.6rem;right:.6rem;z-index:10;
+  font-size:.82rem;font-weight:700;letter-spacing:.04em;
+  padding:.25rem .65rem;border-radius:50px;
+  background:rgba(0,0,0,.55);backdrop-filter:blur(6px);
+  color:rgba(255,255,255,.25);
+  transition:all .2s;
+  pointer-events:none;
+}
+.rating-badge.has-rating{color:white;background:rgba(0,0,0,.7);}
+.rating-badge.r-x{background:rgba(239,83,80,.8);color:white;}
+.rating-badge.r-1{background:rgba(120,90,0,.75);color:#ffd54f;}
+.rating-badge.r-2{background:rgba(140,100,0,.75);color:#ffd54f;}
+.rating-badge.r-3{background:rgba(160,120,0,.85);color:#ffe57f;}
+
+/* カード下部の評価ボタン行 */
+.card-rating{
+  display:flex;align-items:center;gap:.4rem;
+  padding:.7rem 1.4rem .9rem;
+  border-top:1px solid rgba(255,255,255,.06);
+  background:rgba(0,0,0,.15);
+}
+.rating-label{font-size:.65rem;color:rgba(255,255,255,.25);letter-spacing:.1em;margin-right:.2rem;flex-shrink:0;}
+.rating-btn{
+  font-size:.75rem;font-weight:700;
+  padding:.22rem .65rem;border-radius:50px;border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.05);color:rgba(255,255,255,.4);
+  cursor:pointer;transition:all .18s;font-family:'Noto Sans JP',sans-serif;
+  line-height:1.4;
+}
+.rating-btn:hover{background:rgba(255,255,255,.12);color:rgba(255,255,255,.8);}
+.rating-btn.active.r-x{background:rgba(239,83,80,.25);border-color:rgba(239,83,80,.7);color:#ef5350;}
+.rating-btn.active.r-1{background:rgba(255,213,79,.15);border-color:rgba(255,213,79,.5);color:#ffd54f;}
+.rating-btn.active.r-2{background:rgba(255,213,79,.2);border-color:rgba(255,213,79,.7);color:#ffd54f;}
+.rating-btn.active.r-3{background:rgba(255,193,7,.25);border-color:rgba(255,193,7,.8);color:#ffc107;}
+/* リセットボタン */
+.rating-reset{
+  margin-left:auto;font-size:.65rem;color:rgba(255,255,255,.18);
+  cursor:pointer;padding:.2rem .5rem;border-radius:4px;border:none;
+  background:transparent;transition:color .2s;font-family:'Noto Sans JP',sans-serif;
+}
+.rating-reset:hover{color:rgba(255,255,255,.5);}
+
+/* 評価フィルターボタンのアクティブ色 */
+.filter-btn.active.rf-x{background:rgba(239,83,80,.2);border-color:rgba(239,83,80,.5);color:#ef9a9a;}
+.filter-btn.active.rf-1{background:rgba(255,213,79,.12);border-color:rgba(255,213,79,.45);color:#ffd54f;}
+.filter-btn.active.rf-2{background:rgba(255,213,79,.18);border-color:rgba(255,213,79,.6);color:#ffd54f;}
+.filter-btn.active.rf-3{background:rgba(255,193,7,.2);border-color:rgba(255,193,7,.7);color:#ffc107;}
+
+/* 評価サマリー行 */
+.rating-summary{
+  max-width:1400px;margin:0 auto;padding:.8rem 2rem;
+  display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;
+  border-bottom:1px solid rgba(255,255,255,.04);
+  font-size:.75rem;
+}
+.rs-label{color:rgba(255,255,255,.25);letter-spacing:.1em;}
+.rs-item{color:rgba(255,255,255,.5);display:flex;align-items:center;gap:.35rem;}
+.rs-count{font-weight:700;color:rgba(255,255,255,.8);}
+.rs-item.rs-x .rs-count{color:#ef9a9a;}
+.rs-item.rs-1 .rs-count{color:#ffd54f;}
+.rs-item.rs-2 .rs-count{color:#ffd54f;}
+.rs-item.rs-3 .rs-count{color:#ffc107;}
+.rs-reset-all{
+  margin-left:auto;font-size:.72rem;color:rgba(255,255,255,.2);
+  cursor:pointer;padding:.3rem .8rem;border-radius:50px;border:1px solid rgba(255,255,255,.08);
+  background:transparent;transition:all .2s;font-family:'Noto Sans JP',sans-serif;
+}
+.rs-reset-all:hover{color:rgba(255,255,255,.6);border-color:rgba(255,255,255,.3);}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>熱量あふれる組織のつくり方<br><span style="font-weight:300;font-size:.7em;color:rgba(255,255,255,.6);">──数字の呪縛（お金の思い込み）からの解放</span></h1>
+  <p>LP たたき台 50パターン一覧（40バリエーション + 10構造バリアント） · 2026.04</p>
+</header>
+
+<div class="stat-bar">
+  <div class="stat"><div class="stat-num">50</div><div class="stat-label">Total Patterns</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">Targets</div></div>
+  <div class="stat"><div class="stat-num">2</div><div class="stat-label">Concepts</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">Designs</div></div>
+  <div class="stat"><div class="stat-num">10</div><div class="stat-label">Structural Variants</div></div>
+</div>
+
+<div class="filter-bar">
+  <span class="filter-label">Target</span>
+  <button class="filter-btn active" onclick="filter('target','all')">すべて</button>
+  <button class="filter-btn" onclick="filter('target','t1')">①経営者</button>
+  <button class="filter-btn" onclick="filter('target','t2')">②人事</button>
+  <button class="filter-btn" onclick="filter('target','t3')">③ビジネスパーソン</button>
+  <button class="filter-btn" onclick="filter('target','t4')">①②③混合</button>
+  <div class="filter-sep"></div>
+  <span class="filter-label">Concept</span>
+  <button class="filter-btn active" onclick="filter('concept','all')">すべて</button>
+  <button class="filter-btn" onclick="filter('concept','cA')">A 構造的共感</button>
+  <button class="filter-btn" onclick="filter('concept','cB')">B 構造的真実</button>
+  <div class="filter-sep"></div>
+  <span class="filter-label">Design</span>
+  <button class="filter-btn active" onclick="filter('design','all')">すべて</button>
+  <button class="filter-btn" onclick="filter('design','d1')">D1 緑有機</button>
+  <button class="filter-btn" onclick="filter('design','d2')">D2 ダーク</button>
+  <button class="filter-btn" onclick="filter('design','d3')">D3 アーストーン</button>
+  <button class="filter-btn" onclick="filter('design','d4')">D4 モノクロ</button>
+  <button class="filter-btn" onclick="filter('design','d5')">D5 ビビッド</button>
+  <div class="filter-sep"></div>
+  <span class="filter-label">Layout</span>
+  <button class="filter-btn active" onclick="filter('layout','all')">すべて</button>
+  <button class="filter-btn" onclick="filter('layout','std')">標準40種</button>
+  <button class="filter-btn" onclick="filter('layout','struct')">構造バリアント10種</button>
+  <div class="filter-sep"></div>
+  <span class="filter-label">評価</span>
+  <button class="filter-btn active" onclick="filterRating('all')">すべて</button>
+  <button class="filter-btn" onclick="filterRating('unrated')">未評価</button>
+  <button class="filter-btn rf-x" onclick="filterRating('x')">×</button>
+  <button class="filter-btn rf-1" onclick="filterRating('1')">★</button>
+  <button class="filter-btn rf-2" onclick="filterRating('2')">★★</button>
+  <button class="filter-btn rf-3" onclick="filterRating('3')">★★★</button>
+</div>
+
+<div class="rating-summary" id="ratingSummary">
+  <span class="rs-label">評価サマリー：</span>
+  <span class="rs-item rs-unrated">未評価 <span class="rs-count" id="cnt-unrated">—</span></span>
+  <span class="rs-item rs-x">× <span class="rs-count" id="cnt-x">0</span></span>
+  <span class="rs-item rs-1">★ <span class="rs-count" id="cnt-1">0</span></span>
+  <span class="rs-item rs-2">★★ <span class="rs-count" id="cnt-2">0</span></span>
+  <span class="rs-item rs-3">★★★ <span class="rs-count" id="cnt-3">0</span></span>
+  <button class="rs-reset-all" onclick="resetAllRatings()">すべてリセット</button>
+</div>
+
+<div class="grid" id="grid">
+
+<!-- D1 緑有機 01-08 -->
+<a class="card d1" href="lp-01-target1-conceptB-design2.html" target="_blank" data-target="t1" data-concept="cB" data-design="d1" data-tone="tQ">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 01</div>
+    <div class="card-title">KPIを達成しても、なぜ組織から「生きる力」が失われるのか？</div>
+    <div class="card-tags">
+      <span class="tag tag-target">①経営者</span>
+      <span class="tag tag-concept">B 構造的真実</span>
+      <span class="tag tag-design">D1 緑有機</span>
+      <span class="tag tag-tone">問いかけ</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d1" href="lp-02-target1-conceptA-designD1-toneQ.html" target="_blank" data-target="t1" data-concept="cA" data-design="d1" data-tone="tQ">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 02</div>
+    <div class="card-title">KPIを達成しても、なぜ組織から「生きる力」が失われるのか？</div>
+    <div class="card-tags">
+      <span class="tag tag-target">①経営者</span>
+      <span class="tag tag-concept">A 構造的共感</span>
+      <span class="tag tag-design">D1 緑有機</span>
+      <span class="tag tag-tone">問いかけ</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d1" href="lp-03-target2-conceptB-designD1-toneQ.html" target="_blank" data-target="t2" data-concept="cB" data-design="d1" data-tone="tQ">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 03</div>
+    <div class="card-title">施策を打ち続けても、なぜ「静かな退職」は止まらないのか？</div>
+    <div class="card-tags">
+      <span class="tag tag-target">②人事</span>
+      <span class="tag tag-concept">B 構造的真実</span>
+      <span class="tag tag-design">D1 緑有機</span>
+      <span class="tag tag-tone">問いかけ</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d1" href="lp-04-target2-conceptA-designD1-toneQ.html" target="_blank" data-target="t2" data-concept="cA" data-design="d1" data-tone="tQ">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 04</div>
+    <div class="card-title">施策を打ち続けても、なぜ「静かな退職」は止まらないのか？</div>
+    <div class="card-tags">
+      <span class="tag tag-target">②人事</span>
+      <span class="tag tag-concept">A 構造的共感</span>
+      <span class="tag tag-design">D1 緑有機</span>
+      <span class="tag tag-tone">問いかけ</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d1" href="lp-05-target3-conceptB-designD1-toneQ.html" target="_blank" data-target="t3" data-concept="cB" data-design="d1" data-tone="tQ">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 05</div>
+    <div class="card-title">「なぜ働くのか」がわからなくなってきていませんか？</div>
+    <div class="card-tags">
+      <span class="tag tag-target">③ビジネスパーソン</span>
+      <span class="tag tag-concept">B 構造的真実</span>
+      <span class="tag tag-design">D1 緑有機</span>
+      <span class="tag tag-tone">問いかけ</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d1" href="lp-06-target3-conceptA-designD1-toneQ.html" target="_blank" data-target="t3" data-concept="cA" data-design="d1" data-tone="tQ">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 06</div>
+    <div class="card-title">「なぜ働くのか」がわからなくなってきていませんか？</div>
+    <div class="card-tags">
+      <span class="tag tag-target">③ビジネスパーソン</span>
+      <span class="tag tag-concept">A 構造的共感</span>
+      <span class="tag tag-design">D1 緑有機</span>
+      <span class="tag tag-tone">問いかけ</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d1" href="lp-07-target4-conceptB-designD1-toneQ.html" target="_blank" data-target="t4" data-concept="cB" data-design="d1" data-tone="tQ">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 07</div>
+    <div class="card-title">経営者も、人事も、現場も。なぜみんなが同じ疲弊感を抱えているのか？</div>
+    <div class="card-tags">
+      <span class="tag tag-target">①②③混合</span>
+      <span class="tag tag-concept">B 構造的真実</span>
+      <span class="tag tag-design">D1 緑有機</span>
+      <span class="tag tag-tone">問いかけ</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d1" href="lp-08-target4-conceptA-designD1-toneQ.html" target="_blank" data-target="t4" data-concept="cA" data-design="d1" data-tone="tQ">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 08</div>
+    <div class="card-title">経営者も、人事も、現場も。なぜみんなが同じ疲弊感を抱えているのか？</div>
+    <div class="card-tags">
+      <span class="tag tag-target">①②③混合</span>
+      <span class="tag tag-concept">A 構造的共感</span>
+      <span class="tag tag-design">D1 緑有機</span>
+      <span class="tag tag-tone">問いかけ</span>
+    </div>
+  </div>
+</a>
+
+<!-- D2 ダーク 09-16 -->
+<a class="card d2" href="lp-09-target1-conceptB-designD2-toneS.html" target="_blank" data-target="t1" data-concept="cB" data-design="d2" data-tone="tS">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 09</div>
+    <div class="card-title">正しく経営しているのに、組織が凍りついている。その正体は「マネーバイアス」だ。</div>
+    <div class="card-tags">
+      <span class="tag tag-target">①経営者</span>
+      <span class="tag tag-concept">B 構造的真実</span>
+      <span class="tag tag-design">D2 ダーク</span>
+      <span class="tag tag-tone">断言</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d2" href="lp-10-target1-conceptA-designD2-toneS.html" target="_blank" data-target="t1" data-concept="cA" data-design="d2" data-tone="tS">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 10</div>
+    <div class="card-title">正しく経営しているのに、組織が凍りついている。その正体は「マネーバイアス」だ。</div>
+    <div class="card-tags">
+      <span class="tag tag-target">①経営者</span>
+      <span class="tag tag-concept">A 構造的共感</span>
+      <span class="tag tag-design">D2 ダーク</span>
+      <span class="tag tag-tone">断言</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d2" href="lp-11-target2-conceptB-designD2-toneS.html" target="_blank" data-target="t2" data-concept="cB" data-design="d2" data-tone="tS">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 11</div>
+    <div class="card-title">離職もエンゲージメントも、問題は個人ではなく「構造」にある。</div>
+    <div class="card-tags">
+      <span class="tag tag-target">②人事</span>
+      <span class="tag tag-concept">B 構造的真実</span>
+      <span class="tag tag-design">D2 ダーク</span>
+      <span class="tag tag-tone">断言</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d2" href="lp-12-target2-conceptA-designD2-toneS.html" target="_blank" data-target="t2" data-concept="cA" data-design="d2" data-tone="tS">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 12</div>
+    <div class="card-title">離職もエンゲージメントも、問題は個人ではなく「構造」にある。</div>
+    <div class="card-tags">
+      <span class="tag tag-target">②人事</span>
+      <span class="tag tag-concept">A 構造的共感</span>
+      <span class="tag tag-design">D2 ダーク</span>
+      <span class="tag tag-tone">断言</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d2" href="lp-13-target3-conceptB-designD2-toneS.html" target="_blank" data-target="t3" data-concept="cB" data-design="d2" data-tone="tS">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 13</div>
+    <div class="card-title">仕事が義務になった瞬間、あなたの「自分らしさ」はどこかへ消えていった。</div>
+    <div class="card-tags">
+      <span class="tag tag-target">③ビジネスパーソン</span>
+      <span class="tag tag-concept">B 構造的真実</span>
+      <span class="tag tag-design">D2 ダーク</span>
+      <span class="tag tag-tone">断言</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d2" href="lp-14-target3-conceptA-designD2-toneS.html" target="_blank" data-target="t3" data-concept="cA" data-design="d2" data-tone="tS">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 14</div>
+    <div class="card-title">仕事が義務になった瞬間、あなたの「自分らしさ」はどこかへ消えていった。</div>
+    <div class="card-tags">
+      <span class="tag tag-target">③ビジネスパーソン</span>
+      <span class="tag tag-concept">A 構造的共感</span>
+      <span class="tag tag-design">D2 ダーク</span>
+      <span class="tag tag-tone">断言</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d2" href="lp-15-target4-conceptB-designD2-toneS.html" target="_blank" data-target="t4" data-concept="cB" data-design="d2" data-tone="tS">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 15</div>
+    <div class="card-title">組織の「熱量の喪失」は、個人の問題ではなく構造的な必然だった。</div>
+    <div class="card-tags">
+      <span class="tag tag-target">①②③混合</span>
+      <span class="tag tag-concept">B 構造的真実</span>
+      <span class="tag tag-design">D2 ダーク</span>
+      <span class="tag tag-tone">断言</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d2" href="lp-16-target4-conceptA-designD2-toneS.html" target="_blank" data-target="t4" data-concept="cA" data-design="d2" data-tone="tS">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 16</div>
+    <div class="card-title">組織の「熱量の喪失」は、個人の問題ではなく構造的な必然だった。</div>
+    <div class="card-tags">
+      <span class="tag tag-target">①②③混合</span>
+      <span class="tag tag-concept">A 構造的共感</span>
+      <span class="tag tag-design">D2 ダーク</span>
+      <span class="tag tag-tone">断言</span>
+    </div>
+  </div>
+</a>
+
+<!-- D3 アーストーン 17-24 -->
+<a class="card d3" href="lp-17-target1-conceptB-designD3-toneT.html" target="_blank" data-target="t1" data-concept="cB" data-design="d3" data-tone="tT">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 17</div>
+    <div class="card-title">ある経営者の告白。「数字を追うのをやめた日、チームが初めて動き出した。」</div>
+    <div class="card-tags">
+      <span class="tag tag-target">①経営者</span>
+      <span class="tag tag-concept">B 構造的真実</span>
+      <span class="tag tag-design">D3 アーストーン</span>
+      <span class="tag tag-tone">ストーリー</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d3" href="lp-18-target1-conceptA-designD3-toneT.html" target="_blank" data-target="t1" data-concept="cA" data-design="d3" data-tone="tT">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 18</div>
+    <div class="card-title">ある経営者の告白。「数字を追うのをやめた日、チームが初めて動き出した。」</div>
+    <div class="card-tags">
+      <span class="tag tag-target">①経営者</span>
+      <span class="tag tag-concept">A 構造的共感</span>
+      <span class="tag tag-design">D3 アーストーン</span>
+      <span class="tag tag-tone">ストーリー</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d3" href="lp-19-target2-conceptB-designD3-toneT.html" target="_blank" data-target="t2" data-concept="cB" data-design="d3" data-tone="tT">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 19</div>
+    <div class="card-title">ある人事担当者の転換点。「エンゲージメントスコアを見るのをやめて、空気を観察し始めた日。」</div>
+    <div class="card-tags">
+      <span class="tag tag-target">②人事</span>
+      <span class="tag tag-concept">B 構造的真実</span>
+      <span class="tag tag-design">D3 アーストーン</span>
+      <span class="tag tag-tone">ストーリー</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d3" href="lp-20-target2-conceptA-designD3-toneT.html" target="_blank" data-target="t2" data-concept="cA" data-design="d3" data-tone="tT">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 20</div>
+    <div class="card-title">ある人事担当者の転換点。「エンゲージメントスコアを見るのをやめて、空気を観察し始めた日。」</div>
+    <div class="card-tags">
+      <span class="tag tag-target">②人事</span>
+      <span class="tag tag-concept">A 構造的共感</span>
+      <span class="tag tag-design">D3 アーストーン</span>
+      <span class="tag tag-tone">ストーリー</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d3" href="lp-21-target3-conceptB-designD3-toneT.html" target="_blank" data-target="t3" data-concept="cB" data-design="d3" data-tone="tT">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 21</div>
+    <div class="card-title">「気づいたら、自分が透明になっていた」——ある30代が熱量を取り戻すまでの物語。</div>
+    <div class="card-tags">
+      <span class="tag tag-target">③ビジネスパーソン</span>
+      <span class="tag tag-concept">B 構造的真実</span>
+      <span class="tag tag-design">D3 アーストーン</span>
+      <span class="tag tag-tone">ストーリー</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d3" href="lp-22-target3-conceptA-designD3-toneT.html" target="_blank" data-target="t3" data-concept="cA" data-design="d3" data-tone="tT">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 22</div>
+    <div class="card-title">「気づいたら、自分が透明になっていた」——ある30代が熱量を取り戻すまでの物語。</div>
+    <div class="card-tags">
+      <span class="tag tag-target">③ビジネスパーソン</span>
+      <span class="tag tag-concept">A 構造的共感</span>
+      <span class="tag tag-design">D3 アーストーン</span>
+      <span class="tag tag-tone">ストーリー</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d3" href="lp-23-target4-conceptB-designD3-toneT.html" target="_blank" data-target="t4" data-concept="cB" data-design="d3" data-tone="tT">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 23</div>
+    <div class="card-title">ある会社での出来事。経営者は数字を追い、人事は施策を打ち、現場は疲弊する——その悪循環が止まった日。</div>
+    <div class="card-tags">
+      <span class="tag tag-target">①②③混合</span>
+      <span class="tag tag-concept">B 構造的真実</span>
+      <span class="tag tag-design">D3 アーストーン</span>
+      <span class="tag tag-tone">ストーリー</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d3" href="lp-24-target4-conceptA-designD3-toneT.html" target="_blank" data-target="t4" data-concept="cA" data-design="d3" data-tone="tT">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 24</div>
+    <div class="card-title">ある会社での出来事。経営者は数字を追い、人事は施策を打ち、現場は疲弊する——その悪循環が止まった日。</div>
+    <div class="card-tags">
+      <span class="tag tag-target">①②③混合</span>
+      <span class="tag tag-concept">A 構造的共感</span>
+      <span class="tag tag-design">D3 アーストーン</span>
+      <span class="tag tag-tone">ストーリー</span>
+    </div>
+  </div>
+</a>
+
+<!-- D4 モノクロ 25-32 -->
+<a class="card d4" href="lp-25-target1-conceptB-designD4-toneD.html" target="_blank" data-target="t1" data-concept="cB" data-design="d4" data-tone="tD">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 25</div>
+    <div class="card-title">日本企業の73%の経営者が感じる「管理しても熱量が上がらない」という矛盾</div>
+    <div class="card-tags">
+      <span class="tag tag-target">①経営者</span>
+      <span class="tag tag-concept">B 構造的真実</span>
+      <span class="tag tag-design">D4 モノクロ</span>
+      <span class="tag tag-tone">データ</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d4" href="lp-26-target1-conceptA-designD4-toneD.html" target="_blank" data-target="t1" data-concept="cA" data-design="d4" data-tone="tD">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 26</div>
+    <div class="card-title">日本企業の73%の経営者が感じる「管理しても熱量が上がらない」という矛盾</div>
+    <div class="card-tags">
+      <span class="tag tag-target">①経営者</span>
+      <span class="tag tag-concept">A 構造的共感</span>
+      <span class="tag tag-design">D4 モノクロ</span>
+      <span class="tag tag-tone">データ</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d4" href="lp-27-target2-conceptB-designD4-toneD.html" target="_blank" data-target="t2" data-concept="cB" data-design="d4" data-tone="tD">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 27</div>
+    <div class="card-title">エンゲージメント施策に年間平均200万円投じながら、スコアが改善しない企業が68%</div>
+    <div class="card-tags">
+      <span class="tag tag-target">②人事</span>
+      <span class="tag tag-concept">B 構造的真実</span>
+      <span class="tag tag-design">D4 モノクロ</span>
+      <span class="tag tag-tone">データ</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d4" href="lp-28-target2-conceptA-designD4-toneD.html" target="_blank" data-target="t2" data-concept="cA" data-design="d4" data-tone="tD">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 28</div>
+    <div class="card-title">エンゲージメント施策に年間平均200万円投じながら、スコアが改善しない企業が68%</div>
+    <div class="card-tags">
+      <span class="tag tag-target">②人事</span>
+      <span class="tag tag-concept">A 構造的共感</span>
+      <span class="tag tag-design">D4 モノクロ</span>
+      <span class="tag tag-tone">データ</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d4" href="lp-29-target3-conceptB-designD4-toneD.html" target="_blank" data-target="t3" data-concept="cB" data-design="d4" data-tone="tD">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 29</div>
+    <div class="card-title">働く人の54%が「仕事への熱量が3年前より低下した」と感じている。あなたはどうですか？</div>
+    <div class="card-tags">
+      <span class="tag tag-target">③ビジネスパーソン</span>
+      <span class="tag tag-concept">B 構造的真実</span>
+      <span class="tag tag-design">D4 モノクロ</span>
+      <span class="tag tag-tone">データ</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d4" href="lp-30-target3-conceptA-designD4-toneD.html" target="_blank" data-target="t3" data-concept="cA" data-design="d4" data-tone="tD">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 30</div>
+    <div class="card-title">働く人の54%が「仕事への熱量が3年前より低下した」と感じている。あなたはどうですか？</div>
+    <div class="card-tags">
+      <span class="tag tag-target">③ビジネスパーソン</span>
+      <span class="tag tag-concept">A 構造的共感</span>
+      <span class="tag tag-design">D4 モノクロ</span>
+      <span class="tag tag-tone">データ</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d4" href="lp-31-target4-conceptB-designD4-toneD.html" target="_blank" data-target="t4" data-concept="cB" data-design="d4" data-tone="tD">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 31</div>
+    <div class="card-title">「組織の熱量が低下している」経営者の81%・人事の76%・現場の69%が同様に感じている日本の現実</div>
+    <div class="card-tags">
+      <span class="tag tag-target">①②③混合</span>
+      <span class="tag tag-concept">B 構造的真実</span>
+      <span class="tag tag-design">D4 モノクロ</span>
+      <span class="tag tag-tone">データ</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d4" href="lp-32-target4-conceptA-designD4-toneD.html" target="_blank" data-target="t4" data-concept="cA" data-design="d4" data-tone="tD">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 32</div>
+    <div class="card-title">「組織の熱量が低下している」経営者の81%・人事の76%・現場の69%が同様に感じている日本の現実</div>
+    <div class="card-tags">
+      <span class="tag tag-target">①②③混合</span>
+      <span class="tag tag-concept">A 構造的共感</span>
+      <span class="tag tag-design">D4 モノクロ</span>
+      <span class="tag tag-tone">データ</span>
+    </div>
+  </div>
+</a>
+
+<!-- D5 ビビッド 33-40 -->
+<a class="card d5" href="lp-33-target1-conceptB-designD5-toneS.html" target="_blank" data-target="t1" data-concept="cB" data-design="d5" data-tone="tS">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 33</div>
+    <div class="card-title">正しく経営しているのに、組織が凍りついている。その正体は「マネーバイアス」だ。</div>
+    <div class="card-tags">
+      <span class="tag tag-target">①経営者</span>
+      <span class="tag tag-concept">B 構造的真実</span>
+      <span class="tag tag-design">D5 ビビッド</span>
+      <span class="tag tag-tone">断言</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d5" href="lp-34-target1-conceptA-designD5-toneT.html" target="_blank" data-target="t1" data-concept="cA" data-design="d5" data-tone="tT">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 34</div>
+    <div class="card-title">ある経営者の告白。「数字を追うのをやめた日、チームが初めて動き出した。」</div>
+    <div class="card-tags">
+      <span class="tag tag-target">①経営者</span>
+      <span class="tag tag-concept">A 構造的共感</span>
+      <span class="tag tag-design">D5 ビビッド</span>
+      <span class="tag tag-tone">ストーリー</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d5" href="lp-35-target2-conceptB-designD5-toneQ.html" target="_blank" data-target="t2" data-concept="cB" data-design="d5" data-tone="tQ">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 35</div>
+    <div class="card-title">施策を打ち続けても、なぜ「静かな退職」は止まらないのか？</div>
+    <div class="card-tags">
+      <span class="tag tag-target">②人事</span>
+      <span class="tag tag-concept">B 構造的真実</span>
+      <span class="tag tag-design">D5 ビビッド</span>
+      <span class="tag tag-tone">問いかけ</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d5" href="lp-36-target2-conceptA-designD5-toneD.html" target="_blank" data-target="t2" data-concept="cA" data-design="d5" data-tone="tD">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 36</div>
+    <div class="card-title">エンゲージメント施策に年間平均200万円投じながら、スコアが改善しない企業が68%</div>
+    <div class="card-tags">
+      <span class="tag tag-target">②人事</span>
+      <span class="tag tag-concept">A 構造的共感</span>
+      <span class="tag tag-design">D5 ビビッド</span>
+      <span class="tag tag-tone">データ</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d5" href="lp-37-target3-conceptB-designD5-toneT.html" target="_blank" data-target="t3" data-concept="cB" data-design="d5" data-tone="tT">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 37</div>
+    <div class="card-title">「気づいたら、自分が透明になっていた」——ある30代が熱量を取り戻すまでの物語。</div>
+    <div class="card-tags">
+      <span class="tag tag-target">③ビジネスパーソン</span>
+      <span class="tag tag-concept">B 構造的真実</span>
+      <span class="tag tag-design">D5 ビビッド</span>
+      <span class="tag tag-tone">ストーリー</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d5" href="lp-38-target3-conceptA-designD5-toneQ.html" target="_blank" data-target="t3" data-concept="cA" data-design="d5" data-tone="tQ">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 38</div>
+    <div class="card-title">「なぜ働くのか」がわからなくなってきていませんか？</div>
+    <div class="card-tags">
+      <span class="tag tag-target">③ビジネスパーソン</span>
+      <span class="tag tag-concept">A 構造的共感</span>
+      <span class="tag tag-design">D5 ビビッド</span>
+      <span class="tag tag-tone">問いかけ</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d5" href="lp-39-target4-conceptB-designD5-toneS.html" target="_blank" data-target="t4" data-concept="cB" data-design="d5" data-tone="tS">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 39</div>
+    <div class="card-title">組織の「熱量の喪失」は、個人の問題ではなく構造的な必然だった。</div>
+    <div class="card-tags">
+      <span class="tag tag-target">①②③混合</span>
+      <span class="tag tag-concept">B 構造的真実</span>
+      <span class="tag tag-design">D5 ビビッド</span>
+      <span class="tag tag-tone">断言</span>
+    </div>
+  </div>
+</a>
+
+<a class="card d5" href="lp-40-target4-conceptA-designD5-toneD.html" target="_blank" data-target="t4" data-concept="cA" data-design="d5" data-tone="tD">
+  <div class="card-preview"><span>Becoming</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 40</div>
+    <div class="card-title">「組織の熱量が低下している」経営者の81%・人事の76%・現場の69%が同様に感じている日本の現実</div>
+    <div class="card-tags">
+      <span class="tag tag-target">①②③混合</span>
+      <span class="tag tag-concept">A 構造的共感</span>
+      <span class="tag tag-design">D5 ビビッド</span>
+      <span class="tag tag-tone">データ</span>
+    </div>
+  </div>
+</a>
+
+<!-- ────────────────────────────────────────────────────
+     構造バリアント 41–50：②人事×A 固定、レイアウト変数
+──────────────────────────────────────────────────── -->
+<a class="card s-split" href="lp-41-hr-A-split-sticky.html" target="_blank" data-target="t2" data-concept="cA" data-design="struct" data-layout="struct">
+  <div class="card-preview"><span>分割</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 41</div>
+    <div class="card-title">左固定パネル＋右スクロール — 分割スティッキーレイアウト</div>
+    <div class="card-tags">
+      <span class="tag tag-target">②人事</span><span class="tag tag-concept">A 構造的共感</span>
+      <span class="tag tag-layout">分割スティッキー</span>
+    </div>
+  </div>
+</a>
+
+<a class="card s-giant" href="lp-42-hr-A-giant-type.html" target="_blank" data-target="t2" data-concept="cA" data-design="struct" data-layout="struct">
+  <div class="card-preview"><span>巨大</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 42</div>
+    <div class="card-title">文字そのものがビジュアル — 巨大タイポグラフィ構造</div>
+    <div class="card-tags">
+      <span class="tag tag-target">②人事</span><span class="tag tag-concept">A 構造的共感</span>
+      <span class="tag tag-layout">巨大タイポグラフィ</span>
+    </div>
+  </div>
+</a>
+
+<a class="card s-magazine" href="lp-43-hr-A-magazine.html" target="_blank" data-target="t2" data-concept="cA" data-design="struct" data-layout="struct">
+  <div class="card-preview"><span>誌面</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 43</div>
+    <div class="card-title">マルチカラム非対称グリッド — マガジン・エディトリアル</div>
+    <div class="card-tags">
+      <span class="tag tag-target">②人事</span><span class="tag tag-concept">A 構造的共感</span>
+      <span class="tag tag-layout">マガジン</span>
+    </div>
+  </div>
+</a>
+
+<a class="card s-swiss" href="lp-44-hr-A-swiss-minimal.html" target="_blank" data-target="t2" data-concept="cA" data-design="struct" data-layout="struct">
+  <div class="card-preview"><span>格子</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 44</div>
+    <div class="card-title">厳密12グリッド＋余白 — スイスグリッド・ミニマル</div>
+    <div class="card-tags">
+      <span class="tag tag-target">②人事</span><span class="tag tag-concept">A 構造的共感</span>
+      <span class="tag tag-layout">スイスグリッド</span>
+    </div>
+  </div>
+</a>
+
+<a class="card s-diagonal" href="lp-45-hr-A-diagonal.html" target="_blank" data-target="t2" data-concept="cA" data-design="struct" data-layout="struct">
+  <div class="card-preview"><span>斜め</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 45</div>
+    <div class="card-title">clip-pathで斜断するセクション — ダイナミック斜めレイアウト</div>
+    <div class="card-tags">
+      <span class="tag tag-target">②人事</span><span class="tag tag-concept">A 構造的共感</span>
+      <span class="tag tag-layout">斜め断面</span>
+    </div>
+  </div>
+</a>
+
+<a class="card s-timeline" href="lp-46-hr-A-timeline.html" target="_blank" data-target="t2" data-concept="cA" data-design="struct" data-layout="struct">
+  <div class="card-preview"><span>旅程</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 46</div>
+    <div class="card-title">問題の連鎖を縦軸で辿る — タイムライン・ジャーニー</div>
+    <div class="card-tags">
+      <span class="tag tag-target">②人事</span><span class="tag tag-concept">A 構造的共感</span>
+      <span class="tag tag-layout">タイムライン</span>
+    </div>
+  </div>
+</a>
+
+<a class="card s-cinema" href="lp-47-hr-A-cinema-fullscreen.html" target="_blank" data-target="t2" data-concept="cA" data-design="struct" data-layout="struct">
+  <div class="card-preview"><span>暗幕</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 47</div>
+    <div class="card-title">全画面暗黒×プログレスバー — ダークシネマ全画面</div>
+    <div class="card-tags">
+      <span class="tag tag-target">②人事</span><span class="tag tag-concept">A 構造的共感</span>
+      <span class="tag tag-layout">シネマ全画面</span>
+    </div>
+  </div>
+</a>
+
+<a class="card s-bento" href="lp-48-hr-A-bento-grid.html" target="_blank" data-target="t2" data-concept="cA" data-design="struct" data-layout="struct">
+  <div class="card-preview"><span>弁当</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 48</div>
+    <div class="card-title">異サイズセルが一画面に共存 — ベントーボックス・グリッド</div>
+    <div class="card-tags">
+      <span class="tag tag-target">②人事</span><span class="tag tag-concept">A 構造的共感</span>
+      <span class="tag tag-layout">ベントーグリッド</span>
+    </div>
+  </div>
+</a>
+
+<a class="card s-newspaper" href="lp-49-hr-A-newspaper.html" target="_blank" data-target="t2" data-concept="cA" data-design="struct" data-layout="struct">
+  <div class="card-preview"><span>新聞</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 49</div>
+    <div class="card-title">マルチカラム段組み紙面 — ニュースペーパー・エディトリアル</div>
+    <div class="card-tags">
+      <span class="tag tag-target">②人事</span><span class="tag tag-concept">A 構造的共感</span>
+      <span class="tag tag-layout">新聞段組み</span>
+    </div>
+  </div>
+</a>
+
+<a class="card s-onemsg" href="lp-50-hr-A-one-message.html" target="_blank" data-target="t2" data-concept="cA" data-design="struct" data-layout="struct">
+  <div class="card-preview"><span style="font-size:1rem;letter-spacing:.1em;color:#555;">一画面<br>一言</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 50</div>
+    <div class="card-title">1画面＝1メッセージ 超余白ミニマル — One Message Scroll</div>
+    <div class="card-tags">
+      <span class="tag tag-target">②人事</span><span class="tag tag-concept">A 構造的共感</span>
+      <span class="tag tag-layout">1メッセージ</span>
+    </div>
+  </div>
+</a>
+
+</div><!-- /grid -->
+
+<script>
+// ── STATE ──────────────────────────────────────────────
+// 評価フィルターだけ Set（複数選択可）、他は単一値
+const state = { target:'all', concept:'all', design:'all', layout:'all' };
+const selectedRatings = new Set(); // 空 = 全表示
+
+const RATING_LABELS = { 'x':'×', '1':'★', '2':'★★', '3':'★★★' };
+const STORAGE_KEY = 'lp-ratings-v1';
+
+// ── STORAGE ────────────────────────────────────────────
+function loadRatings() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
+  catch { return {}; }
+}
+function saveRatings(ratings) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(ratings));
+}
+function getRating(id) { return loadRatings()[id] || ''; }
+function setRating(id, val) {
+  const r = loadRatings();
+  if (val === '') delete r[id]; else r[id] = val;
+  saveRatings(r);
+}
+
+// ── RATING UI 初期化（DOM挿入） ─────────────────────────
+function initRatingUI() {
+  document.querySelectorAll('.card').forEach((card, i) => {
+    const href = card.getAttribute('href') || String(i);
+    const id = href.replace(/[^a-z0-9\-]/gi, '-');
+    card.dataset.id = id;
+
+    const preview = card.querySelector('.card-preview');
+    if (preview && !preview.querySelector('.rating-badge')) {
+      const badge = document.createElement('div');
+      badge.className = 'rating-badge';
+      preview.style.position = 'relative';
+      preview.appendChild(badge);
+    }
+
+    const body = card.querySelector('.card-body');
+    if (body && !body.querySelector('.card-rating')) {
+      const row = document.createElement('div');
+      row.className = 'card-rating';
+      row.innerHTML = `
+        <span class="rating-label">評価</span>
+        <button class="rating-btn r-x" data-r="x" onclick="rate(event,'${id}','x')">×</button>
+        <button class="rating-btn r-1" data-r="1" onclick="rate(event,'${id}','1')">★</button>
+        <button class="rating-btn r-2" data-r="2" onclick="rate(event,'${id}','2')">★★</button>
+        <button class="rating-btn r-3" data-r="3" onclick="rate(event,'${id}','3')">★★★</button>
+        <button class="rating-reset"              onclick="rate(event,'${id}','')">✕</button>`;
+      body.appendChild(row);
+    }
+  });
+  applyRatingUI();
+}
+
+// ── 評価をセットしてUI反映 ─────────────────────────────
+function rate(e, id, val) {
+  e.preventDefault(); e.stopPropagation();
+  setRating(id, val);
+  applyRatingUI();
+  applyFilter();
+}
+
+function applyRatingUI() {
+  const counts = { x:0, '1':0, '2':0, '3':0, unrated:0 };
+  document.querySelectorAll('.card').forEach(card => {
+    const id = card.dataset.id;
+    if (!id) return;
+    const rating = getRating(id);
+    card.dataset.rating = rating;
+
+    const badge = card.querySelector('.rating-badge');
+    if (badge) {
+      badge.className = 'rating-badge' + (rating ? ' has-rating r-' + rating : '');
+      badge.textContent = rating ? RATING_LABELS[rating] : '';
+    }
+    card.querySelectorAll('.rating-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.r === rating);
+    });
+
+    if (rating) counts[rating] = (counts[rating] || 0) + 1;
+    else counts.unrated++;
+  });
+
+  document.getElementById('cnt-x').textContent       = counts.x    || 0;
+  document.getElementById('cnt-1').textContent       = counts['1'] || 0;
+  document.getElementById('cnt-2').textContent       = counts['2'] || 0;
+  document.getElementById('cnt-3').textContent       = counts['3'] || 0;
+  document.getElementById('cnt-unrated').textContent = counts.unrated || 0;
+}
+
+function resetAllRatings() {
+  if (!confirm('全カードの評価をリセットします。よろしいですか？')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  applyRatingUI();
+  applyFilter();
+}
+
+// ── 通常フィルター（単一選択） ─────────────────────────
+function filter(dim, val) {
+  state[dim] = val;
+  document.querySelectorAll('.filter-btn').forEach(b => {
+    const oc = b.getAttribute('onclick') || '';
+    if (oc === `filter('${dim}','${val}')`) b.classList.add('active');
+    else if (oc.startsWith(`filter('${dim}'`)) b.classList.remove('active');
+  });
+  applyFilter();
+}
+
+// ── 評価フィルター（複数選択 Toggle） ─────────────────
+function filterRating(val) {
+  if (val === 'all') {
+    // 「すべて」→ 選択リセット
+    selectedRatings.clear();
+  } else {
+    // 選択済みなら外す、未選択なら追加
+    if (selectedRatings.has(val)) selectedRatings.delete(val);
+    else selectedRatings.add(val);
+  }
+  syncRatingFilterButtons();
+  applyFilter();
+}
+
+function syncRatingFilterButtons() {
+  const isEmpty = selectedRatings.size === 0;
+  document.querySelectorAll('.filter-btn').forEach(b => {
+    const oc = b.getAttribute('onclick') || '';
+    if (!oc.startsWith('filterRating(')) return;
+    const m = oc.match(/filterRating\('(.+?)'\)/);
+    if (!m) return;
+    const v = m[1];
+    if (v === 'all') {
+      b.classList.toggle('active', isEmpty);
+    } else {
+      b.classList.toggle('active', selectedRatings.has(v));
+    }
+  });
+}
+
+// ── フィルター適用 ─────────────────────────────────────
+function applyFilter() {
+  document.querySelectorAll('.card').forEach(card => {
+    const tOk = state.target  === 'all' || card.dataset.target  === state.target;
+    const cOk = state.concept === 'all' || card.dataset.concept === state.concept;
+    const dOk = state.design  === 'all' || card.dataset.design  === state.design;
+    const lOk = state.layout  === 'all'
+             || (state.layout === 'struct' && card.dataset.layout === 'struct')
+             || (state.layout === 'std'    && card.dataset.layout !== 'struct');
+
+    // 評価フィルター（複数選択 OR 条件）
+    let rOk;
+    if (selectedRatings.size === 0) {
+      rOk = true; // 何も選ばれていない = 全表示
+    } else {
+      const cardRating = card.dataset.rating || '';
+      // 'unrated' が選択されている場合は空文字ともマッチ
+      rOk = selectedRatings.has(cardRating)
+         || (selectedRatings.has('unrated') && cardRating === '');
+    }
+
+    card.classList.toggle('hidden', !(tOk && cOk && dOk && lOk && rOk));
+  });
+}
+
+// ── 初期化 ────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  initRatingUI();
+  syncRatingFilterButtons(); // 初期状態：「すべて」をアクティブに
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LP-45 | 斜め・ダイナミック | ②人事×A</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;background:#fafafa;color:#1a1a1a;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,250,250,.95);backdrop-filter:blur(10px);padding:1rem 2.5rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(0,0,0,.06);}
+.nav-logo{font-family:'Noto Serif JP',serif;font-size:.85rem;font-weight:700;}
+.nav-cta{background:#1a1a1a;color:white;padding:.45rem 1.4rem;border-radius:3px;font-size:.78rem;font-weight:700;text-decoration:none;letter-spacing:.06em;}
+
+/* HERO — 斜め背景 */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;padding:8rem 5rem 6rem;overflow:hidden;background:#fafafa;}
+.hero-bg-left{position:absolute;top:0;left:0;width:55%;height:100%;background:#e63946;clip-path:polygon(0 0,100% 0,85% 100%,0 100%);z-index:0;}
+.hero-bg-accent{position:absolute;top:0;left:0;width:55%;height:100%;background:linear-gradient(135deg,#c1121f,#e63946);clip-path:polygon(0 0,100% 0,85% 100%,0 100%);z-index:0;}
+.hero-content{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:4rem;max-width:1100px;margin:0 auto;width:100%;}
+.hc-left{color:white;}
+.hc-eyebrow{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:2rem;}
+.hc-target{display:inline-block;border:1px solid rgba(255,255,255,.4);color:white;font-size:.78rem;padding:.35rem 1rem;border-radius:50px;margin-bottom:1.5rem;letter-spacing:.08em;}
+.hc-headline{font-family:'Noto Serif JP',serif;font-size:clamp(2rem,4vw,3.8rem);font-weight:700;line-height:1.2;margin-bottom:1.5rem;}
+.hc-badge{display:inline-block;background:rgba(255,255,255,.15);color:white;font-size:.78rem;padding:.5rem 1.2rem;border-radius:3px;letter-spacing:.08em;margin-bottom:2rem;}
+.hc-copy{font-size:1rem;color:rgba(255,255,255,.85);line-height:1.9;}
+.hc-right{display:flex;flex-direction:column;justify-content:center;}
+.hcr-q{font-family:'Noto Serif JP',serif;font-size:clamp(1.2rem,2.2vw,1.9rem);font-weight:700;line-height:1.6;color:#1a1a1a;margin-bottom:1.5rem;}
+.hcr-body{font-size:.92rem;color:#555;line-height:2;}
+
+/* SKEWED SECTION */
+.skew-wrap{position:relative;margin:-3rem 0;padding:0;}
+.skew-inner{background:#1a1a1a;color:white;padding:7rem 5rem;clip-path:polygon(0 3rem,100% 0,100% calc(100% - 3rem),0 100%);}
+.si-label{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:#e63946;margin-bottom:3rem;}
+.si-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;max-width:1100px;margin:0 auto;}
+.si-item{border-top:2px solid #333;padding-top:1.5rem;}
+.sii-ico{font-size:1.5rem;margin-bottom:.8rem;}
+.sii-title{font-size:.93rem;font-weight:700;color:white;margin-bottom:.5rem;}
+.sii-body{font-size:.82rem;color:rgba(255,255,255,.55);line-height:1.75;}
+
+/* ROOT CAUSE */
+.root{padding:8rem 5rem;background:white;text-align:center;position:relative;overflow:hidden;}
+.root-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:20rem;font-family:'Noto Serif JP',serif;font-weight:700;color:#f5f5f5;pointer-events:none;}
+.root-inner{position:relative;z-index:2;max-width:800px;margin:0 auto;}
+.root-label{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:#e63946;margin-bottom:2rem;}
+.root-statement{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,3.5vw,3.2rem);font-weight:700;line-height:1.4;margin-bottom:2rem;}
+.root-body{font-size:.97rem;color:#666;line-height:2;}
+
+/* HOLES — 斜めカード */
+.holes-section{padding:8rem 5rem;background:#fafafa;position:relative;overflow:hidden;}
+.hs-label{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:#888;margin-bottom:4rem;text-align:center;}
+.holes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1100px;margin:0 auto;}
+.hole-card{background:white;padding:2.5rem;position:relative;overflow:hidden;box-shadow:0 2px 20px rgba(0,0,0,.06);transition:transform .3s;}
+.hole-card:hover{transform:translateY(-8px) rotate(-1deg);}
+.hole-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:#e63946;}
+.hole-card:nth-child(2)::before{background:#1a1a1a;}
+.hole-card:nth-child(3)::before{background:#457b9d;}
+.hc-n{font-family:'Noto Serif JP',serif;font-size:4rem;font-weight:700;color:#f0f0f0;line-height:1;margin-bottom:.5rem;}
+.hc-name{font-size:1rem;font-weight:700;color:#1a1a1a;margin-bottom:.8rem;line-height:1.5;}
+.hc-desc{font-size:.87rem;color:#666;line-height:1.85;}
+
+/* VOICES 斜め */
+.voices-wrap{position:relative;}
+.voices-bg{background:#e63946;padding:7rem 5rem;clip-path:polygon(0 2rem,100% 0,100% calc(100% - 2rem),0 100%);}
+.vb-label{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:3rem;}
+.vb-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:1100px;margin:0 auto;}
+.vb-card{background:rgba(255,255,255,.12);padding:2rem;border-radius:4px;}
+.vb-q{font-size:.92rem;font-style:italic;color:rgba(255,255,255,.9);line-height:1.85;margin-bottom:1rem;}
+.vb-who{font-size:.75rem;color:rgba(255,255,255,.6);}
+
+/* CTA */
+.cta{padding:8rem 5rem;background:#fafafa;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;max-width:1200px;margin:0 auto;}
+.cta-left{}
+.cta-label{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:#e63946;margin-bottom:2rem;}
+.cta-heading{font-family:'Noto Serif JP',serif;font-size:clamp(1.6rem,3vw,2.8rem);font-weight:700;line-height:1.4;margin-bottom:1.5rem;}
+.cta-body{font-size:.93rem;color:#666;line-height:2;margin-bottom:2.5rem;}
+.cta-btn{display:inline-block;background:#e63946;color:white;padding:1.1rem 3rem;font-size:.93rem;font-weight:700;text-decoration:none;border-radius:3px;letter-spacing:.08em;transition:all .25s;}
+.cta-btn:hover{background:#c1121f;transform:translateY(-2px);}
+.cta-right{text-align:center;}
+.cta-big{font-family:'Noto Serif JP',serif;font-size:clamp(3rem,7vw,7rem);font-weight:700;line-height:.9;color:#f0f0f0;}
+.cta-big-accent{display:block;color:#e63946;font-size:.5em;}
+
+footer{background:#1a1a1a;color:rgba(255,255,255,.3);text-align:center;padding:1.5rem;font-size:.7rem;letter-spacing:.08em;}
+
+@media(max-width:900px){
+  .hero-content,.si-grid,.holes-grid,.vb-grid,.cta{grid-template-columns:1fr;gap:2.5rem;}
+  .hero-bg-accent{width:100%;clip-path:none;height:50%;}
+  .hc-left{padding-top:2rem;}
+  .holes-section,.root,.hero{padding:5rem 2rem;}
+  .voices-bg{padding:5rem 2rem;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">熱量あふれる組織のつくり方</div>
+  <a href="#cta" class="nav-cta">書籍を見る</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg-accent"></div>
+  <div class="hero-content">
+    <div class="hc-left">
+      <p class="hc-eyebrow">LP-45 · ②人事担当者 · Concept A · Diagonal Dynamic</p>
+      <div class="hc-target">②人事担当者 へ</div>
+      <h1 class="hc-headline">数字の呪縛が、<br>組織を凍らせる</h1>
+      <div class="hc-badge">熱量あふれる組織のつくり方</div>
+      <p class="hc-copy">施策の問題ではありません。前提が、間違っているのです。</p>
+    </div>
+    <div class="hc-right">
+      <h2 class="hcr-q">施策を打ち続けても、<br>なぜ「静かな退職」は<br>止まらないのか？</h2>
+      <p class="hcr-body">1on1を導入し、ウェルビーイング施策を整え、サーベイを繰り返してきた。それでも熱量は戻らない。あなたが感じている「届いていない」という感覚は、正しいのです。</p>
+    </div>
+  </div>
+</section>
+
+<div class="skew-wrap">
+  <div class="skew-inner">
+    <p class="si-label">Pain Points · 4つの痛点</p>
+    <div class="si-grid">
+      <div class="si-item"><div class="sii-ico">📉</div><div class="sii-title">「静かな退職」の蔓延</div><p class="sii-body">離職はしないが最低限しか働かない。</p></div>
+      <div class="si-item"><div class="sii-ico">🔁</div><div class="sii-title">施策の無効化</div><p class="sii-body">あらゆる手を尽くしても熱量は戻らない。</p></div>
+      <div class="si-item"><div class="sii-ico">🚪</div><div class="sii-title">優秀人材の流出</div><p class="sii-body">変化を起こせる人材が先に去っていく。</p></div>
+      <div class="si-item"><div class="sii-ico">🤝</div><div class="sii-title">経営層との断絶</div><p class="sii-body">「感覚論」と一蹴されてしまう。</p></div>
+    </div>
+  </div>
+</div>
+
+<section class="root">
+  <div class="root-bg">構</div>
+  <div class="root-inner">
+    <p class="root-label">Root Cause · 根本原因</p>
+    <h2 class="root-statement">「施策が悪い」のではなく、<br>「前提」が間違っている。</h2>
+    <p class="root-body">マネーバイアス——お金・数値・効率を絶対視するまま内面化した思い込みの構造が、どんな施策も無効化しているのです。あなたが感じていた違和感には、名前があります。</p>
+  </div>
+</section>
+
+<section class="holes-section">
+  <p class="hs-label">Three Breakthroughs · 3つの突破口</p>
+  <div class="holes-grid">
+    <div class="hole-card"><div class="hc-n">01</div><div class="hc-name">「数字の呪縛」を見える化する</div><p class="hc-desc">無意識に信じている「数値＝真実」という思い込みを、組織の構造として可視化します。</p></div>
+    <div class="hole-card"><div class="hc-n">02</div><div class="hc-name">「共感」を組織の言語にする</div><p class="hc-desc">感情や熱量を「非効率」として排除してきた組織に、共感の回路を取り戻します。</p></div>
+    <div class="hole-card"><div class="hc-n">03</div><div class="hc-name">「生成」という成長観へ</div><p class="hc-desc">スキル強化という強化型から、人が本来持つ可能性が花開く生成型成長へ。</p></div>
+  </div>
+</section>
+
+<div class="voices-wrap">
+  <div class="voices-bg">
+    <p class="vb-label">Voices · 読者の声</p>
+    <div class="vb-grid">
+      <div class="vb-card"><p class="vb-q">「施策が悪い」のではなく「前提が間違っている」とわかった瞬間、長年の違和感が消えた。</p><p class="vb-who">Eさん · 人事部長 メーカー勤務</p></div>
+      <div class="vb-card"><p class="vb-q">なぜ心理的安全性研修が機能しなかったのかが腑に落ちた。マネーバイアスが全てを説明してくれた。</p><p class="vb-who">Fさん · HRBP IT企業</p></div>
+      <div class="vb-card"><p class="vb-q">経営陣を「構造」で説得できるようになった。数字ではなく前提の話ができるようになった。</p><p class="vb-who">Gさん · 人材開発責任者</p></div>
+      <div class="vb-card"><p class="vb-q">エンゲージメントスコアをやめて「熱量の循環」を見るようになったら、景色が変わった。</p><p class="vb-who">Hさん · 組織開発コンサルタント</p></div>
+    </div>
+  </div>
+</div>
+
+<section class="cta" id="cta">
+  <div class="cta-left">
+    <p class="cta-label">Get the Book</p>
+    <h2 class="cta-heading">「静かな退職」の根本原因を突き止め、組織に熱量を取り戻そう。</h2>
+    <p class="cta-body">施策を変えるのではなく、前提を変える。人事担当者が知るべき、組織変革の新しい視点がここにあります。</p>
+    <a href="#" class="cta-btn">書籍の詳細を見る →</a>
+  </div>
+  <div class="cta-right">
+    <div class="cta-big">施策<br>でなく<br><span class="cta-big-accent">前提</span>を。</div>
+  </div>
+</section>
+
+<footer>LP-45 · ②人事担当者 · Concept A 構造的共感 · 斜めダイナミックレイアウト</footer>
+</body>
+</html>

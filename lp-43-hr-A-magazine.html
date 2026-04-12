@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LP-43 | マガジン・エディトリアル | ②人事×A</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;background:#fdf8f0;color:#1a1a1a;overflow-x:hidden;}
+
+/* MASTHEAD */
+.masthead{border-bottom:3px solid #1a1a1a;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;background:#fdf8f0;position:sticky;top:0;z-index:100;}
+.mast-title{font-family:'Noto Serif JP',serif;font-size:.88rem;font-weight:700;letter-spacing:.05em;}
+.mast-issue{font-size:.7rem;color:#888;letter-spacing:.15em;}
+.mast-cta{background:#1a1a1a;color:white;padding:.45rem 1.2rem;font-size:.75rem;font-weight:700;text-decoration:none;letter-spacing:.08em;}
+
+/* HERO — 非対称グリッド */
+.hero-grid{display:grid;grid-template-columns:60% 40%;min-height:85vh;border-bottom:2px solid #1a1a1a;}
+.hero-left{border-right:2px solid #1a1a1a;padding:4rem 3.5rem;display:flex;flex-direction:column;justify-content:space-between;}
+.hero-right{background:#1a1a1a;display:flex;flex-direction:column;justify-content:flex-end;padding:3rem;position:relative;overflow:hidden;}
+.hr-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif JP',serif;font-size:clamp(5rem,12vw,14rem);font-weight:700;color:rgba(255,255,255,.04);pointer-events:none;}
+
+.hero-eyebrow{font-size:.68rem;letter-spacing:.35em;text-transform:uppercase;color:#888;margin-bottom:2rem;}
+.hero-kicker{font-size:.82rem;color:#b5451b;font-weight:700;letter-spacing:.1em;border-left:3px solid #b5451b;padding-left:.8rem;margin-bottom:1.5rem;}
+.hero-headline{font-family:'Noto Serif JP',serif;font-size:clamp(2rem,4.5vw,4.5rem);font-weight:700;line-height:1.2;margin-bottom:2rem;letter-spacing:-.01em;}
+.hero-deck{font-size:1rem;color:#555;line-height:1.9;max-width:480px;}
+.hero-byline{font-size:.75rem;color:#888;letter-spacing:.08em;border-top:1px solid #ddd;padding-top:1rem;margin-top:auto;}
+
+.hr-concept{color:#74c69d;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:2rem;}
+.hr-pull{font-family:'Noto Serif JP',serif;font-size:clamp(1.2rem,2.5vw,2.2rem);font-weight:700;color:white;line-height:1.6;margin-bottom:2rem;}
+.hr-caption{font-size:.72rem;color:rgba(255,255,255,.4);letter-spacing:.1em;}
+
+/* FEATURE SECTION */
+.feature{display:grid;grid-template-columns:1fr 2fr;border-bottom:1px solid #ddd;}
+.feature-sidebar{border-right:1px solid #ddd;padding:3rem 2.5rem;background:#f5f0e8;}
+.fs-rubric{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:#b5451b;margin-bottom:1.5rem;font-weight:700;}
+.fs-num{font-family:'Noto Serif JP',serif;font-size:6rem;font-weight:700;color:#e8ddc8;line-height:1;margin-bottom:-.5rem;}
+.fs-heading{font-family:'Noto Serif JP',serif;font-size:1.4rem;font-weight:700;line-height:1.5;color:#1a1a1a;margin-bottom:1.5rem;}
+.fs-body{font-size:.88rem;color:#666;line-height:1.9;}
+
+.feature-main{padding:3rem;}
+.symptom-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.sc{border:1px solid #ddd;padding:1.8rem;}
+.sc-ico{font-size:1.8rem;margin-bottom:.8rem;}
+.sc-title{font-family:'Noto Serif JP',serif;font-size:1rem;font-weight:700;color:#1a1a1a;margin-bottom:.6rem;}
+.sc-body{font-size:.85rem;color:#666;line-height:1.8;}
+
+/* PULL QUOTE BREAK */
+.pullquote-break{background:#b5451b;padding:4rem;text-align:center;}
+.pq-text{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,3vw,2.8rem);font-weight:700;color:white;line-height:1.5;max-width:800px;margin:0 auto 1.5rem;}
+.pq-attr{font-size:.8rem;color:rgba(255,255,255,.6);letter-spacing:.12em;}
+
+/* 3 HOLES — 横並び */
+.holes-section{padding:4rem;border-bottom:1px solid #ddd;}
+.hs-label{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:#888;margin-bottom:3rem;}
+.holes-row{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid #ddd;}
+.hole-col{padding:2.5rem 2rem;border-right:1px solid #ddd;}
+.hole-col:last-child{border-right:none;}
+.hc-num{font-family:'Noto Serif JP',serif;font-size:.78rem;letter-spacing:.2em;color:#b5451b;font-weight:700;margin-bottom:1rem;}
+.hc-name{font-family:'Noto Serif JP',serif;font-size:1.1rem;font-weight:700;line-height:1.5;margin-bottom:1rem;}
+.hc-desc{font-size:.85rem;color:#666;line-height:1.85;}
+
+/* VOICES — 2×2 grid */
+.voices-section{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #ddd;}
+.voices-header{grid-column:1/-1;padding:2.5rem 4rem 0;border-bottom:1px solid #ddd;}
+.vh-label{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:#888;margin-bottom:.8rem;}
+.vh-title{font-family:'Noto Serif JP',serif;font-size:1.8rem;font-weight:700;padding-bottom:1.5rem;}
+.voice-item{padding:2.5rem;border-right:1px solid #ddd;border-bottom:1px solid #ddd;}
+.voice-item:nth-child(even){border-right:none;}
+.vi-quote{font-family:'Noto Serif JP',serif;font-size:.97rem;font-style:italic;line-height:1.9;color:#333;margin-bottom:1rem;}
+.vi-who{font-size:.75rem;color:#888;letter-spacing:.06em;}
+.vi-rule{width:24px;height:2px;background:#b5451b;margin-bottom:.8rem;}
+
+/* CTA */
+.cta-section{display:grid;grid-template-columns:1fr 1fr;}
+.cta-left{background:#1a1a1a;color:white;padding:5rem 4rem;}
+.cta-right{background:#74c69d;padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;}
+.cl-label{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:2rem;}
+.cl-heading{font-family:'Noto Serif JP',serif;font-size:clamp(1.3rem,2.5vw,2.2rem);font-weight:700;line-height:1.6;margin-bottom:1.5rem;}
+.cl-body{font-size:.92rem;color:rgba(255,255,255,.7);line-height:1.9;margin-bottom:2.5rem;}
+.cl-btn{display:inline-block;background:white;color:#1a1a1a;padding:.9rem 2.5rem;font-size:.88rem;font-weight:700;text-decoration:none;letter-spacing:.1em;transition:all .25s;}
+.cl-btn:hover{background:#74c69d;}
+.cr-headline{font-family:'Noto Serif JP',serif;font-size:clamp(2rem,4vw,4rem);font-weight:700;line-height:1.3;color:#0d3320;}
+
+footer{background:#1a1a1a;color:rgba(255,255,255,.3);text-align:center;padding:1.5rem;font-size:.7rem;letter-spacing:.08em;}
+
+@media(max-width:900px){
+  .hero-grid,.feature,.cta-section{grid-template-columns:1fr;}
+  .hero-right{min-height:300px;}
+  .symptom-cards,.holes-row{grid-template-columns:1fr;}
+  .voices-section{grid-template-columns:1fr;}
+  .hole-col{border-right:none;border-bottom:1px solid #ddd;}
+  .feature-sidebar{border-right:none;border-bottom:1px solid #ddd;}
+}
+</style>
+</head>
+<body>
+<div class="masthead">
+  <div class="mast-title">熱量あふれる組織のつくり方</div>
+  <div class="mast-issue">LP-43 · HR Edition · 人事担当者のための組織変革読本</div>
+  <a href="#cta" class="mast-cta">書籍を見る</a>
+</div>
+
+<!-- HERO -->
+<div class="hero-grid">
+  <div class="hero-left">
+    <div>
+      <p class="hero-eyebrow">LP-43 · ②人事担当者 · Concept A · Magazine Editorial</p>
+      <p class="hero-kicker">特集：施策の限界を超える</p>
+      <h1 class="hero-headline">数字の呪縛が、<br>組織を凍らせる</h1>
+      <p class="hero-deck">エンゲージメント施策が届かない本当の理由——「静かな退職」が止まらない組織には、施策以前に解くべき「前提」があります。人事担当者が最初に問い直すべき、経営の構造とは何か。</p>
+    </div>
+    <div class="hero-byline">熱量あふれる組織のつくり方 ──数字の呪縛（お金の思い込み）からの解放</div>
+  </div>
+  <div class="hero-right">
+    <div class="hr-bg">呪</div>
+    <div>
+      <p class="hr-concept">Concept A · 構造的共感</p>
+      <p class="hr-pull">「施策が悪い」のではない。前提が、間違っている。</p>
+      <p class="hr-caption">── 人事担当者が最初に気づくべきこと</p>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURE: 症状 -->
+<div class="feature">
+  <div class="feature-sidebar">
+    <p class="fs-rubric">問題の構造</p>
+    <div class="fs-num">4</div>
+    <h2 class="fs-heading">なぜ施策は届かないのか</h2>
+    <p class="fs-body">施策の質の問題ではありません。組織の構造そのものに埋め込まれた「マネーバイアス」が、どんな施策も無効化しているのです。</p>
+  </div>
+  <div class="feature-main">
+    <div class="symptom-cards">
+      <div class="sc"><div class="sc-ico">📉</div><h3 class="sc-title">「静かな退職」の蔓延</h3><p class="sc-body">離職はしないが最低限しか働かない。サーベイには答えるが本音は話さない。</p></div>
+      <div class="sc"><div class="sc-ico">🔁</div><h3 class="sc-title">施策の繰り返し</h3><p class="sc-body">ウェルビーイング、1on1、表彰制度……手を尽くしても熱量は戻らない。</p></div>
+      <div class="sc"><div class="sc-ico">🚪</div><h3 class="sc-title">優秀人材の流出</h3><p class="sc-body">変化を起こせる人材が次々と去り、組織の新陳代謝が機能不全を起こしている。</p></div>
+      <div class="sc"><div class="sc-ico">🤝</div><h3 class="sc-title">経営層との断絶</h3><p class="sc-body">現場の空気を数値で伝えられず「感覚論」と一蹴されてしまう。</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- PULL QUOTE -->
+<div class="pullquote-break">
+  <p class="pq-text">「なぜこの施策が届かないのか」——あなたが感じてきたその違和感には、名前があります。</p>
+  <p class="pq-attr">── マネーバイアスという構造的問題</p>
+</div>
+
+<!-- 3 HOLES -->
+<div class="holes-section">
+  <p class="hs-label">Three Breakthroughs · 3つの突破口</p>
+  <div class="holes-row">
+    <div class="hole-col"><p class="hc-num">BREAKTHROUGH 01</p><h3 class="hc-name">「数字の呪縛」を見える化する</h3><p class="hc-desc">無意識に信じている「数値＝真実」という思い込みを、組織の構造として可視化します。</p></div>
+    <div class="hole-col"><p class="hc-num">BREAKTHROUGH 02</p><h3 class="hc-name">「共感」を組織の言語にする</h3><p class="hc-desc">感情や熱量を「非効率」として排除してきた組織に、共感の回路を取り戻します。</p></div>
+    <div class="hole-col"><p class="hc-num">BREAKTHROUGH 03</p><h3 class="hc-name">「生成」という成長観へ</h3><p class="hc-desc">スキル強化という強化型成長から、人が本来持つ可能性が花開く生成型成長へ。</p></div>
+  </div>
+</div>
+
+<!-- VOICES -->
+<div class="voices-section">
+  <div class="voices-header">
+    <p class="vh-label">Voices · 読者の声</p>
+    <h2 class="vh-title">施策の呪縛から解放された、人事担当者の声</h2>
+  </div>
+  <div class="voice-item"><div class="vi-rule"></div><p class="vi-quote">「施策が悪い」のではなく「前提が間違っている」とわかった瞬間、長年の違和感が消えた。</p><p class="vi-who">Eさん · 人事部長 メーカー勤務</p></div>
+  <div class="voice-item"><div class="vi-rule"></div><p class="vi-quote">なぜ心理的安全性研修が機能しなかったのかが腑に落ちた。マネーバイアスが全てを説明してくれた。</p><p class="vi-who">Fさん · HRBP IT企業</p></div>
+  <div class="voice-item"><div class="vi-rule"></div><p class="vi-quote">経営陣を説得するための言語を、この本が与えてくれた。「構造」で話せるようになった。</p><p class="vi-who">Gさん · 人材開発責任者</p></div>
+  <div class="voice-item"><div class="vi-rule"></div><p class="vi-quote">エンゲージメントスコアを追いかけるのをやめて「熱量の循環」を見るようになったら景色が変わった。</p><p class="vi-who">Hさん · 組織開発コンサルタント</p></div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section" id="cta">
+  <div class="cta-left">
+    <p class="cl-label">Get the Book · 書籍情報</p>
+    <h2 class="cl-heading">「静かな退職」の根本原因を突き止め、組織に熱量を取り戻そう。</h2>
+    <p class="cl-body">施策を変えるのではなく、前提を変える。人事担当者が知るべき、組織変革の新しい視点がここにあります。</p>
+    <a href="#" class="cl-btn">書籍の詳細を見る →</a>
+  </div>
+  <div class="cta-right">
+    <h2 class="cr-headline">施策を変えるな。<br>前提を、変えろ。</h2>
+  </div>
+</div>
+
+<footer>LP-43 · ②人事担当者 · Concept A 構造的共感 · マガジン・エディトリアルレイアウト</footer>
+</body>
+</html>

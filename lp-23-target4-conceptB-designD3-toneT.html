@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>熱量あふれる組織のつくり方 | マネーバイアスを突破する経営 | Pattern 23</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Sans JP',sans-serif;background:#f9f6f0;color:#2c2c2c;line-height:1.8;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,246,236,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(128,128,128,0.15);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;}
+.nav-logo{font-family:'Noto Serif JP',serif;font-size:.88rem;font-weight:700;color:#3d2b1f;letter-spacing:.04em;}
+.nav-badge{font-size:.72rem;color:#a0785a;border:1px solid #a0785a;padding:.25rem .8rem;border-radius:50px;letter-spacing:.08em;}
+.nav-cta{background:#3d2b1f;color:white;padding:.45rem 1.4rem;border-radius:50px;font-size:.8rem;text-decoration:none;font-weight:700;letter-spacing:.06em;}
+
+/* HERO */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(135deg, #fdf6ec 0%, #f5e6d0 50%, #ece0c8 100%);padding-top:72px;}
+.hero-bg-becoming{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif JP',serif;font-size:clamp(60px,15vw,180px);font-weight:700;color:rgba(141,110,99,0.12);pointer-events:none;user-select:none;letter-spacing:.05em;}
+.hero-blob{position:absolute;pointer-events:none;border-radius:60% 40% 70% 30% / 50% 60% 40% 50%;animation:morph 12s ease-in-out infinite;}
+.blob-1{top:-10%;left:-15%;width:50vw;height:50vw;}
+.blob-2{bottom:-10%;right:-10%;width:40vw;height:40vw;animation-duration:16s;animation-direction:reverse;}
+.blob-3{top:30%;right:5%;width:22vw;height:22vw;animation-duration:10s;animation-delay:3s;}
+@keyframes morph{0%,100%{border-radius:60% 40% 70% 30%/50% 60% 40% 50%}33%{border-radius:40% 60% 30% 70%/60% 40% 60% 40%}66%{border-radius:70% 30% 50% 50%/40% 70% 30% 60%}}
+.hero-content{position:relative;z-index:10;text-align:center;padding:2rem;max-width:900px;}
+.hero-eyebrow{font-size:.78rem;letter-spacing:.25em;color:#8d6e63;font-weight:500;margin-bottom:1.8rem;text-transform:uppercase;}
+.hero-target-badge{display:inline-block;background:rgba(128,128,128,.08);border:1px solid rgba(128,128,128,.2);color:#a0785a;font-size:.8rem;padding:.4rem 1.2rem;border-radius:50px;letter-spacing:.08em;margin-bottom:1.5rem;}
+.hero-subtitle{font-size:clamp(.9rem,1.4vw,1.1rem);color:#6b6b6b;font-weight:300;margin-bottom:1rem;letter-spacing:.04em;}
+.hero-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:700;line-height:1.4;color:#3d2b1f;letter-spacing:.03em;margin-bottom:.8rem;}
+.hero-title-sub{display:block;font-size:.62em;font-weight:300;color:#a0785a;margin-top:.5rem;letter-spacing:.05em;}
+.hero-concept-badge{display:inline-block;background:linear-gradient(135deg,#8d6e63,#a0785a);color:white;font-size:.82rem;padding:.5rem 1.5rem;border-radius:50px;letter-spacing:.1em;margin:1.5rem 0;}
+.hero-main-copy{font-family:'Noto Serif JP',serif;font-size:clamp(1rem,2.2vw,1.45rem);font-weight:300;color:#3d2b1f;line-height:2.1;letter-spacing:.05em;margin-top:1.5rem;}
+.hero-main-copy em{font-style:normal;font-weight:700;color:#8d6e63;}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;color:#a0785a;font-size:.72rem;letter-spacing:.2em;animation:scrollAnim 2s ease infinite;}
+.scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,transparent,#a0785a);}
+@keyframes scrollAnim{0%,100%{opacity:.4;transform:translateX(-50%) translateY(0)}50%{opacity:1;transform:translateX(-50%) translateY(-5px)}}
+
+/* PROBLEM */
+.section-problem{background:#3d2b1f;color:white;padding:7rem 2rem;position:relative;overflow:hidden;}
+.section-problem::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#bcaaa4,#8d6e63,#bcaaa4);}
+.problem-inner{max-width:860px;margin:0 auto;}
+.section-label{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;margin-bottom:2.5rem;font-weight:500;}
+.s-label-dark{color:#bcaaa4;}
+.s-label-light{color:#8d6e63;}
+.problem-question{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,3.2vw,2.2rem);font-weight:700;line-height:1.7;margin-bottom:3rem;white-space:pre-line;}
+.problem-symptoms{display:grid;gap:1.1rem;margin-bottom:3.5rem;}
+.symptom-item{display:flex;align-items:flex-start;gap:1.2rem;padding:1.3rem 1.7rem;background:rgba(255,255,255,.04);border-left:3px solid #bcaaa4;border-radius:4px;}
+.symptom-icon{font-size:1.25rem;flex-shrink:0;margin-top:.1rem;}
+.symptom-text{font-size:.95rem;line-height:1.75;color:rgba(255,255,255,.82);}
+.symptom-text strong{color:#f5e6d0;display:block;margin-bottom:.25rem;}
+.problem-closing{font-family:'Noto Serif JP',serif;font-size:1.15rem;line-height:2;color:rgba(255,255,255,.9);border-top:1px solid rgba(255,255,255,.1);padding-top:2.2rem;}
+
+/* RIPPLE */
+.section-ripple{padding:7rem 2rem;background:#fdf6ec;overflow:hidden;}
+.ripple-inner{max-width:940px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.ripple-heading{font-family:'Noto Serif JP',serif;font-size:clamp(1.3rem,2.5vw,1.9rem);font-weight:700;line-height:1.6;margin-bottom:1.4rem;color:#2c2c2c;}
+.ripple-body{font-size:.95rem;color:#6b6b6b;line-height:1.9;}
+.ripple-visual{height:360px;}
+
+/* THREE HOLES */
+.section-holes{padding:7rem 2rem;background:#f8f0e4;}
+.holes-inner{max-width:1000px;margin:0 auto;}
+.holes-header{text-align:center;margin-bottom:4.5rem;}
+.holes-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,2.8vw,2.1rem);font-weight:700;line-height:1.5;color:#2c2c2c;margin-top:1rem;}
+.holes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;}
+.hole-card{position:relative;padding:2.2rem 1.8rem;background:white;border-radius:8px;box-shadow:0 4px 24px rgba(0,0,0,.06);text-align:center;transition:transform .3s ease;}
+.hole-card:hover{transform:translateY(-7px);}
+.hole-number{font-size:2.8rem;font-weight:700;color:#f5e6d0;font-family:'Noto Serif JP',serif;line-height:1;margin-bottom:.9rem;}
+.hole-name{font-size:1rem;font-weight:700;color:#3d2b1f;margin-bottom:.9rem;font-family:'Noto Serif JP',serif;line-height:1.5;}
+.hole-desc{font-size:.87rem;color:#6b6b6b;line-height:1.8;}
+.hole-connector{position:absolute;top:50%;right:-1.2rem;width:1.2rem;height:2px;background:#f5e6d0;}
+
+/* CONCEPT */
+.section-concept{background:linear-gradient(135deg, #3d2b1f 0%, #5c4033 100%);color:white;padding:7rem 2rem;position:relative;overflow:hidden;text-align:center;}
+.concept-wm{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:clamp(50px,12vw,160px);font-weight:700;color:rgba(255,255,255,.04);font-family:'Noto Serif JP',serif;pointer-events:none;}
+.concept-inner{max-width:760px;margin:0 auto;position:relative;z-index:2;}
+.concept-statement{font-family:'Noto Serif JP',serif;font-size:clamp(1.2rem,2.6vw,1.85rem);font-weight:700;line-height:1.9;margin-bottom:2rem;white-space:pre-line;}
+.concept-body{font-size:.97rem;line-height:2;color:rgba(255,255,255,.8);max-width:600px;margin:0 auto;}
+
+/* AUTHOR */
+.section-author{padding:7rem 2rem;background:#fdf6ec;}
+.author-inner{max-width:940px;margin:0 auto;display:grid;grid-template-columns:340px 1fr;gap:4.5rem;align-items:center;}
+.author-img{width:100%;aspect-ratio:3/4;background:linear-gradient(160deg,#bcaaa4 0%,#8d6e63 60%,#3d2b1f 100%);border-radius:12px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:1.5rem;font-size:.8rem;color:rgba(255,255,255,.6);font-style:italic;filter:grayscale(.3);}
+.author-name{font-family:'Noto Serif JP',serif;font-size:1.8rem;font-weight:700;color:#2c2c2c;margin:.7rem 0;}
+.author-role{font-size:.85rem;color:#6b6b6b;margin-bottom:1.8rem;letter-spacing:.04em;}
+.author-message{font-family:'Noto Serif JP',serif;font-size:1.05rem;line-height:2;color:#2c2c2c;font-weight:300;margin-bottom:1.8rem;font-style:italic;}
+.author-body{font-size:.92rem;color:#6b6b6b;line-height:1.9;}
+
+/* TESTIMONIALS */
+.section-test{padding:7rem 2rem;background:#3d2b1f;color:white;}
+.test-inner{max-width:1000px;margin:0 auto;}
+.test-header{text-align:center;margin-bottom:3.5rem;}
+.test-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.3rem,2.3vw,1.8rem);font-weight:700;margin-top:.9rem;}
+.test-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem;}
+.test-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:1.8rem;}
+.test-quote{font-size:.92rem;line-height:1.9;color:rgba(255,255,255,.84);margin-bottom:1.3rem;font-style:italic;}
+.test-quote::before{content:'「';color:#bcaaa4;font-size:1.3rem;font-family:'Noto Serif JP',serif;}
+.test-quote::after{content:'」';color:#bcaaa4;font-size:1.3rem;font-family:'Noto Serif JP',serif;}
+.test-person{display:flex;align-items:center;gap:.9rem;}
+.test-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#bcaaa4,#3d2b1f);display:flex;align-items:center;justify-content:center;font-size:.72rem;color:white;font-weight:700;flex-shrink:0;}
+.test-name{font-size:.88rem;font-weight:700;}
+.test-role{font-size:.76rem;color:#bcaaa4;margin-top:.15rem;}
+
+/* CTA */
+.section-cta{padding:8rem 2rem;background:linear-gradient(160deg, #f5e6d0 0%, #e8d5b0 60%, #d4bc8a 100%);text-align:center;position:relative;overflow:hidden;}
+.cta-inner{position:relative;z-index:2;max-width:680px;margin:0 auto;}
+.cta-heading{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,3.2vw,2.3rem);font-weight:700;color:#3d2b1f;line-height:1.5;margin-bottom:1.3rem;white-space:pre-line;}
+.cta-body{font-size:.97rem;color:#3d2b1f;line-height:1.9;margin-bottom:2.8rem;opacity:.85;}
+.cta-btn{display:inline-block;background:#3d2b1f;color:white;padding:1.1rem 3.2rem;border-radius:50px;font-size:.97rem;font-weight:700;letter-spacing:.1em;text-decoration:none;box-shadow:0 8px 28px rgba(0,0,0,.25);transition:all .3s ease;}
+.cta-btn:hover{background:#5c4033;transform:translateY(-3px);}
+.cta-note{margin-top:1.3rem;font-size:.78rem;color:#3d2b1f;opacity:.65;}
+
+/* FOOTER */
+footer{background:#3d2b1f;color:rgba(255,255,255,.35);text-align:center;padding:2rem;font-size:.76rem;letter-spacing:.06em;}
+
+/* FADE */
+.fi{opacity:0;transform:translateY(20px);transition:opacity .75s ease,transform .75s ease;}
+.fi.vis{opacity:1;transform:none;}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .ripple-inner,.author-inner{grid-template-columns:1fr;gap:2rem;}
+  .holes-grid,.test-grid{grid-template-columns:1fr;}
+  .hole-connector{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">熱量あふれる組織のつくり方</div>
+  <div class="nav-badge">①②③混合</div>
+  <a href="#cta" class="nav-cta">書籍を見る</a>
+</nav>
+
+<section class="hero">
+  
+  <div class="hero-bg-becoming">Becoming</div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Pattern 23 · All Stakeholders · Concept B · アーストーン分割 · ストーリー型</p>
+    <div class="hero-target-badge">①②③混合 へ</div>
+    <p class="hero-subtitle">組織全体の熱量が失われているあなたへ</p>
+    <h1 class="hero-title">
+      熱量あふれる組織のつくり方
+      <span class="hero-title-sub">──数字の呪縛（お金の思い込み）からの解放</span>
+    </h1>
+    <div class="hero-concept-badge">マネーバイアスを突破する経営</div>
+    <p class="hero-main-copy">ある会社での出来事。<br>経営者は数字を追い、人事は施策を打ち、<br>現場は疲弊する——その悪循環が止まった日。</p>
+    <p style="margin-top:1.2rem;font-size:.9rem;color:#a0785a;letter-spacing:.05em;">経営の前提そのものを問い直す。</p>
+  </div>
+  <div class="scroll-hint"><div class="scroll-line"></div>SCROLL</div>
+</section>
+
+<section class="section-problem">
+  <div class="problem-inner">
+    <p class="section-label s-label-dark">The Problem · 問題の構造</p>
+    <h2 class="problem-question fi">ある会社での出来事。<br>経営者は数字を追い、人事は施策を打ち、<br>現場は疲弊する——その悪循環が止まった日。</h2>
+    <div class="problem-symptoms fi">
+      <div class="symptom-item">
+        <div class="symptom-icon">🏢</div>
+        <div class="symptom-text"><strong>組織の上下が、全員疲弊している</strong>経営者は正しく舵を切っている。人事は施策を尽くしている。現場は真剣に働いている。なのに全員が消耗している。</div>
+      </div>
+      <div class="symptom-item">
+        <div class="symptom-icon">📊</div>
+        <div class="symptom-text"><strong>数字は動くが、人の目が死んでいる</strong>KPIは達成される。エンゲージメントスコアも維持される。でも廊下の空気は重く、笑顔が少ない。</div>
+      </div>
+      <div class="symptom-item">
+        <div class="symptom-icon">🔗</div>
+        <div class="symptom-text"><strong>施策が「対症療法」にしかなっていない</strong>経営改革、研修、1on1、ウェルビーイング……あらゆる施策を打っても、根本的な何かが変わらない感覚。</div>
+      </div>
+      <div class="symptom-item">
+        <div class="symptom-icon">🌱</div>
+        <div class="symptom-text"><strong>「本来の姿」への渇望</strong>「もっと生き生きとした組織にしたい」という思いは、全員が持っている。方法論ではなく、前提が問われている。</div>
+      </div></div>
+    <p class="problem-closing fi">この問題の根本原因は「マネーバイアス」——お金・数値・効率を唯一の価値基準とする、組織に埋め込まれた見えない呪縛です。</p>
+  </div>
+</section>
+
+<section class="section-ripple">
+  <div class="ripple-inner">
+    <div class="fi">
+      <p class="section-label s-label-light">The Shift · 構造の転換</p>
+      <h2 class="ripple-heading">ピラミッドが<br>「波紋」に変わるとき</h2>
+      <p class="ripple-body">
+        従来の組織は、命令と管理のピラミッド構造で動いてきました。しかしマネーバイアスを突破する経営の視点から見ると、
+        その構造こそが熱量を奪う根本原因です。<br><br>
+        マネーバイアスを外したとき、組織は生命体のように変容します。
+        一人ひとりの熱量が石を投じた水面のように広がり、共鳴し増幅していく——
+        それが「有機的組織」の姿です。
+      </p>
+    </div>
+    <div class="ripple-visual fi"><svg viewBox="0 0 400 380" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+        <g opacity="0.2">
+          <polygon points="200,30 100,160 300,160" fill="none" stroke="#bcaaa4" stroke-width="1.5"/>
+          <line x1="140" y1="160" x2="260" y2="160" stroke="#bcaaa4" stroke-width="1"/>
+          <line x1="100" y1="200" x2="300" y2="200" stroke="#bcaaa4" stroke-width="1"/>
+          <line x1="80" y1="240" x2="320" y2="240" stroke="#bcaaa4" stroke-width="1"/>
+        </g>
+        <circle cx="200" cy="195" r="8" fill="#8d6e63" opacity="0.9"/>
+        <circle cx="200" cy="195" r="35" stroke="#bcaaa4" stroke-width="1" fill="none" opacity="0.8">
+          <animate attributeName="r" from="8" to="35" dur="3s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" from="0.8" to="0" dur="3s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="200" cy="195" r="35" stroke="#bcaaa4" stroke-width="1" fill="none" opacity="0.6">
+          <animate attributeName="r" from="8" to="70" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" from="0.6" to="0" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="200" cy="195" r="35" stroke="#a0785a" stroke-width="1" fill="none" opacity="0.4">
+          <animate attributeName="r" from="8" to="110" dur="3s" begin="1s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" from="0.4" to="0" dur="3s" begin="1s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="200" cy="195" r="35" stroke="#f5e6d0" stroke-width="0.8" fill="none" opacity="0.3">
+          <animate attributeName="r" from="8" to="155" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" from="0.3" to="0" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="200" cy="80" r="5" fill="#8d6e63" opacity="0.7"/>
+        <circle cx="130" cy="140" r="5" fill="#8d6e63" opacity="0.7"/>
+        <circle cx="270" cy="140" r="5" fill="#8d6e63" opacity="0.7"/>
+        <circle cx="160" cy="280" r="5" fill="#8d6e63" opacity="0.7"/>
+        <circle cx="240" cy="280" r="5" fill="#8d6e63" opacity="0.7"/>
+        <path d="M200,195 Q165,135 130,140" stroke="#bcaaa4" stroke-width="0.8" fill="none" opacity="0.5"/>
+        <path d="M200,195 Q235,135 270,140" stroke="#bcaaa4" stroke-width="0.8" fill="none" opacity="0.5"/>
+        <path d="M200,195 Q180,237 160,280" stroke="#bcaaa4" stroke-width="0.8" fill="none" opacity="0.5"/>
+        <path d="M200,195 Q220,237 240,280" stroke="#bcaaa4" stroke-width="0.8" fill="none" opacity="0.5"/>
+        <path d="M200,195 Q200,130 200,80" stroke="#a0785a" stroke-width="0.6" fill="none" opacity="0.4"/>
+        <text x="200" y="340" text-anchor="middle" font-size="10" fill="#bcaaa4" font-family="sans-serif" letter-spacing="1">熱量が波紋のように広がる有機的組織</text>
+      </svg></div>
+  </div>
+</section>
+
+<section class="section-holes">
+  <div class="holes-inner">
+    <div class="holes-header fi">
+      <p class="section-label s-label-light">Three Breakthroughs · 3つの突破口</p>
+      <h2 class="holes-title">マネーバイアスを突破するための経営<br>3つのパラダイムシフト</h2>
+    </div>
+    <div class="holes-grid">
+        <div class="hole-card">
+          <div class="hole-number">01</div>
+          <div class="hole-name">バイアスの構造を解剖する</div>
+          <div class="hole-desc">なぜお金が「目的」になった瞬間、組織から生命力が失われるのか。その因果の構造を経営的視点から徹底解明します。</div>
+          <div class="hole-connector"></div>
+        </div>
+        <div class="hole-card">
+          <div class="hole-number">02</div>
+          <div class="hole-name">「突破口」を3つ開く</div>
+          <div class="hole-desc">評価・目標・成長の3つのシステムに埋め込まれたバイアスを外す、具体的・実践的な経営アクションを提示します。</div>
+          <div class="hole-connector"></div>
+        </div>
+        <div class="hole-card">
+          <div class="hole-number">03</div>
+          <div class="hole-name">「熱量経営」への転換</div>
+          <div class="hole-desc">利益は目的ではなく「熱量循環の結果」として生まれる。この根本的なパラダイムシフトが、持続可能な経営を生み出します。</div>
+          
+        </div></div>
+  </div>
+</section>
+
+<section class="section-concept">
+  <div class="concept-wm">Breakthrough</div>
+  <div class="concept-inner">
+    <p class="section-label" style="color:#f5e6d0;letter-spacing:.28em;font-size:.72rem;text-transform:uppercase;margin-bottom:2.2rem;">Core Concept · 核心</p>
+    <h2 class="concept-statement fi">問題はリーダーシップでも<br>マネジメント手法でもない。<br>経営の「前提」が間違っている。</h2>
+    <h3 class="fi" style="font-family:'Noto Serif JP',serif;font-size:clamp(1rem,2vw,1.4rem);font-weight:300;line-height:1.9;margin-bottom:2rem;opacity:.9;white-space:pre-line;">その前提を「マネーバイアス」と呼びます。<br>突破する方法は、存在します。</h3>
+    <p class="concept-body fi">マネーバイアスとは、お金・数値・効率を経営の唯一の基準とする思い込みの構造です。これを「正しさ」と信じて疑わない組織は、熱量を失い続けます。本書はその構造を暴き、突破する道筋を示します。</p>
+  </div>
+</section>
+
+<section class="section-author">
+  <div class="author-inner">
+    <div class="fi">
+      <div class="author-img">── 再生リゾートにて ──</div>
+    </div>
+    <div class="fi">
+      <p class="section-label s-label-light">Author · 著者より</p>
+      <div class="author-name">著者名</div>
+      <div class="author-role">組織変革コンサルタント / 熱量循環研究家</div>
+      <p class="author-message">
+        「数字を追うことを止めたとき、<br>
+        はじめて本当の経営が始まりました。」
+      </p>
+      <p class="author-body">
+        廃業寸前の旅館を再生したとき、私が学んだのは「数値目標を外す」という逆説でした。
+        売上を諦めた瞬間に、スタッフの目が輝き始め、お客様が戻ってきた。
+        その体験が、マネーバイアスという概念と出合うきっかけでした。<br><br>
+        経営の現場で20年間向き合ってきた「なぜ正しいことをしているのに、
+        組織は疲弊するのか」という問いへの、私なりの答えをここに記しました。
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section-test">
+  <div class="test-inner">
+    <div class="test-header fi">
+      <p class="section-label s-label-dark">Voices · 読者の声</p>
+      <h2 class="test-title">呪縛から解放された、<br>①②③混合の声</h2>
+    </div>
+    <div class="test-grid">
+        <div class="test-card">
+          <p class="test-quote">経営者として、人事として、現場として——三つの視点から読める珍しい本。全員に届けたい。</p>
+          <div class="test-person">
+            <div class="test-avatar">M</div>
+            <div class="test-info">
+              <div class="test-name">Mさん</div>
+              <div class="test-role">人事担当兼マネジャー</div>
+            </div>
+          </div>
+        </div>
+        <div class="test-card">
+          <p class="test-quote">「なぜこうなったのか」がストン、と腑に落ちた。マネーバイアスという概念が、長年の謎を解いた。</p>
+          <div class="test-person">
+            <div class="test-avatar">N</div>
+            <div class="test-info">
+              <div class="test-name">Nさん</div>
+              <div class="test-role">社員300名 代表取締役</div>
+            </div>
+          </div>
+        </div>
+        <div class="test-card">
+          <p class="test-quote">チーム全員で読んで話し合った。「構造の問題」として語れるようになったことで、対話が変わった。</p>
+          <div class="test-person">
+            <div class="test-avatar">O</div>
+            <div class="test-info">
+              <div class="test-name">Oさん</div>
+              <div class="test-role">スタートアップ 共同創業者</div>
+            </div>
+          </div>
+        </div>
+        <div class="test-card">
+          <p class="test-quote">経営層・人事・現場が同じ言語で話せるようになった。それだけで組織が変わり始めた。</p>
+          <div class="test-person">
+            <div class="test-avatar">P</div>
+            <div class="test-info">
+              <div class="test-name">Pさん</div>
+              <div class="test-role">組織変革プロジェクトリーダー</div>
+            </div>
+          </div>
+        </div></div>
+  </div>
+</section>
+
+<section class="section-cta" id="cta">
+  <div class="cta-inner">
+    <p class="section-label s-label-light" style="margin-bottom:1.8rem;">Get the Book · 書籍情報</p>
+    <h2 class="cta-heading fi">経営者も、人事も、現場も。<br>みんなで読んで、<br>組織を生命体として再生しよう。</h2>
+    <p class="cta-body fi">熱量の喪失は、組織的・構造的な問題です。すべてのステークホルダーに届けたい、根本的な解決策がここにあります。</p>
+    <a href="#" class="cta-btn">書籍の詳細を見る →</a>
+    <p class="cta-note">※ 発売情報・先行読者登録はこちらから</p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 熱量あふれる組織のつくり方 All Rights Reserved.</p>
+  <p style="margin-top:.4rem;font-size:.7rem;opacity:.5;">
+    Pattern 23 · ①②③混合 · Concept B（案B：構造的真実）· アーストーン分割 · ストーリー型
+  </p>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis'); });
+}, {threshold:.1});
+document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

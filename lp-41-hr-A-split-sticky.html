@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LP-41 | 分割スティッキー | ②人事×A</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Sans JP',sans-serif;background:#fafaf8;color:#1a1a1a;overflow-x:hidden;}
+
+/* LAYOUT: 左固定 + 右スクロール */
+.layout{display:grid;grid-template-columns:42% 58%;min-height:100vh;}
+
+/* 左パネル（sticky） */
+.left-panel{position:sticky;top:0;height:100vh;background:linear-gradient(170deg,#1b4332 0%,#2d6a4f 60%,#40916c 100%);display:flex;flex-direction:column;justify-content:space-between;padding:3.5rem 3rem;overflow:hidden;}
+.left-bg-text{position:absolute;bottom:-2rem;left:-1rem;font-size:12rem;font-weight:700;font-family:'Noto Serif JP',serif;color:rgba(255,255,255,.04);line-height:1;pointer-events:none;white-space:nowrap;}
+.left-top{}
+.left-pattern{font-size:.7rem;letter-spacing:.3em;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:3rem;}
+.left-target{display:inline-block;border:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.8);font-size:.78rem;padding:.35rem 1rem;border-radius:50px;margin-bottom:2rem;letter-spacing:.08em;}
+.left-concept{font-size:.78rem;color:#95d5b2;letter-spacing:.1em;margin-bottom:1.2rem;font-weight:500;}
+.left-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,2.2vw,2rem);font-weight:700;color:white;line-height:1.5;margin-bottom:2rem;}
+.left-main-copy{font-family:'Noto Serif JP',serif;font-size:.97rem;font-weight:300;color:rgba(255,255,255,.8);line-height:2;font-style:italic;}
+.left-bottom{}
+.left-badge{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:white;font-size:.8rem;padding:.7rem 1.2rem;border-radius:8px;letter-spacing:.05em;display:inline-block;}
+.left-scroll-hint{margin-top:1.5rem;font-size:.7rem;color:rgba(255,255,255,.35);letter-spacing:.2em;display:flex;align-items:center;gap:.8rem;}
+.sh-line{flex:1;height:1px;background:rgba(255,255,255,.2);}
+
+/* 右パネル（スクロール） */
+.right-panel{background:#fafaf8;}
+
+/* セクション共通 */
+.r-section{padding:5rem 4rem;}
+.r-section+.r-section{border-top:1px solid #e8e8e0;}
+.s-label{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:#40916c;font-weight:500;margin-bottom:2rem;}
+.s-heading{font-family:'Noto Serif JP',serif;font-size:clamp(1.2rem,2vw,1.75rem);font-weight:700;line-height:1.6;color:#1a1a1a;margin-bottom:1.5rem;}
+.s-body{font-size:.93rem;color:#555;line-height:1.95;}
+
+/* イントロ */
+.r-intro{background:white;padding:5rem 4rem;border-bottom:1px solid #e8e8e0;}
+.r-intro-q{font-family:'Noto Serif JP',serif;font-size:clamp(1.3rem,2.5vw,2rem);font-weight:700;line-height:1.7;color:#1b4332;margin-bottom:2rem;}
+.r-intro-body{font-size:.97rem;color:#555;line-height:2;}
+
+/* 症状リスト */
+.symptom-list{display:flex;flex-direction:column;gap:1rem;margin-top:2rem;}
+.symptom{display:flex;gap:1.4rem;align-items:flex-start;padding:1.4rem;background:#f5f9f6;border-radius:8px;border-left:3px solid #40916c;}
+.s-icon{font-size:1.3rem;flex-shrink:0;}
+.s-text strong{display:block;color:#1b4332;font-size:.93rem;margin-bottom:.3rem;}
+.s-text span{font-size:.88rem;color:#666;line-height:1.75;}
+
+/* 3つの突破口 */
+.holes{display:flex;flex-direction:column;gap:2rem;margin-top:2rem;}
+.hole{display:grid;grid-template-columns:60px 1fr;gap:1.5rem;align-items:start;}
+.hole-num{font-family:'Noto Serif JP',serif;font-size:2.5rem;font-weight:700;color:#d8f3dc;line-height:1;}
+.hole-content{}
+.hole-name{font-size:1rem;font-weight:700;color:#1b4332;margin-bottom:.5rem;}
+.hole-desc{font-size:.88rem;color:#666;line-height:1.8;}
+
+/* 著者 */
+.author-box{background:#1b4332;color:white;border-radius:16px;padding:2.5rem;margin-top:2rem;}
+.author-quote{font-family:'Noto Serif JP',serif;font-size:1.05rem;font-weight:300;font-style:italic;line-height:2;color:rgba(255,255,255,.9);margin-bottom:1.5rem;}
+.author-meta{font-size:.82rem;color:#95d5b2;}
+
+/* 声 */
+.voices{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem;}
+.voice{background:white;border:1px solid #e8e8e0;border-radius:10px;padding:1.5rem;}
+.voice-q{font-size:.88rem;color:#444;line-height:1.85;font-style:italic;margin-bottom:1rem;}
+.voice-who{font-size:.78rem;color:#40916c;font-weight:500;}
+
+/* CTA */
+.r-cta{background:#1b4332;color:white;padding:5rem 4rem;}
+.cta-heading{font-family:'Noto Serif JP',serif;font-size:clamp(1.3rem,2.5vw,1.9rem);font-weight:700;line-height:1.6;margin-bottom:1.5rem;}
+.cta-body{font-size:.93rem;color:rgba(255,255,255,.75);line-height:1.9;margin-bottom:2.5rem;}
+.cta-btn{display:inline-block;background:white;color:#1b4332;padding:1rem 3rem;border-radius:50px;font-size:.93rem;font-weight:700;letter-spacing:.1em;text-decoration:none;transition:all .25s;}
+.cta-btn:hover{background:#95d5b2;transform:translateY(-2px);}
+.r-footer{background:#0d1b12;color:rgba(255,255,255,.3);text-align:center;padding:1.5rem;font-size:.72rem;letter-spacing:.08em;}
+
+@media(max-width:900px){
+  .layout{grid-template-columns:1fr;}
+  .left-panel{position:relative;height:auto;padding:3rem 2rem;}
+  .r-section,.r-intro,.r-cta{padding:3.5rem 2rem;}
+  .voices{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="layout">
+  <!-- 左固定パネル -->
+  <div class="left-panel">
+    <div class="left-bg-text">凍結</div>
+    <div class="left-top">
+      <div class="left-pattern">LP-41 · HR × Concept A · Split Sticky</div>
+      <div class="left-target">②人事担当者 へ</div>
+      <p class="left-concept">数字の呪縛が、組織を凍らせる</p>
+      <h1 class="left-title">熱量あふれる<br>組織のつくり方<br><span style="font-weight:300;font-size:.65em;opacity:.7;">──数字の呪縛からの解放</span></h1>
+      <p class="left-main-copy">「施策が悪い」のではない。<br>組織の構造に埋め込まれた呪縛が、<br>どんな施策も無効化しているのです。</p>
+    </div>
+    <div class="left-bottom">
+      <div class="left-badge">案A：構造的共感</div>
+      <div class="left-scroll-hint"><div class="sh-line"></div>SCROLL<div class="sh-line"></div></div>
+    </div>
+  </div>
+
+  <!-- 右スクロールパネル -->
+  <div class="right-panel">
+    <div class="r-intro">
+      <p class="s-label">The Question · 問い</p>
+      <h2 class="r-intro-q">施策を打ち続けても、<br>なぜ「静かな退職」は止まらないのか？</h2>
+      <p class="r-intro-body">1on1を導入し、ウェルビーイング施策を整え、サーベイを繰り返してきた。それでも離職は続き、エンゲージメントスコアは上がらない。あなたが感じている「施策が届いていない」という感覚は、正しいのです。問題は、施策の質ではなく、前提にあります。</p>
+    </div>
+
+    <div class="r-section">
+      <p class="s-label">Pain Points · 痛点</p>
+      <h2 class="s-heading">人事担当者が抱える、<br>解けない矛盾</h2>
+      <div class="symptom-list">
+        <div class="symptom"><div class="s-icon">📉</div><div class="s-text"><strong>「静かな退職」が蔓延している</strong><span>離職はしないが最低限しか働かない。サーベイには答えるが本音は話さない。そんな社員が増えている。</span></div></div>
+        <div class="symptom"><div class="s-icon">🔁</div><div class="s-text"><strong>エンゲージメント施策が機能しない</strong><span>ウェルビーイング、表彰制度、社内SNS……手を尽くしても熱量は戻ってこない。</span></div></div>
+        <div class="symptom"><div class="s-icon">🚪</div><div class="s-text"><strong>優秀な人が先に辞めていく</strong><span>変化を起こせる人材が次々と去り、保守的な人材が残る。組織の新陳代謝が機能不全を起こしている。</span></div></div>
+        <div class="symptom"><div class="s-icon">🤝</div><div class="s-text"><strong>経営層との認識ギャップ</strong><span>現場の空気の重さを数値で伝えられない。「感覚論」と一蹴されてしまう。</span></div></div>
+      </div>
+    </div>
+
+    <div class="r-section" style="background:#f5f9f6;">
+      <p class="s-label">Root Cause · 根本原因</p>
+      <h2 class="s-heading">「施策が悪い」のではなく、<br>「前提」が間違っている</h2>
+      <p class="s-body">マネーバイアスとは、お金・数値・効率を絶対視するまま内面化した「思い込みの構造」です。正しい施策を正しく実施しているのに組織が疲弊する——その矛盾の正体がここにあります。<br><br>あなたが感じていた「なぜこの施策が届かないのか」という違和感には、名前があります。</p>
+      <div class="holes">
+        <div class="hole"><div class="hole-num">01</div><div class="hole-content"><div class="hole-name">「数字の呪縛」を見える化する</div><div class="hole-desc">無意識に信じている「数値＝真実」という思い込みを組織の構造として可視化します。呪縛の正体を見れば、外し方が見えてきます。</div></div></div>
+        <div class="hole"><div class="hole-num">02</div><div class="hole-content"><div class="hole-name">「共感」を組織の言語にする</div><div class="hole-desc">感情や熱量を「非効率」として排除してきた組織に、共感の回路を取り戻します。これが最も強力な施策です。</div></div></div>
+        <div class="hole"><div class="hole-num">03</div><div class="hole-content"><div class="hole-name">「生成（Becoming）」という成長観</div><div class="hole-desc">スキル強化という強化型成長から、人が本来持つ可能性が花開く生成型成長へ。組織の時間軸が変わります。</div></div></div>
+      </div>
+    </div>
+
+    <div class="r-section">
+      <p class="s-label">Author · 著者より</p>
+      <h2 class="s-heading">現場で生まれた、<br>実感を伴う知見</h2>
+      <div class="author-box">
+        <p class="author-quote">「施策で解決しようとするのをやめた瞬間に、チームが変わり始めた。問題は施策ではなく、前提にあったんです。」</p>
+        <p class="author-meta">著者名 / 組織変革コンサルタント</p>
+      </div>
+      <p class="s-body" style="margin-top:1.5rem;">廃業寸前の旅館を再生したとき、私が学んだのは「数値目標を外す」という逆説でした。売上を諦めた瞬間に、スタッフの目が輝き始めた。その体験が本書の原点です。</p>
+    </div>
+
+    <div class="r-section" style="background:white;">
+      <p class="s-label">Voices · 読者の声</p>
+      <h2 class="s-heading">施策の呪縛から解放された<br>人事担当者の声</h2>
+      <div class="voices">
+        <div class="voice"><p class="voice-q">「施策が悪い」のではなく「前提が間違っている」とわかった瞬間に、長年の違和感が消えた。</p><p class="voice-who">Eさん · 人事部長 メーカー勤務</p></div>
+        <div class="voice"><p class="voice-q">マネーバイアスという言葉を知って、なぜ心理的安全性研修が機能しなかったのかが腑に落ちた。</p><p class="voice-who">Fさん · HRBP IT企業</p></div>
+        <div class="voice"><p class="voice-q">経営陣を説得するための言語を、この本が与えてくれた。数字ではなく「構造」で話せるようになった。</p><p class="voice-who">Gさん · 人材開発責任者</p></div>
+        <div class="voice"><p class="voice-q">エンゲージメントスコアを追いかけるのをやめて「熱量の循環」を見るようになったら景色が変わった。</p><p class="voice-who">Hさん · 組織開発コンサルタント</p></div>
+      </div>
+    </div>
+
+    <div class="r-cta" id="cta">
+      <h2 class="cta-heading">「静かな退職」の根本原因を突き止め、<br>組織に熱量を取り戻そう。</h2>
+      <p class="cta-body">施策を変えるのではなく、前提を変える。人事担当者が知るべき、組織変革の新しい視点がここにあります。</p>
+      <a href="#" class="cta-btn">書籍の詳細を見る →</a>
+    </div>
+    <div class="r-footer">LP-41 · ②人事担当者 · Concept A 構造的共感 · 分割スティッキーレイアウト</div>
+  </div>
+</div>
+</body>
+</html>

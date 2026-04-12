@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>熱量あふれる組織のつくり方 | 数字の呪縛が、組織を凍らせる | Pattern 30</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Sans JP',sans-serif;background:#f9f6f0;color:#2c2c2c;line-height:1.8;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(245,245,245,0.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(128,128,128,0.15);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;}
+.nav-logo{font-family:'Noto Serif JP',serif;font-size:.88rem;font-weight:700;color:#111111;letter-spacing:.04em;}
+.nav-badge{font-size:.72rem;color:#444444;border:1px solid #444444;padding:.25rem .8rem;border-radius:50px;letter-spacing:.08em;}
+.nav-cta{background:#111111;color:white;padding:.45rem 1.4rem;border-radius:50px;font-size:.8rem;text-decoration:none;font-weight:700;letter-spacing:.06em;}
+
+/* HERO */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#f5f5f5;padding-top:72px;}
+.hero-bg-becoming{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif JP',serif;font-size:clamp(60px,15vw,180px);font-weight:700;color:rgba(0,0,0,0.06);pointer-events:none;user-select:none;letter-spacing:.05em;}
+.hero-blob{position:absolute;pointer-events:none;border-radius:60% 40% 70% 30% / 50% 60% 40% 50%;animation:morph 12s ease-in-out infinite;}
+.blob-1{top:-10%;left:-15%;width:50vw;height:50vw;}
+.blob-2{bottom:-10%;right:-10%;width:40vw;height:40vw;animation-duration:16s;animation-direction:reverse;}
+.blob-3{top:30%;right:5%;width:22vw;height:22vw;animation-duration:10s;animation-delay:3s;}
+@keyframes morph{0%,100%{border-radius:60% 40% 70% 30%/50% 60% 40% 50%}33%{border-radius:40% 60% 30% 70%/60% 40% 60% 40%}66%{border-radius:70% 30% 50% 50%/40% 70% 30% 60%}}
+.hero-content{position:relative;z-index:10;text-align:center;padding:2rem;max-width:900px;}
+.hero-eyebrow{font-size:.78rem;letter-spacing:.25em;color:#111111;font-weight:500;margin-bottom:1.8rem;text-transform:uppercase;}
+.hero-target-badge{display:inline-block;background:rgba(128,128,128,.08);border:1px solid rgba(128,128,128,.2);color:#444444;font-size:.8rem;padding:.4rem 1.2rem;border-radius:50px;letter-spacing:.08em;margin-bottom:1.5rem;}
+.hero-subtitle{font-size:clamp(.9rem,1.4vw,1.1rem);color:#6b6b6b;font-weight:300;margin-bottom:1rem;letter-spacing:.04em;}
+.hero-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:700;line-height:1.4;color:#111111;letter-spacing:.03em;margin-bottom:.8rem;}
+.hero-title-sub{display:block;font-size:.62em;font-weight:300;color:#444444;margin-top:.5rem;letter-spacing:.05em;}
+.hero-concept-badge{display:inline-block;background:linear-gradient(135deg,#111111,#444444);color:white;font-size:.82rem;padding:.5rem 1.5rem;border-radius:50px;letter-spacing:.1em;margin:1.5rem 0;}
+.hero-main-copy{font-family:'Noto Serif JP',serif;font-size:clamp(1rem,2.2vw,1.45rem);font-weight:300;color:#000000;line-height:2.1;letter-spacing:.05em;margin-top:1.5rem;}
+.hero-main-copy em{font-style:normal;font-weight:700;color:#111111;}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;color:#444444;font-size:.72rem;letter-spacing:.2em;animation:scrollAnim 2s ease infinite;}
+.scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,transparent,#444444);}
+@keyframes scrollAnim{0%,100%{opacity:.4;transform:translateX(-50%) translateY(0)}50%{opacity:1;transform:translateX(-50%) translateY(-5px)}}
+
+/* PROBLEM */
+.section-problem{background:#111111;color:white;padding:7rem 2rem;position:relative;overflow:hidden;}
+.section-problem::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#888888,#111111,#888888);}
+.problem-inner{max-width:860px;margin:0 auto;}
+.section-label{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;margin-bottom:2.5rem;font-weight:500;}
+.s-label-dark{color:#aaaaaa;}
+.s-label-light{color:#444444;}
+.problem-question{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,3.2vw,2.2rem);font-weight:700;line-height:1.7;margin-bottom:3rem;white-space:pre-line;}
+.problem-symptoms{display:grid;gap:1.1rem;margin-bottom:3.5rem;}
+.symptom-item{display:flex;align-items:flex-start;gap:1.2rem;padding:1.3rem 1.7rem;background:rgba(255,255,255,.04);border-left:3px solid #888888;border-radius:4px;}
+.symptom-icon{font-size:1.25rem;flex-shrink:0;margin-top:.1rem;}
+.symptom-text{font-size:.95rem;line-height:1.75;color:rgba(255,255,255,.82);}
+.symptom-text strong{color:#e0e0e0;display:block;margin-bottom:.25rem;}
+.problem-closing{font-family:'Noto Serif JP',serif;font-size:1.15rem;line-height:2;color:rgba(255,255,255,.9);border-top:1px solid rgba(255,255,255,.1);padding-top:2.2rem;}
+
+/* RIPPLE */
+.section-ripple{padding:7rem 2rem;background:#ffffff;overflow:hidden;}
+.ripple-inner{max-width:940px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.ripple-heading{font-family:'Noto Serif JP',serif;font-size:clamp(1.3rem,2.5vw,1.9rem);font-weight:700;line-height:1.6;margin-bottom:1.4rem;color:#2c2c2c;}
+.ripple-body{font-size:.95rem;color:#6b6b6b;line-height:1.9;}
+.ripple-visual{height:360px;}
+
+/* THREE HOLES */
+.section-holes{padding:7rem 2rem;background:#f5f5f5;}
+.holes-inner{max-width:1000px;margin:0 auto;}
+.holes-header{text-align:center;margin-bottom:4.5rem;}
+.holes-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,2.8vw,2.1rem);font-weight:700;line-height:1.5;color:#2c2c2c;margin-top:1rem;}
+.holes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;}
+.hole-card{position:relative;padding:2.2rem 1.8rem;background:white;border-radius:4px;box-shadow:0 4px 24px rgba(0,0,0,.06);text-align:center;transition:transform .3s ease;border:2px solid #e0e0e0;}
+.hole-card:hover{transform:translateY(-7px);}
+.hole-number{font-size:2.8rem;font-weight:700;color:#e0e0e0;font-family:'Noto Serif JP',serif;line-height:1;margin-bottom:.9rem;}
+.hole-name{font-size:1rem;font-weight:700;color:#000000;margin-bottom:.9rem;font-family:'Noto Serif JP',serif;line-height:1.5;}
+.hole-desc{font-size:.87rem;color:#6b6b6b;line-height:1.8;}
+.hole-connector{position:absolute;top:50%;right:-1.2rem;width:1.2rem;height:2px;background:#e0e0e0;}
+
+/* CONCEPT */
+.section-concept{background:linear-gradient(135deg, #111111 0%, #333333 100%);color:white;padding:7rem 2rem;position:relative;overflow:hidden;text-align:center;}
+.concept-wm{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:clamp(50px,12vw,160px);font-weight:700;color:rgba(255,255,255,.04);font-family:'Noto Serif JP',serif;pointer-events:none;}
+.concept-inner{max-width:760px;margin:0 auto;position:relative;z-index:2;}
+.concept-statement{font-family:'Noto Serif JP',serif;font-size:clamp(1.2rem,2.6vw,1.85rem);font-weight:700;line-height:1.9;margin-bottom:2rem;white-space:pre-line;}
+.concept-body{font-size:.97rem;line-height:2;color:rgba(255,255,255,.8);max-width:600px;margin:0 auto;}
+
+/* AUTHOR */
+.section-author{padding:7rem 2rem;background:#ffffff;}
+.author-inner{max-width:940px;margin:0 auto;display:grid;grid-template-columns:340px 1fr;gap:4.5rem;align-items:center;}
+.author-img{width:100%;aspect-ratio:3/4;background:linear-gradient(160deg,#888888 0%,#111111 60%,#000000 100%);border-radius:12px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:1.5rem;font-size:.8rem;color:rgba(255,255,255,.6);font-style:italic;filter:grayscale(1);}
+.author-name{font-family:'Noto Serif JP',serif;font-size:1.8rem;font-weight:700;color:#2c2c2c;margin:.7rem 0;}
+.author-role{font-size:.85rem;color:#6b6b6b;margin-bottom:1.8rem;letter-spacing:.04em;}
+.author-message{font-family:'Noto Serif JP',serif;font-size:1.05rem;line-height:2;color:#2c2c2c;font-weight:300;margin-bottom:1.8rem;font-style:italic;}
+.author-body{font-size:.92rem;color:#6b6b6b;line-height:1.9;}
+
+/* TESTIMONIALS */
+.section-test{padding:7rem 2rem;background:#111111;color:white;}
+.test-inner{max-width:1000px;margin:0 auto;}
+.test-header{text-align:center;margin-bottom:3.5rem;}
+.test-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.3rem,2.3vw,1.8rem);font-weight:700;margin-top:.9rem;}
+.test-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem;}
+.test-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:1.8rem;}
+.test-quote{font-size:.92rem;line-height:1.9;color:rgba(255,255,255,.84);margin-bottom:1.3rem;font-style:italic;}
+.test-quote::before{content:'「';color:#888888;font-size:1.3rem;font-family:'Noto Serif JP',serif;}
+.test-quote::after{content:'」';color:#888888;font-size:1.3rem;font-family:'Noto Serif JP',serif;}
+.test-person{display:flex;align-items:center;gap:.9rem;}
+.test-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#888888,#000000);display:flex;align-items:center;justify-content:center;font-size:.72rem;color:white;font-weight:700;flex-shrink:0;}
+.test-name{font-size:.88rem;font-weight:700;}
+.test-role{font-size:.76rem;color:#888888;margin-top:.15rem;}
+
+/* CTA */
+.section-cta{padding:8rem 2rem;background:#f5f5f5;text-align:center;position:relative;overflow:hidden;}
+.cta-inner{position:relative;z-index:2;max-width:680px;margin:0 auto;}
+.cta-heading{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,3.2vw,2.3rem);font-weight:700;color:#000000;line-height:1.5;margin-bottom:1.3rem;white-space:pre-line;}
+.cta-body{font-size:.97rem;color:#000000;line-height:1.9;margin-bottom:2.8rem;opacity:.85;}
+.cta-btn{display:inline-block;background:#111111;color:white;padding:1.1rem 3.2rem;border-radius:50px;font-size:.97rem;font-weight:700;letter-spacing:.1em;text-decoration:none;box-shadow:0 8px 28px rgba(0,0,0,.25);transition:all .3s ease;}
+.cta-btn:hover{background:#333333;transform:translateY(-3px);}
+.cta-note{margin-top:1.3rem;font-size:.78rem;color:#000000;opacity:.65;}
+
+/* FOOTER */
+footer{background:#111111;color:rgba(255,255,255,.35);text-align:center;padding:2rem;font-size:.76rem;letter-spacing:.06em;}
+
+/* FADE */
+.fi{opacity:0;transform:translateY(20px);transition:opacity .75s ease,transform .75s ease;}
+.fi.vis{opacity:1;transform:none;}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .ripple-inner,.author-inner{grid-template-columns:1fr;gap:2rem;}
+  .holes-grid,.test-grid{grid-template-columns:1fr;}
+  .hole-connector{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">熱量あふれる組織のつくり方</div>
+  <div class="nav-badge">③ビジネスパーソン</div>
+  <a href="#cta" class="nav-cta">書籍を見る</a>
+</nav>
+
+<section class="hero">
+  
+  <div class="hero-bg-becoming">Becoming</div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Pattern 30 · Business Professionals · Concept A · モノクロボールド · データ型</p>
+    <div class="hero-target-badge">③ビジネスパーソン へ</div>
+    <p class="hero-subtitle">仕事への熱量を失っているあなたへ</p>
+    <h1 class="hero-title">
+      熱量あふれる組織のつくり方
+      <span class="hero-title-sub">──数字の呪縛（お金の思い込み）からの解放</span>
+    </h1>
+    <div class="hero-concept-badge">数字の呪縛が、組織を凍らせる</div>
+    <p class="hero-main-copy">働く人の54%が「仕事への熱量が<br>3年前より低下した」と感じている。<br>あなたはどうですか？</p>
+    <p style="margin-top:1.2rem;font-size:.9rem;color:#444444;letter-spacing:.05em;">まず、その「おかしさ」を、言語化しよう。</p>
+  </div>
+  <div class="scroll-hint"><div class="scroll-line"></div>SCROLL</div>
+</section>
+
+<section class="section-problem">
+  <div class="problem-inner">
+    <p class="section-label s-label-dark">The Problem · 問題の構造</p>
+    <h2 class="problem-question fi">働く人の54%が「仕事への熱量が<br>3年前より低下した」と感じている。<br>あなたはどうですか？</h2>
+    <div class="problem-symptoms fi">
+      <div class="symptom-item">
+        <div class="symptom-icon">🌫️</div>
+        <div class="symptom-text"><strong>仕事が「こなすもの」になっている</strong>以前は好きだったはずの仕事が、今は義務感でしかこなせない。何かが、静かに失われている。</div>
+      </div>
+      <div class="symptom-item">
+        <div class="symptom-icon">👻</div>
+        <div class="symptom-text"><strong>「自分が消えていく」感覚</strong>会議でも、提案でも、「求められる自分」を演じている。本当の自分がどこにいるのかわからない。</div>
+      </div>
+      <div class="symptom-item">
+        <div class="symptom-icon">⏰</div>
+        <div class="symptom-text"><strong>月曜日が怖い</strong>週末になっても本当には休めない。「また月曜日が来る」という憂鬱が、じわじわと体に沁みている。</div>
+      </div>
+      <div class="symptom-item">
+        <div class="symptom-icon">🎯</div>
+        <div class="symptom-text"><strong>「何のために働いているのか」がわからない</strong>給料のため？ 昇進のため？ それだけのために、こんなに疲弊しているのか——そんな問いが頭をよぎる。</div>
+      </div></div>
+    <p class="problem-closing fi">これはあなた個人の問題ではありません。「お金・数値・効率」を至上とするマネーバイアスが、あなたの熱量を組織的に奪っているのです。</p>
+  </div>
+</section>
+
+<section class="section-ripple">
+  <div class="ripple-inner">
+    <div class="fi">
+      <p class="section-label s-label-light">The Shift · 構造の転換</p>
+      <h2 class="ripple-heading">ピラミッドが<br>「波紋」に変わるとき</h2>
+      <p class="ripple-body">
+        従来の組織は、命令と管理のピラミッド構造で動いてきました。しかし数字の呪縛が、組織を凍らせるの視点から見ると、
+        その構造こそが熱量を奪う根本原因です。<br><br>
+        マネーバイアスを外したとき、組織は生命体のように変容します。
+        一人ひとりの熱量が石を投じた水面のように広がり、共鳴し増幅していく——
+        それが「有機的組織」の姿です。
+      </p>
+    </div>
+    <div class="ripple-visual fi"><svg viewBox="0 0 400 380" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+        <g opacity="0.2">
+          <polygon points="200,30 100,160 300,160" fill="none" stroke="#888888" stroke-width="1.5"/>
+          <line x1="140" y1="160" x2="260" y2="160" stroke="#888888" stroke-width="1"/>
+          <line x1="100" y1="200" x2="300" y2="200" stroke="#888888" stroke-width="1"/>
+          <line x1="80" y1="240" x2="320" y2="240" stroke="#888888" stroke-width="1"/>
+        </g>
+        <circle cx="200" cy="195" r="8" fill="#111111" opacity="0.9"/>
+        <circle cx="200" cy="195" r="35" stroke="#888888" stroke-width="1" fill="none" opacity="0.8">
+          <animate attributeName="r" from="8" to="35" dur="3s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" from="0.8" to="0" dur="3s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="200" cy="195" r="35" stroke="#888888" stroke-width="1" fill="none" opacity="0.6">
+          <animate attributeName="r" from="8" to="70" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" from="0.6" to="0" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="200" cy="195" r="35" stroke="#444444" stroke-width="1" fill="none" opacity="0.4">
+          <animate attributeName="r" from="8" to="110" dur="3s" begin="1s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" from="0.4" to="0" dur="3s" begin="1s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="200" cy="195" r="35" stroke="#e0e0e0" stroke-width="0.8" fill="none" opacity="0.3">
+          <animate attributeName="r" from="8" to="155" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" from="0.3" to="0" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="200" cy="80" r="5" fill="#111111" opacity="0.7"/>
+        <circle cx="130" cy="140" r="5" fill="#111111" opacity="0.7"/>
+        <circle cx="270" cy="140" r="5" fill="#111111" opacity="0.7"/>
+        <circle cx="160" cy="280" r="5" fill="#111111" opacity="0.7"/>
+        <circle cx="240" cy="280" r="5" fill="#111111" opacity="0.7"/>
+        <path d="M200,195 Q165,135 130,140" stroke="#888888" stroke-width="0.8" fill="none" opacity="0.5"/>
+        <path d="M200,195 Q235,135 270,140" stroke="#888888" stroke-width="0.8" fill="none" opacity="0.5"/>
+        <path d="M200,195 Q180,237 160,280" stroke="#888888" stroke-width="0.8" fill="none" opacity="0.5"/>
+        <path d="M200,195 Q220,237 240,280" stroke="#888888" stroke-width="0.8" fill="none" opacity="0.5"/>
+        <path d="M200,195 Q200,130 200,80" stroke="#444444" stroke-width="0.6" fill="none" opacity="0.4"/>
+        <text x="200" y="340" text-anchor="middle" font-size="10" fill="#888888" font-family="sans-serif" letter-spacing="1">熱量が波紋のように広がる有機的組織</text>
+      </svg></div>
+  </div>
+</section>
+
+<section class="section-holes">
+  <div class="holes-inner">
+    <div class="holes-header fi">
+      <p class="section-label s-label-light">Three Breakthroughs · 3つの突破口</p>
+      <h2 class="holes-title">数字の呪縛が、組織を凍らせる<br>3つのパラダイムシフト</h2>
+    </div>
+    <div class="holes-grid">
+        <div class="hole-card">
+          <div class="hole-number">01</div>
+          <div class="hole-name">「数字の呪縛」を見える化する</div>
+          <div class="hole-desc">無意識に信じている「数値＝真実」という思い込みを、組織の構造として可視化します。呪縛の正体を見れば、外し方が見えてきます。</div>
+          <div class="hole-connector"></div>
+        </div>
+        <div class="hole-card">
+          <div class="hole-number">02</div>
+          <div class="hole-name">「共感」を組織の言語にする</div>
+          <div class="hole-desc">感情や熱量を「非効率」として排除してきた組織に、共感の回路を取り戻します。これが最も強力な「生産性向上策」です。</div>
+          <div class="hole-connector"></div>
+        </div>
+        <div class="hole-card">
+          <div class="hole-number">03</div>
+          <div class="hole-name">「生成（Becoming）」という成長観</div>
+          <div class="hole-desc">目標達成・スキル強化という強化型成長から、人が本来持つ可能性が花開く生成型成長へ。組織の時間軸が変わります。</div>
+          
+        </div></div>
+  </div>
+</section>
+
+<section class="section-concept">
+  <div class="concept-wm">Breakthrough</div>
+  <div class="concept-inner">
+    <p class="section-label" style="color:#e0e0e0;letter-spacing:.28em;font-size:.72rem;text-transform:uppercase;margin-bottom:2.2rem;">Core Concept · 核心</p>
+    <h2 class="concept-statement fi">「なぜうまくいかないのか」<br>わかっていなかったのではありません。<br>言葉がなかっただけです。</h2>
+    <h3 class="fi" style="font-family:'Noto Serif JP',serif;font-size:clamp(1rem,2vw,1.4rem);font-weight:300;line-height:1.9;margin-bottom:2rem;opacity:.9;white-space:pre-line;">あなたが感じていたその「違和感」には、名前があります。<br>それを「マネーバイアス」と呼びます。</h3>
+    <p class="concept-body fi">お金・数値・効率を絶対視するマネーバイアスは、私たちが意識しないまま内面化した「思い込みの構造」です。正しく努力しているのに組織が疲弊する——その矛盾の正体がここにあります。</p>
+  </div>
+</section>
+
+<section class="section-author">
+  <div class="author-inner">
+    <div class="fi">
+      <div class="author-img">── 再生リゾートにて ──</div>
+    </div>
+    <div class="fi">
+      <p class="section-label s-label-light">Author · 著者より</p>
+      <div class="author-name">著者名</div>
+      <div class="author-role">組織変革コンサルタント / 熱量循環研究家</div>
+      <p class="author-message">
+        「数字を追うことを止めたとき、<br>
+        はじめて本当の経営が始まりました。」
+      </p>
+      <p class="author-body">
+        廃業寸前の旅館を再生したとき、私が学んだのは「数値目標を外す」という逆説でした。
+        売上を諦めた瞬間に、スタッフの目が輝き始め、お客様が戻ってきた。
+        その体験が、マネーバイアスという概念と出合うきっかけでした。<br><br>
+        経営の現場で20年間向き合ってきた「なぜ正しいことをしているのに、
+        組織は疲弊するのか」という問いへの、私なりの答えをここに記しました。
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section-test">
+  <div class="test-inner">
+    <div class="test-header fi">
+      <p class="section-label s-label-dark">Voices · 読者の声</p>
+      <h2 class="test-title">呪縛から解放された、<br>③ビジネスパーソンの声</h2>
+    </div>
+    <div class="test-grid">
+        <div class="test-card">
+          <p class="test-quote">転職を繰り返しても変わらなかった「熱量のなさ」の正体が、やっとわかった気がした。</p>
+          <div class="test-person">
+            <div class="test-avatar">I</div>
+            <div class="test-info">
+              <div class="test-name">Iさん</div>
+              <div class="test-role">広告会社 プランナー 32歳</div>
+            </div>
+          </div>
+        </div>
+        <div class="test-card">
+          <p class="test-quote">「自分がおかしいのかな」と思っていたけど、構造の問題だとわかって少し楽になれた。</p>
+          <div class="test-person">
+            <div class="test-avatar">J</div>
+            <div class="test-info">
+              <div class="test-name">Jさん</div>
+              <div class="test-role">メーカー 営業職 28歳</div>
+            </div>
+          </div>
+        </div>
+        <div class="test-card">
+          <p class="test-quote">この本を読んで、初めて「仕事を好きだった頃の自分」を思い出せた。</p>
+          <div class="test-person">
+            <div class="test-avatar">K</div>
+            <div class="test-info">
+              <div class="test-name">Kさん</div>
+              <div class="test-role">コンサルタント 35歳</div>
+            </div>
+          </div>
+        </div>
+        <div class="test-card">
+          <p class="test-quote">会社を辞める前にこの本に出会えて良かった。問題は会社じゃなく、もっと根深いところにあった。</p>
+          <div class="test-person">
+            <div class="test-avatar">L</div>
+            <div class="test-info">
+              <div class="test-name">Lさん</div>
+              <div class="test-role">IT企業 エンジニア 29歳</div>
+            </div>
+          </div>
+        </div></div>
+  </div>
+</section>
+
+<section class="section-cta" id="cta">
+  <div class="cta-inner">
+    <p class="section-label s-label-light" style="margin-bottom:1.8rem;">Get the Book · 書籍情報</p>
+    <h2 class="cta-heading fi">「熱量」を、<br>取り戻そう。<br>あなたには、まだ火種がある。</h2>
+    <p class="cta-body fi">仕事に「自分」を失いかけているすべてのビジネスパーソンへ。本来の熱量を解放するための、新しい視点がここにあります。</p>
+    <a href="#" class="cta-btn">書籍の詳細を見る →</a>
+    <p class="cta-note">※ 発売情報・先行読者登録はこちらから</p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 熱量あふれる組織のつくり方 All Rights Reserved.</p>
+  <p style="margin-top:.4rem;font-size:.7rem;opacity:.5;">
+    Pattern 30 · ③ビジネスパーソン · Concept A（案A：構造的共感）· モノクロボールド · データ型
+  </p>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis'); });
+}, {threshold:.1});
+document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

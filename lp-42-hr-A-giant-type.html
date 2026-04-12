@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LP-42 | 巨大タイポグラフィ | ②人事×A</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700;900&family=Noto+Sans+JP:wght@100;300;400;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;background:#0c0c0c;color:#f0f0f0;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;display:flex;justify-content:space-between;align-items:center;mix-blend-mode:difference;}
+.nav-logo{font-family:'Noto Serif JP',serif;font-size:.85rem;color:white;letter-spacing:.1em;}
+.nav-cta{font-size:.75rem;color:white;border:1px solid rgba(255,255,255,.4);padding:.4rem 1.2rem;border-radius:50px;text-decoration:none;letter-spacing:.08em;}
+
+/* SCREEN 1: タイトル全画面 */
+.screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;}
+
+.s1{background:#0c0c0c;padding:8rem 2.5rem 5rem;}
+.s1-eyebrow{font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:4rem;}
+.s1-giant{font-family:'Noto Serif JP',serif;font-weight:900;line-height:.88;letter-spacing:-.02em;overflow:hidden;}
+.s1-line1{font-size:clamp(4rem,13vw,12rem);color:white;display:block;}
+.s1-line2{font-size:clamp(3rem,9vw,8.5rem);color:white;display:block;}
+.s1-line3{font-size:clamp(2rem,5.5vw,5rem);color:#52b788;display:block;margin-top:.3em;font-weight:300;letter-spacing:.02em;}
+.s1-sub{margin-top:4rem;max-width:520px;font-size:1rem;color:rgba(255,255,255,.55);line-height:1.9;font-weight:300;}
+.s1-badge{display:inline-block;margin-top:2rem;border:1px solid #52b788;color:#52b788;font-size:.78rem;padding:.5rem 1.4rem;border-radius:50px;letter-spacing:.1em;}
+.s1-scroll{position:absolute;bottom:2.5rem;right:2.5rem;writing-mode:vertical-rl;font-size:.68rem;letter-spacing:.25em;color:rgba(255,255,255,.25);display:flex;align-items:center;gap:1rem;}
+.s1-scroll::after{content:'';width:1px;height:60px;background:linear-gradient(to bottom,rgba(255,255,255,.25),transparent);}
+
+/* SCREEN 2: 問い */
+.s2{background:#f7f7f3;color:#0c0c0c;padding:8rem 12vw;}
+.s2-num{font-size:clamp(6rem,18vw,18rem);font-weight:900;font-family:'Noto Serif JP',serif;color:#e8e8e0;line-height:1;margin-bottom:-2rem;position:relative;z-index:0;}
+.s2-content{position:relative;z-index:1;}
+.s2-label{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:#52b788;margin-bottom:1.5rem;font-weight:700;}
+.s2-q{font-family:'Noto Serif JP',serif;font-size:clamp(1.6rem,3.5vw,3rem);font-weight:700;line-height:1.5;color:#0c0c0c;margin-bottom:2rem;}
+.s2-body{font-size:1rem;color:#555;line-height:2;max-width:600px;}
+
+/* SCREEN 3: 症状 暗黒 */
+.s3{background:#111;padding:8rem 2.5rem;align-items:stretch;}
+.s3-inner{max-width:1100px;margin:0 auto;width:100%;}
+.s3-label{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:#52b788;margin-bottom:3rem;}
+.s3-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#222;}
+.s3-item{background:#111;padding:3rem 2.5rem;}
+.s3-item:nth-child(1){border-bottom:1px solid #222;}
+.s3-item:nth-child(2){border-bottom:1px solid #222;}
+.s3-ico{font-size:2rem;margin-bottom:1.2rem;}
+.s3-title{font-family:'Noto Serif JP',serif;font-size:1.1rem;font-weight:700;color:white;margin-bottom:.8rem;}
+.s3-text{font-size:.88rem;color:rgba(255,255,255,.5);line-height:1.85;}
+
+/* SCREEN 4: 核心 大文字 */
+.s4{background:#52b788;padding:8rem 2.5rem;justify-content:center;align-items:center;text-align:center;}
+.s4-inner{max-width:900px;}
+.s4-pre{font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(0,0,0,.5);margin-bottom:2.5rem;}
+.s4-statement{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,4vw,4rem);font-weight:700;color:#0c0c0c;line-height:1.4;margin-bottom:2rem;}
+.s4-sub{font-size:1rem;color:rgba(0,0,0,.65);line-height:1.9;max-width:600px;margin:0 auto;}
+
+/* SCREEN 5: 3つの風穴 */
+.s5{background:#f7f7f3;padding:8rem 2.5rem;color:#0c0c0c;}
+.s5-inner{max-width:1100px;margin:0 auto;}
+.s5-label{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:#52b788;margin-bottom:4rem;}
+.s5-holes{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;}
+.s5-hole{}
+.s5-n{font-family:'Noto Serif JP',serif;font-size:5rem;font-weight:900;color:#e8e8e0;line-height:1;margin-bottom:.5rem;}
+.s5-name{font-size:1rem;font-weight:700;color:#1b4332;margin-bottom:.8rem;line-height:1.5;}
+.s5-desc{font-size:.87rem;color:#666;line-height:1.85;}
+.s5-rule{width:40px;height:2px;background:#52b788;margin-bottom:1.2rem;}
+
+/* SCREEN 6: 声 */
+.s6{background:#0c0c0c;padding:8rem 2.5rem;}
+.s6-inner{max-width:1100px;margin:0 auto;}
+.s6-label{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:#52b788;margin-bottom:4rem;}
+.s6-quotes{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+.s6-q{border-top:1px solid #333;padding-top:1.5rem;}
+.s6-text{font-family:'Noto Serif JP',serif;font-size:.97rem;font-style:italic;color:rgba(255,255,255,.8);line-height:1.9;margin-bottom:1rem;}
+.s6-who{font-size:.75rem;color:#52b788;letter-spacing:.05em;}
+
+/* SCREEN 7: CTA */
+.s7{background:#f7f7f3;padding:8rem 2.5rem;color:#0c0c0c;justify-content:center;align-items:center;text-align:center;}
+.s7-inner{max-width:700px;}
+.s7-big{font-family:'Noto Serif JP',serif;font-size:clamp(2rem,6vw,5.5rem);font-weight:900;line-height:1.2;color:#0c0c0c;margin-bottom:2rem;}
+.s7-big span{color:#52b788;}
+.s7-body{font-size:1rem;color:#666;line-height:2;margin-bottom:3rem;}
+.s7-btn{display:inline-block;background:#0c0c0c;color:white;padding:1.1rem 3.5rem;font-size:.93rem;font-weight:700;letter-spacing:.12em;text-decoration:none;border-radius:50px;transition:all .25s;}
+.s7-btn:hover{background:#1b4332;transform:translateY(-2px);}
+
+footer{background:#0c0c0c;color:rgba(255,255,255,.2);text-align:center;padding:1.5rem;font-size:.7rem;letter-spacing:.08em;border-top:1px solid #1a1a1a;}
+
+@media(max-width:768px){
+  .s3-grid,.s5-holes,.s6-quotes{grid-template-columns:1fr;}
+  .s2{padding:6rem 2rem;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">熱量あふれる組織のつくり方</div>
+  <a href="#cta" class="nav-cta">書籍を見る</a>
+</nav>
+
+<!-- S1: 巨大タイポ -->
+<section class="screen s1">
+  <div class="s1-eyebrow">LP-42 · ②人事担当者 · Concept A · Giant Typography</div>
+  <div class="s1-giant">
+    <span class="s1-line1">呪縛を</span>
+    <span class="s1-line2">外せ。</span>
+    <span class="s1-line3">──施策の前に、構造を見よ。</span>
+  </div>
+  <p class="s1-sub">エンゲージメント施策が届かない本当の理由。人事担当者が最初に問い直すべき、経営の前提とは何か。</p>
+  <div class="s1-badge">数字の呪縛が、組織を凍らせる</div>
+  <div class="s1-scroll">SCROLL</div>
+</section>
+
+<!-- S2: 問い -->
+<section class="screen s2">
+  <div class="s2-num">？</div>
+  <div class="s2-content">
+    <p class="s2-label">The Question</p>
+    <h2 class="s2-q">施策を打ち続けても、<br>なぜ「静かな退職」は<br>止まらないのか？</h2>
+    <p class="s2-body">1on1を導入し、サーベイを繰り返し、ウェルビーイング施策を整えてきた。それでも熱量は戻らない。あなたが感じている「施策が届いていない」という感覚は、正しいのです。問題は、前提にあります。</p>
+  </div>
+</section>
+
+<!-- S3: 症状 -->
+<section class="screen s3">
+  <div class="s3-inner">
+    <p class="s3-label">Pain Points · 痛点</p>
+    <div class="s3-grid">
+      <div class="s3-item"><div class="s3-ico">📉</div><div class="s3-title">「静かな退職」の蔓延</div><p class="s3-text">離職はしないが最低限しか働かない。サーベイには答えるが本音は話さない。</p></div>
+      <div class="s3-item"><div class="s3-ico">🔁</div><div class="s3-title">施策の無効化</div><p class="s3-text">ウェルビーイング、1on1、表彰制度……手を尽くしても熱量は戻らない。</p></div>
+      <div class="s3-item"><div class="s3-ico">🚪</div><div class="s3-title">優秀人材の流出</div><p class="s3-text">変化を起こせる人材が次々と去り、組織の新陳代謝が機能不全を起こしている。</p></div>
+      <div class="s3-item"><div class="s3-ico">🤝</div><div class="s3-title">経営層との断絶</div><p class="s3-text">現場の空気の重さを数値で伝えられず、「感覚論」と一蹴されてしまう。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- S4: 核心 -->
+<section class="screen s4">
+  <div class="s4-inner">
+    <p class="s4-pre">Root Cause · 根本原因</p>
+    <h2 class="s4-statement">「施策が悪い」のではなく、<br>「前提」が間違っている。</h2>
+    <p class="s4-sub">マネーバイアス——お金・数値・効率を絶対視するまま内面化した思い込みの構造が、どんな施策も無効化しているのです。</p>
+  </div>
+</section>
+
+<!-- S5: 3つの突破口 -->
+<section class="screen s5">
+  <div class="s5-inner">
+    <p class="s5-label">Three Breakthroughs · 突破口</p>
+    <div class="s5-holes">
+      <div class="s5-hole"><div class="s5-n">01</div><div class="s5-rule"></div><div class="s5-name">「数字の呪縛」を見える化する</div><p class="s5-desc">無意識に信じている「数値＝真実」という思い込みを、組織の構造として可視化します。呪縛の正体を見れば、外し方が見えてきます。</p></div>
+      <div class="s5-hole"><div class="s5-n">02</div><div class="s5-rule"></div><div class="s5-name">「共感」を組織の言語にする</div><p class="s5-desc">感情や熱量を「非効率」として排除してきた組織に、共感の回路を取り戻します。これが最も強力な施策です。</p></div>
+      <div class="s5-hole"><div class="s5-n">03</div><div class="s5-rule"></div><div class="s5-name">「生成」という成長観へ</div><p class="s5-desc">スキル強化という強化型成長から、人が本来持つ可能性が花開く生成型成長へ。組織の時間軸が変わります。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- S6: 声 -->
+<section class="screen s6">
+  <div class="s6-inner">
+    <p class="s6-label">Voices · 読者の声</p>
+    <div class="s6-quotes">
+      <div class="s6-q"><p class="s6-text">「施策が悪い」のではなく「前提が間違っている」とわかった瞬間、長年の違和感が消えた。</p><p class="s6-who">Eさん · 人事部長 メーカー勤務</p></div>
+      <div class="s6-q"><p class="s6-text">なぜ心理的安全性研修が機能しなかったのかが腑に落ちた。マネーバイアスという言葉が全てを説明してくれた。</p><p class="s6-who">Fさん · HRBP IT企業</p></div>
+      <div class="s6-q"><p class="s6-text">経営陣を説得するための言語を、この本が与えてくれた。数字ではなく「構造」で話せるようになった。</p><p class="s6-who">Gさん · 人材開発責任者</p></div>
+      <div class="s6-q"><p class="s6-text">エンゲージメントスコアを追いかけるのをやめて「熱量の循環」を見るようになったら景色が変わった。</p><p class="s6-who">Hさん · 組織開発コンサルタント</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- S7: CTA -->
+<section class="screen s7" id="cta">
+  <div class="s7-inner">
+    <h2 class="s7-big">施策を変えるな。<br><span>前提を、変えろ。</span></h2>
+    <p class="s7-body">「静かな退職」の根本原因を突き止め、組織に熱量を取り戻す。人事担当者が知るべき新しい視点がここにあります。</p>
+    <a href="#" class="s7-btn">書籍の詳細を見る →</a>
+  </div>
+</section>
+
+<footer>LP-42 · ②人事担当者 · Concept A 構造的共感 · 巨大タイポグラフィ構造</footer>
+</body>
+</html>
