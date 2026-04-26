@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LP-52 夜明けジャーニー | 経営者・マネジャー 共感A</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans JP',sans-serif;overflow-x:hidden}
+
+.chapter{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;padding:80px 40px}
+
+/* Chapter colors = sky timeline */
+.ch-midnight{background:linear-gradient(160deg,#050b1a 0%,#0a1628 100%)}
+.ch-deep{background:linear-gradient(160deg,#0a1628 0%,#1a1040 100%)}
+.ch-predawn{background:linear-gradient(160deg,#1a1040 0%,#3d1a6b 50%,#8b2252 100%)}
+.ch-dawn{background:linear-gradient(160deg,#8b2252 0%,#c4533a 50%,#e88c3a 100%)}
+.ch-golden{background:linear-gradient(160deg,#e88c3a 0%,#f4b942 50%,#fde68a 100%)}
+.ch-morning{background:linear-gradient(160deg,#fde68a 0%,#d4f1c4 50%,#a8e6cf 100%)}
+
+.ch-inner{max-width:760px;margin:0 auto;position:relative;z-index:2}
+
+/* Stars for midnight chapters */
+.stars{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;animation:twinkle 3s ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* Typography */
+.time-label{font-size:.72rem;letter-spacing:.3em;margin-bottom:20px;display:block;text-transform:uppercase;opacity:.6}
+.ch-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.6rem,4vw,3rem);font-weight:900;line-height:1.4;margin-bottom:24px}
+.ch-body{font-size:clamp(.9rem,1.8vw,1.05rem);line-height:1.95;max-width:600px}
+
+/* Light text */
+.ch-midnight .time-label,.ch-deep .time-label,.ch-predawn .time-label,.ch-dawn .time-label{color:rgba(255,255,255,.6)}
+.ch-midnight .ch-title,.ch-deep .ch-title,.ch-predawn .ch-title{color:#fff}
+.ch-dawn .ch-title{color:#fff8f0}
+.ch-midnight .ch-body,.ch-deep .ch-body,.ch-predawn .ch-body,.ch-dawn .ch-body{color:rgba(255,255,255,.8)}
+.ch-golden .ch-title{color:#3a2000;font-size:clamp(1.4rem,3.5vw,2.5rem)}
+.ch-golden .ch-body,.ch-golden .time-label{color:rgba(58,32,0,.75)}
+.ch-morning .ch-title{color:#1a3a2a}
+.ch-morning .ch-body,.ch-morning .time-label{color:rgba(26,58,42,.75)}
+
+/* Pain cards for deep chapter */
+.episode-list{display:grid;gap:14px;margin-top:36px}
+.episode{background:rgba(255,255,255,.07);border-left:3px solid rgba(255,255,255,.2);padding:18px 22px;border-radius:0 10px 10px 0}
+.episode strong{display:block;font-size:.88rem;color:#fde68a;margin-bottom:4px}
+.episode p{font-size:.82rem;color:rgba(255,255,255,.75);line-height:1.65}
+
+/* Data bubble */
+.data-bubble{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:20px 28px;margin-top:28px}
+.data-bubble .big{font-family:'Noto Serif JP',serif;font-size:3rem;font-weight:900;color:#fde68a;line-height:1}
+.data-bubble .label{font-size:.76rem;color:rgba(255,255,255,.65);margin-top:4px}
+
+/* Loop for predawn */
+.loop-steps{margin-top:36px;display:grid;gap:10px}
+.loop-step{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.08);padding:16px 20px;border-radius:10px}
+.loop-num{width:32px;height:32px;background:rgba(255,255,255,.15);border-radius:50%;display:grid;place-items:center;font-size:.78rem;font-weight:700;color:#fff;flex-shrink:0}
+.loop-step strong{display:block;font-size:.9rem;color:#fff;margin-bottom:3px}
+.loop-step span{font-size:.78rem;color:rgba(255,255,255,.7);line-height:1.4}
+
+/* Shift box for dawn */
+.shift-reveal{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:16px;padding:36px;margin-top:36px;text-align:center}
+.shift-key{font-family:'Noto Serif JP',serif;font-size:clamp(1.3rem,3vw,2rem);font-weight:900;color:#fff;display:block;margin-bottom:14px}
+.shift-reveal p{font-size:.9rem;color:rgba(255,255,255,.8);line-height:1.85}
+
+/* Case trio for golden */
+.case-trio{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:32px}
+.case-mini{background:rgba(58,32,0,.08);border:1px solid rgba(58,32,0,.12);border-radius:12px;padding:20px}
+.case-co{font-family:'Noto Serif JP',serif;font-size:.9rem;font-weight:700;color:#3a2000;margin-bottom:6px}
+.case-res{font-size:.78rem;color:#7a4a20;line-height:1.5}
+
+/* CTA for morning */
+.cta-morning{text-align:center;padding:40px 0}
+.cta-btn{display:inline-block;background:linear-gradient(135deg,#1a5c3a,#2d8a5e);color:#fff;text-decoration:none;padding:18px 56px;border-radius:50px;font-weight:700;font-size:1rem;letter-spacing:.06em;box-shadow:0 8px 30px rgba(26,92,58,.3);transition:transform .3s}
+.cta-btn:hover{transform:translateY(-3px)}
+.cta-note{font-size:.74rem;color:rgba(26,58,42,.5);margin-top:16px}
+
+/* progress bar */
+.progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(to right,#0a1628,#fde68a,#a8e6cf);z-index:200;transition:width .1s}
+
+/* Nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:12px 32px;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{color:rgba(255,255,255,.75);text-decoration:none;font-size:.84rem}
+.nav-btn{background:rgba(255,255,255,.15);color:#fff;text-decoration:none;padding:7px 20px;border-radius:50px;font-size:.8rem;font-weight:700;border:1px solid rgba(255,255,255,.2)}
+
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}
+.fade-up.visible{opacity:1;transform:none}
+@media(max-width:640px){.chapter{padding:60px 20px}}
+</style>
+</head>
+<body>
+<div class="progress-bar" id="pb"></div>
+<nav class="nav"><a href="index.html" class="nav-logo">← 一覧へ</a><a href="#morning" class="nav-btn">書籍を見る</a></nav>
+
+<!-- 深夜 -->
+<section class="chapter ch-midnight">
+  <div class="stars" id="stars"></div>
+  <div class="ch-inner">
+    <span class="time-label">深夜 ── 熱量の枯渇</span>
+    <h2 class="ch-title fade-up">あなたの組織でも、<br>こんな瞬間はありませんか？</h2>
+    <p class="ch-body fade-up">組織から「熱量」が消えていく——日曜の深夜、誰もいないオフィス。明日への気力が湧かない。思い当たる経験が、きっとあるはずだ。</p>
+    <div class="episode-list">
+      <div class="episode fade-up"><strong>「で？」</strong><p>残業して作った資料に対して上司から一言。心の糸が切れた。</p></div><div class="episode fade-up"><strong>日曜の夜</strong><p>給料は上がったのに、日曜の夜になると身体が鉛のように重くなる。</p></div><div class="episode fade-up"><strong>数字合わせ</strong><p>「新規事業」と聞いてワクワクしたのに、結局は予算との数字合わせに終わった。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 深夜2 -->
+<section class="chapter ch-deep">
+  <div class="ch-inner">
+    <span class="time-label">深夜 ── データが示す現実</span>
+    <h2 class="ch-title fade-up">これは、あなただけの話ではない</h2>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:20px">
+      <div class="data-bubble fade-up"><div class="big">6%</div><div class="label">仕事に熱意を持つ日本人社員<br>Gallup 2024 / 世界139カ国中132位</div></div>
+      <div class="data-bubble fade-up"><div class="big">70%</div><div class="label">「静かな退職」状態にある就業者<br>アデコ 2025年調査</div></div>
+    </div>
+    <div class="episode-list" style="margin-top:32px">
+      <div class="episode fade-up"><strong>自分が消える</strong><p>同僚の退職理由は「ここにいても自分が消えていく気がする」。自分も同じだ。</p></div><div class="episode fade-up"><strong>答えられなかった</strong><p>部下に「この仕事って何のためにやるんですか？」と聞かれ、答えられなかった。</p></div><div class="episode fade-up"><strong>言葉に詰まった</strong><p>子どもに「楽しく働いてる？」と聞かれて、言葉に詰まった。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 夜明け前 -->
+<section class="chapter ch-predawn">
+  <div class="ch-inner">
+    <span class="time-label">夜明け前 ── 根本原因</span>
+    <h2 class="ch-title fade-up">「マネーバイアス」が<br>組織を凍らせていく</h2>
+    <p class="ch-body fade-up">収益性・生産性・効率性などの数値を第一とする姿勢が強くなりすぎると、「お金への思い込み（マネーバイアス）」が組織を覆い、悪循環が始まる。</p>
+    <div class="loop-steps">
+      <div class="loop-step fade-up"><div class="loop-num">1</div><div><strong>マネーバイアスが過剰になる</strong><span>数字・収益性だけが絶対的な軸として組織を覆う</span></div></div><div class="loop-step fade-up"><div class="loop-num">2</div><div><strong>人とのつながりが希薄化</strong><span>目に見えない熱量・つながりへの意識が失われる</span></div></div><div class="loop-step fade-up"><div class="loop-num">3</div><div><strong>人生の熱量が枯渇</strong><span>熱意なく最低限の業務をこなす状態が常態化</span></div></div><div class="loop-step fade-up"><div class="loop-num">4</div><div><strong>財務成果も悪化</strong><span>守ろうとしていた数字まで追いつかなくなる</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 夜明け -->
+<section class="chapter ch-dawn">
+  <div class="ch-inner">
+    <span class="time-label">夜明け ── 視点の転換</span>
+    <h2 class="ch-title fade-up">仕組みや制度ではない。<br>視点の転換が、光をもたらす。</h2>
+    <p class="ch-body fade-up">組織が本当に変わるのは、経営陣やミドルマネジャー自身が変わるときである。自分自身の「人生の熱量」が湧きあがっているとき、人とのつながりの大切さが自ずとわかるようになる。</p>
+    <div class="shift-reveal fade-up">
+      <span class="shift-key">「ライフでワークを包む」</span>
+      <p>「人生の熱量」で、生産性・効率性・収益性などを包み、確認指標として活用する。考え方・理論・手法・専門家——すべてを「人生の熱量」で包んだ上で手段として活用する。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 黄金色 -->
+<section class="chapter ch-golden">
+  <div class="ch-inner">
+    <span class="time-label">黄金の朝 ── 実践の証</span>
+    <h2 class="ch-title fade-up">熱量あふれる組織への転換——<br>現場からの実証</h2>
+    <p class="ch-body fade-up" style="color:rgba(58,32,0,.7)">成功の結果だけでなく、財務的に厳しい時期・失敗・試行錯誤も含めたリアルなプロセスを追う。</p>
+    <div class="case-trio">
+      <div class="case-mini fade-up"><div class="case-co">九州電力グループ</div><div class="case-res">人的資本経営で最優秀賞受賞</div></div><div class="case-mini fade-up"><div class="case-co">有限会社 人事・労務</div><div class="case-res">400社の顧客を支える小組織の熱量経営</div></div><div class="case-mini fade-up"><div class="case-co">宮田運輸</div><div class="case-res">業界の常識を超えた「つながり経営」</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 朝 CTA -->
+<section class="chapter ch-morning" id="morning">
+  <div class="ch-inner">
+    <span class="time-label">新しい朝 ── 熱量が再び湧きあがる</span>
+    <h2 class="ch-title fade-up">「人とのつながり」から熱量を取りもどすと、<br>再び組織が動きはじめる。</h2>
+    <p class="ch-body fade-up" style="color:rgba(26,58,42,.75)">経営陣やミドルマネジャー自身が、自分の「人生の熱量」から始めていける——修羅場の経営経験と組織変革の実践知から生まれた一冊。</p>
+    <div class="cta-morning fade-up">
+      <a href="#" class="cta-btn">書籍を購入する →</a>
+      <p class="cta-note">熱量あふれる組織のつくりかた——数字の呪縛（お金への思い込み）からの解放</p>
+    </div>
+  </div>
+</section>
+
+<script>
+// progress bar
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  document.getElementById('pb').style.width=(scrollY/h*100)+'%';
+});
+// generate stars
+const s=document.getElementById('stars');
+for(let i=0;i<80;i++){
+  const d=document.createElement('div');
+  d.className='star';
+  d.style.left=Math.random()*100+'%';
+  d.style.top=Math.random()*100+'%';
+  d.style.animationDelay=Math.random()*3+'s';
+  d.style.opacity=Math.random()*.8+.2;
+  s.appendChild(d);
+}
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:.1});
+document.querySelectorAll('.fade-up').forEach((el,i)=>{obs.observe(el)});
+</script>
+</body>
+</html>

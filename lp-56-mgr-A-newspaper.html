@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LP-56 新聞崩し | 経営者・マネジャー 共感A</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f4f0e0;--ink:#1c1c1c;--amber:#c97a35;--warm:#fdf5e4;--rule:rgba(28,28,28,.15)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Serif JP',serif;background:var(--paper);color:var(--ink);overflow-x:hidden}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:10px 40px;border-bottom:2px solid var(--ink);background:var(--paper)}
+.nav-title{font-size:.8rem;letter-spacing:.2em;font-family:'Noto Sans JP',sans-serif;font-weight:700}
+.nav-cta{background:var(--ink);color:var(--paper);text-decoration:none;padding:6px 18px;font-size:.75rem;font-family:'Noto Sans JP',sans-serif;font-weight:700;letter-spacing:.1em}
+.back-link{font-size:.78rem;color:var(--ink);text-decoration:none;opacity:.5;font-family:'Noto Sans JP',sans-serif}
+
+/* MASTHEAD */
+.masthead{border-bottom:3px double var(--ink);padding:36px 40px 20px;text-align:center;margin-top:45px}
+.masthead-date{font-family:'Noto Sans JP',sans-serif;font-size:.7rem;letter-spacing:.15em;color:#777;margin-bottom:12px}
+.masthead-title{font-size:clamp(1.5rem,4vw,3rem);font-weight:900;letter-spacing:.04em;line-height:1.15;margin-bottom:10px}
+.masthead-sub{font-size:.82rem;color:#555;font-weight:300;border-top:1px solid var(--rule);padding-top:10px;letter-spacing:.08em}
+
+/* HEADLINE SECTION */
+.headline-sec{padding:32px 40px 0;border-bottom:2px solid var(--ink)}
+.headline-inner{max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 2px 1fr;gap:24px}
+.rule-v{background:var(--ink)}
+.col-a,.col-b{padding-bottom:28px}
+.kicker{font-family:'Noto Sans JP',sans-serif;font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:var(--amber);border-bottom:1px solid var(--amber);padding-bottom:4px;margin-bottom:10px;display:block}
+.headline{font-size:clamp(1.3rem,3vw,2rem);font-weight:900;line-height:1.35;margin-bottom:14px}
+.lede{font-size:.88rem;line-height:1.85;color:#444;font-weight:300}
+.stat-pull{font-size:clamp(2.5rem,6vw,5rem);font-weight:900;color:var(--ink);line-height:1;display:block;font-family:'Noto Serif JP',serif}
+.stat-lbl{font-size:.72rem;color:#666;font-family:'Noto Sans JP',sans-serif;margin-top:4px;line-height:1.4}
+
+/* PAIN GRID – newspaper columns */
+.pain-paper{padding:28px 40px;border-bottom:2px solid var(--ink)}
+.pain-inner{max-width:960px;margin:0 auto}
+.pain-hed{font-size:clamp(1.2rem,2.8vw,1.8rem);font-weight:900;margin-bottom:20px;border-bottom:1px solid var(--rule);padding-bottom:12px}
+.episode-cols{columns:2 280px;column-gap:28px;column-rule:1px solid var(--rule)}
+.ep-item{break-inside:avoid;margin-bottom:20px;padding-bottom:20px;border-bottom:1px dotted var(--rule)}
+.ep-item:last-child{border-bottom:none}
+.ep-q{font-size:.95rem;font-weight:700;color:var(--ink);margin-bottom:6px}
+.ep-item p{font-size:.82rem;color:#555;line-height:1.75;font-weight:300}
+
+/* DIAGNOSIS - editorial style */
+.diag-paper{background:var(--ink);color:var(--paper);padding:48px 40px}
+.diag-inner{max-width:960px;margin:0 auto}
+.diag-paper .kicker{color:var(--amber);border-color:var(--amber)}
+.diag-paper .headline{color:var(--paper)}
+.loop-editorial{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1px;background:rgba(255,255,255,.1);margin-top:28px}
+.loop-ed-cell{background:var(--ink);padding:24px;border:none}
+.loop-ed-cell .n{font-size:3rem;font-weight:900;color:rgba(255,255,255,.1);display:block;line-height:1;margin-bottom:8px}
+.loop-ed-cell strong{display:block;font-size:.9rem;color:var(--paper);margin-bottom:6px}
+.loop-ed-cell span{font-size:.78rem;color:rgba(255,255,255,.55);line-height:1.5;font-weight:300;font-family:'Noto Sans JP',sans-serif}
+.loop-cycle{text-align:center;margin-top:20px;padding:14px;border:1px solid rgba(255,255,255,.2);font-family:'Noto Sans JP',sans-serif;font-size:.8rem;color:rgba(255,255,255,.6);letter-spacing:.08em}
+
+/* SHIFT - melting from newspaper to organic */
+.shift-paper{padding:56px 40px;background:linear-gradient(to bottom,var(--paper),var(--warm))}
+.shift-inner{max-width:760px;margin:0 auto;text-align:center}
+.shift-paper .kicker{display:inline-block;margin-bottom:20px}
+.shift-big{font-size:clamp(1.6rem,4vw,2.8rem);font-weight:900;line-height:1.4;margin-bottom:24px}
+.shift-big em{color:var(--amber);font-style:normal}
+.shift-box{background:#fff;border-radius:12px;border:1px solid rgba(0,0,0,.08);padding:32px;margin-top:28px}
+.shift-box p{font-size:.92rem;color:#555;line-height:1.95;font-weight:300}
+
+/* CASES */
+.cases-paper{background:var(--warm);padding:48px 40px;border-top:2px solid var(--ink)}
+.cases-inner{max-width:960px;margin:0 auto}
+.c-byline{font-family:'Noto Sans JP',sans-serif;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:#888;margin-bottom:20px;display:block}
+.c-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;margin-top:28px}
+.c-card{background:#fff;border:1px solid rgba(0,0,0,.1);padding:24px}
+.c-co{font-size:.95rem;font-weight:700;margin-bottom:4px}
+.c-tag-sm{font-family:'Noto Sans JP',sans-serif;font-size:.64rem;color:#888;letter-spacing:.12em;display:block;margin-bottom:10px}
+.c-res{font-size:.82rem;font-weight:700;color:var(--amber);margin-bottom:8px}
+.c-card p{font-size:.78rem;color:#666;line-height:1.7;font-weight:300}
+
+/* CTA */
+.cta-paper{border-top:3px double var(--ink);padding:80px 40px;text-align:center;background:var(--paper)}
+.cta-paper h2{font-size:clamp(1.4rem,3.5vw,2.3rem);font-weight:900;line-height:1.5;margin:16px 0}
+.cta-paper p{font-size:.88rem;color:#666;margin-bottom:36px;line-height:1.9;font-weight:300}
+.cta-btn{display:inline-block;background:var(--amber);color:#fff;text-decoration:none;padding:16px 52px;font-weight:700;font-size:.95rem;font-family:'Noto Sans JP',sans-serif;letter-spacing:.1em;transition:opacity .3s}
+.cta-btn:hover{opacity:.85}
+.cta-note{font-size:.72rem;color:#aaa;margin-top:14px;font-family:'Noto Sans JP',sans-serif}
+
+.fade-up{opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s}
+.fade-up.visible{opacity:1;transform:none}
+@media(max-width:640px){.headline-inner{grid-template-columns:1fr}.rule-v{display:none}.episode-cols{columns:1}.pain-paper,.headline-sec,.diag-paper,.shift-paper,.cases-paper,.cta-paper{padding-left:20px;padding-right:20px}}
+</style>
+</head>
+<body>
+<nav class="nav"><a href="index.html" class="back-link">← 一覧へ</a><span class="nav-title">熱量あふれる組織のつくりかた</span><a href="#cta" class="nav-cta">書籍を見る</a></nav>
+
+<div class="masthead">
+  <div class="masthead-date">経営者・マネジャーのための組織変革論 ── 2026年版</div>
+  <div class="masthead-title">熱量あふれる組織のつくりかた</div>
+  <div class="masthead-sub">数字の呪縛（お金への思い込み）からの解放 ── なぜ、組織は枯れていくのか？</div>
+</div>
+
+<div class="headline-sec">
+  <div class="headline-inner">
+    <div class="col-a fade-up">
+      <span class="kicker">速報</span>
+      <h2 class="headline">日本企業、仕事への熱意がある社員はわずか6%</h2>
+      <p class="lede">ギャラップ社の2024年調査で、日本は世界139カ国中132位という衝撃の結果が明らかになった。世界平均23%を大幅に下回り、72%の社員が「熱意を持っていない」と回答。さらにアデコ社の2025年調査では、就業者の約70%が「静かな退職」状態にあることも判明した。</p>
+    </div>
+    <div class="rule-v"></div>
+    <div class="col-b fade-up">
+      <span class="kicker">データ</span>
+      <span class="stat-pull">6<small style="font-size:.4em">%</small></span>
+      <div class="stat-lbl">仕事に熱意を持つ日本人社員<br>（Gallup 2024 ／ 世界平均は23%）</div>
+      <p class="lede" style="margin-top:16px">あなたの組織でも、こんな瞬間はないだろうか——残業して作った資料に「で？」と言われた瞬間、心の糸が切れた。子どもに「楽しく働いてる？」と聞かれて、言葉に詰まった。</p>
+    </div>
+  </div>
+</div>
+
+<div class="pain-paper">
+  <div class="pain-inner">
+    <h2 class="pain-hed fade-up">「熱量が消えていく」——読者が語る、組織の現場</h2>
+    <div class="episode-cols">
+      <div class="ep-item"><p class="ep-q">「で？」</p><p>残業して作った資料に対して上司から一言。心の糸が切れた。</p></div><div class="ep-item"><p class="ep-q">日曜の夜</p><p>給料は上がったのに、日曜の夜になると身体が鉛のように重くなる。</p></div><div class="ep-item"><p class="ep-q">数字合わせ</p><p>「新規事業」と聞いてワクワクしたのに、結局は予算との数字合わせに終わった。</p></div><div class="ep-item"><p class="ep-q">自分が消える</p><p>同僚の退職理由は「ここにいても自分が消えていく気がする」。自分も同じだ。</p></div><div class="ep-item"><p class="ep-q">答えられなかった</p><p>部下に「この仕事って何のためにやるんですか？」と聞かれ、答えられなかった。</p></div><div class="ep-item"><p class="ep-q">言葉に詰まった</p><p>子どもに「楽しく働いてる？」と聞かれて、言葉に詰まった。</p></div>
+    </div>
+    <div class="fade-up" style="margin-top:28px;padding:20px 24px;border-left:4px solid var(--amber);background:rgba(201,122,53,.06)">
+      <p style="font-size:.88rem;line-height:1.85;color:#444;font-weight:300">これらは、組織から<strong>「人生の熱量」が枯渇していく</strong>ときに起きる現象だ。仕組みや制度を整えるだけでは、「熱量」は戻ってこない。</p>
+    </div>
+  </div>
+</div>
+
+<div class="diag-paper">
+  <div class="diag-inner">
+    <span class="kicker">社説</span>
+    <h2 class="headline fade-up">「マネーバイアス」が<br>組織を枯らしていく構造</h2>
+    <div class="loop-editorial">
+      <div class="loop-ed-cell"><span class="n">01</span><strong>マネーバイアスが過剰に</strong><span>数字・収益性だけが軸に</span></div><div class="loop-ed-cell"><span class="n">02</span><strong>人とのつながりが希薄化</strong><span>目に見えないものへの意識が消える</span></div><div class="loop-ed-cell"><span class="n">03</span><strong>人生の熱量が枯渇</strong><span>静かな退職が常態化する</span></div><div class="loop-ed-cell"><span class="n">04</span><strong>財務成果も悪化</strong><span>数字も追いつかなくなる</span></div>
+    </div>
+    <div class="loop-cycle">↺ これが、さらにマネーバイアスを過剰にさせていく悪循環</div>
+  </div>
+</div>
+
+<div class="shift-paper">
+  <div class="shift-inner">
+    <span class="kicker">解説</span>
+    <h2 class="shift-big fade-up">「ライフでワークを包む」——<br><em>熱量を取り戻す</em>視点転換</h2>
+    <div class="shift-box fade-up">
+      <p>「人生の熱量」で、生産性・効率性・収益性などを包み、確認指標として活用する。人とのつながりから熱量が湧きあがるとき、組織は再び動き始める。経営陣やミドルマネジャー自身が、自分の「人生の熱量」から始めていける——そのことを、本書はシンプルかつ具体的にお伝えする。</p>
+    </div>
+  </div>
+</div>
+
+<div class="cases-paper">
+  <div class="cases-inner">
+    <span class="c-byline">実践ストーリー ── 現場からの報告</span>
+    <h2 class="pain-hed fade-up">熱量あふれる組織への転換——各社の実践</h2>
+    <div class="c-grid">
+      <div class="c-card fade-up"><span class="c-tag-sm">大手エネルギー企業グループ</span><div class="c-co">九州電力グループ</div><p class="c-res">人的資本経営で最優秀賞受賞</p><p>「人とのつながり」から熱量が湧きあがり、財務的成果とも共存する転換プロセス。</p></div><div class="c-card fade-up"><span class="c-tag-sm">人事・労務コンサルティング</span><div class="c-co">有限会社 人事・労務</div><p class="c-res">400社の顧客を支える小組織の熱量経営</p><p>人とのつながりの深さが顧客への本質的価値となり、持続的経営を支える実践。</p></div><div class="c-card fade-up"><span class="c-tag-sm">物流・運輸業</span><div class="c-co">宮田運輸</div><p class="c-res">業界の常識を超えた「つながり経営」</p><p>現場に密着した仕事の中で、どのように人生の熱量を組織に織り込んでいったか。</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-paper" id="cta">
+  <span class="kicker">本書を手に取る</span>
+  <h2 class="fade-up">「人とのつながり」から熱量を取りもどすと、<br>再び組織が動きはじめる。</h2>
+  <p class="fade-up">経営陣やミドルマネジャー自身が、自分の「人生の熱量」から始めていける——<br>修羅場の経営経験と組織変革の実践知から生まれた一冊。</p>
+  <a href="#" class="cta-btn">書籍を購入する</a>
+  <p class="cta-note">熱量あふれる組織のつくりかた——数字の呪縛（お金への思い込み）からの解放</p>
+</div>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:.1});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

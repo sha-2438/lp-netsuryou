@@ -2,1123 +2,908 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>熱量あふれる組織のつくり方 | マネーバイアスを突破する経営</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>熱量あふれる組織のつくりかた | 経営者・マネジャー向け</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
-
-  :root {
-    --green-light: #c8e6c3;
-    --green-mid: #81c784;
-    --green-dark: #388e3c;
-    --green-deep: #1b5e20;
-    --sage: #a5c9a1;
-    --cream: #f9f6f0;
-    --charcoal: #2c2c2c;
-    --warm-gray: #6b6b6b;
-    --accent: #5a8f5e;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'Noto Sans JP', sans-serif;
-    background: var(--cream);
-    color: var(--charcoal);
-    line-height: 1.8;
-    overflow-x: hidden;
-  }
-
-  /* ─── HERO ─── */
-  .hero {
-    min-height: 100vh;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    background: linear-gradient(135deg, #e8f5e2 0%, #f0f8ec 40%, #e0f0da 70%, #c8e6c3 100%);
-  }
-
-  .hero-bg-becoming {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Noto Serif JP', serif;
-    font-size: clamp(80px, 18vw, 220px);
-    font-weight: 300;
-    color: rgba(129, 199, 132, 0.18);
-    letter-spacing: 0.05em;
-    pointer-events: none;
-    user-select: none;
-  }
-
-  /* 水彩テクスチャ風 SVG blob */
-  .hero-blob {
-    position: absolute;
-    pointer-events: none;
-  }
-  .blob-1 {
-    top: -10%; left: -15%;
-    width: 55vw; height: 55vw;
-    background: radial-gradient(ellipse, rgba(129,199,132,0.22) 0%, transparent 70%);
-    border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
-    animation: morph 12s ease-in-out infinite;
-  }
-  .blob-2 {
-    bottom: -10%; right: -10%;
-    width: 45vw; height: 45vw;
-    background: radial-gradient(ellipse, rgba(165,201,161,0.18) 0%, transparent 70%);
-    border-radius: 40% 60% 30% 70% / 60% 40% 60% 40%;
-    animation: morph 16s ease-in-out infinite reverse;
-  }
-  .blob-3 {
-    top: 30%; right: 5%;
-    width: 25vw; height: 25vw;
-    background: radial-gradient(ellipse, rgba(200,230,195,0.25) 0%, transparent 70%);
-    border-radius: 50% 50% 60% 40% / 40% 60% 50% 50%;
-    animation: morph 10s ease-in-out infinite 3s;
-  }
-
-  @keyframes morph {
-    0%, 100% { border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%; }
-    33% { border-radius: 40% 60% 30% 70% / 60% 40% 60% 40%; }
-    66% { border-radius: 70% 30% 50% 50% / 40% 70% 30% 60%; }
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 10;
-    text-align: center;
-    padding: 2rem;
-    max-width: 900px;
-  }
-
-  .hero-eyebrow {
-    font-size: 0.85rem;
-    letter-spacing: 0.25em;
-    color: var(--accent);
-    font-weight: 500;
-    margin-bottom: 2rem;
-    text-transform: uppercase;
-  }
-
-  .hero-main-copy {
-    font-family: 'Noto Serif JP', serif;
-    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
-    font-weight: 300;
-    color: var(--green-deep);
-    line-height: 2;
-    margin-bottom: 2.5rem;
-    letter-spacing: 0.06em;
-  }
-
-  .hero-main-copy em {
-    font-style: normal;
-    font-weight: 700;
-    color: var(--accent);
-  }
-
-  .hero-title-block {
-    margin-bottom: 2.5rem;
-  }
-
-  .hero-subtitle {
-    font-size: clamp(0.95rem, 1.5vw, 1.15rem);
-    color: var(--warm-gray);
-    font-weight: 300;
-    margin-bottom: 1.2rem;
-    letter-spacing: 0.05em;
-  }
-
-  .hero-title {
-    font-family: 'Noto Serif JP', serif;
-    font-size: clamp(1.8rem, 4.5vw, 3.2rem);
-    font-weight: 700;
-    line-height: 1.4;
-    color: var(--charcoal);
-    letter-spacing: 0.03em;
-  }
-
-  .hero-title span {
-    display: block;
-    font-size: 0.7em;
-    font-weight: 300;
-    color: var(--green-dark);
-    margin-top: 0.5rem;
-    letter-spacing: 0.06em;
-  }
-
-  .hero-concept-badge {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--green-dark), var(--accent));
-    color: white;
-    font-size: 0.85rem;
-    padding: 0.5rem 1.5rem;
-    border-radius: 50px;
-    letter-spacing: 0.1em;
-    margin-bottom: 2.5rem;
-  }
-
-  .hero-scroll-hint {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--accent);
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    animation: fadeInUp 2s ease infinite;
-  }
-
-  .scroll-line {
-    width: 1px;
-    height: 40px;
-    background: linear-gradient(to bottom, transparent, var(--accent));
-  }
-
-  @keyframes fadeInUp {
-    0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
-    50% { opacity: 1; transform: translateX(-50%) translateY(-6px); }
-  }
-
-  /* ─── PROBLEM SECTION ─── */
-  .section-problem {
-    background: var(--charcoal);
-    color: white;
-    padding: 8rem 2rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .section-problem::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 6px;
-    background: linear-gradient(90deg, var(--green-mid), var(--green-dark), var(--green-mid));
-  }
-
-  .problem-inner {
-    max-width: 860px;
-    margin: 0 auto;
-  }
-
-  .section-label {
-    font-size: 0.75rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--green-mid);
-    margin-bottom: 3rem;
-    font-weight: 500;
-  }
-
-  .problem-question {
-    font-family: 'Noto Serif JP', serif;
-    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
-    font-weight: 700;
-    line-height: 1.6;
-    margin-bottom: 3rem;
-    color: white;
-  }
-
-  .problem-symptoms {
-    display: grid;
-    gap: 1.2rem;
-    margin-bottom: 4rem;
-  }
-
-  .symptom-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 1.2rem;
-    padding: 1.4rem 1.8rem;
-    background: rgba(255,255,255,0.04);
-    border-left: 3px solid var(--green-mid);
-    border-radius: 4px;
-  }
-
-  .symptom-icon {
-    font-size: 1.3rem;
-    flex-shrink: 0;
-    margin-top: 0.1rem;
-  }
-
-  .symptom-text {
-    font-size: 1rem;
-    line-height: 1.7;
-    color: rgba(255,255,255,0.85);
-  }
-
-  .symptom-text strong {
-    color: var(--green-light);
-    display: block;
-    margin-bottom: 0.3rem;
-  }
-
-  .problem-closing {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 1.25rem;
-    line-height: 2;
-    color: rgba(255,255,255,0.9);
-    border-top: 1px solid rgba(255,255,255,0.1);
-    padding-top: 2.5rem;
-  }
-
-  /* ─── RIPPLE VISUALIZATION ─── */
-  .section-ripple {
-    padding: 8rem 2rem;
-    background: #f4faf2;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .ripple-inner {
-    max-width: 960px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: center;
-  }
-
-  .ripple-text {}
-
-  .ripple-text .section-label { color: var(--accent); }
-
-  .ripple-heading {
-    font-family: 'Noto Serif JP', serif;
-    font-size: clamp(1.4rem, 2.8vw, 2rem);
-    font-weight: 700;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-    color: var(--charcoal);
-  }
-
-  .ripple-body {
-    font-size: 1rem;
-    color: var(--warm-gray);
-    line-height: 1.9;
-  }
-
-  .ripple-visual {
-    position: relative;
-    height: 380px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* SVGアニメーション：ピラミッドから波紋へ */
-  .org-anim {
-    width: 100%;
-    height: 100%;
-  }
-
-  /* ─── THREE HOLES ─── */
-  .section-holes {
-    padding: 8rem 2rem;
-    background: var(--cream);
-  }
-
-  .holes-inner {
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .holes-header {
-    text-align: center;
-    margin-bottom: 5rem;
-  }
-
-  .holes-header .section-label { color: var(--accent); text-align: center; }
-
-  .holes-title {
-    font-family: 'Noto Serif JP', serif;
-    font-size: clamp(1.5rem, 3vw, 2.2rem);
-    font-weight: 700;
-    line-height: 1.5;
-    color: var(--charcoal);
-    margin-top: 1rem;
-  }
-
-  .holes-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
-
-  .hole-card {
-    position: relative;
-    padding: 2.5rem 2rem;
-    background: white;
-    border-radius: 50% 50% 50% 50% / 30% 30% 70% 70%;
-    box-shadow: 0 4px 30px rgba(56,142,60,0.08);
-    text-align: center;
-    transition: transform 0.3s ease;
-  }
-
-  .hole-card:hover { transform: translateY(-8px); }
-
-  .hole-number {
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--green-light);
-    font-family: 'Noto Serif JP', serif;
-    line-height: 1;
-    margin-bottom: 1rem;
-  }
-
-  .hole-name {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--green-deep);
-    margin-bottom: 1rem;
-    font-family: 'Noto Serif JP', serif;
-  }
-
-  .hole-desc {
-    font-size: 0.9rem;
-    color: var(--warm-gray);
-    line-height: 1.8;
-  }
-
-  .hole-connector {
-    position: absolute;
-    top: 50%;
-    right: -1.5rem;
-    width: 1.5rem;
-    height: 2px;
-    background: var(--green-light);
-  }
-
-  .hole-card:last-child .hole-connector { display: none; }
-
-  /* ─── CONCEPT BREAK ─── */
-  .section-concept {
-    background: linear-gradient(135deg, var(--green-deep) 0%, #2e6b34 100%);
-    color: white;
-    padding: 8rem 2rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .concept-watermark {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: clamp(60px, 14vw, 180px);
-    font-weight: 700;
-    color: rgba(255,255,255,0.04);
-    font-family: 'Noto Serif JP', serif;
-    pointer-events: none;
-  }
-
-  .concept-inner {
-    max-width: 780px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-    text-align: center;
-  }
-
-  .concept-label {
-    font-size: 0.75rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--green-light);
-    margin-bottom: 2.5rem;
-  }
-
-  .concept-statement {
-    font-family: 'Noto Serif JP', serif;
-    font-size: clamp(1.3rem, 2.8vw, 2rem);
-    font-weight: 700;
-    line-height: 1.8;
-    margin-bottom: 2.5rem;
-  }
-
-  .concept-body {
-    font-size: 1rem;
-    line-height: 2;
-    color: rgba(255,255,255,0.8);
-    max-width: 620px;
-    margin: 0 auto;
-  }
-
-  /* ─── AUTHOR SECTION ─── */
-  .section-author {
-    padding: 8rem 2rem;
-    background: #f0f8ec;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .author-inner {
-    max-width: 960px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 380px 1fr;
-    gap: 5rem;
-    align-items: center;
-  }
-
-  .author-image-wrap {
-    position: relative;
-  }
-
-  .author-image-placeholder {
-    width: 100%;
-    aspect-ratio: 3/4;
-    background: linear-gradient(160deg, #b2dfb5 0%, #81c784 50%, #4caf50 100%);
-    border-radius: 30% 70% 60% 40% / 40% 50% 60% 50%;
-    filter: grayscale(0.3) contrast(1.05);
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    padding-bottom: 2rem;
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.7);
-    letter-spacing: 0.1em;
-    font-style: italic;
-  }
-
-  .author-tag {
-    position: absolute;
-    bottom: -1rem;
-    right: -1rem;
-    background: var(--charcoal);
-    color: var(--green-light);
-    font-size: 0.75rem;
-    padding: 0.6rem 1rem;
-    border-radius: 4px;
-    letter-spacing: 0.1em;
-  }
-
-  .author-content {}
-
-  .author-content .section-label { color: var(--accent); }
-
-  .author-name {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--charcoal);
-    margin: 0.8rem 0;
-  }
-
-  .author-role {
-    font-size: 0.9rem;
-    color: var(--warm-gray);
-    margin-bottom: 2rem;
-    letter-spacing: 0.05em;
-  }
-
-  .author-message {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 1.1rem;
-    line-height: 2;
-    color: var(--charcoal);
-    font-weight: 300;
-    margin-bottom: 2rem;
-    font-style: italic;
-  }
-
-  .author-body {
-    font-size: 0.95rem;
-    color: var(--warm-gray);
-    line-height: 1.9;
-  }
-
-  /* ─── TESTIMONIALS ─── */
-  .section-testimonials {
-    padding: 8rem 2rem;
-    background: var(--charcoal);
-    color: white;
-  }
-
-  .test-inner {
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .test-header {
-    text-align: center;
-    margin-bottom: 4rem;
-  }
-
-  .test-header .section-label { color: var(--green-mid); }
-
-  .test-title {
-    font-family: 'Noto Serif JP', serif;
-    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
-    font-weight: 700;
-    margin-top: 1rem;
-  }
-
-  .test-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-
-  .test-card {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(129,199,132,0.2);
-    border-radius: 12px;
-    padding: 2rem;
-  }
-
-  .test-quote {
-    font-size: 0.95rem;
-    line-height: 1.9;
-    color: rgba(255,255,255,0.85);
-    margin-bottom: 1.5rem;
-    font-style: italic;
-  }
-
-  .test-quote::before {
-    content: '「';
-    color: var(--green-mid);
-    font-size: 1.5rem;
-    font-family: 'Noto Serif JP', serif;
-  }
-
-  .test-quote::after {
-    content: '」';
-    color: var(--green-mid);
-    font-size: 1.5rem;
-    font-family: 'Noto Serif JP', serif;
-  }
-
-  .test-person {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .test-avatar {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--green-mid), var(--green-dark));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.75rem;
-    color: white;
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-
-  .test-info {}
-  .test-name { font-size: 0.9rem; font-weight: 700; color: white; }
-  .test-role { font-size: 0.78rem; color: var(--green-mid); margin-top: 0.2rem; }
-
-  /* ─── CTA ─── */
-  .section-cta {
-    padding: 8rem 2rem;
-    background: linear-gradient(160deg, #e8f5e2 0%, #c8e6c3 60%, #a5c9a1 100%);
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .cta-blob {
-    position: absolute;
-    bottom: -20%; right: -15%;
-    width: 60vw; height: 60vw;
-    background: radial-gradient(ellipse, rgba(255,255,255,0.4) 0%, transparent 65%);
-    border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
-    pointer-events: none;
-  }
-
-  .cta-inner { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; }
-
-  .cta-label {
-    font-size: 0.75rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--green-dark);
-    margin-bottom: 2rem;
-    font-weight: 500;
-  }
-
-  .cta-heading {
-    font-family: 'Noto Serif JP', serif;
-    font-size: clamp(1.5rem, 3.5vw, 2.5rem);
-    font-weight: 700;
-    color: var(--green-deep);
-    line-height: 1.5;
-    margin-bottom: 1.5rem;
-  }
-
-  .cta-body {
-    font-size: 1rem;
-    color: var(--green-dark);
-    line-height: 1.9;
-    margin-bottom: 3rem;
-  }
-
-  .cta-btn {
-    display: inline-block;
-    background: var(--green-deep);
-    color: white;
-    padding: 1.2rem 3.5rem;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-decoration: none;
-    box-shadow: 0 8px 30px rgba(27,94,32,0.35);
-    transition: all 0.3s ease;
-  }
-
-  .cta-btn:hover {
-    background: var(--charcoal);
-    transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(27,94,32,0.4);
-  }
-
-  .cta-note {
-    margin-top: 1.5rem;
-    font-size: 0.82rem;
-    color: var(--green-dark);
-    opacity: 0.7;
-  }
-
-  /* ─── FOOTER ─── */
-  footer {
-    background: var(--charcoal);
-    color: rgba(255,255,255,0.4);
-    text-align: center;
-    padding: 2.5rem;
-    font-size: 0.8rem;
-    letter-spacing: 0.08em;
-  }
-
-  /* ─── NAV ─── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    background: rgba(249,246,240,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(129,199,132,0.2);
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .nav-logo {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--green-deep);
-    letter-spacing: 0.05em;
-  }
-
-  .nav-cta {
-    background: var(--green-dark);
-    color: white;
-    padding: 0.5rem 1.5rem;
-    border-radius: 50px;
-    font-size: 0.82rem;
-    text-decoration: none;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    transition: background 0.2s;
-  }
-
-  .nav-cta:hover { background: var(--green-deep); }
-
-  /* ─── DIVIDER ─── */
-  .organic-divider {
-    height: 80px;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .organic-divider svg {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  /* ─── RESPONSIVE ─── */
-  @media (max-width: 768px) {
-    .ripple-inner { grid-template-columns: 1fr; gap: 2rem; }
-    .holes-grid { grid-template-columns: 1fr; }
-    .author-inner { grid-template-columns: 1fr; gap: 2rem; }
-    .test-grid { grid-template-columns: 1fr; }
-    .hole-connector { display: none; }
-  }
-
-  /* entry animation */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-  .fade-in.visible {
-    opacity: 1;
-    transform: none;
-  }
+:root {
+  --moss: #3d6b4f;
+  --sage: #6b9e7e;
+  --mist: #c8ddd0;
+  --cream: #faf8f3;
+  --sand: #f0ebe0;
+  --bark: #5c4a3a;
+  --charcoal: #2a2a2a;
+  --warm-white: #fffef9;
+  --accent: #c8773a;
+  --accent-light: #f0c9a0;
+  --danger: #c0392b;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'Noto Sans JP', sans-serif;
+  background:var(--cream);
+  color:var(--charcoal);
+  line-height:1.8;
+  overflow-x:hidden;
+}
+
+/* NAV */
+.top-nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  padding:14px 40px;
+  display:flex; justify-content:space-between; align-items:center;
+  transition:background .4s;
+}
+.top-nav.scrolled { background:rgba(42,42,42,.95); backdrop-filter:blur(10px); }
+.nav-logo { font-family:'Noto Serif JP',serif; font-size:.9rem; color:#fff; text-decoration:none; opacity:.8; }
+.nav-cta {
+  background:var(--moss); color:#fff; text-decoration:none;
+  padding:8px 24px; border-radius:50px; font-size:.82rem; font-weight:700;
+  transition:background .2s;
+}
+.nav-cta:hover { background:var(--sage); }
+
+/* HERO */
+.hero {
+  min-height:100vh;
+  background:var(--charcoal);
+  position:relative;
+  display:grid; place-items:center;
+  overflow:hidden;
+}
+.hero::before {
+  content:'';
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 70% 60% at 20% 30%, rgba(61,107,79,.55) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 70% at 80% 70%, rgba(42,42,42,.8) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 55% 20%, rgba(107,158,126,.3) 0%, transparent 60%);
+  animation: breathe 8s ease-in-out infinite alternate;
+}
+@keyframes breathe {
+  from { opacity:.8; transform:scale(1); }
+  to   { opacity:1;  transform:scale(1.04); }
+}
+.hero-texture {
+  position:absolute; inset:0; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");
+  opacity:.4;
+}
+.hero-inner {
+  position:relative; z-index:2;
+  max-width:900px; margin:0 auto;
+  padding:100px 40px 80px;
+  text-align:center;
+}
+.hero-stat {
+  display:inline-block;
+  background:rgba(200,119,58,.15);
+  border:1px solid rgba(200,119,58,.4);
+  border-radius:4px;
+  padding:10px 24px;
+  font-size:0.82rem;
+  letter-spacing:.12em;
+  color:var(--accent-light);
+  margin-bottom:36px;
+}
+.hero-stat strong { color:var(--accent); font-size:1.15em; }
+.hero-eyebrow {
+  font-size:.75rem; letter-spacing:.3em; color:var(--sage);
+  text-transform:uppercase; margin-bottom:20px;
+}
+.hero-title {
+  font-family:'Noto Serif JP',serif;
+  font-weight:900;
+  font-size:clamp(1.9rem, 5.2vw, 3.8rem);
+  color:#fff;
+  line-height:1.4;
+  margin-bottom:20px;
+  letter-spacing:.02em;
+}
+.hero-title .hl-green { color:#a8d5b5; }
+.hero-title .hl-red   { color:#e8907a; }
+.hero-subtitle {
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(.95rem, 1.9vw, 1.25rem);
+  color:rgba(255,255,255,.72);
+  line-height:1.85;
+  margin-bottom:52px;
+  font-weight:300;
+}
+.hero-cta {
+  display:inline-block;
+  background:linear-gradient(135deg, var(--moss), var(--sage));
+  color:#fff; text-decoration:none;
+  padding:18px 52px; border-radius:50px;
+  font-size:1rem; font-weight:700; letter-spacing:.08em;
+  transition:transform .3s, box-shadow .3s;
+  box-shadow:0 8px 30px rgba(61,107,79,.4);
+}
+.hero-cta:hover { transform:translateY(-3px); box-shadow:0 12px 40px rgba(61,107,79,.5); }
+.hero-wave { position:absolute; bottom:0; left:0; right:0; }
+.hero-wave svg { display:block; width:100%; height:auto; }
+
+/* STATS BAR */
+.stats-bar { background:var(--charcoal); padding:32px 40px; }
+.stats-inner {
+  max-width:960px; margin:0 auto;
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:32px; text-align:center;
+}
+.stat-num {
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(2rem,4vw,3rem);
+  font-weight:900; color:var(--accent);
+  display:block; line-height:1;
+}
+.stat-label { font-size:.78rem; color:rgba(255,255,255,.6); letter-spacing:.05em; margin-top:6px; display:block; }
+.stat-source { font-size:.68rem; color:rgba(255,255,255,.3); margin-top:4px; }
+
+/* SECTION BASE */
+section { padding:100px 40px; }
+.section-inner { max-width:900px; margin:0 auto; }
+.label-badge {
+  display:inline-block; font-size:.7rem; letter-spacing:.25em;
+  padding:5px 16px; border:1px solid currentColor; border-radius:50px;
+  margin-bottom:24px; text-transform:uppercase;
+}
+.section-title {
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(1.6rem,3.5vw,2.6rem);
+  font-weight:700; line-height:1.4; margin-bottom:24px;
+}
+.section-lead { font-size:1.05rem; line-height:1.9; color:#555; max-width:720px; }
+
+/* PAIN SECTION */
+.pain-section { background:var(--warm-white); }
+.pain-intro {
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(1.05rem,2.3vw,1.45rem);
+  line-height:1.85; color:var(--bark);
+  margin-bottom:48px;
+  border-left:3px solid var(--accent);
+  padding-left:24px; font-weight:400;
+}
+.pain-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(300px,1fr));
+  gap:20px; margin-top:40px;
+}
+.pain-card {
+  background:var(--sand); border-radius:12px;
+  padding:24px 28px; border-left:3px solid var(--mist);
+  position:relative;
+  opacity:0; transform:translateY(20px);
+  transition:opacity .6s, transform .6s;
+}
+.pain-card.visible { opacity:1; transform:none; }
+.pain-card::before {
+  content:'"';
+  position:absolute; top:8px; left:12px;
+  font-family:'Noto Serif JP',serif;
+  font-size:3.5rem; color:var(--mist); line-height:1;
+}
+.pain-card p { font-size:.92rem; line-height:1.75; color:#4a3d34; padding-top:20px; }
+.pain-card p strong { color:var(--bark); }
+.pain-resonance {
+  text-align:center; margin-top:56px; padding:32px;
+  background:linear-gradient(135deg, rgba(61,107,79,.06), rgba(200,221,208,.2));
+  border-radius:16px; border:1px solid var(--mist);
+}
+.pain-resonance p {
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(1rem,2.3vw,1.3rem);
+  color:var(--moss); font-weight:700; line-height:1.7;
+}
+
+/* DIAGNOSIS */
+.diagnosis-section { background:var(--cream); }
+.loop-diagram { margin:48px auto; max-width:680px; }
+.loop-items { display:grid; gap:0; }
+.loop-item {
+  display:flex; align-items:center; gap:20px;
+  padding:20px 28px; background:#fff; border-radius:12px;
+  border:1px solid rgba(0,0,0,.07); margin-bottom:4px;
+  position:relative;
+  opacity:0; transform:translateX(-20px);
+  transition:opacity .6s, transform .6s;
+}
+.loop-item.visible { opacity:1; transform:none; }
+.loop-item:not(:last-child)::after {
+  content:'↓'; position:absolute; bottom:-22px; left:50%;
+  transform:translateX(-50%); font-size:1.2rem;
+  color:var(--danger); font-weight:700; z-index:2;
+}
+.loop-num {
+  width:40px; height:40px; background:var(--charcoal); color:#fff;
+  border-radius:50%; display:grid; place-items:center;
+  font-size:.85rem; font-weight:700; flex-shrink:0;
+}
+.loop-text strong { display:block; font-size:1rem; font-weight:700; color:var(--charcoal); margin-bottom:4px; }
+.loop-text span { font-size:.82rem; color:#777; line-height:1.5; }
+.loop-back {
+  text-align:center; margin-top:24px; padding:16px 24px;
+  background:rgba(192,57,43,.07); border:1px dashed rgba(192,57,43,.3);
+  border-radius:8px; font-size:.85rem; color:var(--danger); font-weight:700;
+}
+.insight-box {
+  background:var(--charcoal); color:#fff; border-radius:16px;
+  padding:48px; margin-top:48px;
+}
+.insight-box h3 {
+  font-family:'Noto Serif JP',serif; font-size:clamp(1.1rem,2.3vw,1.6rem);
+  font-weight:700; margin-bottom:20px; color:var(--accent-light); line-height:1.55;
+}
+.insight-box p { font-size:.95rem; color:rgba(255,255,255,.75); line-height:1.9; }
+
+/* SHIFT */
+.shift-section {
+  background:linear-gradient(160deg, var(--moss) 0%, #2a4d38 100%);
+  color:#fff;
+}
+.shift-section .label-badge { color:var(--mist); border-color:rgba(200,221,208,.4); }
+.shift-section .section-title { color:#fff; }
+.shift-comparison {
+  display:grid; grid-template-columns:1fr 60px 1fr;
+  gap:0; align-items:center; margin:48px 0;
+  background:rgba(255,255,255,.06); border-radius:16px; overflow:hidden;
+}
+.shift-before, .shift-after { padding:36px; }
+.shift-before { background:rgba(0,0,0,.2); }
+.shift-after  { background:rgba(255,255,255,.08); }
+.shift-arrow  { text-align:center; font-size:2rem; opacity:.7; }
+.shift-before h4 { font-family:'Noto Serif JP',serif; font-size:1rem; margin-bottom:14px; color:rgba(255,255,255,.5); }
+.shift-after  h4 { font-family:'Noto Serif JP',serif; font-size:1rem; margin-bottom:14px; color:var(--mist); }
+.shift-before ul, .shift-after ul { list-style:none; font-size:.88rem; line-height:2.1; }
+.shift-before li::before { content:'× '; opacity:.4; }
+.shift-after  li::before { content:'◎ '; color:var(--mist); }
+.paradigm-box {
+  background:rgba(255,255,255,.1); border:1px solid rgba(200,221,208,.3);
+  border-radius:16px; padding:40px 48px; text-align:center; margin-top:48px;
+}
+.key-phrase {
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(1.4rem,3vw,2.2rem);
+  font-weight:900; color:var(--mist); letter-spacing:.05em;
+  display:block; margin-bottom:16px;
+}
+.paradigm-box p { font-size:.95rem; color:rgba(255,255,255,.7); line-height:1.9; }
+
+/* MECHANISM */
+.mechanism-section { background:var(--cream); }
+.flow-chain {
+  display:flex; align-items:stretch;
+  gap:8px; margin:48px 0; overflow-x:auto;
+}
+.flow-node {
+  flex:1; min-width:130px; text-align:center;
+  padding:24px 12px; background:var(--warm-white);
+  border:1px solid var(--mist); border-radius:12px;
+  position:relative;
+}
+.flow-node:not(:last-child)::after {
+  content:'→'; position:absolute; right:-18px; top:50%;
+  transform:translateY(-50%); font-size:1.2rem;
+  color:var(--sage); font-weight:700; z-index:2;
+}
+.flow-icon { font-size:1.8rem; margin-bottom:8px; display:block; }
+.flow-label { font-family:'Noto Serif JP',serif; font-size:.85rem; font-weight:700; color:var(--moss); display:block; line-height:1.4; }
+.flow-sub { font-size:.7rem; color:#888; margin-top:6px; display:block; line-height:1.4; }
+.tool-card {
+  background:var(--warm-white); border:2px solid var(--mist);
+  border-radius:20px; padding:40px 44px; margin-top:48px;
+  position:relative; overflow:hidden;
+}
+.tool-card::before {
+  content:''; position:absolute; top:0; left:0;
+  width:6px; height:100%;
+  background:linear-gradient(to bottom, var(--sage), var(--moss));
+}
+.tool-title { font-family:'Noto Serif JP',serif; font-size:1.35rem; font-weight:700; color:var(--moss); margin-bottom:14px; }
+.tool-desc { font-size:.93rem; color:#555; line-height:1.9; margin-bottom:24px; }
+.tool-steps { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:14px; }
+.step { background:var(--sand); border-radius:10px; padding:18px; text-align:center; }
+.step-num { font-family:'Noto Serif JP',serif; font-size:1.6rem; font-weight:900; color:var(--sage); display:block; line-height:1; margin-bottom:8px; }
+.step p { font-size:.8rem; color:#555; line-height:1.5; }
+
+/* CASES */
+.cases-section { background:var(--sand); }
+.case-cards {
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+  gap:24px; margin-top:48px;
+}
+.case-card {
+  background:#fff; border-radius:16px; overflow:hidden;
+  box-shadow:0 2px 20px rgba(0,0,0,.06);
+  opacity:0; transform:translateY(20px);
+  transition:opacity .7s, transform .7s;
+}
+.case-card.visible { opacity:1; transform:none; }
+.case-head { padding:24px 28px 16px; background:linear-gradient(135deg, var(--moss), var(--sage)); color:#fff; }
+.case-tag { font-size:.68rem; letter-spacing:.18em; opacity:.75; display:block; margin-bottom:8px; }
+.case-company { font-family:'Noto Serif JP',serif; font-size:1rem; font-weight:700; line-height:1.4; }
+.case-body { padding:22px 28px; }
+.case-result { font-family:'Noto Serif JP',serif; font-size:.95rem; font-weight:700; color:var(--moss); margin-bottom:10px; line-height:1.5; }
+.case-body p { font-size:.82rem; color:#666; line-height:1.75; }
+
+/* CHAPTERS */
+.chapters-section { background:var(--warm-white); }
+.chapters-list { display:grid; gap:14px; margin-top:48px; }
+.chapter-item {
+  display:grid; grid-template-columns:64px 1fr;
+  background:#fff; border:1px solid rgba(0,0,0,.07); border-radius:12px; overflow:hidden;
+}
+.chapter-num { background:var(--moss); color:#fff; display:grid; place-items:center; font-family:'Noto Serif JP',serif; font-size:1.5rem; font-weight:900; }
+.chapter-content { padding:18px 22px; }
+.chapter-content h4 { font-family:'Noto Serif JP',serif; font-size:.95rem; font-weight:700; color:var(--charcoal); margin-bottom:5px; line-height:1.5; }
+.chapter-content p { font-size:.8rem; color:#777; line-height:1.6; }
+
+/* AUTHORS */
+.author-section { background:var(--cream); }
+.author-cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:28px; margin-top:48px; }
+.author-card { background:var(--warm-white); border:1px solid var(--mist); border-radius:16px; padding:32px; }
+.author-name { font-family:'Noto Serif JP',serif; font-size:1.05rem; font-weight:700; color:var(--charcoal); margin-bottom:6px; }
+.author-title { font-size:.76rem; color:var(--sage); letter-spacing:.05em; margin-bottom:14px; font-weight:700; }
+.author-bio { font-size:.82rem; color:#666; line-height:1.8; }
+.author-badge {
+  display:inline-block; background:var(--sand); border-radius:4px;
+  padding:3px 10px; font-size:.7rem; color:var(--moss); font-weight:700;
+  margin:4px 4px 4px 0;
+}
+
+/* EXPERTS */
+.expert-section { background:var(--sand); }
+.expert-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:12px; margin-top:32px; }
+.expert-chip { background:#fff; border:1px solid var(--mist); border-radius:8px; padding:16px 20px; }
+.expert-chip strong { display:block; color:var(--charcoal); font-size:.9rem; margin-bottom:4px; }
+.expert-chip span { color:#888; font-size:.76rem; line-height:1.5; }
+
+/* QUOTE DIVIDER */
+.quote-divider { background:var(--warm-white); padding:80px 40px; text-align:center; }
+.big-quote {
+  font-family:'Noto Serif JP',serif; font-size:clamp(1.05rem,2.7vw,1.85rem);
+  font-weight:700; color:var(--moss); max-width:760px; margin:0 auto; line-height:1.85;
+}
+
+/* CTA */
+.cta-section {
+  background:linear-gradient(160deg, #1a2f22 0%, #2a4d38 60%, var(--moss) 100%);
+  color:#fff; text-align:center; padding:120px 40px;
+  position:relative; overflow:hidden;
+}
+.cta-section::before {
+  content:''; position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 60% 70% at 20% 80%, rgba(200,119,58,.2) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 80% 20%, rgba(107,158,126,.15) 0%, transparent 60%);
+}
+.cta-inner { position:relative; z-index:1; }
+.cta-section .label-badge { color:var(--mist); border-color:rgba(200,221,208,.3); }
+.cta-section h2 {
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(1.7rem,3.8vw,2.8rem);
+  font-weight:900; line-height:1.45; margin:24px 0 16px;
+}
+.cta-section > .cta-inner > p { font-size:1rem; color:rgba(255,255,255,.7); margin-bottom:48px; line-height:1.9; }
+.cta-btn {
+  display:inline-block;
+  background:linear-gradient(135deg, var(--accent), #e09050);
+  color:#fff; text-decoration:none;
+  padding:20px 64px; border-radius:50px;
+  font-size:1.05rem; font-weight:700; letter-spacing:.06em;
+  box-shadow:0 10px 40px rgba(200,119,58,.4);
+  transition:transform .3s, box-shadow .3s;
+}
+.cta-btn:hover { transform:translateY(-4px); box-shadow:0 16px 50px rgba(200,119,58,.5); }
+.cta-note { font-size:.76rem; color:rgba(255,255,255,.35); margin-top:20px; }
+
+/* FADE-UP */
+.fade-up { opacity:0; transform:translateY(30px); transition:opacity .7s, transform .7s; }
+.fade-up.visible { opacity:1; transform:none; }
+
+@media(max-width:700px) {
+  section { padding:70px 20px; }
+  .shift-comparison { grid-template-columns:1fr; }
+  .shift-arrow { display:none; }
+  .flow-chain { flex-direction:column; }
+  .flow-node:not(:last-child)::after { content:'↓'; right:auto; top:auto; bottom:-18px; left:50%; }
+  .stats-inner { grid-template-columns:1fr; gap:20px; }
+  .hero-inner { padding:80px 20px 60px; }
+  .top-nav { padding:14px 20px; }
+}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
-  <div class="nav-logo">熱量あふれる組織のつくり方</div>
+<nav class="top-nav" id="nav">
+  <a href="index.html" class="nav-logo">← 一覧へ戻る</a>
   <a href="#cta" class="nav-cta">書籍を見る</a>
 </nav>
 
-<!-- HERO -->
+<!-- ══ HERO ══ -->
 <section class="hero">
-  <div class="hero-blob blob-1"></div>
-  <div class="hero-blob blob-2"></div>
-  <div class="hero-blob blob-3"></div>
-  <div class="hero-bg-becoming">Becoming</div>
-
-  <div class="hero-content">
-    <p class="hero-eyebrow">For Managers &amp; Leaders · Pattern 01-B-2</p>
-
-    <div class="hero-title-block">
-      <p class="hero-subtitle">数値目標に追われるすべての経営者・マネジャーへ</p>
-      <h1 class="hero-title">
-        熱量あふれる<br>組織のつくり方
-        <span>──数字の呪縛（お金の思い込み）からの解放</span>
-      </h1>
+  <div class="hero-texture"></div>
+  <div class="hero-inner">
+    <div class="hero-stat">
+      Gallup 2024年調査 ｜ 日本の仕事への熱意 <strong>6%</strong>（世界139カ国中 132位）
     </div>
-
-    <div class="hero-concept-badge">マネーバイアスを突破する経営</div>
-
-    <p class="hero-main-copy">
-      KPIを達成しても、チームの目が<em>死んでいる</em>。<br>
-      生産性を追えば追うほど、<em>熱量が消えていく</em>。<br>
-      その「おかしさ」に気づいているあなたへ。
+    <p class="hero-eyebrow">経営者・マネジャーのための組織変革論</p>
+    <h1 class="hero-title">
+      <span class="hl-red">数字の呪縛</span>から組織を解き放ち、<br>
+      <span class="hl-green">熱量あふれるチーム</span>をつくる
+    </h1>
+    <p class="hero-subtitle">
+      「離職が止まらない」「メンバーの熱意が感じられない」——<br>
+      仕組みや制度ではなく、<em>人とのつながり</em>から<br>
+      組織の熱量は取り戻せる。
     </p>
+    <a href="#cta" class="hero-cta">本書を手に取る →</a>
   </div>
-
-  <div class="hero-scroll-hint">
-    <div class="scroll-line"></div>
-    SCROLL
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,60 C360,120 1080,0 1440,60 L1440,100 L0,100 Z" fill="#faf8f3"/>
+    </svg>
   </div>
 </section>
 
-<!-- PROBLEM -->
-<section class="section-problem">
-  <div class="problem-inner">
-    <p class="section-label">The Problem · 問題の構造</p>
+<!-- ══ STATS ══ -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div>
+      <span class="stat-num">6%</span>
+      <span class="stat-label">仕事に熱意を持つ日本人社員</span>
+      <div class="stat-source">Gallup 2024 ｜ 世界平均は 23%</div>
+    </div>
+    <div>
+      <span class="stat-num">72%</span>
+      <span class="stat-label">熱意を持っていない社員の割合</span>
+      <div class="stat-source">同調査 ｜ 調査対象139カ国中 132位</div>
+    </div>
+    <div>
+      <span class="stat-num">約70%</span>
+      <span class="stat-label">「静かな退職」状態にある就業者</span>
+      <div class="stat-source">アデコ株式会社 2025年調査</div>
+    </div>
+  </div>
+</div>
 
-    <h2 class="problem-question fade-in">
-      なぜ、正しく経営しているはずなのに<br>
-      組織から「生きる力」が失われていくのか？
+<!-- ══ PAIN ══ -->
+<section class="pain-section">
+  <div class="section-inner">
+    <span class="label-badge" style="color:var(--bark)">共感の問い</span>
+    <h2 class="section-title fade-up">
+      あなたの組織で、<br>こんな瞬間はありませんか？
+    </h2>
+    <p class="pain-intro fade-up">
+      組織から「熱量」が消えていく——<br>
+      思い当たる経験が、きっとあるはずだ。
+    </p>
+
+    <div class="pain-grid">
+      <div class="pain-card">
+        <p>残業して作った資料に対して上司から一言。<strong>「で？」</strong>と言われた瞬間、心の糸が切れた。</p>
+      </div>
+      <div class="pain-card">
+        <p>給料は上がったのに、<strong>日曜の夜になると身体が鉛のように重くなる</strong>（サザエさん症候群）。</p>
+      </div>
+      <div class="pain-card">
+        <p>「新規事業」と聞いてワクワクしたのに、<strong>結局は予算との数字合わせ</strong>に終わった。</p>
+      </div>
+      <div class="pain-card">
+        <p>同僚の退職理由は「<strong>ここにいても自分が消えていく気がする</strong>」。自分も同じだ。</p>
+      </div>
+      <div class="pain-card">
+        <p>部下に「<strong>この仕事って何のためにやるんですか？</strong>」と聞かれ、答えられなかった。</p>
+      </div>
+      <div class="pain-card">
+        <p>子どもに「<strong>楽しく働いてる？</strong>」と聞かれて、言葉に詰まった。</p>
+      </div>
+    </div>
+
+    <div class="pain-resonance fade-up">
+      <p>
+        これらは、組織から<strong>「人生の熱量」が枯渇していく</strong>ときに起きる現象だ。<br>
+        なぜ、こんなことが起きるのか。その根本原因に、本書は正面から向き合う。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DIAGNOSIS ══ -->
+<section class="diagnosis-section">
+  <div class="section-inner">
+    <span class="label-badge" style="color:var(--moss)">根本原因の診断</span>
+    <h2 class="section-title fade-up">
+      「マネーバイアス」が<br>組織を凍らせていく
+    </h2>
+    <p class="section-lead fade-up">
+      収益性・生産性・効率性などの数値を第一とする姿勢が強くなりすぎると、
+      気づかないうちに<strong>「お金への思い込み（マネーバイアス）」</strong>が組織を覆い、
+      悪循環が始まる。
+    </p>
+
+    <div class="loop-diagram">
+      <div class="loop-items">
+        <div class="loop-item fade-up">
+          <div class="loop-num">1</div>
+          <div class="loop-text">
+            <strong>マネーバイアスが過剰になる</strong>
+            <span>数字・収益性だけが絶対的な軸として組織を覆う</span>
+          </div>
+        </div>
+        <div class="loop-item fade-up">
+          <div class="loop-num">2</div>
+          <div class="loop-text">
+            <strong>人とのつながりが希薄化する</strong>
+            <span>「目に見えない」熱量・つながりへの意識が失われる</span>
+          </div>
+        </div>
+        <div class="loop-item fade-up">
+          <div class="loop-num">3</div>
+          <div class="loop-text">
+            <strong>「人生の熱量」が枯渇する</strong>
+            <span>熱意はないが最低限の業務はこなす「静かな退職」が常態化</span>
+          </div>
+        </div>
+        <div class="loop-item fade-up">
+          <div class="loop-num">4</div>
+          <div class="loop-text">
+            <strong>財務成果も中長期で悪化する</strong>
+            <span>新たな発想が生まれず、皮肉にも数字も追いつかなくなる</span>
+          </div>
+        </div>
+      </div>
+      <div class="loop-back">↺ これが、さらにマネーバイアスを過剰にさせていく悪循環</div>
+    </div>
+
+    <div class="insight-box fade-up">
+      <h3>仕組みや制度を整えるだけでは、「熱量」は戻ってこない</h3>
+      <p>
+        ティール組織も、ホラクラシーも、OKRも——考え方・理論・手法は重要だ。しかし、
+        これらを「生産性向上の手段」として導入しようとする限り、
+        一人ひとりの「人生の熱量」に主眼が置かれることはない。<br><br>
+        組織が本当に変わるのは、経営陣やミドルマネジャー<em>自身</em>が変わるときである。
+        自分自身の「人生の熱量」が湧きあがっているとき、人とのつながりの大切さが自ずとわかるようになる。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SHIFT ══ -->
+<section class="shift-section">
+  <div class="section-inner">
+    <span class="label-badge">視点の転換</span>
+    <h2 class="section-title fade-up">
+      「ワークでライフを包む」から<br>「ライフでワークを包む」へ
+    </h2>
+    <p class="section-lead fade-up" style="color:rgba(255,255,255,.7)">
+      本書が提唱する根本的な視点転換。この転換によって、
+      すべての理論・手法・数値指標が「人生の熱量」の手段へと変わる。
+    </p>
+
+    <div class="shift-comparison">
+      <div class="shift-before">
+        <h4>これまでの思考（ワーク中心）</h4>
+        <ul>
+          <li>生産性・効率性が主眼</li>
+          <li>数値で評価・評価される</li>
+          <li>仕事の中でのみ熱量を考える</li>
+          <li>人とのつながりは二次的</li>
+          <li>専門家・手法に依存する</li>
+        </ul>
+      </div>
+      <div class="shift-arrow">→</div>
+      <div class="shift-after">
+        <h4>本書の視点（ライフ中心）</h4>
+        <ul>
+          <li>人生の熱量が主眼</li>
+          <li>人とのつながりが土壌</li>
+          <li>趣味・興味・好奇心も源泉</li>
+          <li>数値は確認指標として活用</li>
+          <li>自分自身の熱量から始める</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="paradigm-box fade-up">
+      <span class="key-phrase">「ライフでワークを包む」</span>
+      <p>
+        「人生の熱量」で、生産性・効率性・収益性などを包み、確認指標として活用する。<br>
+        考え方、理論、手法、仕組み、指標、そして専門家も——<br>
+        すべて「人生の熱量」で包んだ上で、手段として活用する。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MECHANISM ══ -->
+<section class="mechanism-section">
+  <div class="section-inner">
+    <span class="label-badge" style="color:var(--moss)">熱量が湧きあがるメカニズム</span>
+    <h2 class="section-title fade-up">
+      「人とのつながり」から<br>熱量は生まれ、組織に流れる
+    </h2>
+    <p class="section-lead fade-up">
+      「人生の熱量」は何もないところからは生まれない。
+      家族、友人、同僚、顧客——多種多様な「人とのつながり」を通じて、
+      興味・関心・好奇心という「人生の熱量」が湧きあがってくる。
+      そして、その熱量が他者の共鳴を呼び、連鎖していく。
+    </p>
+
+    <div class="flow-chain">
+      <div class="flow-node">
+        <span class="flow-icon">🤝</span>
+        <span class="flow-label">人との<br>つながり</span>
+        <span class="flow-sub">家族・同僚・顧客<br>書籍・芸術・先人</span>
+      </div>
+      <div class="flow-node">
+        <span class="flow-icon">🌱</span>
+        <span class="flow-label">人生の<br>熱量が湧く</span>
+        <span class="flow-sub">興味・関心<br>好奇心・ワクワク</span>
+      </div>
+      <div class="flow-node">
+        <span class="flow-icon">🔗</span>
+        <span class="flow-label">共鳴・<br>連鎖する</span>
+        <span class="flow-sub">他者に伝播し<br>Becoming（生成）</span>
+      </div>
+      <div class="flow-node">
+        <span class="flow-icon">🏢</span>
+        <span class="flow-label">組織に<br>織り込まれる</span>
+        <span class="flow-sub">多様な活動・<br>対話・実践</span>
+      </div>
+      <div class="flow-node">
+        <span class="flow-icon">📈</span>
+        <span class="flow-label">財務成果も<br>伴ってくる</span>
+        <span class="flow-sub">熱量の結実として<br>数字もついてくる</span>
+      </div>
+    </div>
+
+    <div class="tool-card fade-up">
+      <div class="tool-title">🍂 つながり循環アート 🍂</div>
+      <p class="tool-desc">
+        本書が紹介する実践ツール。倒産したリゾートホテルの再生経営という修羅場の中で生まれ、
+        財務的な危機を乗り越えるプロセスで磨かれてきた手法。
+        役職・年次・前提知識を問わず、週1回・たった10分から始められる。
+      </p>
+      <div class="tool-steps">
+        <div class="step">
+          <span class="step-num">01</span>
+          <p>2人1組でペアを組む<br>（役職・年次不問）</p>
+        </div>
+        <div class="step">
+          <span class="step-num">02</span>
+          <p>最近あった<br>「小さな喜び」を<br>互いにシェアする</p>
+        </div>
+        <div class="step">
+          <span class="step-num">03</span>
+          <p>評価せず、<br>相手の喜びを<br>共に味わう</p>
+        </div>
+        <div class="step">
+          <span class="step-num">04</span>
+          <p>繰り返すことで<br>熱量が<br>組織に広がる</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ QUOTE DIVIDER ══ -->
+<div class="quote-divider">
+  <p class="big-quote fade-up">
+    人生にも、職場にも、組織にも、<br>
+    わたし達一人ひとりの「人生の熱量」が湧きあがり、<br>
+    躍動していてほしい——これが、本書の根本にある願いである。
+  </p>
+</div>
+
+<!-- ══ CASES ══ -->
+<section class="cases-section">
+  <div class="section-inner">
+    <span class="label-badge" style="color:var(--moss)">実践ストーリー</span>
+    <h2 class="section-title fade-up">
+      成功だけでなく、失敗・試行錯誤も含めた<br>リアルな変革プロセス
+    </h2>
+    <p class="section-lead fade-up">
+      人的資本経営最優秀賞の九州電力グループ、400社を支える有限会社人事・労務、
+      宮田運輸、丸善雄松堂、社会福祉法人蒼渓会、KEIPE株式会社——
+      「人とのつながり」から「人生の熱量」が湧きあがり、財務成果とも共存する現場。
+    </p>
+
+    <div class="case-cards">
+      <div class="case-card">
+        <div class="case-head">
+          <span class="case-tag">大手エネルギー企業グループ</span>
+          <span class="case-company">九州電力グループ</span>
+        </div>
+        <div class="case-body">
+          <p class="case-result">人的資本経営で最優秀賞受賞</p>
+          <p>数値目標だけでは説明できない組織変化の根拠。「人とのつながり」から熱量が湧きあがり、財務的な成果とも共存する転換プロセスに迫る。</p>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-head">
+          <span class="case-tag">人事・労務コンサルティング</span>
+          <span class="case-company">有限会社 人事・労務</span>
+        </div>
+        <div class="case-body">
+          <p class="case-result">400社の顧客を支える小組織の熱量経営</p>
+          <p>小規模だからこそ可能な「人とのつながり」の深さ。熱量が顧客への本質的な価値となり、持続的な経営を支える実践。</p>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-head">
+          <span class="case-tag">物流・運輸業</span>
+          <span class="case-company">宮田運輸</span>
+        </div>
+        <div class="case-body">
+          <p class="case-result">業界の常識を超えた「つながり経営」</p>
+          <p>現場に密着した仕事の中で、どのように「人生の熱量」を組織に織り込んでいったか。現場発のイノベーションの源泉を追う。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CHAPTERS ══ -->
+<section class="chapters-section">
+  <div class="section-inner">
+    <span class="label-badge" style="color:var(--moss)">本書の構成</span>
+    <h2 class="section-title fade-up">
+      5章構成で、組織を見る目を<br>根本から書き換える
     </h2>
 
-    <div class="problem-symptoms">
-      <div class="symptom-item fade-in">
-        <div class="symptom-icon">📊</div>
-        <div class="symptom-text">
-          <strong>数値目標は達成できている</strong>
-          売上・利益・生産性の指標は緑。でも現場の空気は重く、優秀な人から静かに去っていく。
+    <div class="chapters-list">
+      <div class="chapter-item fade-up">
+        <div class="chapter-num">1</div>
+        <div class="chapter-content">
+          <h4>組織から熱量が枯渇していく今、本当に必要な変化とは？</h4>
+          <p>Gallup調査6%の衝撃と「静かな退職」70%の実態。マネーバイアスが熱量を枯渇させる構造と悪循環を解明する。</p>
         </div>
       </div>
-      <div class="symptom-item fade-in">
-        <div class="symptom-icon">🔄</div>
-        <div class="symptom-text">
-          <strong>エンゲージメント施策が実らない</strong>
-          1on1を導入した。研修も増やした。でも「やらされ感」は消えず、チームに本物の熱量は戻らない。
+      <div class="chapter-item fade-up">
+        <div class="chapter-num">2</div>
+        <div class="chapter-content">
+          <h4>熱量あふれる組織の姿と、ライフでワークを包む具体的な実践</h4>
+          <p>「🍂つながり循環アート🍂」など、今日から始められる実践手法。倒産ホテル再生という修羅場から生まれたツール群。</p>
         </div>
       </div>
-      <div class="symptom-item fade-in">
-        <div class="symptom-icon">🧊</div>
-        <div class="symptom-text">
-          <strong>正論が通じない組織になってきた</strong>
-          合理的な説明をすれば人が動くと信じてきた。でも今、論理は届いても心は動かない。
+      <div class="chapter-item fade-up">
+        <div class="chapter-num">3</div>
+        <div class="chapter-content">
+          <h4>考え方・理論・手法が主眼になってしまう背景と、その社会的・歴史的な根拠</h4>
+          <p>大阪大学特任教授・堂目卓生氏との対談を軸に、経済思想の系譜からマネーバイアスの歴史的ルーツを探る。</p>
         </div>
       </div>
-      <div class="symptom-item fade-in">
-        <div class="symptom-icon">💡</div>
-        <div class="symptom-text">
-          <strong>「このやり方でいいのか」という根本的な問い</strong>
-          マネジメントの手法ではなく、経営の前提そのものを見直す必要があると直感している。
+      <div class="chapter-item fade-up">
+        <div class="chapter-num">4</div>
+        <div class="chapter-content">
+          <h4>個人と組織の新たな関係性と、生成の組織論の３つの視点</h4>
+          <p>「生成（Becoming）」し続ける熱量の流れとして組織を捉える新たな理論的枠組み。ティール・ホラクラシーをも包む思想へ。</p>
         </div>
       </div>
-    </div>
-
-    <p class="problem-closing fade-in">
-      これは、あなたの能力や努力の問題ではありません。<br>
-      私たちが無意識に信じ込んでいる<strong>「お金の思い込み（マネーバイアス）」</strong>が、<br>
-      組織を根本から凍らせているのです。
-    </p>
-  </div>
-</section>
-
-<!-- RIPPLE VISUALIZATION -->
-<section class="section-ripple">
-  <div class="ripple-inner">
-    <div class="ripple-text fade-in">
-      <p class="section-label">The Shift · 構造の転換</p>
-      <h2 class="ripple-heading">
-        ピラミッドが<br>「波紋」に変わるとき
-      </h2>
-      <p class="ripple-body">
-        従来の組織は、命令と管理のピラミッド構造で動いていました。効率は高いが、人の熱量は上から下へ一方通行にしか流れません。<br><br>
-        マネーバイアスを外したとき、組織は生命体のように変容します。一人ひとりの熱量が石を投じた水面のように広がり、互いに共鳴し増幅していく——それが「有機的組織」の姿です。
-      </p>
-    </div>
-
-    <div class="ripple-visual">
-      <svg class="org-anim" viewBox="0 0 400 380" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- 左：ピラミッド（硬い線） -->
-        <g opacity="0.25">
-          <polygon points="200,30 100,160 300,160" fill="none" stroke="#888" stroke-width="1.5"/>
-          <line x1="140" y1="160" x2="260" y2="160" stroke="#888" stroke-width="1"/>
-          <line x1="120" y1="200" x2="280" y2="200" stroke="#888" stroke-width="1"/>
-          <line x1="100" y1="240" x2="300" y2="240" stroke="#888" stroke-width="1"/>
-          <line x1="80" y1="280" x2="320" y2="280" stroke="#888" stroke-width="1"/>
-        </g>
-
-        <!-- 右：波紋（柔らかい線・グリーン） -->
-        <!-- 中心点 -->
-        <circle cx="200" cy="195" r="8" fill="#4caf50" opacity="0.9"/>
-        <!-- 波紋リング -->
-        <circle cx="200" cy="195" r="35" stroke="#81c784" stroke-width="1" fill="none" opacity="0.8">
-          <animate attributeName="r" from="8" to="35" dur="3s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" from="0.8" to="0" dur="3s" repeatCount="indefinite"/>
-        </circle>
-        <circle cx="200" cy="195" r="35" stroke="#81c784" stroke-width="1" fill="none" opacity="0.6">
-          <animate attributeName="r" from="8" to="70" dur="3s" begin="0.5s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" from="0.6" to="0" dur="3s" begin="0.5s" repeatCount="indefinite"/>
-        </circle>
-        <circle cx="200" cy="195" r="35" stroke="#a5c9a1" stroke-width="1" fill="none" opacity="0.4">
-          <animate attributeName="r" from="8" to="110" dur="3s" begin="1s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" from="0.4" to="0" dur="3s" begin="1s" repeatCount="indefinite"/>
-        </circle>
-        <circle cx="200" cy="195" r="35" stroke="#c8e6c3" stroke-width="0.8" fill="none" opacity="0.3">
-          <animate attributeName="r" from="8" to="155" dur="3s" begin="1.5s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" from="0.3" to="0" dur="3s" begin="1.5s" repeatCount="indefinite"/>
-        </circle>
-
-        <!-- ノード -->
-        <circle cx="200" cy="80" r="5" fill="#388e3c" opacity="0.7"/>
-        <circle cx="130" cy="140" r="5" fill="#388e3c" opacity="0.7"/>
-        <circle cx="270" cy="140" r="5" fill="#388e3c" opacity="0.7"/>
-        <circle cx="160" cy="280" r="5" fill="#388e3c" opacity="0.7"/>
-        <circle cx="240" cy="280" r="5" fill="#388e3c" opacity="0.7"/>
-        <circle cx="90" cy="230" r="4" fill="#81c784" opacity="0.6"/>
-        <circle cx="310" cy="230" r="4" fill="#81c784" opacity="0.6"/>
-
-        <!-- 有機的接続線 -->
-        <path d="M200,195 Q165,135 130,140" stroke="#81c784" stroke-width="0.8" fill="none" opacity="0.5"/>
-        <path d="M200,195 Q235,135 270,140" stroke="#81c784" stroke-width="0.8" fill="none" opacity="0.5"/>
-        <path d="M200,195 Q180,237 160,280" stroke="#81c784" stroke-width="0.8" fill="none" opacity="0.5"/>
-        <path d="M200,195 Q220,237 240,280" stroke="#81c784" stroke-width="0.8" fill="none" opacity="0.5"/>
-        <path d="M200,195 Q140,190 90,230" stroke="#a5c9a1" stroke-width="0.6" fill="none" opacity="0.4"/>
-        <path d="M200,195 Q260,190 310,230" stroke="#a5c9a1" stroke-width="0.6" fill="none" opacity="0.4"/>
-        <path d="M200,195 Q200,130 200,80" stroke="#a5c9a1" stroke-width="0.6" fill="none" opacity="0.4"/>
-
-        <!-- ラベル -->
-        <text x="200" y="340" text-anchor="middle" font-size="10" fill="#81c784" font-family="'Noto Sans JP', sans-serif" letter-spacing="1">
-          熱量が波紋のように広がる有機的組織
-        </text>
-      </svg>
-    </div>
-  </div>
-</section>
-
-<!-- THREE HOLES -->
-<section class="section-holes">
-  <div class="holes-inner">
-    <div class="holes-header fade-in">
-      <p class="section-label">Three Breakthroughs · 3つの風穴</p>
-      <h2 class="holes-title">
-        マネーバイアスを突破する<br>
-        3つのパラダイムシフト
-      </h2>
-    </div>
-
-    <div class="holes-grid">
-      <div class="hole-card fade-in">
-        <div class="hole-number">01</div>
-        <div class="hole-name">お金は「目的」ではなく<br>「エネルギーの流れ」</div>
-        <div class="hole-desc">
-          利益を目的化した瞬間、組織から生命力が失われます。お金を熱量が循環した「結果」と捉え直すとき、経営の前提が根本から変わります。
-        </div>
-        <div class="hole-connector"></div>
-      </div>
-      <div class="hole-card fade-in">
-        <div class="hole-number">02</div>
-        <div class="hole-name">評価は「管理」ではなく<br>「承認と共鳴」</div>
-        <div class="hole-desc">
-          数値で人を管理しようとするほど、人は萎縮します。存在を承認し、貢献の意味を共に見出すことが、チームの熱量を解放します。
-        </div>
-        <div class="hole-connector"></div>
-      </div>
-      <div class="hole-card fade-in">
-        <div class="hole-number">03</div>
-        <div class="hole-name">成長は「強化」ではなく<br>「生成（Becoming）」</div>
-        <div class="hole-desc">
-          スキルを積み上げる「強化」型の成長観を手放し、人が本来持つ可能性が花開く「生成」を信じる組織文化が、持続的な熱量を生みます。
+      <div class="chapter-item fade-up">
+        <div class="chapter-num">5</div>
+        <div class="chapter-content">
+          <h4>実践ストーリー——現場から考え方を深める</h4>
+          <p>九州電力、宮田運輸、有限会社人事・労務など6組織の実践。失敗も試行錯誤も含めたリアルなプロセスを追う。</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONCEPT BREAK -->
-<section class="section-concept">
-  <div class="concept-watermark">Breakthrough</div>
-  <div class="concept-inner">
-    <p class="concept-label">Core Concept · 核心</p>
-    <h2 class="concept-statement fade-in">
-      「数字で動く組織」から<br>
-      「熱量で育つ組織」へ。<br>
-      <br>
-      それは、経営の哲学を<br>根底から問い直す旅です。
+<!-- ══ AUTHORS ══ -->
+<section class="author-section">
+  <div class="section-inner">
+    <span class="label-badge" style="color:var(--moss)">著者について</span>
+    <h2 class="section-title fade-up">
+      修羅場の経営経験と<br>組織変革の実践知から
     </h2>
-    <p class="concept-body fade-in">
-      マネーバイアスとは、お金・数値・効率を至上のものとして疑いなく信じる「思い込みの構造」です。
-      経営者も、マネジャーも、そして組織そのものも、この見えない呪縛に縛られています。
-      本書は、その呪縛を解き放ち、組織に再び「生きる力」を取り戻す具体的な道筋を示します。
+
+    <div class="author-cards">
+      <div class="author-card fade-up">
+        <p class="author-name">のっち</p>
+        <p class="author-title">経営者 ／ 組織変革実践家</p>
+        <p class="author-bio">
+          2016年、『ティール組織』原著を日本初要約し、著者フレデリック・ラルー氏のもとへ直接学びに渡米。
+          倒産したリゾートホテルの再生経営という修羅場、三菱UFJリサーチ＆コンサルティングでの
+          組織開発コンサル、そして現在は製造業の取締役として——どの現場でも「人生の熱量」の問いを追い続けてきた。
+        </p>
+        <div style="margin-top:16px">
+          <span class="author-badge">実務でつかむ！ティール組織（2018）</span>
+          <span class="author-badge">新訳ホラクラシー（2023）監訳</span>
+          <span class="author-badge">倒産ホテル再生経営</span>
+          <span class="author-badge">三菱UFJリサーチ&コンサルティング</span>
+          <span class="author-badge">製造業 取締役（現職）</span>
+        </div>
+      </div>
+      <div class="author-card fade-up">
+        <p class="author-name">宮慶優子</p>
+        <p class="author-title">経営・組織開発コンサルタント</p>
+        <p class="author-bio">
+          大手電力会社の経営企画部での経験をもとに、「なぜ人生の熱量の流れが止まるのか」という問いを抱えて
+          探究を重ねてきた。現在は多様な企業・組織との共同探究を続けている。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EXPERTS ══ -->
+<section class="expert-section">
+  <div class="section-inner">
+    <span class="label-badge" style="color:var(--moss)">対談コラム</span>
+    <h2 class="section-title fade-up">
+      各界リーダーとの<br>共同探究
+    </h2>
+    <p class="section-lead fade-up">
+      著者の経験知に加え、多様な専門家・実践者との対談コラムを収録。
     </p>
-  </div>
-</section>
-
-<!-- AUTHOR -->
-<section class="section-author">
-  <div class="author-inner">
-    <div class="author-image-wrap fade-in">
-      <div class="author-image-placeholder">
-        ── 再生リゾートにて ──
+    <div class="expert-grid">
+      <div class="expert-chip fade-up">
+        <strong>堂目 卓生</strong>
+        <span>大阪大学特任教授<br>経済思想の系譜から「お金への思い込み」の歴史的背景</span>
       </div>
-      <div class="author-tag">著者近影（モノクロ）</div>
-    </div>
-    <div class="author-content fade-in">
-      <p class="section-label">Author · 著者より</p>
-      <div class="author-name">著者名</div>
-      <div class="author-role">組織変革コンサルタント / 熱量循環研究家</div>
-
-      <p class="author-message">
-        「数字を追うことを止めたとき、<br>
-        はじめて本当の経営が始まりました。」
-      </p>
-
-      <p class="author-body">
-        廃業寸前の旅館を再生したとき、私が学んだのは「数値目標を外す」という逆説でした。
-        売上を諦めた瞬間に、スタッフの目が輝き始め、お客様が戻ってきた。
-        その体験が、マネーバイアスという概念と出合うきっかけでした。<br><br>
-        経営の現場で20年間向き合ってきた「なぜ正しいことをしているのに、組織は疲弊するのか」という問いへの、私なりの答えをここに記しました。
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="section-testimonials">
-  <div class="test-inner">
-    <div class="test-header fade-in">
-      <p class="section-label">Voices · 読者の声</p>
-      <h2 class="test-title">
-        数字の呪縛から解放された、<br>経営者たちの声
-      </h2>
-    </div>
-
-    <div class="test-grid">
-      <div class="test-card fade-in">
-        <p class="test-quote">KPIを廃止するという決断は、正直怖かった。でも半年後、チームの自発性が劇的に変わった。売上も、なぜか上がり始めた。</p>
-        <div class="test-person">
-          <div class="test-avatar">A</div>
-          <div class="test-info">
-            <div class="test-name">Aさん</div>
-            <div class="test-role">製造業 代表取締役（従業員230名）</div>
-          </div>
-        </div>
+      <div class="expert-chip fade-up">
+        <strong>新井 和宏</strong>
+        <span>武蔵野大学ウェルビーイング学部客員教授<br>「生きている組織」について</span>
       </div>
-
-      <div class="test-card fade-in">
-        <p class="test-quote">「正しい経営をしているはずなのに」という違和感の正体がやっとわかった。マネーバイアスという言葉が、長年の謎を解いてくれた。</p>
-        <div class="test-person">
-          <div class="test-avatar">B</div>
-          <div class="test-info">
-            <div class="test-name">Bさん</div>
-            <div class="test-role">IT企業 事業部長</div>
-          </div>
-        </div>
+      <div class="expert-chip fade-up">
+        <strong>四井 真治</strong>
+        <span>地球再生型生活研究家<br>「40億年続く『いのち』を学ぶ」</span>
       </div>
-
-      <div class="test-card fade-in">
-        <p class="test-quote">部門の目標を「数値」から「熱量」の言葉に置き換えた朝礼で、メンバーの顔が変わった。たった一週間の出来事が忘れられない。</p>
-        <div class="test-person">
-          <div class="test-avatar">C</div>
-          <div class="test-info">
-            <div class="test-name">Cさん</div>
-            <div class="test-role">サービス業 営業マネジャー</div>
-          </div>
-        </div>
+      <div class="expert-chip fade-up">
+        <strong>西山 勝</strong>
+        <span>九州電力 代表取締役社長<br>これからの企業の可能性について</span>
       </div>
-
-      <div class="test-card fade-in">
-        <p class="test-quote">数字で追い詰めてきた自分を、この本が静かに映し出してくれた。経営者として、人として、見えていなかったものが見えてきた。</p>
-        <div class="test-person">
-          <div class="test-avatar">D</div>
-          <div class="test-info">
-            <div class="test-name">Dさん</div>
-            <div class="test-role">コンサルティング会社 創業者</div>
-          </div>
-        </div>
+      <div class="expert-chip fade-up">
+        <strong>岩井 睦雄</strong>
+        <span>経済同友会 筆頭副代表幹事<br>これからの企業の可能性について</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="section-cta" id="cta">
-  <div class="cta-blob"></div>
+<!-- ══ CTA ══ -->
+<section class="cta-section" id="cta">
   <div class="cta-inner">
-    <p class="cta-label">Get the Book · 書籍情報</p>
-    <h2 class="cta-heading fade-in">
-      マネーバイアスを突破し、<br>
-      熱量あふれる組織を<br>
-      つくり始めよう。
+    <span class="label-badge">本書を手に取る</span>
+    <h2>
+      「人とのつながり」から熱量を取りもどすと、<br>
+      再び組織が動きはじめる。
     </h2>
-    <p class="cta-body fade-in">
-      数値目標に疲れたすべての経営者・マネジャーへ。<br>
-      組織に「生きる力」を取り戻す、新しい経営哲学がここにあります。
+    <p>
+      経営陣やミドルマネジャー自身が、自分の「人生の熱量」から始めていける——<br>
+      そのことを、できるだけシンプルに、具体的にお伝えする一冊。
     </p>
-    <a href="#" class="cta-btn">書籍の詳細を見る →</a>
-    <p class="cta-note">※ 発売情報・先行読者登録はこちらから</p>
+    <a href="#" class="cta-btn">書籍を購入する →</a>
+    <p class="cta-note">熱量あふれる組織のつくりかた——数字の呪縛（お金への思い込み）からの解放</p>
   </div>
 </section>
-
-<footer>
-  <p>© 2026 熱量あふれる組織のつくり方 All Rights Reserved.</p>
-  <p style="margin-top:0.5rem; font-size:0.72rem;">Pattern: 01 · Target: ① 経営者・マネジャー · Concept: B · Design: 案2 有機的ネットワーク</p>
-</footer>
 
 <script>
-// Intersection Observer for fade-in
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
   });
-}, { threshold: 0.12 });
+}, { threshold: 0.1 });
 
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+document.querySelectorAll('.fade-up, .pain-card, .loop-item, .case-card').forEach(el => obs.observe(el));
+
+// stagger delays
+document.querySelectorAll('.pain-card').forEach((c,i) => c.style.transitionDelay = `${i*0.08}s`);
+document.querySelectorAll('.loop-item').forEach((c,i) => c.style.transitionDelay = `${i*0.13}s`);
+document.querySelectorAll('.case-card').forEach((c,i) => c.style.transitionDelay = `${i*0.15}s`);
+document.querySelectorAll('.chapter-item.fade-up').forEach((c,i) => c.style.transitionDelay = `${i*0.1}s`);
+document.querySelectorAll('.expert-chip.fade-up').forEach((c,i) => c.style.transitionDelay = `${i*0.08}s`);
+
+// nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 60));
 </script>
 </body>
 </html>

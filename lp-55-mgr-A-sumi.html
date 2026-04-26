@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LP-55 水墨スタイル | 経営者・マネジャー 共感A</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700;900&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1a1a1a;--gray:#888;--lt:#f5f3ee;--accent:#c0392b;--gold:#b8860b}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Serif JP',serif;background:var(--lt);color:var(--ink);overflow-x:hidden}
+
+/* Ink texture overlay */
+body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='4'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:14px 40px;display:flex;justify-content:space-between;align-items:center}
+.nav.s{background:rgba(245,243,238,.95);backdrop-filter:blur(8px);border-bottom:1px solid rgba(0,0,0,.07)}
+.nav a:first-child{font-size:.82rem;color:var(--ink);text-decoration:none;opacity:.5}
+.nav-cta{background:var(--ink);color:#fff;text-decoration:none;padding:7px 20px;border-radius:2px;font-size:.8rem;font-weight:700;letter-spacing:.1em;font-family:'Noto Sans JP',sans-serif}
+
+/* HERO */
+.hero{min-height:100vh;background:var(--ink);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.ink-wash{position:absolute;inset:0;background:
+  radial-gradient(ellipse 80% 60% at 30% 40%,rgba(50,50,50,.8) 0%,transparent 60%),
+  radial-gradient(ellipse 60% 80% at 75% 60%,rgba(26,26,26,1) 0%,transparent 70%);
+}
+/* Brush stroke SVG */
+.brush-stroke{position:absolute;bottom:0;right:0;width:60%;opacity:.08}
+.hero-inner{position:relative;z-index:2;max-width:800px;margin:0 auto;padding:100px 40px;text-align:center}
+.hero-small{font-family:'Noto Sans JP',sans-serif;font-size:.72rem;letter-spacing:.35em;color:rgba(255,255,255,.45);text-transform:uppercase;margin-bottom:28px;display:block}
+.hero h1{font-size:clamp(2rem,5.5vw,4rem);font-weight:900;color:#fff;line-height:1.35;margin-bottom:20px;letter-spacing:.03em}
+.hero h1 .red{color:var(--accent)}
+.hero p{font-size:clamp(.88rem,1.9vw,1.1rem);color:rgba(255,255,255,.65);line-height:1.9;margin-bottom:48px;font-weight:300}
+.hero-cta{display:inline-block;border:1px solid rgba(255,255,255,.5);color:#fff;text-decoration:none;padding:14px 44px;font-size:.9rem;font-weight:700;letter-spacing:.12em;font-family:'Noto Sans JP',sans-serif;transition:background .3s,color .3s}
+.hero-cta:hover{background:#fff;color:var(--ink)}
+.hero-bottom{position:absolute;bottom:0;left:0;right:0}
+.hero-bottom svg{display:block;width:100%}
+
+/* STATS – ink line style */
+.stats{background:var(--ink);padding:0 40px 36px}
+.stats-inner{max-width:860px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.1)}
+.s-box{padding:28px 24px;text-align:center;background:var(--ink)}
+.s-num{font-size:clamp(2rem,4vw,3rem);font-weight:900;color:#fff;display:block;font-family:'Noto Serif JP',serif}
+.s-lbl{font-size:.72rem;color:rgba(255,255,255,.5);margin-top:6px;font-family:'Noto Sans JP',sans-serif}
+
+/* SECTION */
+section{padding:90px 40px;position:relative;z-index:1}
+.inner{max-width:840px;margin:0 auto}
+.s-badge{font-family:'Noto Sans JP',sans-serif;font-size:.68rem;letter-spacing:.3em;color:var(--gray);border-top:1px solid var(--gray);border-bottom:1px solid var(--gray);padding:5px 0;display:inline-block;margin-bottom:28px;text-transform:uppercase}
+.s-title{font-size:clamp(1.5rem,3.5vw,2.5rem);font-weight:700;line-height:1.45;margin-bottom:28px}
+.s-lead{font-size:.95rem;color:#555;line-height:2;max-width:680px;font-weight:300}
+
+/* PAIN – ink quote style */
+.pain-bg{background:#fff}
+.ink-quotes{display:grid;gap:28px;margin-top:44px}
+.ink-q{display:grid;grid-template-columns:48px 1fr;gap:0;border-bottom:1px solid rgba(0,0,0,.08);padding-bottom:24px;opacity:0;transform:translateY(16px);transition:opacity .7s,transform .7s}
+.ink-q.visible{opacity:1;transform:none}
+.ink-q-num{font-size:2.5rem;font-weight:900;color:rgba(0,0,0,.08);line-height:1;padding-top:4px}
+.ink-q-content{}
+.ink-q strong{display:block;font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:6px}
+.ink-q p{font-size:.88rem;color:#666;line-height:1.75;font-weight:300}
+
+.ink-conclusion{margin-top:44px;padding:36px 40px;background:var(--ink);color:#fff;border-left:4px solid var(--accent)}
+.ink-conclusion p{font-size:clamp(.95rem,2.2vw,1.2rem);line-height:1.85;font-weight:300}
+.ink-conclusion strong{font-weight:700;color:#fff}
+
+/* DIAGNOSIS */
+.diag-bg{background:var(--lt)}
+.loop-items{margin-top:44px;display:grid;gap:2px}
+.l-item{display:flex;gap:20px;align-items:flex-start;padding:22px 28px;background:#fff;border:1px solid rgba(0,0,0,.06);opacity:0;transform:translateY(12px);transition:opacity .6s,transform .6s}
+.l-item.visible{opacity:1;transform:none}
+.l-n{font-size:2rem;font-weight:900;color:rgba(0,0,0,.1);line-height:1;flex-shrink:0;font-family:'Noto Serif JP',serif;width:44px}
+.l-item strong{display:block;font-size:.95rem;font-weight:700;margin-bottom:4px}
+.l-item span{font-size:.82rem;color:#666;line-height:1.5;font-weight:300}
+.loop-end{text-align:center;margin-top:20px;padding:14px;border:1px solid rgba(192,57,43,.25);font-family:'Noto Sans JP',sans-serif;font-size:.82rem;color:var(--accent);letter-spacing:.05em}
+
+/* SHIFT – single big statement */
+.shift-bg{background:var(--ink);color:#fff}
+.shift-inner{max-width:840px;margin:0 auto;padding:100px 40px;text-align:center}
+.shift-small{font-family:'Noto Sans JP',sans-serif;font-size:.7rem;letter-spacing:.3em;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:32px;display:block}
+.shift-big{font-size:clamp(1.8rem,5vw,3.5rem);font-weight:900;line-height:1.4;color:#fff;margin-bottom:32px}
+.shift-big em{color:var(--accent);font-style:normal}
+.shift-body{font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.95;max-width:640px;margin:0 auto;font-weight:300}
+
+/* CASES */
+.cases-bg{background:#fff}
+.c-list{display:grid;gap:1px;background:rgba(0,0,0,.08);margin-top:44px}
+.c-item{background:#fff;display:grid;grid-template-columns:1fr 2fr;gap:0;opacity:0;transform:translateX(-16px);transition:opacity .6s,transform .6s}
+.c-item.visible{opacity:1;transform:none}
+.c-left{padding:28px;border-right:1px solid rgba(0,0,0,.08)}
+.c-right{padding:28px}
+.c-tag{font-family:'Noto Sans JP',sans-serif;font-size:.66rem;letter-spacing:.2em;color:var(--gray);margin-bottom:8px;display:block}
+.c-co{font-size:1rem;font-weight:700}
+.c-res{font-size:.85rem;font-weight:700;color:var(--ink);margin-bottom:8px}
+.c-right p{font-size:.82rem;color:#666;line-height:1.75;font-weight:300}
+
+/* CTA */
+.cta-bg{background:var(--lt);padding:100px 40px;text-align:center;border-top:1px solid rgba(0,0,0,.08)}
+.cta-bg h2{font-size:clamp(1.5rem,3.5vw,2.4rem);font-weight:700;line-height:1.5;margin:20px 0}
+.cta-bg p{font-size:.92rem;color:#666;margin-bottom:40px;line-height:1.9;font-weight:300}
+.cta-btn{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;padding:16px 52px;font-size:.95rem;font-weight:700;letter-spacing:.12em;font-family:'Noto Sans JP',sans-serif;transition:opacity .3s}
+.cta-btn:hover{opacity:.8}
+.cta-note{font-size:.72rem;color:var(--gray);margin-top:16px;font-family:'Noto Sans JP',sans-serif}
+
+.fade-up{opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s}
+.fade-up.visible{opacity:1;transform:none}
+@media(max-width:640px){section{padding:70px 20px}.stats-inner{grid-template-columns:1fr;gap:1px}.c-item{grid-template-columns:1fr}.c-left{border-right:none;border-bottom:1px solid rgba(0,0,0,.08)}}
+</style>
+</head>
+<body>
+<nav class="nav" id="nav"><a href="index.html">← 一覧へ</a><a href="#cta" class="nav-cta">書籍を見る</a></nav>
+
+<section class="hero">
+  <div class="ink-wash"></div>
+  <div class="hero-inner">
+    <span class="hero-small">経営者・マネジャーへ</span>
+    <h1>あなたの組織から、<br><span class="red">熱量</span>は消えていないか。</h1>
+    <p>日本の社員で「仕事に熱意がある」のは6%——。<br>数字を追いかけるほど、熱量は失われていく。<br>その根本原因と、取り戻す道筋を問う。</p>
+    <a href="#cta" class="hero-cta">本書を手に取る →</a>
+  </div>
+  <div class="hero-bottom"><svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0 C480,80 960,0 1440,60 L1440,80 L0,80 Z" fill="#1a1a1a"/></svg></div>
+</section>
+
+<div class="stats"><div class="stats-inner">
+  <div class="s-box"><span class="s-num">6%</span><div class="s-lbl">仕事に熱意を持つ日本人社員（Gallup 2024）</div></div>
+  <div class="s-box"><span class="s-num">72%</span><div class="s-lbl">熱意を持っていない社員（同調査）</div></div>
+  <div class="s-box"><span class="s-num">約70%</span><div class="s-lbl">「静かな退職」状態（アデコ 2025）</div></div>
+</div></div>
+
+<section class="pain-bg">
+  <div class="inner">
+    <span class="s-badge">共感の問い</span>
+    <h2 class="s-title fade-up">あなたの組織でも、<br>こんな瞬間はありませんか？</h2>
+    <div class="ink-quotes">
+      <div class="ink-q"><div class="ink-q-num">01</div><div class="ink-q-content"><strong>「で？」</strong><p>残業して作った資料に対して上司から一言。心の糸が切れた。</p></div></div><div class="ink-q"><div class="ink-q-num">02</div><div class="ink-q-content"><strong>日曜の夜</strong><p>給料は上がったのに、日曜の夜になると身体が鉛のように重くなる。</p></div></div><div class="ink-q"><div class="ink-q-num">03</div><div class="ink-q-content"><strong>数字合わせ</strong><p>「新規事業」と聞いてワクワクしたのに、結局は予算との数字合わせに終わった。</p></div></div><div class="ink-q"><div class="ink-q-num">04</div><div class="ink-q-content"><strong>自分が消える</strong><p>同僚の退職理由は「ここにいても自分が消えていく気がする」。自分も同じだ。</p></div></div><div class="ink-q"><div class="ink-q-num">05</div><div class="ink-q-content"><strong>答えられなかった</strong><p>部下に「この仕事って何のためにやるんですか？」と聞かれ、答えられなかった。</p></div></div><div class="ink-q"><div class="ink-q-num">06</div><div class="ink-q-content"><strong>言葉に詰まった</strong><p>子どもに「楽しく働いてる？」と聞かれて、言葉に詰まった。</p></div></div>
+    </div>
+    <div class="ink-conclusion fade-up"><p>これらは、組織から<strong>「人生の熱量」が枯渇していく</strong>ときに起きる現象だ。<br>なぜ、こんなことが起きるのか。その根本原因に、本書は正面から向き合う。</p></div>
+  </div>
+</section>
+
+<section class="diag-bg">
+  <div class="inner">
+    <span class="s-badge">根本原因の診断</span>
+    <h2 class="s-title fade-up">「マネーバイアス」が<br>組織を枯らしていく</h2>
+    <p class="s-lead fade-up">収益性・生産性・効率性などの数値を第一とする姿勢が強くなりすぎると、「お金への思い込み（マネーバイアス）」が組織を覆い、悪循環が始まる。</p>
+    <div class="loop-items">
+      <div class="l-item fade-up"><div class="l-n">01</div><div><strong>マネーバイアスが過剰になる</strong><span>数字・収益性だけが絶対的な軸として組織を覆う</span></div></div><div class="l-item fade-up"><div class="l-n">02</div><div><strong>人とのつながりが希薄化</strong><span>目に見えない熱量・つながりへの意識が失われる</span></div></div><div class="l-item fade-up"><div class="l-n">03</div><div><strong>「人生の熱量」が枯渇</strong><span>熱意なく最低限の業務をこなす状態が常態化</span></div></div><div class="l-item fade-up"><div class="l-n">04</div><div><strong>財務成果も中長期で悪化</strong><span>守ろうとしていた数字まで追いつかなくなる</span></div></div>
+    </div>
+    <div class="loop-end">↺ これが、さらにマネーバイアスを過剰にさせていく悪循環</div>
+  </div>
+</section>
+
+<div class="shift-bg"><div class="shift-inner">
+  <span class="shift-small">視点の転換</span>
+  <h2 class="shift-big fade-up">「ライフでワークを包む」——<br>これが、<em>熱量を取り戻す</em>鍵だ。</h2>
+  <p class="shift-body fade-up">「人生の熱量」で、生産性・効率性・収益性などを包み、確認指標として活用する。人とのつながりから熱量が湧きあがるとき、組織は再び動き始める。経営陣やミドルマネジャー自身が、自分の「人生の熱量」から始めていける。</p>
+</div></div>
+
+<section class="cases-bg">
+  <div class="inner">
+    <span class="s-badge">実践ストーリー</span>
+    <h2 class="s-title fade-up">熱量が戻った組織——<br>現場からの実証</h2>
+    <div class="c-list">
+      <div class="c-item"><div class="c-left"><span class="c-tag">大手エネルギー企業グループ</span><div class="c-co">九州電力グループ</div></div><div class="c-right"><p class="c-res">人的資本経営で最優秀賞受賞</p><p>「人とのつながり」から熱量が湧きあがり、財務的成果とも共存する転換プロセス。</p></div></div><div class="c-item"><div class="c-left"><span class="c-tag">人事・労務コンサルティング</span><div class="c-co">有限会社 人事・労務</div></div><div class="c-right"><p class="c-res">400社の顧客を支える小組織の熱量経営</p><p>人とのつながりの深さが顧客への本質的価値となり、持続的経営を支える実践。</p></div></div><div class="c-item"><div class="c-left"><span class="c-tag">物流・運輸業</span><div class="c-co">宮田運輸</div></div><div class="c-right"><p class="c-res">業界の常識を超えた「つながり経営」</p><p>現場に密着した仕事の中で、どのように人生の熱量を組織に織り込んでいったか。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-bg" id="cta">
+  <span class="s-badge">本書を手に取る</span>
+  <h2 class="fade-up">「人とのつながり」から熱量を取りもどすと、<br>再び組織が動きはじめる。</h2>
+  <p class="fade-up">経営陣やミドルマネジャー自身が、自分の「人生の熱量」から始めていける——<br>修羅場の経営経験と組織変革の実践知から生まれた一冊。</p>
+  <a href="#" class="cta-btn">書籍を購入する</a>
+  <p class="cta-note">熱量あふれる組織のつくりかた——数字の呪縛（お金への思い込み）からの解放</p>
+</div>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:.1});
+document.querySelectorAll('.fade-up,.ink-q,.l-item,.c-item').forEach((el,i)=>{
+  if(el.classList.contains('ink-q'))el.style.transitionDelay=i*.08+'s';
+  obs.observe(el);
+});
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('s',scrollY>60));
+</script>
+</body>
+</html>

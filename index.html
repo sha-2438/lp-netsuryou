@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LP一覧 | 熱量あふれる組織のつくり方 – 50パターン</title>
+<title>LP一覧 | 熱量あふれる組織のつくり方 – 60パターン</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
 
@@ -61,7 +61,20 @@ header p{font-size:.9rem;color:rgba(255,255,255,.5);margin-top:.8rem;}
 .s-newspaper .card-preview{background:#f9f6ef;color:#1a1a1a;border-top:4px solid #1a1a1a;}
 .s-onemsg .card-preview{background:#fafaf8;color:#111;display:flex;flex-direction:column;gap:4px;justify-content:center;padding:1rem;}
 
+/* 新作10種 カラー */
+.n-thermal .card-preview{background:linear-gradient(135deg,#1a3a52,#2d6080 40%,#e8852a 80%,#d4501a);color:#fff;}
+.n-dawn .card-preview{background:linear-gradient(160deg,#060b14 0%,#1a3060 50%,#c9862a 100%);color:#e8c96a;}
+.n-breath .card-preview{background:linear-gradient(135deg,#f9f5ee,#f0e8d5);color:#7a5c2e;}
+.n-mycel .card-preview{background:#050d0a;color:rgba(52,211,153,.7);}
+.n-sumi .card-preview{background:linear-gradient(135deg,#0a0a0a,#1a1a1a);color:#c0392b;border-top:3px solid #c0392b;}
+.n-news .card-preview{background:#f5f0e0;color:#1a1a1a;border-top:4px solid #333;font-size:1rem;}
+.n-terra .card-preview{background:linear-gradient(135deg,#6b3d1e,#b5541e);color:#f5e6d0;}
+.n-frozen .card-preview{background:linear-gradient(135deg,#1a3a52,#2d6080 50%,#4a2a08 100%);color:#b8d4e8;}
+.n-typo .card-preview{background:#0e0e0e;color:rgba(255,255,255,.12);font-size:5rem;letter-spacing:-.02em;}
+.n-kinmoku .card-preview{background:linear-gradient(135deg,#0a0a08,#141410);color:#c9a84c;border-left:2px solid #c9a84c;}
+
 .tag-layout{background:rgba(255,138,101,.15);color:#ffab91;border:1px solid rgba(255,138,101,.25);}
+.tag-new{background:rgba(201,168,76,.12);color:#e8c96a;border:1px solid rgba(201,168,76,.25);}
 
 .stat-bar{max-width:1400px;margin:0 auto;padding:1.5rem 2rem;display:flex;gap:2.5rem;border-bottom:1px solid rgba(255,255,255,.06);flex-wrap:wrap;}
 .stat{text-align:center;}
@@ -155,15 +168,15 @@ header p{font-size:.9rem;color:rgba(255,255,255,.5);margin-top:.8rem;}
 
 <header>
   <h1>熱量あふれる組織のつくり方<br><span style="font-weight:300;font-size:.7em;color:rgba(255,255,255,.6);">──数字の呪縛（お金の思い込み）からの解放</span></h1>
-  <p>LP たたき台 50パターン一覧（40バリエーション + 10構造バリアント） · 2026.04</p>
+  <p>LP たたき台 60パターン一覧（40バリエーション + 10構造バリアント + 10新作・原稿起点） · 2026.04</p>
 </header>
 
 <div class="stat-bar">
-  <div class="stat"><div class="stat-num">50</div><div class="stat-label">Total Patterns</div></div>
-  <div class="stat"><div class="stat-num">4</div><div class="stat-label">Targets</div></div>
+  <div class="stat"><div class="stat-num">60</div><div class="stat-label">Total Patterns</div></div>
+  <div class="stat"><div class="stat-num">5</div><div class="stat-label">Targets</div></div>
   <div class="stat"><div class="stat-num">2</div><div class="stat-label">Concepts</div></div>
-  <div class="stat"><div class="stat-num">5</div><div class="stat-label">Designs</div></div>
-  <div class="stat"><div class="stat-num">10</div><div class="stat-label">Structural Variants</div></div>
+  <div class="stat"><div class="stat-num">15</div><div class="stat-label">Designs</div></div>
+  <div class="stat"><div class="stat-num">10</div><div class="stat-label">New (原稿起点)</div></div>
 </div>
 
 <div class="filter-bar">
@@ -173,6 +186,7 @@ header p{font-size:.9rem;color:rgba(255,255,255,.5);margin-top:.8rem;}
   <button class="filter-btn" onclick="filter('target','t2')">②人事</button>
   <button class="filter-btn" onclick="filter('target','t3')">③ビジネスパーソン</button>
   <button class="filter-btn" onclick="filter('target','t4')">①②③混合</button>
+  <button class="filter-btn" onclick="filter('target','mgr')">経営者・マネジャー (新作)</button>
   <div class="filter-sep"></div>
   <span class="filter-label">Concept</span>
   <button class="filter-btn active" onclick="filter('concept','all')">すべて</button>
@@ -191,6 +205,7 @@ header p{font-size:.9rem;color:rgba(255,255,255,.5);margin-top:.8rem;}
   <button class="filter-btn active" onclick="filter('layout','all')">すべて</button>
   <button class="filter-btn" onclick="filter('layout','std')">標準40種</button>
   <button class="filter-btn" onclick="filter('layout','struct')">構造バリアント10種</button>
+  <button class="filter-btn" onclick="filter('layout','new')">新作10種（原稿起点）</button>
   <div class="filter-sep"></div>
   <span class="filter-label">評価</span>
   <button class="filter-btn active" onclick="filterRating('all')">すべて</button>
@@ -901,6 +916,141 @@ header p{font-size:.9rem;color:rgba(255,255,255,.5);margin-top:.8rem;}
   </div>
 </a>
 
+
+<!-- ────────────────────────────────────────────────────
+     新作10種（原稿起点）51–60：経営者・マネジャー × A 共感型
+──────────────────────────────────────────────────── -->
+
+<a class="card n-thermal" href="lp-51-mgr-A-thermal.html" target="_blank" data-target="mgr" data-concept="cA" data-design="dnew" data-layout="new">
+  <div class="card-preview"><span>熱量</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 51</div>
+    <div class="card-title">サーマル — 組織の「体温」を可視化する。冷青から灼熱オレンジへのグラデーション</div>
+    <div class="card-tags">
+      <span class="tag tag-target">経営者・マネジャー</span>
+      <span class="tag tag-concept">A 共感型</span>
+      <span class="tag tag-new">サーマル</span>
+    </div>
+  </div>
+</a>
+
+<a class="card n-dawn" href="lp-52-mgr-A-dawn-journey.html" target="_blank" data-target="mgr" data-concept="cA" data-design="dnew" data-layout="new">
+  <div class="card-preview"><span>夜明け</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 52</div>
+    <div class="card-title">夜明けジャーニー — 真夜中から黄金の夜明けへ、6つの章を全画面で辿る旅</div>
+    <div class="card-tags">
+      <span class="tag tag-target">経営者・マネジャー</span>
+      <span class="tag tag-concept">A 共感型</span>
+      <span class="tag tag-new">夜明けジャーニー</span>
+    </div>
+  </div>
+</a>
+
+<a class="card n-breath" href="lp-53-mgr-A-breathing.html" target="_blank" data-target="mgr" data-concept="cA" data-design="dnew" data-layout="new">
+  <div class="card-preview"><span style="font-size:1rem;letter-spacing:.2em;color:#7a5c2e;">ひと息<br>ひと言</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 53</div>
+    <div class="card-title">1フレーズ全画面 — 息を吸うように読む、1画面=1メッセージのミニマル体験</div>
+    <div class="card-tags">
+      <span class="tag tag-target">経営者・マネジャー</span>
+      <span class="tag tag-concept">A 共感型</span>
+      <span class="tag tag-new">呼吸型</span>
+    </div>
+  </div>
+</a>
+
+<a class="card n-mycel" href="lp-54-mgr-A-mycelium.html" target="_blank" data-target="mgr" data-concept="cA" data-design="dnew" data-layout="new">
+  <div class="card-preview"><span style="font-size:1.2rem;color:rgba(52,211,153,.6);letter-spacing:.1em;">菌糸</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 54</div>
+    <div class="card-title">菌糸ネットワーク — Canvas粒子アニメーションで「人とのつながり」を視覚化</div>
+    <div class="card-tags">
+      <span class="tag tag-target">経営者・マネジャー</span>
+      <span class="tag tag-concept">A 共感型</span>
+      <span class="tag tag-new">菌糸ネットワーク</span>
+    </div>
+  </div>
+</a>
+
+<a class="card n-sumi" href="lp-55-mgr-A-sumi.html" target="_blank" data-target="mgr" data-concept="cA" data-design="dnew" data-layout="new">
+  <div class="card-preview"><span style="font-size:1.5rem;color:#c0392b;letter-spacing:.1em;">墨</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 55</div>
+    <div class="card-title">水墨・枯れ木 — 漆黒×赤朱、エディトリアルな墨書きスタイルの和的デザイン</div>
+    <div class="card-tags">
+      <span class="tag tag-target">経営者・マネジャー</span>
+      <span class="tag tag-concept">A 共感型</span>
+      <span class="tag tag-new">水墨スタイル</span>
+    </div>
+  </div>
+</a>
+
+<a class="card n-news" href="lp-56-mgr-A-newspaper.html" target="_blank" data-target="mgr" data-concept="cA" data-design="dnew" data-layout="new">
+  <div class="card-preview"><span style="font-size:.8rem;color:#333;letter-spacing:.05em;font-family:serif;border-bottom:1px solid #333;padding-bottom:.3rem;">熱量組織新聞</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 56</div>
+    <div class="card-title">新聞崩し — マストヘッド＋2カラム段組み、エディトリアル新聞レイアウト</div>
+    <div class="card-tags">
+      <span class="tag tag-target">経営者・マネジャー</span>
+      <span class="tag tag-concept">A 共感型</span>
+      <span class="tag tag-new">新聞崩し</span>
+    </div>
+  </div>
+</a>
+
+<a class="card n-terra" href="lp-57-mgr-A-terracotta.html" target="_blank" data-target="mgr" data-concept="cA" data-design="dnew" data-layout="new">
+  <div class="card-preview"><span>大地</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 57</div>
+    <div class="card-title">テラコッタ×大地 — 土壌・根・粘土の質感、b5541e×6b3d1eの有機的なアース系</div>
+    <div class="card-tags">
+      <span class="tag tag-target">経営者・マネジャー</span>
+      <span class="tag tag-concept">A 共感型</span>
+      <span class="tag tag-new">テラコッタ</span>
+    </div>
+  </div>
+</a>
+
+<a class="card n-frozen" href="lp-58-mgr-A-frozen.html" target="_blank" data-target="mgr" data-concept="cA" data-design="dnew" data-layout="new">
+  <div class="card-preview"><span style="font-size:1.1rem;letter-spacing:.1em;">凍結→解凍</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 58</div>
+    <div class="card-title">凍結→解凍 — 氷青から温かいアンバーへ、組織の「解凍プロセス」を体感させる</div>
+    <div class="card-tags">
+      <span class="tag tag-target">経営者・マネジャー</span>
+      <span class="tag tag-concept">A 共感型</span>
+      <span class="tag tag-new">凍結→解凍</span>
+    </div>
+  </div>
+</a>
+
+<a class="card n-typo" href="lp-59-mgr-A-typography.html" target="_blank" data-target="mgr" data-concept="cA" data-design="dnew" data-layout="new">
+  <div class="card-preview"><span style="font-size:3rem;font-weight:900;color:rgba(255,255,255,.08);letter-spacing:-.02em;">熱</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 59</div>
+    <div class="card-title">タイポグラフィ実験 — 文字そのものがビジュアル。漆黒×白抜き文字の実験的デザイン</div>
+    <div class="card-tags">
+      <span class="tag tag-target">経営者・マネジャー</span>
+      <span class="tag tag-concept">A 共感型</span>
+      <span class="tag tag-new">タイポグラフィ</span>
+    </div>
+  </div>
+</a>
+
+<a class="card n-kinmoku" href="lp-60-mgr-A-kinmoku.html" target="_blank" data-target="mgr" data-concept="cA" data-design="dnew" data-layout="new">
+  <div class="card-preview"><span style="font-size:1.5rem;letter-spacing:.2em;color:#c9a84c;">金×墨</span></div>
+  <div class="card-body">
+    <div class="card-num">Pattern 60</div>
+    <div class="card-title">金×墨×和モダン — 漆黒×金色アクセント、和の縦書き意匠でプレミアム感を演出</div>
+    <div class="card-tags">
+      <span class="tag tag-target">経営者・マネジャー</span>
+      <span class="tag tag-concept">A 共感型</span>
+      <span class="tag tag-new">金×墨×和モダン</span>
+    </div>
+  </div>
+</a>
+
 </div><!-- /grid -->
 
 <script>
@@ -1051,7 +1201,8 @@ function applyFilter() {
     const dOk = state.design  === 'all' || card.dataset.design  === state.design;
     const lOk = state.layout  === 'all'
              || (state.layout === 'struct' && card.dataset.layout === 'struct')
-             || (state.layout === 'std'    && card.dataset.layout !== 'struct');
+             || (state.layout === 'new'    && card.dataset.layout === 'new')
+             || (state.layout === 'std'    && card.dataset.layout !== 'struct' && card.dataset.layout !== 'new');
 
     // 評価フィルター（複数選択 OR 条件）
     let rOk;

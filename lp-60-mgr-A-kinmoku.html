@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>組織の熱量を取り戻す | 金×墨×和モダン</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;900&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --gold:#c9a84c;
+  --gold-light:#e8c96a;
+  --gold-dim:#8a6e2a;
+  --ink:#0a0a08;
+  --ink-mid:#141410;
+  --sumi:#1e1e1a;
+  --washi:#f5f0e8;
+  --crimson:#8b1a1a;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Serif JP',serif;background:var(--ink);color:var(--washi);overflow-x:hidden}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  background:
+    radial-gradient(ellipse 800px 600px at 80% 40%,rgba(201,168,76,0.06) 0%,transparent 70%),
+    linear-gradient(160deg,#0a0a08 0%,#141410 50%,#0a0a08 100%);
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;padding:0 clamp(2rem,6vw,6rem);gap:4rem;
+  position:relative;overflow:hidden;min-height:100vh;
+}
+.hero::before{
+  content:'';position:absolute;right:0;top:0;bottom:0;width:1px;
+  background:linear-gradient(to bottom,transparent,rgba(201,168,76,0.3) 30%,rgba(201,168,76,0.3) 70%,transparent);
+}
+.hero-vertical{
+  /* Vertical Japanese text */
+  writing-mode:vertical-rl;text-orientation:mixed;
+  position:absolute;left:2.5rem;top:50%;transform:translateY(-50%);
+  font-size:.7rem;letter-spacing:.3em;color:rgba(201,168,76,0.35);
+  white-space:nowrap;
+}
+.hero-left{position:relative;z-index:2}
+.gold-rule{width:40px;height:1px;background:var(--gold);margin-bottom:2rem}
+.hero-tag{
+  font-family:'Noto Sans JP',sans-serif;
+  font-size:.7rem;letter-spacing:.3em;color:var(--gold);
+  margin-bottom:1.5rem;
+}
+h1{
+  font-size:clamp(2rem,4.5vw,3.5rem);font-weight:900;
+  line-height:1.4;margin-bottom:1.5rem;
+}
+h1 .gold{color:var(--gold)}
+h1 .thin{font-weight:300;font-size:.7em;display:block;color:rgba(245,240,232,0.6);margin-top:.5rem}
+.hero-body{
+  font-family:'Noto Sans JP',sans-serif;
+  font-size:.95rem;line-height:2;color:rgba(245,240,232,0.65);
+  margin-bottom:2.5rem;max-width:420px;
+}
+.hero-stat-row{display:flex;gap:2rem;margin-bottom:2.5rem}
+.stat-item{text-align:center}
+.stat-num{
+  font-size:2rem;font-weight:900;color:var(--gold);
+  font-family:'Noto Serif JP',serif;
+}
+.stat-desc{font-family:'Noto Sans JP',sans-serif;font-size:.7rem;color:rgba(245,240,232,0.45);margin-top:.2rem;letter-spacing:.05em}
+.hero-cta{
+  display:inline-block;padding:1rem 2.5rem;
+  border:1px solid var(--gold);color:var(--gold);
+  font-family:'Noto Sans JP',sans-serif;font-size:.9rem;font-weight:700;
+  text-decoration:none;letter-spacing:.1em;
+  transition:background .3s,color .3s;
+}
+.hero-cta:hover{background:var(--gold);color:var(--ink)}
+
+.hero-right{position:relative;z-index:2;text-align:center}
+.kanji-art{
+  font-size:clamp(6rem,14vw,10rem);font-weight:900;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(201,168,76,0.3);
+  line-height:1;letter-spacing:.1em;
+  display:block;
+}
+.kanji-art-sub{
+  font-size:clamp(2.5rem,6vw,4rem);font-weight:900;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(201,168,76,0.15);
+  display:block;margin-top:.5rem;
+}
+
+/* ── PAIN ── */
+.pain{
+  background:var(--ink-mid);padding:6rem clamp(2rem,6vw,6rem);
+  border-top:1px solid rgba(201,168,76,0.1);
+}
+.section-head{margin-bottom:3.5rem}
+.section-kana{font-family:'Noto Sans JP',sans-serif;font-size:.65rem;letter-spacing:.35em;color:var(--gold);opacity:.7;margin-bottom:.5rem}
+.section-title{font-size:clamp(1.4rem,3vw,2.2rem);font-weight:900;line-height:1.4}
+.episodes-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;
+  max-width:1000px;
+}
+.ep-card{
+  border:1px solid rgba(201,168,76,0.1);
+  background:rgba(201,168,76,0.02);
+  padding:2rem;position:relative;
+  opacity:0;transform:translateY(20px);transition:.6s ease;
+}
+.ep-card.visible{opacity:1;transform:translateY(0)}
+.ep-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(201,168,76,0.2),transparent);
+}
+.ep-quote-wrap{display:flex;align-items:baseline;gap:1rem;margin-bottom:1rem}
+.ep-num{font-size:.6rem;letter-spacing:.2em;color:var(--gold-dim)}
+.ep-quote{font-size:1.4rem;font-weight:900;color:var(--washi)}
+.ep-body{font-family:'Noto Sans JP',sans-serif;font-size:.85rem;line-height:1.9;color:rgba(245,240,232,0.6)}
+
+/* ── PHILOSOPHY SECTION ── */
+.philosophy{
+  background:var(--ink);padding:7rem clamp(2rem,6vw,6rem);
+  border-top:1px solid rgba(201,168,76,0.1);
+  text-align:center;
+}
+.phil-inner{max-width:700px;margin:0 auto}
+.phil-gold-line{
+  width:1px;height:60px;background:linear-gradient(to bottom,transparent,var(--gold),transparent);
+  margin:0 auto 3rem;
+}
+.phil-text{
+  font-size:clamp(1.4rem,3.5vw,2.4rem);font-weight:900;line-height:1.8;
+  margin-bottom:2rem;
+}
+.phil-text .gold{color:var(--gold)}
+.phil-body{
+  font-family:'Noto Sans JP',sans-serif;
+  font-size:.95rem;line-height:2.2;color:rgba(245,240,232,0.6);
+}
+
+/* ── LOOP ── */
+.loop{
+  background:var(--sumi);padding:6rem clamp(2rem,6vw,6rem);
+  border-top:1px solid rgba(201,168,76,0.1);
+}
+.loop-inner{max-width:900px;margin:0 auto}
+.loop-flow{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  border:1px solid rgba(201,168,76,0.1);margin-top:3rem;
+}
+.loop-item{
+  padding:2rem 1.5rem;border-right:1px solid rgba(201,168,76,0.1);
+  text-align:center;position:relative;
+  opacity:0;transition:.6s ease;
+}
+.loop-item:last-child{border-right:none}
+.loop-item.visible{opacity:1}
+.loop-arrow{
+  position:absolute;right:-1px;top:50%;transform:translateY(-50%);
+  width:0;height:0;
+  border-top:8px solid transparent;border-bottom:8px solid transparent;
+  border-left:8px solid rgba(201,168,76,0.2);
+  z-index:1;
+}
+.loop-item:last-child .loop-arrow{display:none}
+.loop-num{font-size:.6rem;letter-spacing:.25em;color:var(--gold-dim);margin-bottom:.75rem}
+.loop-label{font-size:.95rem;font-weight:600;line-height:1.5;margin-bottom:.5rem}
+.loop-sub{font-family:'Noto Sans JP',sans-serif;font-size:.75rem;line-height:1.6;color:rgba(245,240,232,0.45)}
+
+/* ── SHIFT ── */
+.shift{
+  background:var(--ink);padding:6rem clamp(2rem,6vw,6rem);
+  border-top:1px solid rgba(201,168,76,0.1);
+}
+.shift-inner{max-width:900px;margin:0 auto}
+.shift-table{width:100%;border-collapse:collapse;margin-top:3rem}
+.shift-table th{
+  font-family:'Noto Sans JP',sans-serif;font-size:.7rem;letter-spacing:.2em;
+  padding:.75rem 1.5rem;border-bottom:1px solid rgba(201,168,76,0.2);
+  text-align:left;font-weight:400;color:rgba(245,240,232,0.4);
+}
+.shift-table td{
+  padding:1.2rem 1.5rem;border-bottom:1px solid rgba(201,168,76,0.06);
+  font-family:'Noto Sans JP',sans-serif;font-size:.9rem;line-height:1.6;
+}
+.shift-table .col-before{color:rgba(245,240,232,0.35);text-decoration:line-through;text-decoration-color:rgba(245,240,232,0.1)}
+.shift-table .col-after{color:var(--washi);font-weight:700}
+.shift-table .col-arrow{color:var(--gold-dim);text-align:center;font-size:.8rem}
+
+/* ── CASES ── */
+.cases{
+  background:var(--sumi);padding:6rem clamp(2rem,6vw,6rem);
+  border-top:1px solid rgba(201,168,76,0.1);
+}
+.cases-inner{max-width:900px;margin:0 auto}
+.cases-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.5rem;margin-top:3rem}
+.case-card{
+  border-top:1px solid var(--gold-dim);
+  padding:2rem;
+  opacity:0;transform:translateY(20px);transition:.6s ease;
+}
+.case-card.visible{opacity:1;transform:translateY(0)}
+.case-label{font-family:'Noto Sans JP',sans-serif;font-size:.65rem;letter-spacing:.2em;color:var(--gold-dim);margin-bottom:.75rem}
+.case-title{font-size:1rem;font-weight:600;line-height:1.5;margin-bottom:.75rem;color:var(--washi)}
+.case-body{font-family:'Noto Sans JP',sans-serif;font-size:.85rem;line-height:1.9;color:rgba(245,240,232,0.55)}
+
+/* ── CTA ── */
+.cta{
+  background:linear-gradient(160deg,var(--ink) 0%,#1a1508 50%,var(--ink) 100%);
+  padding:8rem clamp(2rem,6vw,6rem);text-align:center;
+  border-top:1px solid rgba(201,168,76,0.15);
+}
+.cta-inner{max-width:600px;margin:0 auto}
+.cta-gold-rule{width:60px;height:1px;background:var(--gold);margin:0 auto 3rem}
+.cta-title{font-size:clamp(1.8rem,4vw,3rem);font-weight:900;line-height:1.5;margin-bottom:1.5rem}
+.cta-title .gold{color:var(--gold)}
+.cta-book{font-family:'Noto Sans JP',sans-serif;font-size:.85rem;line-height:1.8;color:rgba(245,240,232,0.5);margin-bottom:3rem}
+.cta-btn{
+  display:inline-block;padding:1.1rem 3rem;
+  background:var(--gold);color:var(--ink);font-weight:700;
+  font-family:'Noto Sans JP',sans-serif;font-size:.95rem;
+  text-decoration:none;letter-spacing:.1em;
+}
+
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr;padding-top:5rem;padding-bottom:3rem;gap:2rem}
+  .hero-right{display:none}
+  .hero-vertical{display:none}
+  .loop-flow{grid-template-columns:1fr 1fr}
+  .loop-item{border-bottom:1px solid rgba(201,168,76,0.1)}
+  .loop-arrow{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-vertical">熱量あふれる組織のつくり方</div>
+  <div class="hero-left">
+    <div class="gold-rule"></div>
+    <p class="hero-tag">経営者・マネジャーへ</p>
+    <h1>
+      熱量は、<span class="gold">意志</span>から<br>生まれる。
+      <span class="thin">──数字の呪縛からの解放</span>
+    </h1>
+    <p class="hero-body">
+      Gallup調査によれば、強みを活かせている社員はわずか6%。
+      94%が「自分の力を発揮できていない」と感じる組織で、
+      経営者・マネジャーに何ができるか。
+      その問いへの答えが、この一冊にある。
+    </p>
+    <div class="hero-stat-row">
+      <div class="stat-item">
+        <div class="stat-num">6%</div>
+        <div class="stat-desc">強みを活かせている社員</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">94%</div>
+        <div class="stat-desc">潜在的な熱量が眠っている</div>
+      </div>
+    </div>
+    <a href="#pain" class="hero-cta">組織の診断を見る</a>
+  </div>
+  <div class="hero-right">
+    <span class="kanji-art">熱量</span>
+    <span class="kanji-art-sub">組織の力</span>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="pain" id="pain">
+  <div class="section-head">
+    <p class="section-kana">PAIN SIGNALS</p>
+    <h2 class="section-title">あなたの組織の、<br><span style="color:var(--gold)">どこか</span>に落ちていないか。</h2>
+  </div>
+  <div class="episodes-grid">
+    
+    <div class="ep-card">
+      <div class="ep-quote-wrap">
+        <span class="ep-num">01</span>
+        <span class="ep-quote">「で？」</span>
+      </div>
+      <p class="ep-body">残業して作った資料に対して上司から一言。心の糸が切れた。</p>
+    </div>
+    <div class="ep-card">
+      <div class="ep-quote-wrap">
+        <span class="ep-num">02</span>
+        <span class="ep-quote">日曜の夜</span>
+      </div>
+      <p class="ep-body">給料は上がったのに、日曜の夜になると身体が鉛のように重くなる。</p>
+    </div>
+    <div class="ep-card">
+      <div class="ep-quote-wrap">
+        <span class="ep-num">03</span>
+        <span class="ep-quote">数字合わせ</span>
+      </div>
+      <p class="ep-body">「新規事業」と聞いてワクワクしたのに、結局は予算との数字合わせに終わった。</p>
+    </div>
+    <div class="ep-card">
+      <div class="ep-quote-wrap">
+        <span class="ep-num">04</span>
+        <span class="ep-quote">自分が消える</span>
+      </div>
+      <p class="ep-body">同僚の退職理由は「ここにいても自分が消えていく気がする」。自分も同じだ。</p>
+    </div>
+    <div class="ep-card">
+      <div class="ep-quote-wrap">
+        <span class="ep-num">05</span>
+        <span class="ep-quote">答えられなかった</span>
+      </div>
+      <p class="ep-body">部下に「この仕事って何のためにやるんですか？」と聞かれ、答えられなかった。</p>
+    </div>
+    <div class="ep-card">
+      <div class="ep-quote-wrap">
+        <span class="ep-num">06</span>
+        <span class="ep-quote">言葉に詰まった</span>
+      </div>
+      <p class="ep-body">子どもに「楽しく働いてる？」と聞かれて、言葉に詰まった。</p>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy">
+  <div class="phil-inner">
+    <div class="phil-gold-line"></div>
+    <h2 class="phil-text">
+      「数字を増やすこと」が<br>
+      <span class="gold">目的</span>になっていないか？
+    </h2>
+    <p class="phil-body">
+      本来、売上・利益・評価スコアは「意味ある仕事」をした結果に過ぎない。<br>
+      しかし多くの組織では、結果が目的化し、<br>
+      「なぜこの仕事をするのか」という問いが失われていく。<br>
+      これが著者の言う「マネーバイアス」だ。
+    </p>
+  </div>
+</section>
+
+<!-- LOOP -->
+<section class="loop">
+  <div class="loop-inner">
+    <div class="section-head">
+      <p class="section-kana">ROOT CAUSE</p>
+      <h2 class="section-title">マネーバイアスの連鎖構造</h2>
+    </div>
+    <div class="loop-flow">
+      <div class="loop-item">
+        <div class="loop-arrow"></div>
+        <div class="loop-num">STAGE 01</div>
+        <div class="loop-label">数字依存</div>
+        <div class="loop-sub">成果の数値化・評価への過依存</div>
+      </div>
+      <div class="loop-item">
+        <div class="loop-arrow"></div>
+        <div class="loop-num">STAGE 02</div>
+        <div class="loop-label">問いの消失</div>
+        <div class="loop-sub">「意味」より「指標」が優先される</div>
+      </div>
+      <div class="loop-item">
+        <div class="loop-arrow"></div>
+        <div class="loop-num">STAGE 03</div>
+        <div class="loop-label">熱量の喪失</div>
+        <div class="loop-sub">やらされ感・自律性の低下</div>
+      </div>
+      <div class="loop-item">
+        <div class="loop-num">STAGE 04</div>
+        <div class="loop-label">人材の流出</div>
+        <div class="loop-sub">優秀な人から静かに去っていく</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHIFT -->
+<section class="shift">
+  <div class="shift-inner">
+    <div class="section-head">
+      <p class="section-kana">TRANSFORMATION</p>
+      <h2 class="section-title">この本が示す、<br>組織の変容</h2>
+    </div>
+    <table class="shift-table">
+      <thead>
+        <tr>
+          <th>凍結状態</th>
+          <th style="width:3rem"></th>
+          <th>熱量ある状態</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="col-before">数字目標のために動く</td><td class="col-arrow">→</td><td class="col-after">意味に向かって動く</td></tr>
+        <tr><td class="col-before">ワークとライフを分離する</td><td class="col-arrow">→</td><td class="col-after">ライフでワークを包む</td></tr>
+        <tr><td class="col-before">報告・承認の会議</td><td class="col-arrow">→</td><td class="col-after">問いが循環する対話の場</td></tr>
+        <tr><td class="col-before">管理して動かす</td><td class="col-arrow">→</td><td class="col-after">熱量を引き出し、つながる</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CASES -->
+<section class="cases">
+  <div class="cases-inner">
+    <div class="section-head">
+      <p class="section-kana">EVIDENCE</p>
+      <h2 class="section-title">熱量が戻った組織の証言</h2>
+    </div>
+    <div class="cases-grid">
+      
+      <div class="case-card">
+        <div class="case-label">製造業 / 250名</div>
+        <div class="case-title">「数字を追う会議」が「意味を語る場」へ</div>
+        <div class="case-body">月次KPI報告会をやめ、メンバーが自ら問いを持つ対話セッションに切り替えた。離職率が翌年半減。</div>
+      </div>
+      <div class="case-card">
+        <div class="case-label">IT企業 / 80名</div>
+        <div class="case-title">エンジニアが「仕事の意味」を語り始めた</div>
+        <div class="case-body">ライフとワークを統合するチェックインを導入。1on1の質が変わり、採用候補者への紹介数が3倍に。</div>
+      </div>
+      <div class="case-card">
+        <div class="case-label">小売チェーン / 店長クラス</div>
+        <div class="case-title">「やらされ感ゼロ」の店舗改革</div>
+        <div class="case-body">売上目標を外さず、それでも「なぜこの仕事か」を問い続けた店長のもと、NPS最下位店が業界トップ水準へ。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-inner">
+    <div class="cta-gold-rule"></div>
+    <h2 class="cta-title">
+      <span class="gold">熱量</span>を、<br>
+      組織に取り戻す。
+    </h2>
+    <p class="cta-book">
+      『熱量あふれる組織のつくり方』<br>
+      ──数字の呪縛（お金の思い込み）からの解放
+    </p>
+    <a href="#" class="cta-btn">この本を手に取る</a>
+  </div>
+</section>
+
+<script>
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting) e.target.classList.add('visible')});
+},{threshold:.12});
+document.querySelectorAll('.ep-card,.loop-item,.case-card').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
