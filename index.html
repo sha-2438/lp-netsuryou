@@ -108,19 +108,21 @@ header p{font-size:.9rem;color:rgba(255,255,255,.5);margin-top:.8rem;}
 .rating-badge.r-2{background:rgba(140,100,0,.75);color:#ffd54f;}
 .rating-badge.r-3{background:rgba(160,120,0,.85);color:#ffe57f;}
 
-/* カード下部の評価ボタン行 */
+/* カード下部の評価ボタン行（7名分） */
 .card-rating{
-  display:flex;align-items:center;gap:.4rem;
-  padding:.7rem 1.4rem .9rem;
+  padding:.45rem 1.2rem .6rem;
   border-top:1px solid rgba(255,255,255,.06);
   background:rgba(0,0,0,.15);
+  display:flex;flex-direction:column;gap:.22rem;
 }
-.rating-label{font-size:.65rem;color:rgba(255,255,255,.25);letter-spacing:.1em;margin-right:.2rem;flex-shrink:0;}
+.rating-row{display:flex;align-items:center;gap:.28rem;}
+.rating-label{font-size:.58rem;color:rgba(255,255,255,.3);letter-spacing:.03em;
+  width:5.8rem;flex-shrink:0;white-space:nowrap;}
 .rating-btn{
-  font-size:.75rem;font-weight:700;
-  padding:.22rem .65rem;border-radius:50px;border:1px solid rgba(255,255,255,.12);
-  background:rgba(255,255,255,.05);color:rgba(255,255,255,.4);
-  cursor:pointer;transition:all .18s;font-family:'Noto Sans JP',sans-serif;
+  font-size:.68rem;font-weight:700;
+  padding:.16rem .45rem;border-radius:50px;border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.05);color:rgba(255,255,255,.35);
+  cursor:pointer;transition:all .15s;font-family:'Noto Sans JP',sans-serif;
   line-height:1.4;
 }
 .rating-btn:hover{background:rgba(255,255,255,.12);color:rgba(255,255,255,.8);}
@@ -130,11 +132,17 @@ header p{font-size:.9rem;color:rgba(255,255,255,.5);margin-top:.8rem;}
 .rating-btn.active.r-3{background:rgba(255,193,7,.25);border-color:rgba(255,193,7,.8);color:#ffc107;}
 /* リセットボタン */
 .rating-reset{
-  margin-left:auto;font-size:.65rem;color:rgba(255,255,255,.18);
-  cursor:pointer;padding:.2rem .5rem;border-radius:4px;border:none;
+  margin-left:auto;font-size:.6rem;color:rgba(255,255,255,.15);
+  cursor:pointer;padding:.15rem .4rem;border-radius:4px;border:none;
   background:transparent;transition:color .2s;font-family:'Noto Sans JP',sans-serif;
 }
 .rating-reset:hover{color:rgba(255,255,255,.5);}
+/* レビュアー選択ボタン */
+.reviewer-btn{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  color:rgba(255,255,255,.55);font-size:.75rem;padding:.3rem .85rem;border-radius:50px;
+  cursor:pointer;transition:all .2s;font-family:'Noto Sans JP',sans-serif;}
+.reviewer-btn:hover{background:rgba(255,255,255,.12);color:rgba(255,255,255,.9);}
+.reviewer-btn.active{background:rgba(100,181,246,.2);border-color:rgba(100,181,246,.55);color:#90caf9;}
 
 /* 評価フィルターボタンのアクティブ色 */
 .filter-btn.active.rf-x{background:rgba(239,83,80,.2);border-color:rgba(239,83,80,.5);color:#ef9a9a;}
@@ -207,6 +215,15 @@ header p{font-size:.9rem;color:rgba(255,255,255,.5);margin-top:.8rem;}
   <button class="filter-btn" onclick="filter('layout','struct')">構造バリアント10種</button>
   <button class="filter-btn" onclick="filter('layout','new')">新作10種（原稿起点）</button>
   <div class="filter-sep"></div>
+  <span class="filter-label">評価フィルター対象</span>
+  <button class="reviewer-btn active" data-rv="sha"    onclick="setFilterReviewer('sha')">sha</button>
+  <button class="reviewer-btn" data-rv="nocchi" onclick="setFilterReviewer('nocchi')">のっち</button>
+  <button class="reviewer-btn" data-rv="shiro"  onclick="setFilterReviewer('shiro')">しろう</button>
+  <button class="reviewer-btn" data-rv="yu"     onclick="setFilterReviewer('yu')">ゆうちゃん</button>
+  <button class="reviewer-btn" data-rv="zeki"   onclick="setFilterReviewer('zeki')">ぜきさん</button>
+  <button class="reviewer-btn" data-rv="A"      onclick="setFilterReviewer('A')">Aさん</button>
+  <button class="reviewer-btn" data-rv="B"      onclick="setFilterReviewer('B')">Bさん</button>
+  <div class="filter-sep"></div>
   <span class="filter-label">評価</span>
   <button class="filter-btn active" onclick="filterRating('all')">すべて</button>
   <button class="filter-btn" onclick="filterRating('unrated')">未評価</button>
@@ -217,7 +234,7 @@ header p{font-size:.9rem;color:rgba(255,255,255,.5);margin-top:.8rem;}
 </div>
 
 <div class="rating-summary" id="ratingSummary">
-  <span class="rs-label">評価サマリー：</span>
+  <span class="rs-label" id="summary-reviewer-label">sha評価：</span>
   <span class="rs-item rs-unrated">未評価 <span class="rs-count" id="cnt-unrated">—</span></span>
   <span class="rs-item rs-x">× <span class="rs-count" id="cnt-x">0</span></span>
   <span class="rs-item rs-1">★ <span class="rs-count" id="cnt-1">0</span></span>
@@ -1054,27 +1071,39 @@ header p{font-size:.9rem;color:rgba(255,255,255,.5);margin-top:.8rem;}
 </div><!-- /grid -->
 
 <script>
+// ── REVIEWERS 設定 ─────────────────────────────────────
+const REVIEWERS = [
+  { key:'sha',    label:'sha評価' },
+  { key:'nocchi', label:'のっち評価' },
+  { key:'shiro',  label:'しろう評価' },
+  { key:'yu',     label:'ゆうちゃん評価' },
+  { key:'zeki',   label:'ぜきさん評価' },
+  { key:'A',      label:'Aさん評価' },
+  { key:'B',      label:'Bさん評価' },
+];
+
 // ── STATE ──────────────────────────────────────────────
-// 評価フィルターだけ Set（複数選択可）、他は単一値
 const state = { target:'all', concept:'all', design:'all', layout:'all' };
-const selectedRatings = new Set(); // 空 = 全表示
+const selectedRatings = new Set();
+let filterReviewer = 'sha'; // フィルター対象レビュアー
 
 const RATING_LABELS = { 'x':'×', '1':'★', '2':'★★', '3':'★★★' };
-const STORAGE_KEY = 'lp-ratings-v1';
+const STORAGE_KEY = 'lp-ratings-v2';
 
 // ── STORAGE ────────────────────────────────────────────
+// 形式: { "cardId": { "sha": "3", "nocchi": "2", ... } }
 function loadRatings() {
   try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
   catch { return {}; }
 }
-function saveRatings(ratings) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(ratings));
-}
-function getRating(id) { return loadRatings()[id] || ''; }
-function setRating(id, val) {
-  const r = loadRatings();
-  if (val === '') delete r[id]; else r[id] = val;
-  saveRatings(r);
+function saveRatings(r) { localStorage.setItem(STORAGE_KEY, JSON.stringify(r)); }
+function getRating(id, rv) { const a = loadRatings(); return (a[id] && a[id][rv]) || ''; }
+function setRating(id, rv, val) {
+  const a = loadRatings();
+  if (!a[id]) a[id] = {};
+  if (val === '') delete a[id][rv]; else a[id][rv] = val;
+  if (Object.keys(a[id]).length === 0) delete a[id];
+  saveRatings(a);
 }
 
 // ── RATING UI 初期化（DOM挿入） ─────────────────────────
@@ -1084,6 +1113,7 @@ function initRatingUI() {
     const id = href.replace(/[^a-z0-9\-]/gi, '-');
     card.dataset.id = id;
 
+    // バッジ（フィルター対象レビュアーの評価を表示）
     const preview = card.querySelector('.card-preview');
     if (preview && !preview.querySelector('.rating-badge')) {
       const badge = document.createElement('div');
@@ -1092,62 +1122,93 @@ function initRatingUI() {
       preview.appendChild(badge);
     }
 
+    // 7名分の評価行を挿入
     const body = card.querySelector('.card-body');
     if (body && !body.querySelector('.card-rating')) {
-      const row = document.createElement('div');
-      row.className = 'card-rating';
-      row.innerHTML = `
-        <span class="rating-label">評価</span>
-        <button class="rating-btn r-x" data-r="x" onclick="rate(event,'${id}','x')">×</button>
-        <button class="rating-btn r-1" data-r="1" onclick="rate(event,'${id}','1')">★</button>
-        <button class="rating-btn r-2" data-r="2" onclick="rate(event,'${id}','2')">★★</button>
-        <button class="rating-btn r-3" data-r="3" onclick="rate(event,'${id}','3')">★★★</button>
-        <button class="rating-reset"              onclick="rate(event,'${id}','')">✕</button>`;
-      body.appendChild(row);
+      const container = document.createElement('div');
+      container.className = 'card-rating';
+      REVIEWERS.forEach(rv => {
+        const row = document.createElement('div');
+        row.className = 'rating-row';
+        row.dataset.rv = rv.key;
+        row.innerHTML =
+          `<span class="rating-label">${rv.label}</span>` +
+          `<button class="rating-btn r-x" data-rv="${rv.key}" data-r="x" onclick="rate(event,'${id}','${rv.key}','x')">×</button>` +
+          `<button class="rating-btn r-1" data-rv="${rv.key}" data-r="1" onclick="rate(event,'${id}','${rv.key}','1')">★</button>` +
+          `<button class="rating-btn r-2" data-rv="${rv.key}" data-r="2" onclick="rate(event,'${id}','${rv.key}','2')">★★</button>` +
+          `<button class="rating-btn r-3" data-rv="${rv.key}" data-r="3" onclick="rate(event,'${id}','${rv.key}','3')">★★★</button>` +
+          `<button class="rating-reset" onclick="rate(event,'${id}','${rv.key}','')">✕</button>`;
+        container.appendChild(row);
+      });
+      body.appendChild(container);
     }
   });
   applyRatingUI();
 }
 
-// ── 評価をセットしてUI反映 ─────────────────────────────
-function rate(e, id, val) {
+// ── 評価セット → UI反映 ────────────────────────────────
+function rate(e, id, rv, val) {
   e.preventDefault(); e.stopPropagation();
-  setRating(id, val);
+  setRating(id, rv, val);
   applyRatingUI();
   applyFilter();
 }
 
 function applyRatingUI() {
-  const counts = { x:0, '1':0, '2':0, '3':0, unrated:0 };
+  // レビュアーごとのカウント
+  const counts = {};
+  REVIEWERS.forEach(rv => { counts[rv.key] = { x:0,'1':0,'2':0,'3':0,unrated:0 }; });
+
   document.querySelectorAll('.card').forEach(card => {
     const id = card.dataset.id;
     if (!id) return;
-    const rating = getRating(id);
-    card.dataset.rating = rating;
 
-    const badge = card.querySelector('.rating-badge');
-    if (badge) {
-      badge.className = 'rating-badge' + (rating ? ' has-rating r-' + rating : '');
-      badge.textContent = rating ? RATING_LABELS[rating] : '';
-    }
-    card.querySelectorAll('.rating-btn').forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.r === rating);
+    REVIEWERS.forEach(rv => {
+      const rating = getRating(id, rv.key);
+      // そのレビュアーのボタンをアクティブ化
+      card.querySelectorAll(`.rating-btn[data-rv="${rv.key}"]`).forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.r === rating);
+      });
+      if (rating) counts[rv.key][rating] = (counts[rv.key][rating]||0) + 1;
+      else counts[rv.key].unrated++;
     });
 
-    if (rating) counts[rating] = (counts[rating] || 0) + 1;
-    else counts.unrated++;
+    // バッジ: フィルター対象レビュアーの評価を表示
+    const fr = getRating(id, filterReviewer);
+    card.dataset.rating = fr;
+    const badge = card.querySelector('.rating-badge');
+    if (badge) {
+      badge.className = 'rating-badge' + (fr ? ' has-rating r-' + fr : '');
+      badge.textContent = fr ? RATING_LABELS[fr] : '';
+    }
   });
 
-  document.getElementById('cnt-x').textContent       = counts.x    || 0;
-  document.getElementById('cnt-1').textContent       = counts['1'] || 0;
-  document.getElementById('cnt-2').textContent       = counts['2'] || 0;
-  document.getElementById('cnt-3').textContent       = counts['3'] || 0;
-  document.getElementById('cnt-unrated').textContent = counts.unrated || 0;
+  // サマリー更新（フィルター対象レビュアー分）
+  const c = counts[filterReviewer];
+  document.getElementById('cnt-x').textContent       = c.x    || 0;
+  document.getElementById('cnt-1').textContent       = c['1'] || 0;
+  document.getElementById('cnt-2').textContent       = c['2'] || 0;
+  document.getElementById('cnt-3').textContent       = c['3'] || 0;
+  document.getElementById('cnt-unrated').textContent = c.unrated || 0;
+
+  const rvLabel = REVIEWERS.find(r => r.key === filterReviewer)?.label || filterReviewer;
+  const lbl = document.getElementById('summary-reviewer-label');
+  if (lbl) lbl.textContent = rvLabel + '：';
 }
 
 function resetAllRatings() {
-  if (!confirm('全カードの評価をリセットします。よろしいですか？')) return;
+  if (!confirm('全カードの全評価をリセットします。よろしいですか？')) return;
   localStorage.removeItem(STORAGE_KEY);
+  applyRatingUI();
+  applyFilter();
+}
+
+// ── レビュアー選択 ─────────────────────────────────────
+function setFilterReviewer(key) {
+  filterReviewer = key;
+  document.querySelectorAll('.reviewer-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.rv === key);
+  });
   applyRatingUI();
   applyFilter();
 }
@@ -1165,11 +1226,8 @@ function filter(dim, val) {
 
 // ── 評価フィルター（複数選択 Toggle） ─────────────────
 function filterRating(val) {
-  if (val === 'all') {
-    // 「すべて」→ 選択リセット
-    selectedRatings.clear();
-  } else {
-    // 選択済みなら外す、未選択なら追加
+  if (val === 'all') { selectedRatings.clear(); }
+  else {
     if (selectedRatings.has(val)) selectedRatings.delete(val);
     else selectedRatings.add(val);
   }
@@ -1185,11 +1243,8 @@ function syncRatingFilterButtons() {
     const m = oc.match(/filterRating\('(.+?)'\)/);
     if (!m) return;
     const v = m[1];
-    if (v === 'all') {
-      b.classList.toggle('active', isEmpty);
-    } else {
-      b.classList.toggle('active', selectedRatings.has(v));
-    }
+    if (v === 'all') b.classList.toggle('active', isEmpty);
+    else b.classList.toggle('active', selectedRatings.has(v));
   });
 }
 
@@ -1204,13 +1259,11 @@ function applyFilter() {
              || (state.layout === 'new'    && card.dataset.layout === 'new')
              || (state.layout === 'std'    && card.dataset.layout !== 'struct' && card.dataset.layout !== 'new');
 
-    // 評価フィルター（複数選択 OR 条件）
     let rOk;
     if (selectedRatings.size === 0) {
-      rOk = true; // 何も選ばれていない = 全表示
+      rOk = true;
     } else {
       const cardRating = card.dataset.rating || '';
-      // 'unrated' が選択されている場合は空文字ともマッチ
       rOk = selectedRatings.has(cardRating)
          || (selectedRatings.has('unrated') && cardRating === '');
     }
@@ -1222,7 +1275,7 @@ function applyFilter() {
 // ── 初期化 ────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   initRatingUI();
-  syncRatingFilterButtons(); // 初期状態：「すべて」をアクティブに
+  syncRatingFilterButtons();
 });
 </script>
 </body>
