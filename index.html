@@ -215,14 +215,15 @@ header p{font-size:.9rem;color:rgba(255,255,255,.5);margin-top:.8rem;}
   <button class="filter-btn" onclick="filter('layout','struct')">構造バリアント10種</button>
   <button class="filter-btn" onclick="filter('layout','new')">新作10種（原稿起点）</button>
   <div class="filter-sep"></div>
-  <span class="filter-label">評価フィルター対象</span>
-  <button class="reviewer-btn active" data-rv="sha"    onclick="setFilterReviewer('sha')">sha</button>
-  <button class="reviewer-btn" data-rv="nocchi" onclick="setFilterReviewer('nocchi')">のっち</button>
-  <button class="reviewer-btn" data-rv="shiro"  onclick="setFilterReviewer('shiro')">しろう</button>
-  <button class="reviewer-btn" data-rv="yu"     onclick="setFilterReviewer('yu')">ゆうちゃん</button>
-  <button class="reviewer-btn" data-rv="zeki"   onclick="setFilterReviewer('zeki')">ぜきさん</button>
-  <button class="reviewer-btn" data-rv="A"      onclick="setFilterReviewer('A')">Aさん</button>
-  <button class="reviewer-btn" data-rv="B"      onclick="setFilterReviewer('B')">Bさん</button>
+  <span class="filter-label">評価フィルター対象 <span style="font-size:.65rem;opacity:.5;letter-spacing:0">（複数選択=全員AND）</span></span>
+  <button class="reviewer-btn active" data-rv="all"   onclick="toggleFilterReviewer('all')">全員</button>
+  <button class="reviewer-btn" data-rv="sha"    onclick="toggleFilterReviewer('sha')">sha</button>
+  <button class="reviewer-btn" data-rv="nocchi" onclick="toggleFilterReviewer('nocchi')">のっち</button>
+  <button class="reviewer-btn" data-rv="shiro"  onclick="toggleFilterReviewer('shiro')">しろう</button>
+  <button class="reviewer-btn" data-rv="yu"     onclick="toggleFilterReviewer('yu')">ゆうちゃん</button>
+  <button class="reviewer-btn" data-rv="zeki"   onclick="toggleFilterReviewer('zeki')">ぜきさん</button>
+  <button class="reviewer-btn" data-rv="A"      onclick="toggleFilterReviewer('A')">Aさん</button>
+  <button class="reviewer-btn" data-rv="B"      onclick="toggleFilterReviewer('B')">Bさん</button>
   <div class="filter-sep"></div>
   <span class="filter-label">評価</span>
   <button class="filter-btn active" onclick="filterRating('all')">すべて</button>
@@ -234,7 +235,7 @@ header p{font-size:.9rem;color:rgba(255,255,255,.5);margin-top:.8rem;}
 </div>
 
 <div class="rating-summary" id="ratingSummary">
-  <span class="rs-label" id="summary-reviewer-label">sha評価：</span>
+  <span class="rs-label" id="summary-reviewer-label">全員（表示中）：</span>
   <span class="rs-item rs-unrated">未評価 <span class="rs-count" id="cnt-unrated">—</span></span>
   <span class="rs-item rs-x">× <span class="rs-count" id="cnt-x">0</span></span>
   <span class="rs-item rs-1">★ <span class="rs-count" id="cnt-1">0</span></span>
@@ -1084,8 +1085,8 @@ const REVIEWERS = [
 
 // ── STATE ──────────────────────────────────────────────
 const state = { target:'all', concept:'all', design:'all', layout:'all' };
-const selectedRatings = new Set();
-let filterReviewer = 'sha'; // フィルター対象レビュアー
+const selectedRatings  = new Set(); // 評価値フィルター（OR）
+const selectedReviewers = new Set(); // レビュアーフィルター（AND）
 
 const RATING_LABELS = { 'x':'×', '1':'★', '2':'★★', '3':'★★★' };
 const STORAGE_KEY = 'lp-ratings-v2';
@@ -1113,7 +1114,6 @@ function initRatingUI() {
     const id = href.replace(/[^a-z0-9\-]/gi, '-');
     card.dataset.id = id;
 
-    // バッジ（フィルター対象レビュアーの評価を表示）
     const preview = card.querySelector('.card-preview');
     if (preview && !preview.querySelector('.rating-badge')) {
       const badge = document.createElement('div');
@@ -1122,7 +1122,6 @@ function initRatingUI() {
       preview.appendChild(badge);
     }
 
-    // 7名分の評価行を挿入
     const body = card.querySelector('.card-body');
     if (body && !body.querySelector('.card-rating')) {
       const container = document.createElement('div');
@@ -1155,45 +1154,64 @@ function rate(e, id, rv, val) {
 }
 
 function applyRatingUI() {
-  // レビュアーごとのカウント
-  const counts = {};
-  REVIEWERS.forEach(rv => { counts[rv.key] = { x:0,'1':0,'2':0,'3':0,unrated:0 }; });
-
   document.querySelectorAll('.card').forEach(card => {
     const id = card.dataset.id;
     if (!id) return;
 
     REVIEWERS.forEach(rv => {
       const rating = getRating(id, rv.key);
-      // そのレビュアーのボタンをアクティブ化
       card.querySelectorAll(`.rating-btn[data-rv="${rv.key}"]`).forEach(btn => {
         btn.classList.toggle('active', btn.dataset.r === rating);
       });
-      if (rating) counts[rv.key][rating] = (counts[rv.key][rating]||0) + 1;
-      else counts[rv.key].unrated++;
     });
 
-    // バッジ: フィルター対象レビュアーの評価を表示
-    const fr = getRating(id, filterReviewer);
-    card.dataset.rating = fr;
+    // バッジ: 選択レビュアーが1人→その評価、複数 or 全員→shaの評価
+    const badgeRv = selectedReviewers.size === 1 ? [...selectedReviewers][0] : 'sha';
+    const badgeRating = getRating(id, badgeRv);
     const badge = card.querySelector('.rating-badge');
     if (badge) {
-      badge.className = 'rating-badge' + (fr ? ' has-rating r-' + fr : '');
-      badge.textContent = fr ? RATING_LABELS[fr] : '';
+      badge.className = 'rating-badge' + (badgeRating ? ' has-rating r-' + badgeRating : '');
+      badge.textContent = badgeRating ? RATING_LABELS[badgeRating] : '';
     }
   });
 
-  // サマリー更新（フィルター対象レビュアー分）
-  const c = counts[filterReviewer];
-  document.getElementById('cnt-x').textContent       = c.x    || 0;
-  document.getElementById('cnt-1').textContent       = c['1'] || 0;
-  document.getElementById('cnt-2').textContent       = c['2'] || 0;
-  document.getElementById('cnt-3').textContent       = c['3'] || 0;
-  document.getElementById('cnt-unrated').textContent = c.unrated || 0;
+  updateSummary();
+}
 
-  const rvLabel = REVIEWERS.find(r => r.key === filterReviewer)?.label || filterReviewer;
+// ── サマリー更新 ───────────────────────────────────────
+function updateSummary() {
+  // 現在表示中（hidden でない）カードの評価集計
+  // 選択レビュアーが1人の場合はその人、複数 or 全員の場合は visible カード数のみ表示
   const lbl = document.getElementById('summary-reviewer-label');
-  if (lbl) lbl.textContent = rvLabel + '：';
+
+  if (selectedReviewers.size === 1) {
+    const rvKey = [...selectedReviewers][0];
+    const rvLabel = REVIEWERS.find(r => r.key === rvKey)?.label || rvKey;
+    if (lbl) lbl.textContent = rvLabel + '：';
+    const counts = { x:0,'1':0,'2':0,'3':0,unrated:0 };
+    document.querySelectorAll('.card:not(.hidden)').forEach(card => {
+      const id = card.dataset.id; if (!id) return;
+      const r = getRating(id, rvKey);
+      if (r) counts[r] = (counts[r]||0)+1; else counts.unrated++;
+    });
+    document.getElementById('cnt-x').textContent       = counts.x    || 0;
+    document.getElementById('cnt-1').textContent       = counts['1'] || 0;
+    document.getElementById('cnt-2').textContent       = counts['2'] || 0;
+    document.getElementById('cnt-3').textContent       = counts['3'] || 0;
+    document.getElementById('cnt-unrated').textContent = counts.unrated || 0;
+  } else {
+    // 複数 or 全員: 表示カード数だけ出す
+    const rvNames = selectedReviewers.size === 0
+      ? '全員'
+      : [...selectedReviewers].map(k => REVIEWERS.find(r=>r.key===k)?.label.replace('評価','') || k).join(' AND ');
+    if (lbl) lbl.textContent = rvNames + ' — 表示中：';
+    const visible = document.querySelectorAll('.card:not(.hidden)').length;
+    document.getElementById('cnt-x').textContent       = '—';
+    document.getElementById('cnt-1').textContent       = '—';
+    document.getElementById('cnt-2').textContent       = '—';
+    document.getElementById('cnt-3').textContent       = '—';
+    document.getElementById('cnt-unrated').textContent = visible;
+  }
 }
 
 function resetAllRatings() {
@@ -1203,14 +1221,26 @@ function resetAllRatings() {
   applyFilter();
 }
 
-// ── レビュアー選択 ─────────────────────────────────────
-function setFilterReviewer(key) {
-  filterReviewer = key;
-  document.querySelectorAll('.reviewer-btn').forEach(b => {
-    b.classList.toggle('active', b.dataset.rv === key);
-  });
+// ── レビュアーフィルター（複数選択 Toggle） ───────────
+function toggleFilterReviewer(key) {
+  if (key === 'all') {
+    selectedReviewers.clear();
+  } else {
+    if (selectedReviewers.has(key)) selectedReviewers.delete(key);
+    else selectedReviewers.add(key);
+  }
+  syncReviewerButtons();
   applyRatingUI();
   applyFilter();
+}
+
+function syncReviewerButtons() {
+  const isEmpty = selectedReviewers.size === 0;
+  document.querySelectorAll('.reviewer-btn').forEach(b => {
+    const rv = b.dataset.rv;
+    if (rv === 'all') b.classList.toggle('active', isEmpty);
+    else b.classList.toggle('active', selectedReviewers.has(rv));
+  });
 }
 
 // ── 通常フィルター（単一選択） ─────────────────────────
@@ -1224,7 +1254,7 @@ function filter(dim, val) {
   applyFilter();
 }
 
-// ── 評価フィルター（複数選択 Toggle） ─────────────────
+// ── 評価値フィルター（複数選択 Toggle / OR） ──────────
 function filterRating(val) {
   if (val === 'all') { selectedRatings.clear(); }
   else {
@@ -1249,6 +1279,12 @@ function syncRatingFilterButtons() {
 }
 
 // ── フィルター適用 ─────────────────────────────────────
+// レビュアーフィルター（AND）× 評価値フィルター（OR）
+//
+// ・レビュアー未選択 + 評価値未選択 → 全表示
+// ・レビュアー未選択 + 評価値選択   → いずれかのレビュアーが該当評価 (OR)
+// ・レビュアー選択   + 評価値未選択 → 全表示（評価値は指定なし）
+// ・レビュアー選択   + 評価値選択   → 全選択レビュアーが該当評価 (AND × OR)
 function applyFilter() {
   document.querySelectorAll('.card').forEach(card => {
     const tOk = state.target  === 'all' || card.dataset.target  === state.target;
@@ -1259,23 +1295,33 @@ function applyFilter() {
              || (state.layout === 'new'    && card.dataset.layout === 'new')
              || (state.layout === 'std'    && card.dataset.layout !== 'struct' && card.dataset.layout !== 'new');
 
-    let rOk;
-    if (selectedRatings.size === 0) {
-      rOk = true;
-    } else {
-      const cardRating = card.dataset.rating || '';
-      rOk = selectedRatings.has(cardRating)
-         || (selectedRatings.has('unrated') && cardRating === '');
+    let rOk = true;
+    const id = card.dataset.id;
+    if (selectedRatings.size > 0 && id) {
+      const ratingMatches = rv => {
+        const r = getRating(id, rv);
+        return selectedRatings.has(r) || (selectedRatings.has('unrated') && r === '');
+      };
+      if (selectedReviewers.size === 0) {
+        // レビュアー未選択: いずれかのレビュアーがマッチ
+        rOk = REVIEWERS.some(rv => ratingMatches(rv.key));
+      } else {
+        // レビュアー選択: 全選択レビュアーがマッチ（AND）
+        rOk = [...selectedReviewers].every(rv => ratingMatches(rv));
+      }
     }
 
     card.classList.toggle('hidden', !(tOk && cOk && dOk && lOk && rOk));
   });
+
+  updateSummary();
 }
 
 // ── 初期化 ────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   initRatingUI();
   syncRatingFilterButtons();
+  syncReviewerButtons();
 });
 </script>
 </body>
