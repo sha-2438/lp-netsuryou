@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LP一覧 | 熱量あふれる組織のつくり方 – 60パターン</title>
+<title>LP一覧 | 熱量あふれる組織のつくり方 – 60パターン + 書籍LP 6案</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
 
@@ -75,6 +75,15 @@ header p{font-size:.9rem;color:rgba(255,255,255,.5);margin-top:.8rem;}
 
 .tag-layout{background:rgba(255,138,101,.15);color:#ffab91;border:1px solid rgba(255,138,101,.25);}
 .tag-new{background:rgba(201,168,76,.12);color:#e8c96a;border:1px solid rgba(201,168,76,.25);}
+.tag-book{background:rgba(139,105,20,.18);color:#d4a84c;border:1px solid rgba(139,105,20,.35);}
+
+/* 書籍LP カラー */
+.b-v1 .card-preview{background:linear-gradient(135deg,#faf7f2,#e8dfc8);color:#8b6914;}
+.b-warm .card-preview{background:linear-gradient(135deg,#f0e8db,#e8a055 70%,#c86b1a);color:#2a1a0e;}
+.b-leftaxis .card-preview{background:linear-gradient(135deg,#f8f8f5,#e0e8d0);color:#3a5e20;}
+.b-timeline .card-preview{background:linear-gradient(135deg,#eceaf4,#3d4f8a);color:#fff;}
+.b-navy .card-preview{background:linear-gradient(135deg,#1a2540,#364872);color:#e8612a;}
+.b-bloom .card-preview{background:linear-gradient(135deg,#d8d5d0,#e8e0d0 45%,#e8a055);color:#2a1a0e;}
 
 .stat-bar{max-width:1400px;margin:0 auto;padding:1.5rem 2rem;display:flex;gap:2.5rem;border-bottom:1px solid rgba(255,255,255,.06);flex-wrap:wrap;}
 .stat{text-align:center;}
@@ -176,14 +185,14 @@ header p{font-size:.9rem;color:rgba(255,255,255,.5);margin-top:.8rem;}
 
 <header>
   <h1>熱量あふれる組織のつくり方<br><span style="font-weight:300;font-size:.7em;color:rgba(255,255,255,.6);">──数字の呪縛（お金の思い込み）からの解放</span></h1>
-  <p>LP たたき台 60パターン一覧（40バリエーション + 10構造バリアント + 10新作・原稿起点） · 2026.04</p>
+  <p>LP たたき台 60パターン一覧（40バリエーション + 10構造バリアント + 10新作・原稿起点） + 書籍LP 6案 · 2026.04</p>
 </header>
 
 <div class="stat-bar">
-  <div class="stat"><div class="stat-num">60</div><div class="stat-label">Total Patterns</div></div>
+  <div class="stat"><div class="stat-num">60</div><div class="stat-label">Marketing LP</div></div>
+  <div class="stat"><div class="stat-num">6</div><div class="stat-label" style="color:#d4a84c">書籍LP 案</div></div>
   <div class="stat"><div class="stat-num">5</div><div class="stat-label">Targets</div></div>
   <div class="stat"><div class="stat-num">2</div><div class="stat-label">Concepts</div></div>
-  <div class="stat"><div class="stat-num">15</div><div class="stat-label">Designs</div></div>
   <div class="stat"><div class="stat-num">10</div><div class="stat-label">New (原稿起点)</div></div>
 </div>
 
@@ -195,6 +204,7 @@ header p{font-size:.9rem;color:rgba(255,255,255,.5);margin-top:.8rem;}
   <button class="filter-btn" onclick="filter('target','t3')">③ビジネスパーソン</button>
   <button class="filter-btn" onclick="filter('target','t4')">①②③混合</button>
   <button class="filter-btn" onclick="filter('target','mgr')">経営者・マネジャー (新作)</button>
+  <button class="filter-btn" onclick="filter('target','book')" style="border-color:rgba(139,105,20,.4);color:#d4a84c">書籍LP</button>
   <div class="filter-sep"></div>
   <span class="filter-label">Concept</span>
   <button class="filter-btn active" onclick="filter('concept','all')">すべて</button>
@@ -214,6 +224,7 @@ header p{font-size:.9rem;color:rgba(255,255,255,.5);margin-top:.8rem;}
   <button class="filter-btn" onclick="filter('layout','std')">標準40種</button>
   <button class="filter-btn" onclick="filter('layout','struct')">構造バリアント10種</button>
   <button class="filter-btn" onclick="filter('layout','new')">新作10種（原稿起点）</button>
+  <button class="filter-btn" onclick="filter('layout','book')" style="border-color:rgba(139,105,20,.4);color:#d4a84c">書籍LP 6案</button>
   <div class="filter-sep"></div>
   <span class="filter-label">評価フィルター対象 <span style="font-size:.65rem;opacity:.5;letter-spacing:0">（複数選択=全員AND）</span></span>
   <button class="reviewer-btn active" data-rv="all"   onclick="toggleFilterReviewer('all')">全員</button>
@@ -1069,6 +1080,86 @@ header p{font-size:.9rem;color:rgba(255,255,255,.5);margin-top:.8rem;}
   </div>
 </a>
 
+
+<!-- ─── 書籍LP 6案 ─────────────────────────────────── -->
+<a class="card b-v1" href="lp-book-mockup-v1.html" target="_blank" data-target="book" data-concept="book" data-design="bv1" data-layout="book">
+  <div class="card-preview"><span style="font-size:1.1rem;letter-spacing:.12em;color:#8b6914;">書籍LP</span></div>
+  <div class="card-body">
+    <div class="card-num">書籍LP — Mockup v1</div>
+    <div class="card-title">ベースモックアップ — クリーム×ゴールドのエディトリアル、哲学起点メインセクション</div>
+    <div class="card-tags">
+      <span class="tag tag-book">書籍LP</span>
+      <span class="tag tag-book">内容開示型</span>
+      <span class="tag tag-book">モックアップ</span>
+    </div>
+  </div>
+</a>
+
+<a class="card b-warm" href="lp-book-02-warm.html" target="_blank" data-target="book" data-concept="book" data-design="bwarm" data-layout="book">
+  <div class="card-preview"><span style="font-size:1.4rem;letter-spacing:.08em;color:#2a1a0e;">温炉</span></div>
+  <div class="card-body">
+    <div class="card-num">書籍LP — A: 温炉</div>
+    <div class="card-title">温暖アンバー — 章ごとに左オレンジボーダー、奇偶でbg交互、温かみある世界観</div>
+    <div class="card-tags">
+      <span class="tag tag-book">書籍LP</span>
+      <span class="tag tag-book">アンバー系</span>
+      <span class="tag tag-book">フェードアップ</span>
+    </div>
+  </div>
+</a>
+
+<a class="card b-leftaxis" href="lp-book-03-leftaxis.html" target="_blank" data-target="book" data-concept="book" data-design="bleft" data-layout="book">
+  <div class="card-preview"><span style="font-size:1.2rem;letter-spacing:.1em;color:#3a5e20;">軸</span></div>
+  <div class="card-body">
+    <div class="card-num">書籍LP — B: 軸</div>
+    <div class="card-title">左軸統一 — 大きな問い左配置×右に書影、章番号を左列に統一。オリーブグリーン</div>
+    <div class="card-tags">
+      <span class="tag tag-book">書籍LP</span>
+      <span class="tag tag-book">左軸統一</span>
+      <span class="tag tag-book">2カラム</span>
+    </div>
+  </div>
+</a>
+
+<a class="card b-timeline" href="lp-book-04-timeline.html" target="_blank" data-target="book" data-concept="book" data-design="btl" data-layout="book">
+  <div class="card-preview"><span style="font-size:1.1rem;letter-spacing:.1em;color:#fff;">道筋</span></div>
+  <div class="card-body">
+    <div class="card-num">書籍LP — C: 道筋</div>
+    <div class="card-title">縦線タイムライン — 章が左右交互・中央ラインに丸マーカー。インディゴ×アンバー</div>
+    <div class="card-tags">
+      <span class="tag tag-book">書籍LP</span>
+      <span class="tag tag-book">タイムライン</span>
+      <span class="tag tag-book">インディゴ</span>
+    </div>
+  </div>
+</a>
+
+<a class="card b-navy" href="lp-book-05-navy.html" target="_blank" data-target="book" data-concept="book" data-design="bnavy" data-layout="book">
+  <div class="card-preview"><span style="font-size:1.1rem;letter-spacing:.1em;color:#e8612a;">対比</span></div>
+  <div class="card-body">
+    <div class="card-num">書籍LP — D: 対比</div>
+    <div class="card-title">紺×橙コントラスト — メインがダークネイビー地に、橙アクセントで熱量を表現</div>
+    <div class="card-tags">
+      <span class="tag tag-book">書籍LP</span>
+      <span class="tag tag-book">紺×橙</span>
+      <span class="tag tag-book">ダーク</span>
+    </div>
+  </div>
+</a>
+
+<a class="card b-bloom" href="lp-book-06-bloom.html" target="_blank" data-target="book" data-concept="book" data-design="bbloom" data-layout="book">
+  <div class="card-preview"><span style="font-size:1.2rem;letter-spacing:.1em;color:#c86b1a;">点火</span></div>
+  <div class="card-body">
+    <div class="card-num">書籍LP — E: 点火</div>
+    <div class="card-title">色にじみ体験 — スクロールするほど章がグレーから温かい色に染まる「熱量の再点火」</div>
+    <div class="card-tags">
+      <span class="tag tag-book">書籍LP</span>
+      <span class="tag tag-book">色にじみ</span>
+      <span class="tag tag-book">スクロール演出</span>
+    </div>
+  </div>
+</a>
+
 </div><!-- /grid -->
 
 <script>
@@ -1293,7 +1384,8 @@ function applyFilter() {
     const lOk = state.layout  === 'all'
              || (state.layout === 'struct' && card.dataset.layout === 'struct')
              || (state.layout === 'new'    && card.dataset.layout === 'new')
-             || (state.layout === 'std'    && card.dataset.layout !== 'struct' && card.dataset.layout !== 'new');
+             || (state.layout === 'book'   && card.dataset.layout === 'book')
+             || (state.layout === 'std'    && card.dataset.layout !== 'struct' && card.dataset.layout !== 'new' && card.dataset.layout !== 'book');
 
     let rOk = true;
     const id = card.dataset.id;
