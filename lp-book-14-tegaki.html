@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>熱量あふれる組織のつくりかた</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{text-decoration:none}
+.fu{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.fu.in{opacity:1;transform:none}
+
+:root{--bg:#f3ead8;--paper:#faf6ec;--ink:#1e1208;--red:#c0392b;--rule:rgba(160,120,60,.22);--w:800px}
+body{background:var(--bg);color:var(--ink)}
+
+/* 横罫線（ノート紙） */
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg,transparent,transparent 31px,var(--rule) 32px);
+}
+.wrap{position:relative;z-index:1}
+
+/* NAV */
+.snav{
+  padding:1rem 2rem;
+  display:flex;align-items:center;gap:1rem;
+  border-bottom:1.5px dashed rgba(160,120,60,.35);
+}
+.snav-badge{
+  font-size:.72rem;letter-spacing:.14em;color:var(--red);
+  border:1.5px dashed var(--red);padding:.2rem .7rem;border-radius:1px;
+}
+.snav-ttl{font-family:'Noto Serif JP',serif;font-size:.95rem;color:var(--ink);opacity:.65}
+
+/* HERO */
+.hero{max-width:var(--w);margin:0 auto;padding:5rem 1.5rem 3rem;text-align:center}
+.hero-eyebrow{
+  display:inline-block;font-size:.75rem;letter-spacing:.18em;
+  color:var(--red);background:rgba(192,57,43,.08);
+  padding:.28rem .9rem;border-radius:99px;margin-bottom:2rem;
+}
+.hero-h1{
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(2rem,4.8vw,3.2rem);font-weight:900;line-height:1.4;
+  margin-bottom:1.4rem;
+}
+.hero-h1 mark{
+  background:none;color:var(--red);
+  border-bottom:3px solid var(--red);padding-bottom:1px;
+}
+.hero-body{
+  max-width:500px;margin:0 auto 3.5rem;
+  font-size:1rem;line-height:2.1;color:#5a3818;
+}
+
+/* 貼り付けイラスト（テープ留め） */
+.tape-mount{
+  max-width:600px;margin:0 auto 4rem;
+  background:var(--paper);
+  border:1px solid #d0bc90;
+  padding:1.4rem 1.4rem 2.2rem;
+  box-shadow:4px 6px 18px rgba(0,0,0,.09);
+  transform:rotate(-.5deg);
+  position:relative;
+}
+.tape-mount::before,.tape-mount::after{
+  content:'';position:absolute;
+  width:52px;height:16px;
+  background:rgba(210,175,80,.42);
+  border-radius:1px;
+}
+.tape-mount::before{top:-8px;left:14%;transform:rotate(-2.5deg)}
+.tape-mount::after{top:-8px;right:14%;transform:rotate(2deg)}
+.tape-mount .illust-img{width:100%}
+.tape-caption{text-align:right;font-size:.72rem;color:#aaa;font-style:italic;margin-top:.7rem}
+
+/* CHAPTERS —付箋スタイル */
+.ch-sec{max-width:var(--w);margin:0 auto;padding:1rem 1.5rem 4rem}
+.ch-sec-h{
+  font-family:'Noto Serif JP',serif;font-size:1.15rem;font-weight:700;
+  margin-bottom:1.5rem;padding-bottom:.5rem;
+  border-bottom:1.5px dashed rgba(160,120,60,.4);
+}
+.ch-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.ch-sticky{
+  background:var(--paper);border:1px solid #d4c49a;
+  border-radius:2px;padding:1.1rem 1.3rem;
+  box-shadow:2px 4px 0 rgba(0,0,0,.04);
+}
+.ch-sticky:nth-child(odd){transform:rotate(-.35deg)}
+.ch-sticky:nth-child(even){transform:rotate(.3deg)}
+.ch-n{font-size:.7rem;letter-spacing:.12em;color:var(--red);
+  padding-bottom:.45rem;margin-bottom:.5rem;
+  border-bottom:1.5px dashed rgba(192,57,43,.22)}
+.ch-t{font-family:'Noto Serif JP',serif;font-weight:700;font-size:.98rem;margin-bottom:.35rem}
+.ch-d{font-size:.84rem;line-height:1.8;color:#5a3818}
+
+/* ENDORSERS */
+.end-sec{background:rgba(255,255,255,.45);border-top:1.5px dashed rgba(160,120,60,.3);
+  border-bottom:1.5px dashed rgba(160,120,60,.3);padding:3.5rem 1.5rem}
+.end-sec .inner{max-width:var(--w);margin:0 auto}
+.sec-h2{font-family:'Noto Serif JP',serif;font-size:1.1rem;font-weight:700;
+  margin-bottom:1.5rem}
+.end-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.end-card{
+  background:var(--paper);border:1px solid #d4c49a;
+  padding:1.1rem;border-radius:2px;
+  box-shadow:1px 3px 0 rgba(0,0,0,.04);
+}
+.end-q{font-size:.88rem;line-height:1.8;font-style:italic;margin-bottom:.7rem}
+.end-who{font-size:.72rem;color:#aaa}
+.end-who strong{display:block;color:var(--ink);font-size:.82rem;margin-bottom:.1rem}
+
+/* CTA */
+.cta-sec{padding:5rem 1.5rem;text-align:center}
+.cta-lead{font-family:'Noto Serif JP',serif;font-size:1.35rem;margin-bottom:2rem}
+.cta-btn{display:inline-block;padding:.85rem 2.6rem;background:var(--red);color:#fff;
+  font-size:.95rem;letter-spacing:.08em;border-radius:1px}
+
+footer{padding:1.2rem;text-align:center;font-size:.75rem;color:#bbb;
+  border-top:1.5px dashed rgba(160,120,60,.3)}
+
+@media(max-width:600px){
+  .ch-grid,.end-grid{grid-template-columns:1fr}
+  .ch-sticky:nth-child(odd),.ch-sticky:nth-child(even){transform:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="snav">
+  <span class="snav-badge">本</span>
+  <span class="snav-ttl">熱量あふれる組織のつくりかた</span>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">この本が向き合う、根っこの問い</p>
+  <h1 class="hero-h1">なぜ、働く人の<mark>熱量</mark>は<br>枯れていくのだろう。</h1>
+  <p class="hero-body">数字を追えば追うほど、何かが失われていく。<br>その「何か」の正体を、この本は探しに行く。</p>
+  <div class="tape-mount fu">
+    <img src="illust-book.png" alt="人とのつながりのイラスト" class="illust-img"
+  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div style="display:none;align-items:center;justify-content:center;background:#f0e8d8;min-height:200px;border-radius:4px;"><p style="color:#aaa;font-size:.82rem;text-align:center;padding:1rem">illust-book.png<br>（差し替え予定）</p></div>
+    <p class="tape-caption">ひとが、つながる。それだけで、何かが動き出す。</p>
+  </div>
+</section>
+
+<section class="ch-sec">
+  <h2 class="ch-sec-h">目次</h2>
+  <div class="ch-grid">
+    <div class="ch-sticky fu">
+      <p class="ch-n">第１章</p>
+      <p class="ch-t">なぜ熱量は枯れるのか</p>
+      <p class="ch-d">組織のなかで、情熱が失われていくメカニズムを解き明かす。</p>
+    </div><div class="ch-sticky fu">
+      <p class="ch-n">第２章</p>
+      <p class="ch-t">数字の呪縛とは何か</p>
+      <p class="ch-d">売上・KPI・評価制度——見えない鎖の正体。</p>
+    </div><div class="ch-sticky fu">
+      <p class="ch-n">第３章</p>
+      <p class="ch-t">熱量が生まれる瞬間</p>
+      <p class="ch-d">人が「やりたい」と感じるとき、何が起きているのか。</p>
+    </div><div class="ch-sticky fu">
+      <p class="ch-n">第４章</p>
+      <p class="ch-t">つながりをデザインする</p>
+      <p class="ch-d">関係性の質が、組織の体温を左右する。</p>
+    </div><div class="ch-sticky fu">
+      <p class="ch-n">第５章</p>
+      <p class="ch-t">熱量あふれる組織へ</p>
+      <p class="ch-d">実践のための問いと、小さな一歩の始め方。</p>
+    </div>
+  </div>
+</section>
+
+<section class="end-sec">
+  <div class="inner">
+    <h2 class="sec-h2">推薦の声</h2>
+    <div class="end-grid">
+      <div class="end-card fu">
+        <p class="end-q">「読み終えた瞬間、チームに会いたくなった。」</p>
+        <p class="end-who"><strong>Aさん</strong>某上場企業 人事部長</p>
+      </div><div class="end-card fu">
+        <p class="end-q">「数字だけ追ってきた10年間を、深く反省した。」</p>
+        <p class="end-who"><strong>Bさん</strong>スタートアップ創業者</p>
+      </div><div class="end-card fu">
+        <p class="end-q">「この本は、マネジャー全員の必読書だと思う。」</p>
+        <p class="end-who"><strong>Cさん</strong>組織コンサルタント</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-sec">
+  <p class="cta-lead fu">あなたの組織に、熱量を取り戻す。</p>
+  <a href="#" class="cta-btn">Amazonで見る</a>
+</section>
+
+<footer>© 2025 のっち × sha × KOHちゃん</footer>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const io = new IntersectionObserver(es=>{
+    es.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+  },{threshold:.08});
+  document.querySelectorAll('.fu').forEach(el=>io.observe(el));
+});
+</script>
+</body>
+</html>
