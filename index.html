@@ -77,13 +77,19 @@ header p{font-size:.9rem;color:rgba(255,255,255,.5);margin-top:.8rem;}
 .tag-new{background:rgba(201,168,76,.12);color:#e8c96a;border:1px solid rgba(201,168,76,.25);}
 .tag-book{background:rgba(139,105,20,.18);color:#d4a84c;border:1px solid rgba(139,105,20,.35);}
 
-/* 書籍LP カラー */
+/* 書籍LP v2 カラー */
 .b-v1 .card-preview{background:linear-gradient(135deg,#faf7f2,#e8dfc8);color:#8b6914;}
 .b-warm .card-preview{background:linear-gradient(135deg,#f0e8db,#e8a055 70%,#c86b1a);color:#2a1a0e;}
 .b-leftaxis .card-preview{background:linear-gradient(135deg,#f8f8f5,#e0e8d0);color:#3a5e20;}
 .b-timeline .card-preview{background:linear-gradient(135deg,#eceaf4,#3d4f8a);color:#fff;}
 .b-navy .card-preview{background:linear-gradient(135deg,#1a2540,#364872);color:#e8612a;}
 .b-bloom .card-preview{background:linear-gradient(135deg,#d8d5d0,#e8e0d0 45%,#e8a055);color:#2a1a0e;}
+/* 書籍LP v3（書影方向性）カラー */
+.b-coverdirect .card-preview{background:linear-gradient(135deg,#fdfcfa,#f0ede8);color:#c0392b;}
+.b-verttype .card-preview{background:#faf9f7;color:#0e0e0c;position:relative;overflow:hidden;}
+.b-verttype .card-preview::before{content:'熱量';position:absolute;right:-10px;top:-20px;font-family:serif;font-size:5rem;font-weight:900;color:rgba(0,0,0,.06);line-height:1;writing-mode:vertical-rl;}
+.b-darkred .card-preview{background:#080808;color:#e04040;}
+.b-editorial .card-preview{background:#fff;color:#080808;border-top:3px solid #c0392b;}
 
 .stat-bar{max-width:1400px;margin:0 auto;padding:1.5rem 2rem;display:flex;gap:2.5rem;border-bottom:1px solid rgba(255,255,255,.06);flex-wrap:wrap;}
 .stat{text-align:center;}
@@ -1156,6 +1162,60 @@ header p{font-size:.9rem;color:rgba(255,255,255,.5);margin-top:.8rem;}
       <span class="tag tag-book">書籍LP</span>
       <span class="tag tag-book">色にじみ</span>
       <span class="tag tag-book">スクロール演出</span>
+    </div>
+  </div>
+</a>
+
+
+<!-- ─── 書籍LP v3（書影方向性反映）4案 ──────────── -->
+<a class="card b-coverdirect" href="lp-book-07-coverdirect.html" target="_blank" data-target="book" data-concept="book" data-design="bv3" data-layout="book">
+  <div class="card-preview"><span style="font-size:1.1rem;letter-spacing:.08em;color:#c0392b;">書影直結</span></div>
+  <div class="card-body">
+    <div class="card-num">書籍LP — v3A: 書影直結</div>
+    <div class="card-title">白×赤ネットワーク — 書影の清潔感そのまま。赤の有機ネットSVGをヒーローに据えたクリーン版</div>
+    <div class="card-tags">
+      <span class="tag tag-book">書籍LP v3</span>
+      <span class="tag tag-book">白×赤</span>
+      <span class="tag tag-book">有機ネット</span>
+    </div>
+  </div>
+</a>
+
+<a class="card b-verttype" href="lp-book-08-verttype.html" target="_blank" data-target="book" data-concept="book" data-design="bv3" data-layout="book">
+  <div class="card-preview"><span style="font-size:1rem;letter-spacing:.06em;color:#c0392b;">縦組みタイポ</span></div>
+  <div class="card-body">
+    <div class="card-num">書籍LP — v3B: 縦組みタイポ</div>
+    <div class="card-title">「熱量」大タイポ背景 — 書影の縦組み表現をLPに。右に大タイポ、左に哲学テキスト＋赤ネット</div>
+    <div class="card-tags">
+      <span class="tag tag-book">書籍LP v3</span>
+      <span class="tag tag-book">縦組みタイポ</span>
+      <span class="tag tag-book">2カラム</span>
+    </div>
+  </div>
+</a>
+
+<a class="card b-darkred" href="lp-book-09-darkred.html" target="_blank" data-target="book" data-concept="book" data-design="bv3" data-layout="book">
+  <div class="card-preview"><span style="font-size:1.1rem;letter-spacing:.1em;color:#e04040;">ダーク×赤</span></div>
+  <div class="card-body">
+    <div class="card-num">書籍LP — v3C: ダーク×赤</div>
+    <div class="card-title">漆黒×赤ネット — 書影を反転した劇的版。赤の有機ネットワークが暗闇に浮かび上がる</div>
+    <div class="card-tags">
+      <span class="tag tag-book">書籍LP v3</span>
+      <span class="tag tag-book">ダーク反転</span>
+      <span class="tag tag-book">赤ネット</span>
+    </div>
+  </div>
+</a>
+
+<a class="card b-editorial" href="lp-book-10-editorial.html" target="_blank" data-target="book" data-concept="book" data-design="bv3" data-layout="book">
+  <div class="card-preview"><span style="font-size:.95rem;letter-spacing:.05em;color:#080808;border-bottom:2px solid #c0392b;padding-bottom:.2rem">活版印刷風</span></div>
+  <div class="card-body">
+    <div class="card-num">書籍LP — v3D: 活版印刷風</div>
+    <div class="card-title">純白×2カラム活版 — 鋭い黒タイポ×赤スポットカラーのみ。ネットSVGは枠内に収めたミニマル版</div>
+    <div class="card-tags">
+      <span class="tag tag-book">書籍LP v3</span>
+      <span class="tag tag-book">活版印刷風</span>
+      <span class="tag tag-book">ミニマル</span>
     </div>
   </div>
 </a>
