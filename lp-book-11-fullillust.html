@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>熱量あふれる組織のつくりかた｜A: 全幅ヒーロー</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;900&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fdfcfa;--bg2:#f5f2ec;--ink:#111110;--ink2:#3c3c36;--ink3:#8a8a7a;
+  --red:#c0392b;--red-l:rgba(192,57,43,.2);--rule:#e2ddd8;--w:820px}
+body{background:var(--bg);color:var(--ink)}
+nav{background:rgba(253,252,250,.96);border-bottom:1px solid var(--rule)}
+.nav-title{color:var(--ink)}
+.nav-links a{color:var(--ink2)}
+.nav-links a:hover{color:var(--red)}
+.nav-cta{background:var(--red);color:#fff}
+
+/* ── HERO ── */
+.hero{padding:4rem 2rem 3.5rem;border-bottom:1px solid var(--rule)}
+.hero-inner{max-width:var(--w);margin:0 auto}
+
+/* 問い（イラスト上部） */
+.hero-q-wrap{text-align:center;margin-bottom:2.5rem}
+.hero-q-label{font-size:.65rem;letter-spacing:.4em;color:var(--red);display:block;margin-bottom:1rem}
+.hero-q{
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(1.5rem,3.5vw,2.3rem);font-weight:900;line-height:1.5;
+  color:var(--ink);
+}
+
+/* イラスト */
+.hero-illust{
+  margin:0 auto 2.5rem;
+  max-width:680px;
+  position:relative;
+}
+.illust-img{border-radius:6px;box-shadow:0 4px 24px rgba(0,0,0,.08)}
+
+/* 書誌情報（イラスト下） */
+.hero-meta{
+  display:flex;align-items:center;justify-content:center;gap:2.5rem;
+  padding-top:2rem;border-top:1px solid var(--rule);
+  flex-wrap:wrap;
+}
+.hero-book-cover{
+  width:72px;flex-shrink:0;aspect-ratio:3/4;
+  background:#e8e0d8;border-radius:3px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.5rem;color:var(--ink3);
+  box-shadow:3px 4px 12px rgba(0,0,0,.1);
+}
+.hero-book-info{}
+.hero-book-title{font-family:'Noto Serif JP',serif;font-size:1rem;font-weight:900;line-height:1.5;margin-bottom:.3rem}
+.hero-book-sub{font-size:.72rem;color:var(--ink3);margin-bottom:.3rem}
+.hero-book-authors{font-size:.8rem;color:var(--ink2)}
+.hero-book-authors span{font-weight:700;color:var(--ink)}
+.hero-philosophy{max-width:500px;font-size:.88rem;line-height:1.95;color:var(--ink2)}
+.hero-philosophy strong{color:var(--red);font-weight:700}
+.hero-link{
+  display:inline-flex;margin-top:.75rem;font-size:.8rem;
+  color:var(--red);text-decoration:none;
+  border-bottom:1px solid var(--red-l);transition:opacity .2s;
+}
+.hero-link:hover{opacity:.6}
+
+/* ── CHAPTERS ── */
+.ch-wrap{padding:3.5rem 2rem;border-top:1px solid var(--rule)}
+.ch-inner{max-width:var(--w);margin:0 auto}
+.ch-heading{font-size:.68rem;letter-spacing:.4em;color:var(--red);
+  padding-bottom:1.5rem;border-bottom:1px solid var(--rule);margin-bottom:0}
+.ch-video{background:#ece8e2;color:var(--ink3)}
+.play-icon{background:rgba(255,255,255,.7)}
+.play-icon::after{border-color:transparent transparent transparent var(--ink2)}
+.ch-num{color:var(--red)}
+.ch-body{color:var(--ink2)}
+.ch-link{color:var(--red);border-color:var(--red-l)}
+/* ── SECTIONS ── */
+.end-section{background:var(--bg2);border-top:1px solid var(--rule)}
+.eyebrow{color:var(--red)}
+.end-photo,.auth-photo{background:#e0dbd4;color:var(--ink3)}
+.end-theme{color:var(--red)}
+.auth-role{color:var(--red)}
+.auth-bio{color:var(--ink2)}
+.rec-section{background:var(--bg);border-top:1px solid var(--rule)}
+.rec-org{color:var(--ink3)}
+.auth-section{border-top:1px solid var(--rule)}
+.cta-section{background:var(--ink);border-top:none}
+.cta-title,.cta-body{color:#fff}
+.cta-body{color:rgba(255,255,255,.7)}
+.cta-btn{background:var(--red);color:#fff}
+.cta-sub{color:rgba(255,255,255,.35)}
+.post-section{background:var(--bg);border-top:1px solid var(--rule)}
+.post-card{background:#fff;border:1px solid var(--rule)}
+.post-card:hover{box-shadow:0 2px 12px rgba(192,57,43,.08);border-color:var(--red-l)}
+.post-badge.event{background:rgba(192,57,43,.08);color:var(--red)}
+.post-badge.article{background:rgba(30,80,30,.06);color:#2d5a3d}
+.post-date{color:var(--ink3)}
+.post-link{color:var(--red);border-color:var(--red-l)}
+.post-more a{color:var(--ink2);border-color:var(--rule)}
+.post-more a:hover{color:var(--red)}
+.post-mail{background:var(--bg2)}
+.mail-title{color:var(--ink)}
+.mail-body{color:var(--ink2)}
+.form-input{border:1px solid var(--rule);background:#fff;color:var(--ink)}
+.form-input::placeholder{color:var(--ink3)}
+.form-submit{background:var(--ink);color:#fff}
+.form-note{color:var(--ink3)}
+footer{background:var(--ink);color:rgba(255,255,255,.4)}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans JP',sans-serif;font-size:16px;line-height:1.8}
+/* NAV */
+nav{position:sticky;top:0;z-index:100;backdrop-filter:blur(8px);padding:.75rem 2rem}
+.nav-inner{max-width:var(--w);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.nav-title{font-family:'Noto Serif JP',serif;font-size:.85rem;font-weight:600;white-space:nowrap}
+.nav-links{display:flex;gap:1.25rem;flex-wrap:wrap}
+.nav-links a{font-size:.72rem;text-decoration:none;letter-spacing:.05em;white-space:nowrap;transition:color .2s}
+.nav-cta{font-size:.72rem;padding:.35rem 1rem;border-radius:2px;text-decoration:none;white-space:nowrap;transition:opacity .2s}
+.nav-cta:hover{opacity:.8}
+/* ILLUST IMAGE */
+.illust-img{width:100%;display:block;border-radius:6px}
+.illust-ph{display:none;width:100%;aspect-ratio:4/3;background:#faf8f5;border:2px dashed var(--red);border-radius:6px;
+  align-items:center;justify-content:center;color:var(--red);font-size:.8rem;letter-spacing:.08em;text-align:center;padding:1rem}
+/* SECTION */
+.section{padding:4rem 2rem}
+.section-inner{max-width:var(--w);margin:0 auto}
+.eyebrow{font-size:.68rem;letter-spacing:.35em;margin-bottom:.5rem;display:block}
+.section-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.3rem,2.5vw,1.9rem);font-weight:900;line-height:1.4;margin-bottom:2.5rem}
+/* CHAPTERS */
+.chapter-item{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start;padding:2.5rem 0;border-bottom:1px solid var(--rule)}
+.chapter-item:last-child{border-bottom:none}
+.ch-video{aspect-ratio:16/9;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.75rem;font-size:.75rem}
+.ch-coming{flex-direction:column;gap:.5rem;text-align:center}
+.play-icon{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.play-icon::after{content:'';border-style:solid;border-width:9px 0 9px 16px;margin-left:3px}
+.ch-num{font-size:.62rem;letter-spacing:.3em;margin-bottom:.4rem}
+.ch-title{font-family:'Noto Serif JP',serif;font-size:1.05rem;font-weight:900;line-height:1.5;margin-bottom:.75rem;white-space:pre-line}
+.ch-body{font-size:.87rem;line-height:1.9}
+.ch-link{display:inline-block;margin-top:.75rem;font-size:.75rem;text-decoration:none;border-bottom:1px solid;transition:opacity .2s}
+.ch-link:hover{opacity:.6}
+.muted{opacity:.4}
+/* ENDORSERS */
+.end-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.end-card{display:flex;gap:1rem;align-items:flex-start}
+.end-photo{width:52px;height:52px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.55rem}
+.end-name{font-size:.9rem;font-weight:700;margin-bottom:.2rem}
+.end-org{font-size:.72rem;line-height:1.6}
+.end-theme{font-size:.72rem;margin-top:.3rem;font-style:italic}
+/* AUTHORS */
+.auth-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.auth-card{display:flex;gap:1.5rem;align-items:flex-start}
+.auth-photo{width:80px;height:80px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.65rem}
+.auth-name{font-family:'Noto Serif JP',serif;font-size:1.1rem;font-weight:900;margin-bottom:.25rem}
+.auth-role{font-size:.75rem;margin-bottom:.6rem}
+.auth-bio{font-size:.82rem;line-height:1.9}
+/* RECOMMENDERS */
+.rec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:.75rem 1.5rem}
+.rec-item{font-size:.82rem;line-height:1.6;padding:.6rem 0;border-bottom:1px solid var(--rule)}
+.rec-name{font-weight:700}
+.rec-org{font-size:.72rem}
+/* CTA */
+.cta-section{padding:4rem 2rem;text-align:center}
+.cta-inner{max-width:540px;margin:0 auto}
+.cta-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.3rem,3vw,2rem);font-weight:900;line-height:1.5;margin-bottom:1rem}
+.cta-body{font-size:.9rem;line-height:1.9;margin-bottom:2rem}
+.cta-btn{display:inline-block;padding:1rem 3rem;font-weight:900;font-size:1rem;border-radius:3px;text-decoration:none;transition:opacity .2s}
+.cta-btn:hover{opacity:.85}
+.cta-sub{font-size:.75rem;margin-top:.75rem}
+/* POST READING */
+.post-section{padding:4rem 2rem}
+.post-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:1.25rem}
+.post-card{border-radius:4px;padding:1.4rem;display:flex;flex-direction:column;gap:.5rem}
+.post-badge{display:inline-flex;align-items:center;gap:.4rem;font-size:.65rem;letter-spacing:.12em;font-weight:700;padding:.2rem .65rem;border-radius:50px;width:fit-content}
+.post-date{font-size:.72rem}
+.post-title{font-family:'Noto Serif JP',serif;font-size:.92rem;font-weight:700;line-height:1.5}
+.post-body{font-size:.78rem;line-height:1.8;flex:1}
+.post-link{font-size:.75rem;text-decoration:none;width:fit-content;border-bottom:1px solid;transition:opacity .2s;margin-top:.25rem}
+.post-link:hover{opacity:.6}
+.post-more{text-align:right;margin-bottom:2.5rem}
+.post-more a{font-size:.8rem;text-decoration:none;border-bottom:1px solid;transition:opacity .2s}
+.post-more a:hover{opacity:.7}
+.post-mail{border-radius:6px;padding:2rem 2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}
+.mail-title{font-family:'Noto Serif JP',serif;font-size:1.1rem;font-weight:900;margin-bottom:.5rem}
+.mail-body{font-size:.82rem;line-height:1.8}
+.form-row{display:flex;gap:.5rem;margin-bottom:.5rem}
+.form-input{flex:1;padding:.65rem .9rem;border-radius:3px;font-size:.82rem;font-family:'Noto Sans JP',sans-serif}
+.form-submit{padding:.65rem 1.25rem;border:none;border-radius:3px;font-size:.82rem;cursor:pointer;white-space:nowrap;font-family:'Noto Sans JP',sans-serif;font-weight:700;transition:opacity .2s}
+.form-submit:hover{opacity:.85}
+.form-note{font-size:.68rem;line-height:1.7}
+/* FOOTER */
+footer{padding:2rem;text-align:center;font-size:.75rem;line-height:2}
+/* ANIMATION */
+.fade-up{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+/* RESPONSIVE */
+@media(max-width:720px){
+  .chapter-grid{grid-template-columns:1fr!important}
+  .end-grid{grid-template-columns:1fr 1fr}
+  .auth-grid{grid-template-columns:1fr}
+  .post-cards{grid-template-columns:1fr}
+  .post-mail{grid-template-columns:1fr}
+  .nav-links{display:none}
+}
+@media(max-width:480px){.end-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <span class="nav-title">熱量あふれる組織のつくりかた</span>
+    <div class="nav-links">
+      <a href="#chapters">はじめに・各章</a>
+      <a href="#endorsers">推薦者</a>
+      <a href="#authors">著者紹介</a>
+      <a href="#amazon">購入</a>
+      <a href="#post-reading">読後の受け皿</a>
+    </div>
+    <a href="#amazon" class="nav-cta">Amazonで購入</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="top" class="hero">
+  <div class="hero-inner">
+
+    <div class="hero-q-wrap fade-up">
+      <span class="hero-q-label">この本が向き合う、根っこの問い</span>
+      <h1 class="hero-q">なぜ、働く人の熱量は枯れていくのだろう。</h1>
+    </div>
+
+    <div class="hero-illust fade-up">
+      <img src="illust-book.png" alt="人とのつながりのイラスト" class="illust-img"
+     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+<div class="illust-ph">
+  <p>illust-book.png<br>（差し替え予定）</p>
+</div>
+    </div>
+
+    <div class="hero-meta fade-up">
+      <div class="hero-book-cover">書影</div>
+      <div class="hero-book-info">
+        <p class="hero-book-title">熱量あふれる組織のつくりかた</p>
+        <p class="hero-book-sub">数字の呪縛（お金への思い込み）からの解放</p>
+        <p class="hero-book-authors"><span>吉原史郎</span>・<span>宮慶優子</span> 著　｜　2026年 刊行予定</p>
+        <a href="#chapters" class="hero-link">本書の内容を見る ↓</a>
+      </div>
+      <div class="hero-philosophy">
+        <p>人とのつながりから、<strong>熱量を取りもどす</strong>——。<br>
+        組織から熱量が失われる背景には、<strong>「お金への思い込み（マネーバイアス）」</strong>がある。この本は、その呪縛からの解放を探る一冊です。</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CHAPTERS -->
+<section id="chapters" class="ch-wrap">
+  <div class="ch-inner">
+    <p class="ch-heading">CONTENTS — 本書の内容</p>
+    
+  <div class="chapter-item chapter-grid fade-up">
+    <div class="ch-video"><div class="play-icon"></div><span>動画プレースホルダー</span></div>
+    <div class="ch-text">
+      <p class="ch-num">INTRODUCTION</p>
+      <h2 class="ch-title">はじめに</h2>
+      <p class="ch-body">人生にも、職場にも、組織にも、わたし達一人ひとりの「人生の熱量」が湧きあがり、躍動していてほしい——。本書の根本にある願いと、「マネーバイアス」という問いへの向き合い方を語る。</p>
+      <a href="#" class="ch-link">詳しく見る →</a>
+    </div>
+  </div>
+  <div class="chapter-item chapter-grid fade-up">
+    <div class="ch-video"><div class="play-icon"></div><span>動画プレースホルダー</span></div>
+    <div class="ch-text">
+      <p class="ch-num">CHAPTER 1</p>
+      <h2 class="ch-title">組織から熱量が枯渇していく今、
+本当に必要な変化とは？</h2>
+      <p class="ch-body">「で？」と言われた瞬間、心の糸が切れた。給料は上がったのに、日曜の夜が重い——。組織から熱量が失われる瞬間の実例と、その背後にある「マネーバイアス」の正体に迫る。</p>
+      <a href="#" class="ch-link">詳しく見る →</a>
+    </div>
+  </div>
+  <div class="chapter-item chapter-grid fade-up">
+    <div class="ch-video"><div class="play-icon"></div><span>動画プレースホルダー</span></div>
+    <div class="ch-text">
+      <p class="ch-num">CHAPTER 2</p>
+      <h2 class="ch-title">熱量あふれる組織とは？</h2>
+      <p class="ch-body">熱量はお金で買えない。では、どうすれば取り戻せるのか。「人生の熱量」が湧きあがる場、組織に織り込まれる営み、めぐり続ける学びの姿勢——「3つの風穴」から実践へのヒントを届ける。</p>
+      <a href="#" class="ch-link">詳しく見る →</a>
+    </div>
+  </div>
+  <div class="chapter-item chapter-grid fade-up">
+    <div class="ch-video"><div class="play-icon"></div><span>動画プレースホルダー</span></div>
+    <div class="ch-text">
+      <p class="ch-num">CHAPTER 3</p>
+      <h2 class="ch-title">枯渇していく人生の熱量の背景</h2>
+      <p class="ch-body">なぜ、わたし達はお金への思い込みから抜け出せないのか。経済思想の歴史から「マネーバイアス」の社会的・歴史的な根拠を紐解き、「いのちのつながり」という視点へと読者を誘う。</p>
+      <a href="#" class="ch-link">詳しく見る →</a>
+    </div>
+  </div>
+  <div class="chapter-item chapter-grid fade-up">
+    <div class="ch-video"><div class="play-icon"></div><span>動画プレースホルダー</span></div>
+    <div class="ch-text">
+      <p class="ch-num">CHAPTER 4</p>
+      <h2 class="ch-title">個人と組織の新たな関係性と
+「生成の組織」</h2>
+      <p class="ch-body">「ライフでワークを包む」視点が生む、個人の自律と相互依存の共存。森の菌糸ネットワークのように、根っこでつながりあう組織の姿——「生成の組織論（Becoming）」という新たな地平を開く。</p>
+      <a href="#" class="ch-link">詳しく見る →</a>
+    </div>
+  </div>
+  <div class="chapter-item chapter-grid fade-up">
+    <div class="ch-video"><div class="play-icon"></div><span>動画プレースホルダー</span></div>
+    <div class="ch-text">
+      <p class="ch-num">CHAPTER 5</p>
+      <h2 class="ch-title">実践企業の皆さまのストーリー</h2>
+      <p class="ch-body">九州電力グループ、宮田運輸、丸善雄松堂ほか6社の現場から。「人とのつながり」から熱量が湧きあがり、組織全体へと広がっていく——変化はこうして起きた。</p>
+      <a href="#" class="ch-link">詳しく見る →</a>
+    </div>
+  </div>
+  <div class="chapter-item chapter-grid fade-up">
+    <div class="ch-video ch-coming"><p class="ch-num">CHAPTER 6</p><p>Coming Soon</p></div>
+    <div class="ch-text">
+      <p class="ch-num">CHAPTER 6</p>
+      <h2 class="ch-title">実践のためのアクション集</h2>
+      <p class="ch-body muted">準備中</p>
+    </div>
+  </div>
+  </div>
+</section>
+
+<section id="endorsers" class="section end-section">
+  <div class="section-inner">
+    <p class="eyebrow">SPECIAL CONTRIBUTORS</p>
+    <h2 class="section-title fade-up">対談コラム執筆者・主な推薦者</h2>
+    <div class="end-grid">
+      
+      <div class="end-card fade-up">
+        <div class="end-photo">写真</div>
+        <div>
+          <p class="end-name">堂目 卓生</p>
+          <p class="end-org">大阪大学 特任教授</p>
+          <p class="end-theme">「お金への思い込み」を歴史から学ぶ</p>
+        </div>
+      </div>
+      <div class="end-card fade-up">
+        <div class="end-photo">写真</div>
+        <div>
+          <p class="end-name">新井 和宏</p>
+          <p class="end-org">武蔵野大学ウェルビーイング学部 客員教授</p>
+          <p class="end-theme">人生という視点から組織を学ぶ</p>
+        </div>
+      </div>
+      <div class="end-card fade-up">
+        <div class="end-photo">写真</div>
+        <div>
+          <p class="end-name">矢萩 大輔</p>
+          <p class="end-org">有限会社人事・労務</p>
+          <p class="end-theme">現場から問い直す、組織と人</p>
+        </div>
+      </div>
+      <div class="end-card fade-up">
+        <div class="end-photo">写真</div>
+        <div>
+          <p class="end-name">四井 真治</p>
+          <p class="end-org">パーマカルチャーデザイナー・地球再生型生活研究家</p>
+          <p class="end-theme">「いのちの仕組み」を学ぶ</p>
+        </div>
+      </div>
+      <div class="end-card fade-up">
+        <div class="end-photo">写真</div>
+        <div>
+          <p class="end-name">西山 勝</p>
+          <p class="end-org">九州電力 代表取締役社長</p>
+          <p class="end-theme">これからの企業の可能性</p>
+        </div>
+      </div>
+      <div class="end-card fade-up">
+        <div class="end-photo">写真</div>
+        <div>
+          <p class="end-name">岩井 睦雄</p>
+          <p class="end-org">経済同友会 筆頭副代表幹事</p>
+          <p class="end-theme">これからの企業の可能性</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="authors" class="section auth-section">
+  <div class="section-inner">
+    <p class="eyebrow">AUTHORS</p>
+    <h2 class="section-title fade-up">著者紹介</h2>
+    <div class="auth-grid">
+      <div class="auth-card fade-up">
+        <div class="auth-photo">写真</div>
+        <div>
+          <h3 class="auth-name">吉原 史郎</h3>
+          <p class="auth-role">組織開発コンサルタント・製造業取締役（ダミー）</p>
+          <p class="auth-bio">倒産したリゾートホテルの再生経営、三菱UFJリサーチ＆コンサルティングでの経営・組織開発コンサルティングを経て、現在は製造業の取締役。『実務でつかむ！ティール組織（2018年）』著者。（ダミー）</p>
+        </div>
+      </div>
+      <div class="auth-card fade-up">
+        <div class="auth-photo">写真</div>
+        <div>
+          <h3 class="auth-name">宮慶 優子</h3>
+          <p class="auth-role">（肩書きダミー）</p>
+          <p class="auth-bio">大手電力会社の経営企画部での経験をもとに、「なぜ人生の熱量の流れが止まるのか」という問いを抱えて探究を重ねてきた。（ダミーテキスト）</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section rec-section">
+  <div class="section-inner">
+    <p class="eyebrow">ENDORSEMENTS</p>
+    <h2 class="section-title fade-up">推薦者</h2>
+    <div class="rec-grid">
+      <div class="rec-item"><p class="rec-name">畑中 義雄</p><p class="rec-org">有限会社人事・労務</p></div>
+      <div class="rec-item"><p class="rec-name">推薦者 ダミーA</p><p class="rec-org">所属・肩書きダミー</p></div>
+      <div class="rec-item"><p class="rec-name">推薦者 ダミーB</p><p class="rec-org">所属・肩書きダミー</p></div>
+      <div class="rec-item"><p class="rec-name">推薦者 ダミーC</p><p class="rec-org">所属・肩書きダミー</p></div>
+      <div class="rec-item"><p class="rec-name">推薦者 ダミーD</p><p class="rec-org">所属・肩書きダミー</p></div>
+    </div>
+  </div>
+</section>
+<section id="amazon" class="cta-section">
+  <div class="cta-inner">
+    <h2 class="cta-title">人とのつながりから、<br>熱量を取りもどす。</h2>
+    <p class="cta-body">経営陣・ミドルマネジャー自身が、自分の「人生の熱量」から始めていける——<br>そのことを、できるだけシンプルに、具体的にお伝えしていく一冊。</p>
+    <a href="#" class="cta-btn">Amazonで購入する</a>
+    <p class="cta-sub">電子書籍・書店でも発売予定</p>
+  </div>
+</section>
+<section id="post-reading" class="post-section">
+  <div class="section-inner">
+    <p class="eyebrow">AFTER READING</p>
+    <h2 class="section-title fade-up">読んだ後も、つながり続けよう</h2>
+    <div class="post-cards">
+      <div class="post-card fade-up">
+        <span class="post-badge event">📅 イベント</span>
+        <span class="post-date">2026.07.12</span>
+        <h3 class="post-title">「熱量あふれる組織」読者対話会 vol.1</h3>
+        <p class="post-body">著者・吉原史郎が登壇。本書の問いを参加者とともに深める対話の場。（ダミー）</p>
+        <a href="#" class="post-link">詳細・申込 →</a>
+      </div>
+      <div class="post-card fade-up">
+        <span class="post-badge article">📄 記事</span>
+        <span class="post-date">2026.06.28</span>
+        <h3 class="post-title">なぜ、組織から「熱量」が消えるのか</h3>
+        <p class="post-body">マネーバイアスが組織に与える影響を、著者自身の言葉でさらに掘り下げたコラム。（ダミー）</p>
+        <a href="#" class="post-link">記事を読む →</a>
+      </div>
+      <div class="post-card fade-up">
+        <span class="post-badge event">📅 イベント</span>
+        <span class="post-date">2026.06.05</span>
+        <h3 class="post-title">出版記念トークイベント（大阪）</h3>
+        <p class="post-body">宮慶優子・吉原史郎の両著者が揃って登壇した出版記念イベントのレポート。（ダミー）</p>
+        <a href="#" class="post-link">レポートを見る →</a>
+      </div>
+    </div>
+    <div class="post-more"><a href="#">イベント・記事をすべて見る →</a></div>
+    <div class="post-mail">
+      <div>
+        <h3 class="mail-title">新着情報をメールで受け取る</h3>
+        <p class="mail-body">イベント開催のお知らせ、著者による新着コラム、関連情報などを不定期でお届けします。</p>
+      </div>
+      <div class="mail-form">
+        <div class="form-row"><input class="form-input" type="text" placeholder="お名前"></div>
+        <div class="form-row">
+          <input class="form-input" type="email" placeholder="メールアドレス">
+          <button class="form-submit">登録</button>
+        </div>
+        <p class="form-note">※ このフォームはモックアップです。</p>
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <p>熱量あふれる組織のつくりかた　著：吉原史郎・宮慶優子</p>
+  <p style="margin-top:.4rem">© 2026 All rights reserved.　｜　<a href="#" style="color:inherit">プライバシーポリシー</a></p>
+</footer>
+<script>
+const obs = new IntersectionObserver(
+  entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') }),
+  { threshold: 0.12 }
+);
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
