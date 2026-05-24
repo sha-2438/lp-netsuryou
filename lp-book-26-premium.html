@@ -23,9 +23,17 @@ html{scroll-behavior:smooth}
 body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.85}
 img{max-width:100%;display:block}
 
-/* 花アクセント（CSS-only） */
-.flower-dot{display:inline-block;width:var(--s);height:var(--s);border-radius:50%;background:var(--c);vertical-align:middle;margin:0 .1em}
-.bloom-cluster{display:inline-flex;gap:.35rem;align-items:center;padding:.5rem 0;margin:1rem 0}
+/* 花アクセント（CSS-only / 水彩のにじみ感） */
+.flower-dot{
+  display:inline-block;width:var(--s);height:var(--s);
+  background:radial-gradient(circle at 35% 35%, var(--c) 0%, var(--c) 30%, rgba(255,255,255,0) 75%);
+  vertical-align:middle;margin:0 .15em;
+  filter:blur(.3px);
+  opacity:.85;
+}
+.bloom-cluster{display:inline-flex;gap:-.2rem;align-items:center;padding:.5rem 0;margin:1rem 0}
+.bloom-cluster .flower-dot{margin-left:-.3em}
+.bloom-cluster .flower-dot:first-child{margin-left:0}
 
 /* NAV */
 nav{position:sticky;top:0;z-index:100;background:rgba(14,24,48,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule);padding:.75rem 2rem}
@@ -60,10 +68,10 @@ nav{position:sticky;top:0;z-index:100;background:rgba(14,24,48,.96);backdrop-fil
 .main-book-link{margin-top:.3rem;font-size:.78rem;color:var(--accent);text-decoration:none;letter-spacing:.05em;display:inline-flex;align-items:center;gap:.3rem;transition:opacity .2s}
 .main-book-link:hover{opacity:.7}
 
-/* HERO ILLUST */
-.hero-illust-fig{margin:0}
+/* HERO ILLUST — 表紙の中央バースト（プレースホルダーは低解像度のため最大幅を制限） */
+.hero-illust-fig{margin:0 auto;text-align:center}
 .hero-illust-fig figcaption{font-size:.72rem;color:var(--ink3);text-align:center;margin-top:.7rem;letter-spacing:.04em;line-height:1.6}
-.hero-illust{width:100%;border-radius:4px;}
+.hero-illust{width:100%;max-width:360px;height:auto;margin:0 auto;border-radius:4px;}
 
 /* HERO LAYOUTS */
 .hero-centered{text-align:center;max-width:760px;margin:0 auto}
@@ -238,9 +246,9 @@ footer a{color:inherit}
     <p class="hero-tagline">人とのつながりから熱量を取りもどし、<br>再び組織がまわりはじめる。</p>
     <figure class="hero-illust-fig hero-feature framed">
       <img src="illust-book.png" alt="本書イラスト" class="hero-illust "
-       onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="hero-illust-ph" style="display:none;align-items:center;justify-content:center;background:#f0e8d8;aspect-ratio:4/3;border-radius:4px;color:#aaa;font-size:.78rem;text-align:center;padding:1rem">illust-book.png<br>（表紙最終版・差し替え予定）</div>
+       onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="hero-illust-ph" style="display:none;align-items:center;justify-content:center;background:#f0e8d8;aspect-ratio:1/1;max-width:360px;margin:0 auto;border-radius:4px;color:#aaa;font-size:.78rem;text-align:center;padding:1rem">illust-book.png<br>（最終版・差し替え予定）</div>
       <figcaption><span class="bloom-cluster" aria-hidden="true">
-    <span class="flower-dot" style="--c:#e0464e;--s:10px"></span><span class="flower-dot" style="--c:#f6c84c;--s:7px"></span><span class="flower-dot" style="--c:#5da5d9;--s:8px"></span><span class="flower-dot" style="--c:#9b5ba6;--s:6px"></span><span class="flower-dot" style="--c:#5fb98a;--s:7px"></span>
+    <span class="flower-dot" style="--c:#e0464e;--s:12px"></span><span class="flower-dot" style="--c:#ff8c3a;--s:9px"></span><span class="flower-dot" style="--c:#f6c84c;--s:10px"></span><span class="flower-dot" style="--c:#7ec96e;--s:8px"></span><span class="flower-dot" style="--c:#5da5d9;--s:9px"></span><span class="flower-dot" style="--c:#b06ec8;--s:7px"></span>
   </span> 人とのつながりから、熱量は生まれる。</figcaption>
     </figure>
     <div class="main-divider"></div>
@@ -276,7 +284,7 @@ footer a{color:inherit}
 <section id="chapters" class="chapters">
   <div class="chapters-inner">
     <p class="chapters-heading">— 本書の内容 — <span class="bloom-cluster" aria-hidden="true">
-    <span class="flower-dot" style="--c:#e0464e;--s:10px"></span><span class="flower-dot" style="--c:#f6c84c;--s:7px"></span><span class="flower-dot" style="--c:#5da5d9;--s:8px"></span><span class="flower-dot" style="--c:#9b5ba6;--s:6px"></span><span class="flower-dot" style="--c:#5fb98a;--s:7px"></span>
+    <span class="flower-dot" style="--c:#e0464e;--s:12px"></span><span class="flower-dot" style="--c:#ff8c3a;--s:9px"></span><span class="flower-dot" style="--c:#f6c84c;--s:10px"></span><span class="flower-dot" style="--c:#7ec96e;--s:8px"></span><span class="flower-dot" style="--c:#5da5d9;--s:9px"></span><span class="flower-dot" style="--c:#b06ec8;--s:7px"></span>
   </span></p>
     
     <div class="chapter-item">
@@ -371,7 +379,7 @@ footer a{color:inherit}
   <div class="section-inner">
     <p class="section-eyebrow">SPECIAL CONTRIBUTORS</p>
     <h2 class="section-title">豪華対談コラム執筆者 <span class="bloom-cluster" aria-hidden="true">
-    <span class="flower-dot" style="--c:#e0464e;--s:10px"></span><span class="flower-dot" style="--c:#f6c84c;--s:7px"></span><span class="flower-dot" style="--c:#5da5d9;--s:8px"></span><span class="flower-dot" style="--c:#9b5ba6;--s:6px"></span><span class="flower-dot" style="--c:#5fb98a;--s:7px"></span>
+    <span class="flower-dot" style="--c:#e0464e;--s:12px"></span><span class="flower-dot" style="--c:#ff8c3a;--s:9px"></span><span class="flower-dot" style="--c:#f6c84c;--s:10px"></span><span class="flower-dot" style="--c:#7ec96e;--s:8px"></span><span class="flower-dot" style="--c:#5da5d9;--s:9px"></span><span class="flower-dot" style="--c:#b06ec8;--s:7px"></span>
   </span></h2>
     <p style="font-size:.92rem;color:var(--ink2);margin-bottom:2.5rem;max-width:640px;line-height:1.95">本書では5名の対談コラムを通じて、それぞれの専門領域から「人生の熱量」と組織を多角的に学んでいきます。</p>
     <div class="endorsers-grid">

@@ -94,19 +94,19 @@ const POST_CARDS = [
 // ── イラスト ─────────────────────────────────────────
 function illustImg(extra='') {
   return `<img src="${ILLUST}" alt="本書イラスト" class="hero-illust ${extra}"
-       onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="hero-illust-ph" style="display:none;align-items:center;justify-content:center;background:#f0e8d8;aspect-ratio:4/3;border-radius:4px;color:#aaa;font-size:.78rem;text-align:center;padding:1rem">illust-book.png<br>（表紙最終版・差し替え予定）</div>`;
+       onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="hero-illust-ph" style="display:none;align-items:center;justify-content:center;background:#f0e8d8;aspect-ratio:1/1;max-width:360px;margin:0 auto;border-radius:4px;color:#aaa;font-size:.78rem;text-align:center;padding:1rem">illust-book.png<br>（最終版・差し替え予定）</div>`;
 }
 
-// 表紙のカラフル花モチーフを表現する CSS-only アクセント
-// 装飾なので画像は使わない。表紙の世界観を匂わせる装飾。
+// 表紙の中央花（カラフル水彩バースト）を表現する CSS-only アクセント
+// 実画像と競合しないよう、にじみ・透過のある装飾として配置
 function flowerDot(color, size=6) {
   return `<span class="flower-dot" style="--c:${color};--s:${size}px"></span>`;
 }
 
-// 表紙の中央花のような小さなコンステレーション
+// 表紙の中央バーストの世界観を匂わせる「水彩のにじみ」
 function bloomCluster() {
   return `<span class="bloom-cluster" aria-hidden="true">
-    ${flowerDot('#e0464e', 10)}${flowerDot('#f6c84c', 7)}${flowerDot('#5da5d9', 8)}${flowerDot('#9b5ba6', 6)}${flowerDot('#5fb98a', 7)}
+    ${flowerDot('#e0464e', 12)}${flowerDot('#ff8c3a', 9)}${flowerDot('#f6c84c', 10)}${flowerDot('#7ec96e', 8)}${flowerDot('#5da5d9', 9)}${flowerDot('#b06ec8', 7)}
   </span>`;
 }
 
@@ -328,9 +328,17 @@ html{scroll-behavior:smooth}
 body{font-family:'Noto Sans JP',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.85}
 img{max-width:100%;display:block}
 
-/* 花アクセント（CSS-only） */
-.flower-dot{display:inline-block;width:var(--s);height:var(--s);border-radius:50%;background:var(--c);vertical-align:middle;margin:0 .1em}
-.bloom-cluster{display:inline-flex;gap:.35rem;align-items:center;padding:.5rem 0;margin:1rem 0}
+/* 花アクセント（CSS-only / 水彩のにじみ感） */
+.flower-dot{
+  display:inline-block;width:var(--s);height:var(--s);
+  background:radial-gradient(circle at 35% 35%, var(--c) 0%, var(--c) 30%, rgba(255,255,255,0) 75%);
+  vertical-align:middle;margin:0 .15em;
+  filter:blur(.3px);
+  opacity:.85;
+}
+.bloom-cluster{display:inline-flex;gap:-.2rem;align-items:center;padding:.5rem 0;margin:1rem 0}
+.bloom-cluster .flower-dot{margin-left:-.3em}
+.bloom-cluster .flower-dot:first-child{margin-left:0}
 
 /* NAV */
 nav{position:sticky;top:0;z-index:100;background:${D.colors.navBg};backdrop-filter:blur(8px);border-bottom:1px solid var(--rule);padding:.75rem 2rem}
@@ -365,10 +373,10 @@ ${D.questionExtra||''}
 .main-book-link{margin-top:.3rem;font-size:.78rem;color:var(--accent);text-decoration:none;letter-spacing:.05em;display:inline-flex;align-items:center;gap:.3rem;transition:opacity .2s}
 .main-book-link:hover{opacity:.7}
 
-/* HERO ILLUST */
-.hero-illust-fig{margin:0}
+/* HERO ILLUST — 表紙の中央バースト（プレースホルダーは低解像度のため最大幅を制限） */
+.hero-illust-fig{margin:0 auto;text-align:center}
 .hero-illust-fig figcaption{font-size:.72rem;color:var(--ink3);text-align:center;margin-top:.7rem;letter-spacing:.04em;line-height:1.6}
-.hero-illust{width:100%;border-radius:${D.shape.illustRadius};${D.illustEffect||''}}
+.hero-illust{width:100%;max-width:360px;height:auto;margin:0 auto;border-radius:${D.shape.illustRadius};${D.illustEffect||''}}
 
 /* HERO LAYOUTS */
 .hero-centered{text-align:center;max-width:760px;margin:0 auto}
