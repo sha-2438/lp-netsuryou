@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ja" prefix="og: https://ogp.me/ns#">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>熱量あふれる組織のつくりかた - Junkan-Aida.life</title>
+<meta name="description" content="数字の呪縛（お金への思い込み）からの解放。なぜ、組織は枯れていくのか？ — 吉原史郎・宮慶優子 著（日本能率協会マネジメントセンター 2026年刊行予定）。" />
+
+<!-- ─── Junkan-Aida.life 実CSS（本物と同じ素材） ─── -->
+<link rel="stylesheet" href="https://junkan-aida.life/securewp/wp-content/themes/lightning/_g2/library/bootstrap-4/css/bootstrap.min.css?ver=4.5.0">
+<link rel="stylesheet" href="https://junkan-aida.life/securewp/wp-content/themes/lightning/_g2/assets/css/common.css?ver=15.33.1">
+<link rel="stylesheet" href="https://junkan-aida.life/securewp/wp-content/themes/lightning/_g2/design-skin/origin2/css/style.css?ver=15.33.1">
+<link rel="stylesheet" href="https://junkan-aida.life/securewp/wp-content/plugins/vk-blocks/build/block-build.css?ver=1.115.2.1">
+<link rel="stylesheet" href="https://junkan-aida.life/securewp/wp-content/themes/junkan-aida-theme/style.css?ver=15.33.1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+<!-- 本物の VK Color Palettes と同じ変数を再現 -->
+<style>
+:root{
+  --wp--preset--color--vk-color-custom-1:#560000;
+  --vk-color-custom-1: var(--wp--preset--color--vk-color-custom-1);
+  --color-key:#540500;
+  --wp--preset--color--vk-color-primary:#540500;
+  --color-key-dark:#9b8900;
+}
+
+/* この記事ページ専用の最小追加スタイル（本物の余白感に合わせる） */
+.bookLP-hero{
+  position:relative;
+  min-height:480px;
+  background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+             linear-gradient(135deg,#3a0500,#540500 50%,#9b8900);
+  background-size:cover;background-position:center;
+  display:flex;align-items:center;
+  margin-bottom:60px;
+  padding:80px 0;
+  width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);
+}
+.bookLP-hero-inner{
+  position:relative;z-index:1;
+  max-width:980px;margin:0 auto;padding:0 30px;
+  color:#fff;text-align:center;
+}
+.bookLP-hero h1{
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(1.7rem,3.6vw,2.8rem);
+  font-weight:900;line-height:1.5;letter-spacing:.04em;
+  color:#fff !important;margin:0 0 .8rem;
+}
+.bookLP-hero p.sub{
+  font-family:'Noto Serif JP',serif;
+  font-size:1.15rem;color:#fff;opacity:.92;
+  letter-spacing:.05em;margin:0;
+}
+.bookLP-hero .meta{
+  margin-top:1.5rem;font-size:.85rem;color:#fff;opacity:.8;
+  letter-spacing:.04em;
+}
+
+/* イラスト額装 */
+.bookLP-illust{
+  text-align:center;margin:30px auto 50px;
+}
+.bookLP-illust .frame{
+  display:inline-block;background:#fff;
+  padding:18px;
+  border:1px solid rgba(0,0,0,.08);
+  box-shadow:0 4px 24px rgba(84,5,0,.08);
+  max-width:540px;width:100%;
+}
+.bookLP-illust img{
+  display:block;width:100%;height:auto;
+}
+.bookLP-illust .cap{
+  font-size:.78rem;color:#888;
+  letter-spacing:.05em;margin-top:.7rem;font-style:italic;
+}
+
+/* 大きな問い (記事の中の決め所) */
+.bookLP-bigQ{
+  background:#fdf9ec;
+  border-top:1px solid #e8dcb0;
+  border-bottom:1px solid #e8dcb0;
+  padding:50px 20px;
+  text-align:center;margin:50px 0;
+}
+.bookLP-bigQ .label{
+  display:inline-block;
+  font-size:.72rem;letter-spacing:.3em;font-weight:700;
+  color:var(--color-key-dark);
+  margin-bottom:1.5rem;
+}
+.bookLP-bigQ .q{
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(1.7rem,4.5vw,2.8rem);font-weight:900;
+  color:var(--color-key);line-height:1.5;letter-spacing:.04em;
+  margin-bottom:1.3rem;
+}
+.bookLP-bigQ .tag{
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(.95rem,1.5vw,1.1rem);
+  color:var(--color-key);font-weight:600;
+  letter-spacing:.05em;line-height:1.85;
+}
+
+/* 引用 */
+.bookLP-quote{
+  background:#fdf9ec;
+  border-left:5px solid var(--color-key-dark);
+  padding:22px 28px;margin:30px 0;
+  font-size:.95rem;line-height:1.95;color:#401000;
+}
+.bookLP-quote strong{color:var(--color-key)}
+.bookLP-quote .src{
+  display:block;margin-top:.7rem;
+  font-size:.75rem;color:#888;font-style:italic;
+}
+
+/* 章カード */
+.bookLP-chapter{
+  background:#fff;
+  border:1px solid #e8e0cc;
+  border-left:4px solid var(--color-key);
+  padding:22px 26px;margin:0 0 18px;
+  display:grid;grid-template-columns:200px 1fr;gap:22px;align-items:start;
+}
+.bookLP-chapter .video{
+  background:linear-gradient(135deg,#f5ede0,#e8dcb0);
+  aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:.4rem;color:#666;font-size:.7rem;
+}
+.bookLP-chapter .play{
+  width:42px;height:42px;border-radius:50%;background:#fff;
+  display:flex;align-items:center;justify-content:center;
+}
+.bookLP-chapter .play::after{
+  content:'';border-style:solid;border-width:8px 0 8px 13px;
+  border-color:transparent transparent transparent var(--color-key);margin-left:3px;
+}
+.bookLP-chapter .num{
+  font-size:.7rem;letter-spacing:.25em;color:var(--color-key-dark);
+  font-weight:700;margin-bottom:.3rem;
+}
+.bookLP-chapter h4{
+  font-family:'Noto Serif JP',serif;
+  font-size:1.1rem;font-weight:900;color:var(--color-key);
+  line-height:1.5;margin:0 0 .55rem;
+}
+.bookLP-chapter p{
+  font-size:.88rem;line-height:1.9;color:#555;margin:0 0 .6rem;
+}
+.bookLP-chapter a.more{
+  font-size:.78rem;color:var(--color-key);
+  border-bottom:1px solid var(--color-key-dark);
+}
+@media(max-width:768px){
+  .bookLP-chapter{grid-template-columns:1fr}
+}
+
+/* 実践している皆さま カード（写真左×テキスト右） */
+.bookLP-contrib{
+  background:#fff;
+  border:1px solid #e8e0cc;
+  padding:18px 20px;
+  height:100%;
+  display:flex;align-items:center;gap:16px;
+}
+.bookLP-contrib .photo{
+  width:68px;height:68px;border-radius:50%;
+  background:linear-gradient(135deg,#f5ede0,#e8dcb0);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.6rem;color:#999;flex-shrink:0;
+}
+.bookLP-contrib .meta{flex:1;min-width:0}
+.bookLP-contrib .name{
+  font-family:'Noto Serif JP',serif;
+  font-size:1.08rem;font-weight:900;color:var(--color-key);
+  margin-bottom:.25rem;line-height:1.4;
+}
+.bookLP-contrib .title{
+  font-size:.74rem;color:#555;line-height:1.6;margin:0;
+}
+
+/* 著者 */
+.bookLP-author{
+  background:#fff;border:1px solid #e8e0cc;padding:22px;
+  display:flex;gap:18px;align-items:flex-start;height:100%;
+}
+.bookLP-author .photo{
+  width:78px;height:78px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,#f5ede0,#e8dcb0);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.65rem;color:#999;
+}
+.bookLP-author h4{
+  font-family:'Noto Serif JP',serif;
+  font-size:1.1rem;font-weight:900;color:var(--color-key);
+  margin:0 0 .2rem;
+}
+.bookLP-author .t{font-size:.74rem;color:var(--color-key-dark);margin-bottom:.55rem}
+.bookLP-author p{font-size:.82rem;line-height:1.9;color:#555;margin:0}
+
+/* 実践企業 */
+.bookLP-practice{
+  background:#fff;padding:16px 18px;border:1px solid #e8e0cc;
+  border-left:3px solid var(--color-key-dark);
+}
+.bookLP-practice .nm{
+  font-family:'Noto Serif JP',serif;
+  font-size:.92rem;font-weight:700;color:var(--color-key);
+  line-height:1.45;margin-bottom:.25rem;
+}
+.bookLP-practice .tg{font-size:.7rem;color:var(--color-key-dark);letter-spacing:.05em}
+
+/* 書誌＋CTA */
+.bookLP-bookinfo{
+  background:#fdf9ec;border-left:5px solid var(--color-key);
+  padding:30px;display:flex;gap:26px;align-items:center;
+  margin:36px 0 24px;
+}
+.bookLP-bookinfo .cover{
+  width:115px;flex-shrink:0;aspect-ratio:3/4;
+  background:linear-gradient(150deg,var(--color-key),var(--color-key-dark));
+  color:#fff;display:flex;align-items:center;justify-content:center;
+  text-align:center;font-size:.65rem;font-weight:700;padding:12px;
+  box-shadow:3px 5px 16px rgba(84,5,0,.18);letter-spacing:.05em;line-height:1.5;
+}
+.bookLP-bookinfo h4{
+  font-family:'Noto Serif JP',serif;
+  font-size:1.2rem;font-weight:900;color:var(--color-key);
+  margin:0 0 .4rem;line-height:1.5;
+}
+.bookLP-bookinfo .sub{font-size:.85rem;color:var(--color-key);margin-bottom:.7rem;font-weight:600}
+.bookLP-bookinfo .detail{font-size:.8rem;color:#555;line-height:1.85}
+.bookLP-bookinfo .detail strong{color:var(--color-key)}
+@media(max-width:768px){
+  .bookLP-bookinfo{flex-direction:column;text-align:center}
+}
+
+/* 本物のボタンスタイルに合わせる：border-radius:0、font-size:1.15rem、white text */
+.bookLP-cta{text-align:center;margin:30px 0 50px}
+.bookLP-cta a{
+  display:inline-block;padding:.95rem 3rem;
+  background:var(--color-key);color:#fff !important;
+  font-size:1.15rem;font-weight:700;letter-spacing:.06em;
+  border:2px solid var(--color-key);
+  border-radius:0;text-decoration:none;
+  transition:background .2s,color .2s;
+}
+.bookLP-cta a:hover{background:#fff;color:var(--color-key) !important}
+.bookLP-cta .sub{margin-top:.6rem;font-size:.78rem;color:#777}
+
+/* 「siteContent_after」 風 メーリングリスト */
+.bookLP-after{
+  background:#fdf9ec;padding:50px 20px;margin-top:50px;
+  border-top:1px solid #e8dcb0;
+}
+.bookLP-after .inner{max-width:560px;margin:0 auto;text-align:center}
+.bookLP-after h3{
+  font-family:'Noto Serif JP',serif;
+  font-size:1.3rem;font-weight:900;color:var(--color-key);
+  margin-bottom:.7rem;
+}
+.bookLP-after p{font-size:.88rem;line-height:1.9;color:#555;margin-bottom:1.3rem}
+.bookLP-after form{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center}
+.bookLP-after input{
+  flex:1;min-width:220px;padding:.7rem 1rem;
+  border:1px solid #d8d0bc;background:#fff;font-size:.85rem;border-radius:0;
+}
+.bookLP-after button{
+  padding:.7rem 1.6rem;background:var(--color-key);color:#fff;
+  border:none;font-size:.85rem;font-weight:700;letter-spacing:.05em;
+  cursor:pointer;border-radius:0;
+}
+.bookLP-after button:hover{background:var(--color-key-dark)}
+
+/* 関連記事 */
+.bookLP-related{margin:50px 0 30px}
+.bookLP-related h3{
+  font-family:'Noto Serif JP',serif;
+  font-size:1.2rem;font-weight:900;color:var(--color-key);
+  border-bottom:2px solid var(--color-key);
+  padding-bottom:.5rem;margin-bottom:1.2rem;display:flex;align-items:center;gap:.5rem;
+}
+.bookLP-related h3::before{content:'◆';color:var(--color-key-dark);font-size:.85rem}
+.bookLP-related-card{
+  background:#fff;border:1px solid #e8e0cc;padding:1rem;
+  height:100%;display:block;text-decoration:none;color:inherit;
+  transition:border-color .2s,box-shadow .2s;
+}
+.bookLP-related-card:hover{
+  border-color:var(--color-key-dark);
+  box-shadow:0 2px 12px rgba(84,5,0,.08);
+  text-decoration:none;color:inherit;
+}
+.bookLP-related-card .cat{
+  font-size:.66rem;color:var(--color-key-dark);
+  letter-spacing:.15em;margin-bottom:.4rem;
+}
+.bookLP-related-card .ti{
+  font-family:'Noto Serif JP',serif;
+  font-size:.9rem;font-weight:700;color:var(--color-key);
+  line-height:1.55;
+}
+
+/* セクション間の余白 */
+.bookLP-section{margin:50px 0}
+.bookLP-section h2.vk-headding-lp{
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(1.4rem,2.6vw,1.85rem);font-weight:900;color:var(--color-key);
+  border-bottom:3px solid var(--color-key);
+  padding-bottom:.8rem;margin-bottom:1.5rem;position:relative;
+}
+.bookLP-section h2.vk-headding-lp::after{
+  content:'';position:absolute;left:0;bottom:-3px;width:100px;height:3px;
+  background:var(--color-key-dark);
+}
+.bookLP-section .sub-en{
+  display:block;font-size:.72rem;letter-spacing:.3em;color:var(--color-key-dark);
+  margin-bottom:.4rem;font-weight:700;
+}
+.bookLP-section .lead{
+  font-size:.93rem;color:#555;line-height:1.95;margin-bottom:1.5rem;
+}
+
+/* パンくず */
+.bookLP-breadcrumb{
+  padding:14px 0;font-size:.78rem;color:#888;letter-spacing:.04em;
+}
+.bookLP-breadcrumb a{color:#888;text-decoration:none}
+.bookLP-breadcrumb a:hover{color:var(--color-key)}
+.bookLP-breadcrumb .sep{margin:0 .55rem;color:var(--color-key-dark)}
+.bookLP-breadcrumb .here{color:var(--color-key);font-weight:600}
+
+/* 本文段落 */
+.bookLP-body p{font-size:1rem;line-height:2.1;color:#222;margin-bottom:1.3rem}
+.bookLP-body p strong{
+  color:var(--color-key);font-weight:700;
+  background:linear-gradient(transparent 60%,rgba(155,137,0,.2) 60%);
+  padding:0 .15em;
+}
+.bookLP-divider{
+  text-align:center;margin:36px 0;color:var(--color-key-dark);
+  letter-spacing:.5em;font-size:.85rem;
+}
+</style>
+</head>
+
+<body class="single single-post wp-singular post-template-default wp-theme-lightning wp-child-theme-junkan-aida-theme vk-blocks fa_v7_css bootstrap4 device-pc">
+
+<!-- ─── HEADER (junkan-aida.life の構造そのまま) ─── -->
+<header id="header" class="siteHeader siteHeader-position-fixed">
+  <div class="container siteHeadContainer">
+    <div class="navbar-header">
+      <h1 class="navbar-brand siteHeader_logo">
+        <a href="https://junkan-aida.life/">
+          <span><img src="https://junkan-aida.life/securewp/wp-content/uploads/2024/10/junkan-aida.jpg" alt="Junkan-Aida.life" /></span>
+        </a>
+      </h1>
+    </div>
+    <div id="gMenu_outer" class="gMenu_outer">
+      <nav class="menu-右上-container">
+        <ul class="menu gMenu vk-menu-acc">
+          <li class="menu-item menu-item-type-post_type"><a href="https://junkan-aida.life/tabi_shiori/"><strong class="gMenu_name">旅のしおり</strong></a></li>
+          <li class="menu-item menu-item-type-post_type"><a href="https://junkan-aida.life/story/"><strong class="gMenu_name">これまでのストーリーと想い</strong></a></li>
+          <li class="menu-item menu-item-type-custom"><a href="https://junkan-aida.life/category/movielist/"><strong class="gMenu_name">動画で感じる</strong></a></li>
+          <li class="menu-item menu-item-type-taxonomy current-menu-item"><a href="https://junkan-aida.life/category/article/"><strong class="gMenu_name">文章で愉しむ</strong></a></li>
+          <li class="menu-item menu-item-type-post_type"><a href="https://junkan-aida.life/talk_corner/"><strong class="gMenu_name">トークコーナー</strong></a></li>
+          <li class="menu-item menu-item-type-post_type"><a href="https://junkan-aida.life/event/"><strong class="gMenu_name">イベント</strong></a></li>
+          <li class="menu-item menu-item-type-custom"><a href="https://junkan-aida.life/toiawase/"><strong class="gMenu_name">お問い合わせ</strong></a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div class="section siteContent">
+<div class="container">
+<div class="row">
+
+<div class="col mainSection mainSection-col-one">
+
+  <!-- パンくず -->
+  <nav class="bookLP-breadcrumb">
+    <a href="https://junkan-aida.life/">ホーム</a>
+    <span class="sep">›</span>
+    <a href="https://junkan-aida.life/category/article/">文章で愉しむ</a>
+    <span class="sep">›</span>
+    <span class="here">熱量あふれる組織のつくりかた</span>
+  </nav>
+
+  <!-- メイン記事 -->
+  <article class="post type-post status-publish hentry">
+    <div class="entry-body">
+
+      <!-- ────────────────── HERO ────────────────── -->
+      <div class="bookLP-hero">
+        <div class="bookLP-hero-inner">
+          <p style="margin:0 0 1rem;font-size:.72rem;letter-spacing:.35em;color:#fff;opacity:.75;font-weight:700">JUNKAN-AIDA ／ 文章で愉しむ</p>
+          <h1>熱量あふれる組織のつくりかた</h1>
+          <p class="sub">数字の呪縛（お金への思い込み）からの解放</p>
+          <p class="meta">著：吉原 史郎・宮慶 優子　／　日本能率協会マネジメントセンター　／　2026年 刊行予定</p>
+        </div>
+      </div>
+
+      <!-- ───────────── イラスト ───────────── -->
+      <div class="bookLP-illust">
+        <div class="frame">
+          <img src="illust-book.png" alt="熱量あふれる組織のつくりかた 本書イラスト">
+          <p class="cap">本書イラスト（最終版・差し替え予定）</p>
+        </div>
+      </div>
+
+      <!-- ───────────── 根っこの問い ───────────── -->
+      <section class="bookLP-bigQ">
+        <span class="label">この本が向き合う、根っこの問い</span>
+        <p class="q">なぜ、組織は<br>枯れていくのか？</p>
+        <p class="tag">人とのつながりから熱量を取りもどし、<br>再び組織がまわりはじめる。</p>
+      </section>
+
+      <!-- ───────────── 本文 ───────────── -->
+      <div class="bookLP-body">
+        <p>給料は上がった。制度も整えた。<br>それでも、日曜の夜になると、身体が鉛のように重くなる——。</p>
+
+        <div class="bookLP-quote">
+          アデコ社の2025年調査では、就業者のおよそ<strong>7割が「仕事への熱意や意欲はないが、必要最低限の業務はこなしている」</strong>状態にあると回答した。お金のためだけに業務をこなす空気が、組織を覆っている。
+          <span class="src">出典：アデコ株式会社「仕事への熱意と理想の上司に関する調査」2025年（精査中）</span>
+        </div>
+
+        <p>背景にあるのは、わたし達が無自覚に信じている<strong>「過剰なマネーバイアス（お金への思い込み）」</strong>です。数値という結果を、人生の熱量や人とのつながりよりも優先し続けた結果、組織から「目に見えないもの」が失われていく。</p>
+
+        <p>本書は、その呪縛からの解放を探る一冊です。<strong>人とのつながり</strong>から、<strong>「人生の熱量」を取りもどす</strong>ために。経営陣・ミドルマネジャー自身が、自分の「人生の熱量」から始めていける——そのことを、できるだけシンプルに、具体的にお伝えしていきます。</p>
+      </div>
+
+      <div class="bookLP-divider">◆ ◆ ◆</div>
+
+      <!-- ───────────── 本書の内容 ───────────── -->
+      <section class="bookLP-section">
+        <p class="sub-en">CONTENTS</p>
+        <h2 class="vk-headding-lp">本書の内容（はじめに・全6章）</h2>
+
+        <div class="bookLP-chapter">
+          <div class="video"><div class="play"></div><span>動画プレースホルダー</span></div>
+          <div>
+            <p class="num">INTRODUCTION</p>
+            <h4>はじめに</h4>
+            <p>なぜ、組織から「人生の熱量」が枯れていくのか。生命体的な組織を志向する際の構造的な矛盾、そして「人生の熱量」に主眼を置きながら財務的な持続性を共存させるという、本書の視点を語る。</p>
+            <a href="#" class="more">詳しく見る →</a>
+          </div>
+        </div>
+
+        <div class="bookLP-chapter">
+          <div class="video"><div class="play"></div><span>動画プレースホルダー</span></div>
+          <div>
+            <p class="num">CHAPTER 1</p>
+            <h4>組織から熱量が枯渇していく今、本当に必要な変化とは？</h4>
+            <p>「で？」と言われた瞬間、心の糸が切れた。給料は上がったのに、日曜の夜が重い——。背後にある「マネーバイアス」と、「ライフでワークを包む」という視点への転換を提示する。</p>
+            <a href="#" class="more">詳しく見る →</a>
+          </div>
+        </div>
+
+        <div class="bookLP-chapter">
+          <div class="video"><div class="play"></div><span>動画プレースホルダー</span></div>
+          <div>
+            <p class="num">CHAPTER 2</p>
+            <h4>熱量あふれる組織とは？</h4>
+            <p>「人生の熱量」はお金で買えない。「人とのつながり」から自ずと湧きあがり、めぐり続けるもの。マネーバイアスの過剰な組織に「3つの風穴」を開け、役職階層を超えた「ヘテラルキー」という実践へ。</p>
+            <a href="#" class="more">詳しく見る →</a>
+          </div>
+        </div>
+
+        <div class="bookLP-chapter">
+          <div class="video"><div class="play"></div><span>動画プレースホルダー</span></div>
+          <div>
+            <p class="num">CHAPTER 3</p>
+            <h4>枯渇していく人生の熱量の背景</h4>
+            <p>なぜ「過剰なマネーバイアス」はこれほど根深いのか。大阪大学・堂目卓生氏との対談を通じ、貨幣錯覚の歴史的展開を辿り、「いのちのつながり」という視点へと読者を誘う。</p>
+            <a href="#" class="more">詳しく見る →</a>
+          </div>
+        </div>
+
+        <div class="bookLP-chapter">
+          <div class="video"><div class="play"></div><span>動画プレースホルダー</span></div>
+          <div>
+            <p class="num">CHAPTER 4</p>
+            <h4>個人と組織の新たな関係性と「生成の組織」</h4>
+            <p>「ライフでワークを包む」視点が生む、個人の自律と相互依存の共存。森の菌糸ネットワークのように根っこでつながる組織の姿——「生成の組織論（Becoming）」という新たな実践知。</p>
+            <a href="#" class="more">詳しく見る →</a>
+          </div>
+        </div>
+
+        <div class="bookLP-chapter">
+          <div class="video"><div class="play"></div><span>動画プレースホルダー</span></div>
+          <div>
+            <p class="num">CHAPTER 5</p>
+            <h4>実践企業の皆さまのストーリー</h4>
+            <p>人的資本経営最優秀賞の九州電力グループ、宮田運輸、有限会社人事・労務ほか6社の現場から。「人とのつながり」から熱量が湧きあがり、財務的成果とも共存していく。</p>
+            <a href="#" class="more">詳しく見る →</a>
+          </div>
+        </div>
+
+        <div class="bookLP-chapter">
+          <div class="video"><div class="play"></div><span>動画プレースホルダー</span></div>
+          <div>
+            <p class="num">CHAPTER 6</p>
+            <h4>「ライフでワークを包む」はどこから生まれた？</h4>
+            <p>本書が拠って立つ視点「ライフでワークを包む」は、どのような道のりで生まれてきたのか。実践と探究の道のりを辿り、読者の明日の一歩へとつなげる。</p>
+            <a href="#" class="more">詳しく見る →</a>
+          </div>
+        </div>
+      </section>
+
+      <div class="bookLP-divider">◆ ◆ ◆</div>
+
+      <!-- ───────────── 実践している皆さま（対談コラム＋実践企業を統合） ───────────── -->
+      <section class="bookLP-section">
+        <p class="sub-en">PRACTITIONERS</p>
+        <h2 class="vk-headding-lp">実践している皆さま</h2>
+        <p class="lead">本書には、それぞれの現場で「人生の熱量」と「人とのつながり」を起点に組織を実践する皆さまが登場します。対談コラム5本と、5社の実践ストーリーから、多角的に学んでいきます。</p>
+
+        <div class="row">
+          <!-- 対談コラム執筆者 5名 -->
+          <div class="col-md-4 mb-3">
+            <div class="bookLP-contrib">
+              <div class="photo">写真</div>
+              <div class="meta">
+
+                <p class="name">堂目 卓生</p>
+
+                <p class="title">大阪大学 特任教授</p>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="bookLP-contrib">
+              <div class="photo">写真</div>
+              <div class="meta">
+
+                <p class="name">新井 和宏</p>
+
+                <p class="title">武蔵野大学ウェルビーイング学部 客員教授</p>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="bookLP-contrib">
+              <div class="photo">写真</div>
+              <div class="meta">
+
+                <p class="name">四井 真治</p>
+
+                <p class="title">地球再生型生活研究家／パーマカルチャーデザイナー</p>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="bookLP-contrib">
+              <div class="photo">写真</div>
+              <div class="meta">
+
+                <p class="name">西山 勝</p>
+
+                <p class="title">九州電力株式会社 代表取締役社長執行役員</p>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="bookLP-contrib">
+              <div class="photo">写真</div>
+              <div class="meta">
+
+                <p class="name">岩井 睦雄</p>
+
+                <p class="title">経済同友会 筆頭副代表幹事</p>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- 実践企業の代表者 5名 -->
+          <div class="col-md-4 mb-3">
+            <div class="bookLP-contrib">
+              <div class="photo">写真</div>
+              <div class="meta">
+
+                <p class="name">宮田 博文</p>
+
+                <p class="title">株式会社宮田運輸 代表取締役社長</p>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="bookLP-contrib">
+              <div class="photo">写真</div>
+              <div class="meta">
+
+                <p class="name">矢萩 大輔</p>
+
+                <p class="title">有限会社人事・労務 代表取締役</p>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="bookLP-contrib">
+              <div class="photo">写真</div>
+              <div class="meta">
+
+                <p class="name">福島 雅孝</p>
+
+                <p class="title">丸善雄松堂株式会社<br>まなび共創事業本部 担当部長</p>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="bookLP-contrib">
+              <div class="photo">写真</div>
+              <div class="meta">
+
+                <p class="name">有野 哲章</p>
+
+                <p class="title">社会福祉法人 蒼渓会 理事長</p>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="bookLP-contrib">
+              <div class="photo">写真</div>
+              <div class="meta">
+
+                <p class="name">赤池 侑馬</p>
+
+                <p class="title">KEIPE 株式会社 代表取締役</p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="bookLP-divider">◆ ◆ ◆</div>
+
+      <!-- ───────────── 著者紹介 ───────────── -->
+      <section class="bookLP-section">
+        <p class="sub-en">AUTHORS</p>
+        <h2 class="vk-headding-lp">著者紹介</h2>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <div class="bookLP-author">
+              <div class="photo">写真</div>
+              <div>
+                <h4>吉原 史郎</h4>
+                <p class="t">組織開発コンサルタント／製造業取締役</p>
+                <p>倒産したリゾートホテルの再生経営、三菱UFJリサーチ＆コンサルティングでの経営・組織開発コンサルティングを経て、現在は製造業の取締役として経営の現場に立つ。2016年に『ティール組織』原著を日本で初めて要約。『実務でつかむ！ティール組織（2018年）』を出版。『新訳 ホラクラシー（2023年）』監訳。</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="bookLP-author">
+              <div class="photo">写真</div>
+              <div>
+                <h4>宮慶 優子</h4>
+                <p class="t">共著者</p>
+                <p>大手電力会社の経営企画部での経験をもとに、「なぜ人生の熱量の流れが止まるのか」という問いを抱えて探究を重ねてきた。本書では、現場と理論を架橋する役割を担う。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ───────────── 書誌情報＋CTA ───────────── -->
+      <div class="bookLP-bookinfo">
+        <div class="cover">熱量あふれる<br>組織の<br>つくりかた<br><br><span style="font-size:.55rem">書影最終版</span></div>
+        <div>
+          <h4>熱量あふれる組織のつくりかた</h4>
+          <p class="sub">数字の呪縛（お金への思い込み）からの解放</p>
+          <p class="detail">
+            <strong>著</strong>　吉原 史郎・宮慶 優子<br>
+            <strong>出版社</strong>　日本能率協会マネジメントセンター<br>
+            <strong>刊行予定</strong>　2026年
+          </p>
+        </div>
+      </div>
+
+      <div class="bookLP-cta">
+        <a href="#">Amazonで購入する　→</a>
+        <p class="sub">電子書籍・書店でも発売予定</p>
+      </div>
+
+      <!-- ───────────── 関連記事 ───────────── -->
+      <section class="bookLP-related">
+        <h3>この記事を読んだ方におすすめ</h3>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <a href="https://junkan-aida.life/category/movielist/" class="bookLP-related-card">
+              <p class="cat">動画で感じる</p>
+              <p class="ti">ピーター・カーニックの想いを聞く<br>最初の動画</p>
+            </a>
+          </div>
+          <div class="col-md-4 mb-3">
+            <a href="https://junkan-aida.life/talk_corner/" class="bookLP-related-card">
+              <p class="cat">トークコーナー</p>
+              <p class="ti">著者と読者で深める<br>本書のテーマ</p>
+            </a>
+          </div>
+          <div class="col-md-4 mb-3">
+            <a href="https://junkan-aida.life/event/" class="bookLP-related-card">
+              <p class="cat">イベント</p>
+              <p class="ti">出版記念トークイベント<br>申込受付中</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /entry-body -->
+  </article>
+
+</div><!-- /mainSection -->
+
+</div><!-- /row -->
+</div><!-- /container -->
+</div><!-- /siteContent -->
+
+<!-- ─── FOOTER (junkan-aida.life の構造そのまま) ─── -->
+<footer id="footer" class="siteFooter">
+  <div class="container sectionBox footerWidget">
+    <div class="row">
+      <div class="col-md-4">
+        <aside class="widget widget_block widget_text">
+          <p class="wp-block-paragraph">有限会社人事・労務 &amp; JUNKANだいこん</p>
+        </aside>
+        <aside class="widget widget_block">
+          <ul class="wp-block-list">
+            <li><a href="https://junkan-aida.life/production-team/">制作チーム</a></li>
+            <li><a href="https://junkan-aida.life/861-2/">ピーター・カーニック＆Doneプロセス</a></li>
+            <li><a href="https://junkan-aida.life/privacy-policy/">プライバシーポリシー</a></li>
+            <li><a href="https://junkan-aida.life/toiawase/">お問い合わせ</a></li>
+          </ul>
+        </aside>
+      </div>
+      <div class="col-md-4"></div>
+      <div class="col-md-4"></div>
+    </div>
+  </div>
+  <div class="container sectionBox copySection text-center">
+    <p>© Personnel Affairs & Labor Management co.,Ltd. & JUNKANだいこん</p>
+  </div>
+</footer>
+
+</body>
+</html>
