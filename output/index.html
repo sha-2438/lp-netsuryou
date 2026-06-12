@@ -175,7 +175,9 @@ a.video.video:hover .play{transform:scale(1.08)}
 
 /* 書誌＋CTA */
 .bookLP-bookinfo{background:#fdf9ec;border-left:5px solid var(--color-key);padding:30px;display:flex;gap:26px;align-items:center;margin:36px 0 24px}
-.bookLP-bookinfo .cover{width:115px;flex-shrink:0;aspect-ratio:3/4;background:linear-gradient(150deg,var(--color-key),var(--color-key-dark));color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;font-size:.65rem;font-weight:700;padding:12px;box-shadow:3px 5px 16px rgba(84,5,0,.18);letter-spacing:.05em;line-height:1.5}
+.bookLP-bookinfo .cover{width:118px;flex-shrink:0;display:block;border-radius:2px;box-shadow:3px 5px 16px rgba(84,5,0,.18);transition:transform .2s,box-shadow .2s}
+.bookLP-bookinfo .cover img{display:block;width:100%;height:auto;border-radius:2px}
+.bookLP-bookinfo a.cover:hover{transform:translateY(-2px);box-shadow:4px 8px 22px rgba(84,5,0,.26)}
 .bookLP-bookinfo h4{font-family:'Noto Serif JP',serif;font-size:1.2rem;font-weight:900;color:var(--color-key);margin:0 0 .4rem;line-height:1.5}
 .bookLP-bookinfo .sub{font-size:.85rem;color:var(--color-key);margin-bottom:.7rem;font-weight:600}
 .bookLP-bookinfo .detail{font-size:.8rem;color:#555;line-height:1.85}
@@ -219,6 +221,11 @@ a.video.video:hover .play{transform:scale(1.08)}
 .bookLP-breadcrumb .here{color:var(--color-key);font-weight:600}
 
 .bookLP-divider{text-align:center;margin:40px 0;color:var(--color-key-dark);letter-spacing:.5em;font-size:.85rem}
+
+/* === v13 暫定対応：写真掲載許諾の確認中につき「写真」プレースホルダーを非表示 === */
+/*     （許諾が揃ったら v12 ベースに戻すか、このブロックを削除すれば写真枠が復活します） */
+.bookLP-contrib .photo,
+.bookLP-author .photo{display:none}
 </style>
 </head>
 
@@ -537,7 +544,7 @@ a.video.video:hover .play{transform:scale(1.08)}
 
       <!-- ───────────── 書誌情報＋CTA ───────────── -->
       <div class="bookLP-bookinfo">
-        <div class="cover">熱量あふれる<br>組織の<br>つくりかた<br><br><span style="font-size:.55rem">書影最終版</span></div>
+        <a class="cover" href="https://www.amazon.co.jp/dp/480059457X" target="_blank" rel="noopener"><img src="images/cover.jpg" alt="熱量あふれる組織のつくりかた 書影"></a>
         <div>
           <h4>熱量あふれる組織のつくりかた</h4>
           <p class="sub">数字の呪縛（お金への思い込み）からの解放</p>
@@ -550,7 +557,7 @@ a.video.video:hover .play{transform:scale(1.08)}
       </div>
 
       <div class="bookLP-cta">
-        <a href="#">Amazonで購入する　→</a>
+        <a href="https://www.amazon.co.jp/dp/480059457X" target="_blank" rel="noopener">Amazonで購入する　→</a>
         <p class="sub">電子書籍・書店でも発売予定</p>
       </div>
 
